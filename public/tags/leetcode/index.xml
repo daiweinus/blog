@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leetcode on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/leetcode/</link>
+    <description>Recent content in Leetcode on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 06 Oct 2021 14:57:11 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Structure</title>
+      <link>https://daiwei.dev/posts/data-structure/</link>
+      <pubDate>Wed, 06 Oct 2021 14:57:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/</guid>
+      <description>Array  Array
+  数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。
+构建数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：
+1int[] array = new array[3]; // 初始化一个长度为 3 的数组 array 2array[0] = 1; // 元素赋值 3array[1] = 2; 4array[2] = 3; 或者可以使用直接赋值的初始化方式，代码如下：
+1int[] array = {1,2,3}; //直接赋值 List List—是一个有序的集合，可以包含重复的元素，提供了按索引访问的方式，它继承Collection。
+List有两个重要的实现类：ArrayList和LinkedList
+线性表在数据结构中是一种最基本、最简单、最常用的数据结构。它将数据一个接一个的排成一条线（可能逻辑上），也因此线性表上的每个数据只有前后两个方向，而在数据结构中，数组、链表、栈、队列都是线性表。二叉树和图就是典型的非线性结构了
+ArrayList  ArrayList
+  下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&amp;lt;Integer&amp;gt; list1 = new ArrayList&amp;lt;Integer&amp;gt;(); //generally preferred 2ArrayList&amp;lt;Integer&amp;gt; list2 = (ArrayList&amp;lt;Integer&amp;gt;) list; // type-cast   initialize as List&amp;lt;E&amp;gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList.</description>
+    </item>
+    
+  </channel>
+</rss>

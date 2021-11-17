@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Data Structure">
+<meta itemprop="description" content="Array  Array
+  数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。
+构建数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：
+1int[] array = new array[3]; // 初始化一个长度为 3 的数组 array 2array[0] = 1; // 元素赋值 3array[1] = 2; 4array[2] = 3; 或者可以使用直接赋值的初始化方式，代码如下：
+1int[] array = {1,2,3}; //直接赋值 List List—是一个有序的集合，可以包含重复的元素，提供了按索引访问的方式，它继承Collection。
+List有两个重要的实现类：ArrayList和LinkedList
+线性表在数据结构中是一种最基本、最简单、最常用的数据结构。它将数据一个接一个的排成一条线（可能逻辑上），也因此线性表上的每个数据只有前后两个方向，而在数据结构中，数组、链表、栈、队列都是线性表。二叉树和图就是典型的非线性结构了
+ArrayList  ArrayList
+  下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = (ArrayList&lt;Integer&gt;) list; // type-cast   initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList."><meta itemprop="datePublished" content="2021-10-06T14:57:11+08:00" />
+<meta itemprop="dateModified" content="2021-10-06T14:57:11+08:00" />
+<meta itemprop="wordCount" content="596"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Leetcode," /><meta property="og:title" content="Data Structure" />
+<meta property="og:description" content="Array  Array
+  数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。
+构建数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：
+1int[] array = new array[3]; // 初始化一个长度为 3 的数组 array 2array[0] = 1; // 元素赋值 3array[1] = 2; 4array[2] = 3; 或者可以使用直接赋值的初始化方式，代码如下：
+1int[] array = {1,2,3}; //直接赋值 List List—是一个有序的集合，可以包含重复的元素，提供了按索引访问的方式，它继承Collection。
+List有两个重要的实现类：ArrayList和LinkedList
+线性表在数据结构中是一种最基本、最简单、最常用的数据结构。它将数据一个接一个的排成一条线（可能逻辑上），也因此线性表上的每个数据只有前后两个方向，而在数据结构中，数组、链表、栈、队列都是线性表。二叉树和图就是典型的非线性结构了
+ArrayList  ArrayList
+  下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = (ArrayList&lt;Integer&gt;) list; // type-cast   initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-06T14:57:11+08:00" />
+<meta property="article:modified_time" content="2021-10-06T14:57:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Data Structure"/>
+<meta name="twitter:description" content="Array  Array
+  数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。
+构建数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：
+1int[] array = new array[3]; // 初始化一个长度为 3 的数组 array 2array[0] = 1; // 元素赋值 3array[1] = 2; 4array[2] = 3; 或者可以使用直接赋值的初始化方式，代码如下：
+1int[] array = {1,2,3}; //直接赋值 List List—是一个有序的集合，可以包含重复的元素，提供了按索引访问的方式，它继承Collection。
+List有两个重要的实现类：ArrayList和LinkedList
+线性表在数据结构中是一种最基本、最简单、最常用的数据结构。它将数据一个接一个的排成一条线（可能逻辑上），也因此线性表上的每个数据只有前后两个方向，而在数据结构中，数组、链表、栈、队列都是线性表。二叉树和图就是典型的非线性结构了
+ArrayList  ArrayList
+  下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = (ArrayList&lt;Integer&gt;) list; // type-cast   initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Data Structure</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.de4b27ac92e227b78c3f73715bcf70b745acaf188106a6d66950cceafa1cca57.css" integrity="sha256-3ksnrJLiJ7eMP3NxW89wt0WsrxiBBqbWaVDM6vocylc=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about-hugo/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about-hugo/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 6, 2021</span></div>
+				<h1>Data Structure</h1>
+			</header>
+			<div class="content">
+				<p><img src="https://img-blog.csdnimg.cn/img_convert/5253e82f78c3e235799fe38bfab6f097.png" alt="img"></p>
+<p><img src="https://pica.zhimg.com/v2-5dd21bea8b50af177e31351ed0a2ea8d_r.jpg?source=172ae18b" alt=""></p>
+<p><img src="https://miro.medium.com/max/2000/1*RyCRTcbKIxHiPe5AObrvqQ.png" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190227211326757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhcnRvb25f,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://static.javatpoint.com/ds/images/ds-introduction.png" alt=""></p>
+<p><img src="https://static.javatpoint.com/images/java-collection-hierarchy.png" alt="Hierarchy of Java Collection framework"></p>
+<h2 id="array">Array<a href="#array" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://java2blog.com/wp-content/webpc-passthru.php?src=https://java2blog.com/wp-content/uploads/2017/09/Array.png&amp;nocache=1%20S"
+         alt="image"/><figcaption>
+            <p>Array</p>
+        </figcaption>
+</figure>
+
+<p>数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。</p>
+<p>构建数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">array</span><span class="o">[</span><span class="n">3</span><span class="o">];</span> <span class="c1">// 初始化一个长度为 3 的数组 array
+</span><span class="ln">2</span><span class="c1"></span><span class="n">array</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="c1">// 元素赋值
+</span><span class="ln">3</span><span class="c1"></span><span class="n">array</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">4</span><span class="n">array</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span>
+</code></pre></div><p>或者可以使用直接赋值的初始化方式，代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">};</span> <span class="c1">//直接赋值
+</span></code></pre></div><h2 id="list">List<a href="#list" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><strong>List—是一个有序的集合，可以包含重复的元素，提供了按索引访问的方式，它继承Collection。</strong></p>
+<p><strong>List有两个重要的实现类：ArrayList和LinkedList</strong></p>
+<p>线性表在数据结构中是一种<strong>最基本、最简单、最常用</strong>的数据结构。它将数据一个接一个的排成一条线（可能逻辑上），也因此线性表上的每个数据只有前后两个方向，而在数据结构中，<strong>数组、链表、栈、队列</strong>都是线性表。<strong>二叉树</strong>和<strong>图</strong>就是典型的非线性结构了</p>
+<h2 id="arraylist">ArrayList<a href="#arraylist" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://java2blog.com/wp-content/webpc-passthru.php?src=https://java2blog.com/wp-content/uploads/2016/05/ArrayList.jpg&amp;nocache=1%20S"
+         alt="image"/><figcaption>
+            <p>ArrayList</p>
+        </figcaption>
+</figure>
+
+<p>下面两种ArrayList初始化方式都是正确的，List is an <strong><code>interface</code></strong> and ArrayList is a <strong><code>class</code></strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span> <span class="c1">//generally preferred
+</span><span class="ln">2</span><span class="c1"></span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="o">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;)</span> <span class="n">list</span><span class="o">;</span> <span class="c1">// type-cast
+</span></code></pre></div><ul>
+<li>
+<p>initialize as <strong><code>List&lt;E&gt;</code></strong> 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList.</p>
+</li>
+<li>
+<p>initialize as <strong><code>ArrayList&lt;E&gt;</code></strong> 可以访问使用所有的ArrayList class method, such as such as <em><code>ArrayList#ensureCapacity</code></em> or <em><code>ArrayList#trimToSize</code></em>.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span><span class="c1">// 初始化可变数组
+</span><span class="ln">2</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;one&#34;</span><span class="o">);</span> <span class="c1">// list[&#34;one&#34;]
+</span><span class="ln">3</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;two&#34;</span><span class="o">);</span> <span class="c1">// list[&#34;one&#34;,&#34;two&#34;]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">0</span><span class="o">);</span> <span class="c1">//list[&#34;two&#34;]
+</span><span class="ln">5</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">4</span><span class="o">);</span> <span class="c1">//list[&#34;two&#34;,4]
+</span><span class="ln">6</span><span class="c1"></span><span class="kt">boolean</span> <span class="n">a</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">//true
+</span></code></pre></div><p>ArrayList的 <strong>toArray</strong> 方法返回一个数组, ArrayList的 <strong>asList</strong> 方法返回一个列表.</p>
+<h2 id="linkedlist">LinkedList<a href="#linkedlist" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://img-blog.csdnimg.cn/img_convert/81117006f63098c29cceb5938fdc3199.png"
+         alt="image"/><figcaption>
+            <p>LinkedList</p>
+        </figcaption>
+</figure>
+
+<p>链表以节点为单位，每个元素都是一个独立对象，在内存空间的存储是非连续的。链表的节点对象具有两个成员变量：「值 <code>val</code>」，「后继节点引用 <code>next</code>」 。 可实现Stacks, Queues, and trees等数据结构。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">class</span> <span class="nc">ListNode</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kt">int</span> <span class="n">val</span><span class="o">;</span>       <span class="c1">// 节点值
+</span><span class="ln">3</span><span class="c1"></span>    <span class="n">ListNode</span> <span class="n">next</span><span class="o">;</span> <span class="c1">// 后继节点引用
+</span><span class="ln">4</span><span class="c1"></span>    <span class="n">ListNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> <span class="o">}</span>
+<span class="ln">5</span><span class="o">}</span>
+</code></pre></div><p>和ArrayList 一样，下面两种ArrayList初始化方式都是正确的，List is an <strong><code>interface</code></strong> and LinkedList is a <strong><code>class</code></strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span> <span class="c1">//generally preferred
+</span><span class="ln">2</span><span class="c1"></span><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span> <span class="c1">// type-cast
+</span></code></pre></div><p><code>List&lt;E&gt;</code> is more generally preferred over <code>LinkedList&lt;E&gt;</code>, but If needed to add cells in the beginning/middle/end of the list LinkedList proved you  <em><code>addFirst, addLast &amp; removeFirst, removeLast &amp; getFirst, getLast</code></em> method.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">list2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> <span class="c1">// list[1]
+</span><span class="ln">2</span><span class="c1"></span><span class="n">list2</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// list[2,1]     
+</span><span class="ln">3</span><span class="c1"></span><span class="n">list2</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span> <span class="c1">// list[2]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">list2</span><span class="o">.</span><span class="na">getFirst</span><span class="o">();</span> <span class="c1">// 2
+</span></code></pre></div><h2 id="arraylist-vs-linkedlist">ArrayList vs LinkedList<a href="#arraylist-vs-linkedlist" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://static.studytonight.com/data-structures/images/array-vs-linked-list.png"
+         alt="ArrayList vs LinkedList"/><figcaption>
+            <p>ArrayList vs LinkedList</p>
+        </figcaption>
+</figure>
+
+<blockquote>
+<ul>
+<li>
+<p>ArrayList <strong>底层是数组,内存地址连续可随机访问元素，查询快O(1),</strong></p>
+</li>
+<li>
+<p>ArrayList <strong>动态扩容和元素拷贝 增删慢, 实现了List 接口;</strong></p>
+</li>
+<li>
+<p>LinkedList <strong>底层是链表,内存地址不连续必须按顺序访问元素，查询慢O(N),</strong></p>
+</li>
+<li>
+<p>LinkedList <strong>只需要修改节点指针指向 增删快O(1), 实现List &amp; Deque 接口。</strong></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="stack">Stack<a href="#stack" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><figure class="right"><img src="https://java2blog.com/wp-content/webpc-passthru.php?src=https://java2blog.com/wp-content/uploads/2017/09/Stack.png&amp;nocache=1%20Z"
+         alt="Stack"/><figcaption>
+            <p>Stack</p>
+        </figcaption>
+</figure>
+&quot;</p>
+<p>栈是一种具有 「先入后出 FILO」 特点的抽象数据结构，可使用数组或链表实现。</p>
+<p>通过常用操作「入栈 <code>push()</code>」,「出栈 <code>pop()</code>」，展示了栈的先入后出特性</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+<span class="ln">2</span><span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> <span class="c1">// push = 1 ,stack = [1]
+</span><span class="ln">3</span><span class="c1"></span><span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// push = 2, stack = [1,2]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span> <span class="c1">// peek = 2
+</span><span class="ln">5</span><span class="c1"></span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> <span class="c1">// pop = 2, stack[1],
+</span><span class="ln">6</span><span class="c1"></span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> <span class="c1">// pop = 1, stack[],
+</span></code></pre></div><h2 id="queue">Queue<a href="#queue" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://java2blog.com/wp-content/webpc-passthru.php?src=https://java2blog.com/wp-content/uploads/2017/09/Queue.png&amp;nocache=1%20S"
+         alt="Queue"/><figcaption>
+            <p>Queue</p>
+        </figcaption>
+</figure>
+
+<p>队列是一种具有 「先入先出 FIFO」 特点的抽象数据结构，可使用链表实现.</p>
+<p>通过常用操作「入队 <code>offer()</code>」,「出队 <code>poll()</code>」，展示了队列的先入先出特性。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="ln">2</span><span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> <span class="c1">// queue = [1]
+</span><span class="ln">3</span><span class="c1"></span><span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// queue = [1,2]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span> <span class="c1">// peek = 1
+</span><span class="ln">5</span><span class="c1"></span><span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>   <span class="c1">// poll = 1; queue = [2]
+</span><span class="ln">6</span><span class="c1"></span><span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>   <span class="c1">// poll = 2; queue = []
+</span></code></pre></div><h2 id="tree">Tree<a href="#tree" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://img-blog.csdnimg.cn/img_convert/03f6d9e00726a132eac1b662a4e8a5ef.png"
+         alt="Tree"/><figcaption>
+            <p>Tree</p>
+        </figcaption>
+</figure>
+
+<p>树是一种非线性数据结构，根据子节点数量可分为 「二叉树」 和 「多叉树」，最顶层的节点称为「根节点 root」。以二叉树为例，每个节点包含三个成员变量：「值 val」、「左子节点 left」、「右子节点 right」 。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">class</span> <span class="nc">TreeNode</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kt">int</span> <span class="n">val</span><span class="o">;</span>        <span class="c1">// 节点值
+</span><span class="ln">3</span><span class="c1"></span>    <span class="n">TreeNode</span> <span class="n">left</span><span class="o">;</span>  <span class="c1">// 左子节点
+</span><span class="ln">4</span><span class="c1"></span>    <span class="n">TreeNode</span> <span class="n">right</span><span class="o">;</span> <span class="c1">// 右子节点
+</span><span class="ln">5</span><span class="c1"></span>    <span class="n">TreeNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> <span class="o">}</span>
+<span class="ln">6</span><span class="o">}</span>
+</code></pre></div><p>建立此二叉树需要实例化每个节点，并构建各节点的引用指向。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// 初始化节点
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">TreeNode</span> <span class="n">n1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="o">(</span><span class="n">3</span><span class="o">);</span> <span class="c1">// 根节点 root
+</span><span class="ln"> 3</span><span class="c1"></span><span class="n">TreeNode</span> <span class="n">n2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+<span class="ln"> 4</span><span class="n">TreeNode</span> <span class="n">n3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="o">(</span><span class="n">5</span><span class="o">);</span>
+<span class="ln"> 5</span><span class="n">TreeNode</span> <span class="n">n4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln"> 6</span><span class="n">TreeNode</span> <span class="n">n5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">// 构建引用指向
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">n1</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
+<span class="ln">10</span><span class="n">n1</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">n3</span><span class="o">;</span>
+<span class="ln">11</span><span class="n">n2</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">n4</span><span class="o">;</span>
+<span class="ln">12</span><span class="n">n2</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">n5</span><span class="o">;</span>
+</code></pre></div><h2 id="graph">Graph<a href="#graph" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://img-blog.csdnimg.cn/img_convert/8bb2cee2e9db758ff3de1ace8a5fc848.png"
+         alt="Graph"/><figcaption>
+            <p>Graph</p>
+        </figcaption>
+</figure>
+
+<p>图是一种非线性数据结构，由「节点（顶点）vertex」和「边 edge」组成，每条边连接一对顶点。根据边的方向有无，图可分为「有向图」和「无向图」。本文 以无向图为例 开展介绍。</p>
+<p>如下图所示，此无向图的 顶点 和 边 集合分别为：</p>
+<p>顶点集合： vertices = {1, 2, 3, 4, 5}
+边集合： edges = {(1, 2), (1, 3), (1, 4), (1, 5), (2, 4), (3, 5), (4, 5)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kt">int</span><span class="o">[]</span> <span class="n">vertices</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">};</span>
+<span class="ln">2</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">edges</span> <span class="o">=</span> <span class="o">{{</span><span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">},</span>
+<span class="ln">3</span>                 <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">},</span>
+<span class="ln">4</span>                 <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">},</span>
+<span class="ln">5</span>                 <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">},</span>
+<span class="ln">6</span>                 <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">}}</span>
+</code></pre></div><h2 id="hashing">Hashing<a href="#hashing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://img-blog.csdnimg.cn/img_convert/f2adf1e5cc3f127acd432dc34b7b2fbe.png"
+         alt="Hashing"/><figcaption>
+            <p>Hashing</p>
+        </figcaption>
+</figure>
+
+<p>散列表是一种非线性数据结构，通过利用 Hash 函数将指定的「键 <code>key</code>」映射至对应的「值 <code>value</code>」，以实现高效的元素查找.</p>
+<blockquote>
+<p>设想一个简单场景：小力、小特、小扣的学号分别为 10001, 10002, 10003 。
+现需求从「姓名」查找「学号」。</p>
+</blockquote>
+<p>则可通过建立姓名为 key ，学号为 value 的散列表实现此需求，代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// 初始化散列表
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">dic</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">// 添加 key -&gt; value 键值对
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">dic</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;小力&#34;</span><span class="o">,</span> <span class="n">10001</span><span class="o">);</span>
+<span class="ln"> 6</span><span class="n">dic</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;小特&#34;</span><span class="o">,</span> <span class="n">10002</span><span class="o">);</span>
+<span class="ln"> 7</span><span class="n">dic</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;小扣&#34;</span><span class="o">,</span> <span class="n">10003</span><span class="o">);</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">// 从姓名查找学号
+</span><span class="ln">10</span><span class="c1"></span><span class="n">dic</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;小力&#34;</span><span class="o">);</span> <span class="c1">// -&gt; 10001
+</span><span class="ln">11</span><span class="c1"></span><span class="n">dic</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;小特&#34;</span><span class="o">);</span> <span class="c1">// -&gt; 10002
+</span><span class="ln">12</span><span class="c1"></span><span class="n">dic</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;小扣&#34;</span><span class="o">);</span> <span class="c1">// -&gt; 10003
+</span></code></pre></div><h2 id="heap">Heap<a href="#heap" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<figure class="right"><img src="https://img-blog.csdnimg.cn/img_convert/a803f4a953df9c1e5a243883c1ae7c94.png"
+         alt="Heap"/><figcaption>
+            <p>Heap</p>
+        </figcaption>
+</figure>
+
+<p>堆是一种基于「完全二叉树」的数据结构，可使用数组实现。以堆为原理的排序算法称为「堆排序」，基于堆实现的数据结构为「优先队列」。堆分为「大顶堆」和「小顶堆」，大（小）顶堆：任意节点的值不大于（小于）其父节点的值。</p>
+<blockquote>
+<p>完全二叉树定义： 设二叉树深度为 kk ，若二叉树除第 kk 层外的其它各层（第 11 至 k-1k−1 层）的节点达到最大个数，且处于第 kk 层的节点都连续集中在最左边，则称此二叉树为完全二叉树。</p>
+</blockquote>
+<p>如下图所示，为包含 1, 4, 2, 6, 8 元素的小顶堆。将堆（完全二叉树）中的结点按层编号，即可映射到右边的数组存储形式。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// 初始化小顶堆
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">// 元素入堆
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln"> 6</span><span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+<span class="ln"> 7</span><span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+<span class="ln"> 8</span><span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">6</span><span class="o">);</span>
+<span class="ln"> 9</span><span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">8</span><span class="o">);</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">// 元素出堆（从小到大）
+</span><span class="ln">12</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// -&gt; 1
+</span><span class="ln">13</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// -&gt; 2
+</span><span class="ln">14</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// -&gt; 4
+</span><span class="ln">15</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// -&gt; 6
+</span><span class="ln">16</span><span class="c1"></span><span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// -&gt; 8
+</span></code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/leetcode">Leetcode</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>596 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-06 14:57 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/string/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>String</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/hello-world/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Hello World</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/" class="leancloud_visitors" data-flag-title="Data Structure">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

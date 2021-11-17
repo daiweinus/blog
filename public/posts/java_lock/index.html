@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Lock">
+<meta itemprop="description" content="1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
+锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
+synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
+虽然synchronized方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 Lock接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。
+这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了synchronized 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：
+1 Lock l = new Lock; 2 l.lock(); 3 try { 4 // access the resource protected by this lock 5 } finally { 6 l.unlock(); 7 } 当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。
+1package lockTest; 2 3 4import java.util.concurrent.locks.ReentrantLock; 5 6/** 7* ConcurrentThread Safety 8* The solution 1: synchronized 9* The solution 2: lock 10*/ 11public class LockTest { 12 public static void main(String[] args) { 13 Window w = new Window(); 14 15 Thread t1 = new Thread(w); 16 Thread t2 = new Thread(w); 17 Thread t3 = new Thread(w); 18 19 t1."><meta itemprop="datePublished" content="2021-11-03T10:10:07+08:00" />
+<meta itemprop="dateModified" content="2021-11-03T10:10:07+08:00" />
+<meta itemprop="wordCount" content="445"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Java Lock" />
+<meta property="og:description" content="1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
+锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
+synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
+虽然synchronized方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 Lock接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。
+这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了synchronized 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：
+1 Lock l = new Lock; 2 l.lock(); 3 try { 4 // access the resource protected by this lock 5 } finally { 6 l.unlock(); 7 } 当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。
+1package lockTest; 2 3 4import java.util.concurrent.locks.ReentrantLock; 5 6/** 7* ConcurrentThread Safety 8* The solution 1: synchronized 9* The solution 2: lock 10*/ 11public class LockTest { 12 public static void main(String[] args) { 13 Window w = new Window(); 14 15 Thread t1 = new Thread(w); 16 Thread t2 = new Thread(w); 17 Thread t3 = new Thread(w); 18 19 t1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java_lock/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-03T10:10:07+08:00" />
+<meta property="article:modified_time" content="2021-11-03T10:10:07+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Lock"/>
+<meta name="twitter:description" content="1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
+锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
+synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
+虽然synchronized方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 Lock接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。
+这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了synchronized 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：
+1 Lock l = new Lock; 2 l.lock(); 3 try { 4 // access the resource protected by this lock 5 } finally { 6 l.unlock(); 7 } 当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。
+1package lockTest; 2 3 4import java.util.concurrent.locks.ReentrantLock; 5 6/** 7* ConcurrentThread Safety 8* The solution 1: synchronized 9* The solution 2: lock 10*/ 11public class LockTest { 12 public static void main(String[] args) { 13 Window w = new Window(); 14 15 Thread t1 = new Thread(w); 16 Thread t2 = new Thread(w); 17 Thread t3 = new Thread(w); 18 19 t1."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Lock</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Nov 3, 2021</span></div>
+				<h1>Java Lock</h1>
+			</header>
+			<div class="content">
+				<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-apl" data-lang="apl"><span class="ln">1</span><span class="nv">Module</span><span class="bp">:</span> <span class="nv">java</span><span class="na">.</span><span class="nv">base</span>
+<span class="ln">2</span><span class="nv">Package</span><span class="bp">:</span> <span class="nv">java</span><span class="na">.</span><span class="nv">util</span><span class="na">.</span><span class="nv">concurrent</span><span class="na">.</span><span class="nv">locks</span>
+<span class="ln">3</span><span class="nv">Interface</span> <span class="nv">Lock</span>
+<span class="ln">4</span>  
+<span class="ln">5</span><span class="nv">All</span> <span class="nv">Known</span> <span class="nv">Implementing</span> <span class="nv">Classes</span><span class="bp">:</span>
+<span class="ln">6</span><span class="nv">ReentrantLock</span><span class="o">,</span> <span class="nv">ReentrantReadWriteLock</span><span class="na">.</span><span class="nv">ReadLock</span><span class="o">,</span> <span class="nv">ReentrantReadWriteLock</span><span class="na">.</span><span class="nv">WriteLock</span>
+</code></pre></div><p><code>Lock</code>实现提供了比使用<code>synchronized</code>方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/locks/Condition.html"><code>Condition</code></a>对象。</p>
+<p>锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/locks/ReadWriteLock.html"><code>ReadWriteLock</code></a>.</p>
+<p><code>synchronized</code>方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。</p>
+<p>虽然<code>synchronized</code>方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 <code>Lock</code>接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。</p>
+<p>这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了<code>synchronized</code> 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span> <span class="n">Lock</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Lock</span><span class="o">;</span>
+<span class="ln">2</span> <span class="n">l</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+<span class="ln">3</span> <span class="k">try</span> <span class="o">{</span>
+<span class="ln">4</span>   <span class="c1">// access the resource protected by this lock
+</span><span class="ln">5</span><span class="c1"></span> <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="ln">6</span>   <span class="n">l</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+<span class="ln">7</span> <span class="o">}</span>
+</code></pre></div><p>当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">lockTest</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="kn">import</span> <span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="o">;</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="cm">/**
+</span><span class="ln"> 7</span><span class="cm"> * ConcurrentThread Safety
+</span><span class="ln"> 8</span><span class="cm"> * The solution 1: synchronized
+</span><span class="ln"> 9</span><span class="cm"> * The solution 2: lock
+</span><span class="ln">10</span><span class="cm"> */</span>
+<span class="ln">11</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LockTest</span> <span class="o">{</span>
+<span class="ln">12</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">13</span>        <span class="n">Window</span> <span class="n">w</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Window</span><span class="o">();</span>
+<span class="ln">14</span>
+<span class="ln">15</span>        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln">16</span>        <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln">17</span>        <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln">18</span>
+<span class="ln">19</span>        <span class="n">t1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window 1&#34;</span><span class="o">);</span>
+<span class="ln">20</span>        <span class="n">t2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window 2&#34;</span><span class="o">);</span>
+<span class="ln">21</span>        <span class="n">t3</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window 3&#34;</span><span class="o">);</span>
+<span class="ln">22</span>
+<span class="ln">23</span>        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">24</span>        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">25</span>        <span class="n">t3</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">26</span>    <span class="o">}</span>
+<span class="ln">27</span><span class="o">}</span>
+<span class="ln">28</span>
+<span class="ln">29</span>
+<span class="ln">30</span><span class="kd">class</span> <span class="nc">Window</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+<span class="ln">31</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">tickets</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+<span class="ln">32</span>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">ReentrantLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReentrantLock</span><span class="o">();</span>
+<span class="ln">33</span>
+<span class="ln">34</span>    <span class="nd">@Override</span>
+<span class="ln">35</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">36</span>        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">37</span>            <span class="n">lock</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+<span class="ln">38</span>            <span class="k">try</span> <span class="o">{</span>
+<span class="ln">39</span>                <span class="k">if</span> <span class="o">(</span><span class="n">tickets</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">40</span>                    <span class="k">try</span> <span class="o">{</span>
+<span class="ln">41</span>                        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
+<span class="ln">42</span>                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">43</span>                        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">44</span>                    <span class="o">}</span>
+<span class="ln">45</span>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; sold ticket: &#34;</span> <span class="o">+</span> <span class="n">tickets</span><span class="o">);</span>
+<span class="ln">46</span>                    <span class="n">tickets</span><span class="o">--;</span>
+<span class="ln">47</span>                <span class="o">}</span> <span class="k">else</span> <span class="k">break</span><span class="o">;</span>
+<span class="ln">48</span>            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="ln">49</span>                <span class="n">lock</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+<span class="ln">50</span>            <span class="o">}</span>
+<span class="ln">51</span>        <span class="o">}</span>
+<span class="ln">52</span>    <span class="o">}</span>
+<span class="ln">53</span><span class="o">}</span>
+</code></pre></div><h3 id="解决线程安全的方式有几种">解决线程安全的方式有几种？<a href="#解决线程安全的方式有几种" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>synchronized
+<ul>
+<li>同步代码块 / 同步方法</li>
+</ul>
+</li>
+<li>lock</li>
+</ol>
+<h3 id="sychronized-vs-lock">sychronized vs lock<a href="#sychronized-vs-lock" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>
+<p>sychonized 在执行完相应的同步代码块后，会自动释放同步监视器。</p>
+<p>lock需要手动启动和停止同步锁<code>lock()/unlock()</code>。</p>
+</li>
+</ul>
+<p>建议优先用lock，其实同步代码块，最后考虑同步方法。</p>
+<h3 id="exercise">Exercise<a href="#exercise" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">exercise</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="cm">/**
+</span><span class="ln"> 6</span><span class="cm"> * 两位储户分别向同一银行账户存入3000，存3次，每次存1000并打印余额
+</span><span class="ln"> 7</span><span class="cm"> * 1.是否是多线程问题？是，两位储户同时操作
+</span><span class="ln"> 8</span><span class="cm"> * 2.是否共享数据？是，同一个银行账户
+</span><span class="ln"> 9</span><span class="cm"> */</span>
+<span class="ln">10</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccountTest</span> <span class="o">{</span>
+<span class="ln">11</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">12</span>        <span class="n">Account</span> <span class="n">acct</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+<span class="ln">13</span>        <span class="n">Customer</span> <span class="n">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="n">acct</span><span class="o">);</span>
+<span class="ln">14</span>        <span class="n">Customer</span> <span class="n">c2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="n">acct</span><span class="o">);</span>
+<span class="ln">15</span>
+<span class="ln">16</span>        <span class="n">c1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Jack&#34;</span><span class="o">);</span>
+<span class="ln">17</span>        <span class="n">c2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Rose&#34;</span><span class="o">);</span>
+<span class="ln">18</span>
+<span class="ln">19</span>        <span class="n">c1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">20</span>        <span class="n">c2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">21</span>    <span class="o">}</span>
+<span class="ln">22</span><span class="o">}</span>
+<span class="ln">23</span>
+<span class="ln">24</span><span class="kd">class</span> <span class="nc">Account</span> <span class="o">{</span>
+<span class="ln">25</span>    <span class="kd">private</span> <span class="kt">double</span> <span class="n">balance</span><span class="o">;</span>
+<span class="ln">26</span>   
+<span class="ln">27</span>    <span class="c1">//extend Thread 要用static 修饰 lock
+</span><span class="ln">28</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">ReentrantLock</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReentrantLock</span><span class="o">();</span>
+<span class="ln">29</span>
+<span class="ln">30</span>    <span class="kd">public</span> <span class="nf">Account</span> <span class="o">(</span><span class="kt">double</span> <span class="n">balance</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">31</span>        <span class="k">this</span><span class="o">.</span><span class="na">balance</span> <span class="o">=</span> <span class="n">balance</span><span class="o">;</span>
+<span class="ln">32</span>    <span class="o">}</span>
+<span class="ln">33</span>
+<span class="ln">34</span>    <span class="c1">//同步方法 和 lock
+</span><span class="ln">35</span><span class="c1"></span>    <span class="c1">//public synchronized void deposed (double amt) {
+</span><span class="ln">36</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deposed</span> <span class="o">(</span><span class="kt">double</span> <span class="n">amt</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">37</span>        <span class="k">if</span><span class="o">(</span><span class="n">amt</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">38</span>            <span class="n">l</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+<span class="ln">39</span>            <span class="k">try</span><span class="o">{</span>
+<span class="ln">40</span>                <span class="n">balance</span><span class="o">+=</span><span class="n">amt</span><span class="o">;</span>
+<span class="ln">41</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; Deposed success, your balance: &#34;</span> <span class="o">+</span> <span class="n">balance</span><span class="o">);</span>
+<span class="ln">42</span>
+<span class="ln">43</span>                <span class="k">try</span> <span class="o">{</span>
+<span class="ln">44</span>                    <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+<span class="ln">45</span>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">46</span>                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">47</span>                <span class="o">}</span>
+<span class="ln">48</span>            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="ln">49</span>                <span class="n">l</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+<span class="ln">50</span>            <span class="o">}</span>
+<span class="ln">51</span>        <span class="o">}</span>
+<span class="ln">52</span>    <span class="o">}</span>
+<span class="ln">53</span><span class="o">}</span>
+<span class="ln">54</span>
+<span class="ln">55</span><span class="kd">class</span> <span class="nc">Customer</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+<span class="ln">56</span>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Account</span> <span class="n">acct</span><span class="o">;</span>
+<span class="ln">57</span>
+<span class="ln">58</span>    <span class="kd">public</span> <span class="nf">Customer</span><span class="o">(</span><span class="n">Account</span> <span class="n">acct</span><span class="o">){</span>
+<span class="ln">59</span>        <span class="k">this</span><span class="o">.</span><span class="na">acct</span> <span class="o">=</span> <span class="n">acct</span><span class="o">;</span>
+<span class="ln">60</span>    <span class="o">}</span>
+<span class="ln">61</span>
+<span class="ln">62</span>    <span class="nd">@Override</span>
+<span class="ln">63</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+<span class="ln">64</span>       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">++)</span>
+<span class="ln">65</span>           <span class="n">acct</span><span class="o">.</span><span class="na">deposed</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+<span class="ln">66</span>    <span class="o">}</span>
+<span class="ln">67</span><span class="o">}</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>445 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-11-03 10:10 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/thread_communication/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Thread Communication</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/threadssafety/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Threads Safety</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java_lock/" class="leancloud_visitors" data-flag-title="Java Lock">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

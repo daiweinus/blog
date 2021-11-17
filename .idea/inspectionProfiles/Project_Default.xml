@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="6">
+            <item index="0" class="java.lang.String" itemvalue="apple-touch-icon.png" />
+            <item index="1" class="java.lang.String" itemvalue="favicon-32x32.png" />
+            <item index="2" class="java.lang.String" itemvalue="favicon-16x16.png" />
+            <item index="3" class="java.lang.String" itemvalue="site.webmanifest" />
+            <item index="4" class="java.lang.String" itemvalue="safari-pinned-tab.svg" />
+            <item index="5" class="java.lang.String" itemvalue="favicon.ico" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+  </profile>
+</component>

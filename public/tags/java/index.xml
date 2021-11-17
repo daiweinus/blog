@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/java/</link>
+    <description>Recent content in Java on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 09 Nov 2021 12:11:11 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java_design</title>
+      <link>https://daiwei.dev/posts/java_design/</link>
+      <pubDate>Tue, 09 Nov 2021 12:11:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_design/</guid>
+      <description>Design Principles   SOILD
+  Single Responsibility Principle (SRP) 单一职责原则
+Each class should have a single purpose.
+  Open/Closed Principle (OCP) 开闭原则
+software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
+  Liscov Substitution Principle (LSP) 替换原则
+functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
+  Interface Segregation Principle (ISP) 接口隔离原则</description>
+    </item>
+    
+    <item>
+      <title>Java_oop</title>
+      <link>https://daiwei.dev/posts/java_oop/</link>
+      <pubDate>Tue, 09 Nov 2021 11:30:25 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_oop/</guid>
+      <description>Object-oriented programming (OOP) is a programming based on the concept of “objects” that contain data and methods. The primary purpose of object-oriented programming is to increase the flexibility and maintainability of programs. Object oriented programming brings together data and its behaviour(methods) in a single location(object) makes it easier to understand how a program works.
+面向对象程序设计（Object Oriented Programming，OOP）是一种计算机编程架构。OOP的一条基本原则是计算机程序由单个能够起到子程序作用的单元或对象组合而成。OOP达到了软件工程的三个主要目标：重用性、灵活性和扩展性。OOP=对象+类+继承+多态+消息，其中核心概念是类和对象。
+除了OOP, 还有面向过程(Procedure Oriented Programming)，是一种以过程为中心的编程思想。这些都是以什么正在发生为主要目标进行编程。函数式编程（Functional Programming），data更多的围绕operation， 所以添加新的方法很容易。
+What is an Object 什么是对象？对象就是一组数据 data 和行为 behaviour (aka method).</description>
+    </item>
+    
+    <item>
+      <title>线程创建方式4: threadpool</title>
+      <link>https://daiwei.dev/posts/java_threadpool/</link>
+      <pubDate>Wed, 03 Nov 2021 15:57:02 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_threadpool/</guid>
+      <description>提前建好多个线程放入线程池中，使用时直接获取。避免频繁创建销毁线程，实现线程重复利用。
+线程池类似公交车🚌，每个人都可以按自己的需选择乘坐任何一辆公交车。
+好处：
+ 建好线程创建时间，提高程序相应速度。 线程可重复利用，降低系统资源消耗。 便于线程管理，提高编程效率。  线程池API:
+ ExecutorService 线程池接口，常见子类 ThreadPoolExecutor Executor 工具类，线程池工厂类，用于创建并返回不同类型的线程。  1package threadpool; 2 3import java.util.concurrent.ExecutorService; 4import java.util.concurrent.Executors; 5import java.util.concurrent.ThreadPoolExecutor; 6import java.util.concurrent.TimeUnit; 7 8/** 9* 线程创建方式4： ThreadPool 10*/ 11public class ThreadPool { 12 public static void main(String[] args) { 13 ExecutorService service = Executors.newScheduledThreadPool(10); 14 15 //设置线程池属性，先把ExecutorService 转换成 ThreadPoolExecutor 16 //ThreadPoolExecutor service1 = (ThreadPoolExecutor) service; 17 //service1.setCorePoolSize(5); 18 //service1.setKeepAliveTime(100, TimeUnit.MILLISECONDS); 19 20 //service.submit(Callable callable);//适合适用于Callable 21 service.</description>
+    </item>
+    
+    <item>
+      <title>创建线程的方式3: Callable</title>
+      <link>https://daiwei.dev/posts/java_callable/</link>
+      <pubDate>Wed, 03 Nov 2021 15:39:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_callable/</guid>
+      <description>1package callableTest; 2 3import java.util.concurrent.Callable; 4import java.util.concurrent.ExecutionException; 5import java.util.concurrent.FutureTask; 6 7/** 8* 创建线程方式3：实现 callable 接口。-----JDK5.0新增 9*/ 10public class ThreadNew { 11 public static void main (String[] arg) { 12 NumThread num = new NumThread(); 13 14 // Future接口可以对Runnable, callable的执行结果进行取消，查询和获取。 15 // FutureTask 同时实现了Runnable &amp;amp; Future接口， 16 // 既可作为线程被Runnable执行，又可以作为Future得到Callable的返回值。 17 FutureTask&amp;lt;Integer&amp;gt; futureTask = new FutureTask&amp;lt;&amp;gt;(num); 18 19 new Thread(futureTask).start(); 20 21 try { 22 //get()返回值即callable实现类override call() 返回值 23 Integer sum = futureTask.</description>
+    </item>
+    
+    <item>
+      <title>Thread Communication</title>
+      <link>https://daiwei.dev/posts/thread_communication/</link>
+      <pubDate>Wed, 03 Nov 2021 13:16:20 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/thread_communication/</guid>
+      <description>1/** 2* 线程通信例子：两个线程交替打印 integer 1-10 3* 涉及3个方法： 4* wait(): 当前线程进入wait状态，并释放线程监视器。 5* notify(): 唤醒一个处于wait状态中优先级最高的线程。 6* notifyAll(): 唤醒所有处于wait状态的线程。 7* 8* 1. 3个方法都必须是用在同步代码块或者同步方法中。 9* 2. 3个方法的调用者必须是同步代码块或者同步方法中的同步监视器。 10* 3. 3个方法是定义在java.Lang.Object类中， 并不是 thread 类中。 11*/ 12public class CommunicationTest { 13 public static void main (String[] args) { 14 NumberPrinter n = new NumberPrinter(); 15 Thread t1 = new Thread(n); 16 Thread t2 = new Thread(n); 17 18 t1.start(); 19 t2.start(); 20 } 21} 22 23class NumberPrinter implements Runnable { 24 int i = 1; 25 26 @Override 27 public void run() { 28 while (true) { 29 synchronized (this) { 30 notify(); // 必须使用同步监视器this来调用，this.</description>
+    </item>
+    
+    <item>
+      <title>Java Lock</title>
+      <link>https://daiwei.dev/posts/java_lock/</link>
+      <pubDate>Wed, 03 Nov 2021 10:10:07 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_lock/</guid>
+      <description>1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
+锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
+synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
+虽然synchronized方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 Lock接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。
+这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了synchronized 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：
+1 Lock l = new Lock; 2 l.lock(); 3 try { 4 // access the resource protected by this lock 5 } finally { 6 l.unlock(); 7 } 当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。
+1package lockTest; 2 3 4import java.util.concurrent.locks.ReentrantLock; 5 6/** 7* ConcurrentThread Safety 8* The solution 1: synchronized 9* The solution 2: lock 10*/ 11public class LockTest { 12 public static void main(String[] args) { 13 Window w = new Window(); 14 15 Thread t1 = new Thread(w); 16 Thread t2 = new Thread(w); 17 Thread t3 = new Thread(w); 18 19 t1.</description>
+    </item>
+    
+    <item>
+      <title>Threads Safety</title>
+      <link>https://daiwei.dev/posts/threadssafety/</link>
+      <pubDate>Tue, 26 Oct 2021 12:08:57 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/threadssafety/</guid>
+      <description>Unsafe threads in tickets system 不安全线程:
+1public class WindowTest2 { 2 public static void main (String[] args) { 3 Window2 w = new Window2(); 4 5 Thread t1 = new Thread (w); 6 Thread t2 = new Thread (w); 7 Thread t3 = new Thread (w); 8 9 t1.setName(&amp;#34;Window_1&amp;#34;); 10 t2.setName(&amp;#34;Window_2&amp;#34;); 11 t3.setName(&amp;#34;Window_3&amp;#34;); 12 13 t1.start(); 14 t2.start(); 15 t3.start(); 16 } 17} 18 19class Window2 implements Runnable { 20 private int tickets = 100; 21 22 @Override 23 public void run() { 24 while(true) { 25 if(tickets &amp;gt; 0) { 26 try { 27 Thread.</description>
+    </item>
+    
+    <item>
+      <title>Java Annotation</title>
+      <link>https://daiwei.dev/posts/javaannotation/</link>
+      <pubDate>Wed, 20 Oct 2021 17:26:19 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/javaannotation/</guid>
+      <description>The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
+@Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
+@Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
+@SuppressWarnings注释告诉编译器抑制它会生成的特定警告。
+使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。
+但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
+从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
+1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &amp;#34;Benjamin Franklin&amp;#34;, 8 date = &amp;#34;3/27/2003&amp;#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &amp;#34;unchecked&amp;#34;) 14void myMethod() { .</description>
+    </item>
+    
+    <item>
+      <title>Java Threads</title>
+      <link>https://daiwei.dev/posts/javathread/</link>
+      <pubDate>Wed, 20 Oct 2021 11:37:08 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/javathread/</guid>
+      <description>1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread.</description>
+    </item>
+    
+    <item>
+      <title>Java threadpool</title>
+      <link>https://daiwei.dev/posts/javathreadpool/</link>
+      <pubDate>Wed, 20 Oct 2021 11:18:55 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/javathreadpool/</guid>
+      <description>What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
+In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool.</description>
+    </item>
+    
+  </channel>
+</rss>

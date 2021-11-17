@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="git,github &amp; gitlab">
+<meta itemprop="description" content="Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
+github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
+Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
+GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。多用于企业或者个人的代码托管库。
+ Git 常用command： git init 初始化，在本地仓库创建 .git 文档
+1$ git init 2Initialized empty Git repository in /gittest/.git/ 3 4// 查看.git隐藏目录里的本地库管理文件 5$ ls -lA .git/ 6total 24 7-rw-r--r-- 1 user staff 23 9 Nov 17:38 HEAD 8-rw-r--r-- 1 user staff 137 9 Nov 17:38 config 9-rw-r--r-- 1 user staff 73 9 Nov 17:38 description 10drwxr-xr-x 13 user staff 416 9 Nov 17:38 hooks 11drwxr-xr-x 3 user staff 96 9 Nov 17:38 info 12drwxr-xr-x 4 user staff 128 9 Nov 17:38 objects 13drwxr-xr-x 4 user staff 128 9 Nov 17:38 refs git config 设置用户签名（通常只需要设置本地系统签名就足够了）"><meta itemprop="datePublished" content="2021-11-09T16:24:04+08:00" />
+<meta itemprop="dateModified" content="2021-11-09T16:24:04+08:00" />
+<meta itemprop="wordCount" content="3246"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Git," /><meta property="og:title" content="git,github &amp; gitlab" />
+<meta property="og:description" content="Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
+github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
+Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
+GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。多用于企业或者个人的代码托管库。
+ Git 常用command： git init 初始化，在本地仓库创建 .git 文档
+1$ git init 2Initialized empty Git repository in /gittest/.git/ 3 4// 查看.git隐藏目录里的本地库管理文件 5$ ls -lA .git/ 6total 24 7-rw-r--r-- 1 user staff 23 9 Nov 17:38 HEAD 8-rw-r--r-- 1 user staff 137 9 Nov 17:38 config 9-rw-r--r-- 1 user staff 73 9 Nov 17:38 description 10drwxr-xr-x 13 user staff 416 9 Nov 17:38 hooks 11drwxr-xr-x 3 user staff 96 9 Nov 17:38 info 12drwxr-xr-x 4 user staff 128 9 Nov 17:38 objects 13drwxr-xr-x 4 user staff 128 9 Nov 17:38 refs git config 设置用户签名（通常只需要设置本地系统签名就足够了）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/git/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-09T16:24:04+08:00" />
+<meta property="article:modified_time" content="2021-11-09T16:24:04+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="git,github &amp; gitlab"/>
+<meta name="twitter:description" content="Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
+github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
+Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
+GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。多用于企业或者个人的代码托管库。
+ Git 常用command： git init 初始化，在本地仓库创建 .git 文档
+1$ git init 2Initialized empty Git repository in /gittest/.git/ 3 4// 查看.git隐藏目录里的本地库管理文件 5$ ls -lA .git/ 6total 24 7-rw-r--r-- 1 user staff 23 9 Nov 17:38 HEAD 8-rw-r--r-- 1 user staff 137 9 Nov 17:38 config 9-rw-r--r-- 1 user staff 73 9 Nov 17:38 description 10drwxr-xr-x 13 user staff 416 9 Nov 17:38 hooks 11drwxr-xr-x 3 user staff 96 9 Nov 17:38 info 12drwxr-xr-x 4 user staff 128 9 Nov 17:38 objects 13drwxr-xr-x 4 user staff 128 9 Nov 17:38 refs git config 设置用户签名（通常只需要设置本地系统签名就足够了）"/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>git,github &amp; gitlab</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Nov 9, 2021</span></div>
+				<h1>git,github &amp; gitlab</h1>
+			</header>
+			<div class="content">
+				<p><strong><a href="https://git-scm.com/">Git</a></strong> 诞生于2005年，由大神 <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。</p>
+<p>github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.</p>
+<p><strong><a href="https://github.com/">Github</a></strong> 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。<strong>通常用于托管开源项目</strong>。</p>
+<p><strong><a href="https://about.gitlab.com/">GitLab</a></strong> 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。<strong>多用于企业或者个人的代码托管库</strong>。</p>
+<p><img src="https://support.nesi.org.nz/hc/article_attachments/360004194235/Git_Diagram.svg" alt="Git: Reference Sheet – NeSI Support"></p>
+<hr>
+<h3 id="git-常用command">Git 常用command：<a href="#git-常用command" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9naW1nL2Fzc2V0LzIwMTUvYmcyMDE1MTIwOTAxLnBuZw?x-oss-process=image/format,png" alt="img"></p>
+<p><strong><code>git init</code> 初始化，在本地仓库创建 .git 文档</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">init</span>
+<span class="ln"> 2</span><span class="n">Initialized</span> <span class="n">empty</span> <span class="n">Git</span> <span class="n">repository</span> <span class="n">in</span> <span class="o">/</span><span class="n">gittest</span><span class="o">/.</span><span class="na">git</span><span class="o">/</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">// 查看.git隐藏目录里的本地库管理文件
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">lA</span> <span class="o">.</span><span class="na">git</span><span class="o">/</span>
+<span class="ln"> 6</span><span class="n">total</span> <span class="n">24</span>
+<span class="ln"> 7</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="n">1</span> <span class="n">user</span>  <span class="n">staff</span>   <span class="n">23</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">HEAD</span>
+<span class="ln"> 8</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="n">1</span> <span class="n">user</span>  <span class="n">staff</span>  <span class="n">137</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">config</span>
+<span class="ln"> 9</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="n">1</span> <span class="n">user</span>  <span class="n">staff</span>   <span class="n">73</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">description</span>
+<span class="ln">10</span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="n">13</span> <span class="n">user</span>  <span class="n">staff</span>  <span class="n">416</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">hooks</span>
+<span class="ln">11</span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="n">3</span> <span class="n">user</span>  <span class="n">staff</span>   <span class="n">96</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">info</span>
+<span class="ln">12</span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="n">4</span> <span class="n">user</span>  <span class="n">staff</span>  <span class="n">128</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">objects</span>
+<span class="ln">13</span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="n">4</span> <span class="n">user</span>  <span class="n">staff</span>  <span class="n">128</span>  <span class="n">9</span> <span class="n">Nov</span> <span class="n">17</span><span class="o">:</span><span class="n">38</span> <span class="n">refs</span>
+</code></pre></div><p><strong><code>git config</code> 设置用户签名（通常只需要设置本地系统签名就足够了）</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span> <span class="n">dai</span> <span class="c1">//设置本地仓库签名
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="o">.</span><span class="na">email</span> <span class="n">wdai</span><span class="nd">@mail.com</span>
+<span class="ln"> 3</span><span class="n">$</span> <span class="n">cat</span> <span class="o">.</span><span class="na">git</span><span class="o">/</span><span class="n">config</span> <span class="c1">//打开配置文件
+</span><span class="ln"> 4</span><span class="c1"></span><span class="o">[</span><span class="n">user</span><span class="o">]</span>
+<span class="ln"> 5</span>	<span class="n">name</span> <span class="o">=</span> <span class="n">dai</span>
+<span class="ln"> 6</span>	<span class="n">email</span> <span class="o">=</span> <span class="n">wdai</span><span class="nd">@mail.com</span>
+<span class="ln"> 7</span><span class="n">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span> <span class="n">dai_glb</span> <span class="c1">//设置本地系统系统签名  
+</span><span class="ln"> 8</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="o">.</span><span class="na">email</span> <span class="n">wdai_glb</span><span class="nd">@mail.com</span>
+<span class="ln"> 9</span><span class="n">$</span> <span class="n">cd</span> <span class="o">~</span> <span class="c1">//返回根目录
+</span><span class="ln">10</span><span class="c1"></span><span class="n">$</span> <span class="n">pwd</span> <span class="c1">//显示路径
+</span><span class="ln">11</span><span class="c1"></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">daiwei</span>
+<span class="ln">12</span><span class="n">$</span> <span class="n">cat</span> <span class="o">.</span><span class="na">gitconfig</span>
+<span class="ln">13</span><span class="o">[</span><span class="n">user</span><span class="o">]</span>
+<span class="ln">14</span>	<span class="n">name</span> <span class="o">=</span> <span class="n">dai_glb</span>
+<span class="ln">15</span>	<span class="n">email</span> <span class="o">=</span> <span class="n">wdai_glb</span><span class="nd">@mail.com</span>
+</code></pre></div><p><strong><code>git status</code> 查看当前本地仓库状态</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> 
+<span class="ln"> 2</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span> <span class="c1">// 位于master branch
+</span><span class="ln"> 3</span><span class="c1"></span>
+<span class="ln"> 4</span><span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span> <span class="c1">// 本地仓库无提交记录
+</span><span class="ln"> 5</span><span class="c1"></span>
+<span class="ln"> 6</span><span class="n">nothing</span> <span class="n">to</span> <span class="nf">commit</span> <span class="o">(</span><span class="n">create</span><span class="o">/</span><span class="n">copy</span> <span class="n">files</span> <span class="n">and</span> <span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">to</span> <span class="n">track</span><span class="o">)</span> <span class="c1">// 暂存区也无可提交记录
+</span><span class="ln"> 7</span><span class="c1"></span>
+<span class="ln"> 8</span><span class="n">$</span> <span class="n">cat</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 创建新txt文件，也可以用 $ touch test.txt
+</span><span class="ln"> 9</span><span class="c1"></span>  <span class="n">test</span> <span class="c1">//输入文本 ctrl + D 保存并退出文本输入
+</span><span class="ln">10</span><span class="c1"></span>
+<span class="ln">11</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>
+<span class="ln">12</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+<span class="ln">15</span>
+<span class="ln">16</span><span class="n">Untracked</span> <span class="n">files</span><span class="o">:</span> <span class="c1">// 未被git追踪文件
+</span><span class="ln">17</span><span class="c1"></span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">include</span> <span class="n">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="o">)</span>
+<span class="ln">18</span>
+<span class="ln">19</span>	<span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">20</span>
+<span class="ln">21</span><span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="nf">present</span> <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">to</span> <span class="n">track</span><span class="o">)</span>
+</code></pre></div><p><strong><code>git add</code> 添加需要提交的文件</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// $ git add . 添加所有被修改过的文件
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>
+<span class="ln"> 3</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="o">:</span> <span class="c1">// 追踪到已新committed文件
+</span><span class="ln"> 8</span><span class="c1"></span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git rm --cached &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">unstage</span><span class="o">)</span> <span class="c1">// git rm --cached &lt;file&gt; 可撤回当前操作
+</span><span class="ln"> 9</span><span class="c1"></span>
+<span class="ln">10</span>	<span class="k">new</span> <span class="n">file</span><span class="o">:</span>   <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 新 added 文件
+</span></code></pre></div><p><strong><code>git rm --cached &lt;file&gt;</code>  撤回之前添加的文件</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln"> 2</span><span class="n">rm</span> <span class="err">&#39;</span><span class="n">test</span><span class="o">.</span><span class="na">txt</span><span class="err">&#39;</span>
+<span class="ln"> 3</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> 
+<span class="ln"> 4</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="n">Untracked</span> <span class="n">files</span><span class="o">:</span> <span class="c1">// test.txt 回复为未被git追踪文件
+</span><span class="ln"> 9</span><span class="c1"></span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">include</span> <span class="n">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="o">)</span>
+<span class="ln">10</span>
+<span class="ln">11</span>	<span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="nf">present</span> <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">to</span> <span class="n">track</span><span class="o">)</span>
+</code></pre></div><p><strong><code>git commit -m [message]</code> 提交添加的文件和备注信息</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">2</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">my</span> <span class="n">first</span> <span class="n">commit</span><span class="err">&#39;</span>
+<span class="ln">3</span><span class="o">[</span><span class="n">master</span> <span class="o">(</span><span class="n">root</span><span class="o">-</span><span class="n">commit</span><span class="o">)</span> <span class="n">91151c2</span><span class="o">]</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">4</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span> <span class="c1">//一个文件被改变，新增一行代码
+</span><span class="ln">5</span><span class="c1"></span> <span class="n">create</span> <span class="n">mode</span> <span class="n">100644</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">6</span>  
+<span class="ln">7</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> <span class="c1">// 查看本地仓库状态
+</span><span class="ln">8</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">9</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span> <span class="c1">// 无文件需要提交，工作区是干净的
+</span></code></pre></div><p><strong>nano 修改test.txt文件内容</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 用nano editor 修改文件内容， ctrl + X 保存并退出
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 查看文件内容
+</span><span class="ln"> 3</span><span class="c1"></span><span class="n">test</span> <span class="n">hello</span> <span class="n">world</span>  
+<span class="ln"> 4</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> <span class="c1">// 查看文件被修改后在本地仓库的状态
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span> <span class="c1">//位于master branch
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">Changes</span> <span class="n">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="o">:</span> <span class="c1">// 有改变但为commit
+</span><span class="ln"> 7</span><span class="c1"></span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="o">)</span>
+<span class="ln"> 8</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git checkout -- &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="n">in</span> <span class="n">working</span> <span class="n">directory</span><span class="o">)</span>
+<span class="ln"> 9</span><span class="nl">
+</span><span class="ln">10</span><span class="nl">	modified:</span>   <span class="n">test</span><span class="o">.</span><span class="na">txt</span>  <span class="c1">//修改过的的文件：file—name
+</span><span class="ln">11</span><span class="c1">// 已added过，又被修改的文件可以直接 commit -a
+</span><span class="ln">12</span><span class="c1"></span><span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="nf">commit</span> <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="s">&#34;git commit -a&#34;</span><span class="o">)</span>  
+<span class="ln">13</span>    
+<span class="ln">14</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// add 被修改过的文件
+</span><span class="ln">15</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">first</span> <span class="n">time</span> <span class="n">edit</span><span class="err">&#39;</span> <span class="c1">// 提交 commit
+</span><span class="ln">16</span><span class="c1"></span><span class="o">[</span><span class="n">master</span> <span class="n">014b9c9</span><span class="o">]</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">17</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+),</span> <span class="n">1</span> <span class="nf">deletion</span><span class="o">(-)</span> <span class="c1">// 1个文件被修改过
+</span><span class="ln">18</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>
+<span class="ln">19</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">20</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span> <span class="c1">// working tree OK
+</span></code></pre></div><p><strong><code>git log</code> 版本提交日志</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span>
+<span class="ln"> 2</span><span class="n">commit</span> <span class="nf">d77465cc8824b3f312740676c93f75f4be4370a9</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> 
+<span class="ln"> 3</span>  <span class="c1">//HEAD相当于一个指针，指向当前版本。我们切换版本相当于移动 HEAD指针
+</span><span class="ln"> 4</span><span class="c1"></span><span class="nl">Author:</span> <span class="n">dai</span> <span class="o">&lt;</span><span class="n">wdai</span><span class="nd">@mail.com</span><span class="o">&gt;</span>
+<span class="ln"> 5</span><span class="nl">Date:</span>   <span class="n">Wed</span> <span class="n">Nov</span> <span class="n">10</span> <span class="n">12</span><span class="o">:</span><span class="n">21</span><span class="o">:</span><span class="n">17</span> <span class="n">2021</span> <span class="o">+</span><span class="n">0800</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span>    <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="n">commit</span> <span class="n">014b9c9d8287da50bd521950c889c147205610a2</span>
+<span class="ln">10</span><span class="nl">Author:</span> <span class="n">dai</span> <span class="o">&lt;</span><span class="n">wdai</span><span class="nd">@mail.com</span><span class="o">&gt;</span>
+<span class="ln">11</span><span class="nl">Date:</span>   <span class="n">Tue</span> <span class="n">Nov</span> <span class="n">9</span> <span class="n">19</span><span class="o">:</span><span class="n">43</span><span class="o">:</span><span class="n">25</span> <span class="n">2021</span> <span class="o">+</span><span class="n">0800</span>
+<span class="ln">12</span>
+<span class="ln">13</span>    <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">14</span>  
+<span class="ln">15</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">pretty</span><span class="o">=</span><span class="n">oneline</span> <span class="c1">// 当日志太多可以使用参数每次commit只显示一行
+</span><span class="ln">16</span><span class="c1"></span><span class="n">b963c9146d3fac75a6488c1885431dce0d60717d</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln">17</span><span class="n">219dc6b24eb17613bf6cd7621421e1e9e5975027</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln">18</span><span class="n">46a3927da53bfdcc8a7730fb042605b650be52f2</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">19</span><span class="n">d77465cc8824b3f312740676c93f75f4be4370a9</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">20</span><span class="n">014b9c9d8287da50bd521950c889c147205610a2</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">21</span><span class="n">91151c2bc99fb6184ed82bf7b8b5fc32d7118909</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">22</span>
+<span class="ln">23</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">// 只显示当前版本以及之后的版本，不显示前面的版本。哈希值只显示尾部，更加简短。     
+</span><span class="ln">24</span><span class="c1"></span><span class="n">b963c91</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln">25</span><span class="n">219dc6b</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln">26</span><span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">27</span><span class="n">d77465c</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">28</span><span class="n">014b9c9</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">29</span><span class="n">91151c2</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">30</span>  
+<span class="ln">31</span><span class="n">$</span> <span class="n">git</span> <span class="n">reflog</span>  <span class="c1">// 显示所有版本，推荐使用
+</span><span class="ln">32</span><span class="c1"></span><span class="n">b963c91</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">0</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span> <span class="c1">// HEAD 0 当前版本
+</span><span class="ln">33</span><span class="c1"></span><span class="n">219dc6b</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">1</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span> <span class="c1">// HEAD 1，到此版本需要移动指针一次
+</span><span class="ln">34</span><span class="c1"></span><span class="n">46a3927</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">2</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">35</span><span class="n">d77465c</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">3</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">36</span><span class="n">014b9c9</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">4</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">37</span><span class="n">91151c2</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">5</span><span class="o">}:</span> <span class="n">commit</span> <span class="o">(</span><span class="n">initial</span><span class="o">):</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+</code></pre></div><p><strong><code>git-reset</code> : Reset current HEAD to the specified state  重置当前HEAD指针到指定版本</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">soft</span> <span class="o">:</span> <span class="n">not</span> <span class="n">touch</span> <span class="n">the</span> <span class="n">index</span> <span class="n">file</span> <span class="n">or</span> <span class="n">the</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">at</span> <span class="n">all</span><span class="o">.</span><span class="c1">//仅重置本地库。
+</span><span class="ln">2</span><span class="c1"></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">mix</span> <span class="o">:</span> <span class="n">resets</span> <span class="n">the</span> <span class="n">index</span> <span class="n">but</span> <span class="n">not</span> <span class="n">the</span> <span class="n">working</span> <span class="n">tree</span><span class="o">.</span><span class="c1">//重置本地库和暂存库。
+</span><span class="ln">3</span><span class="c1"></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="o">:</span> <span class="n">resets</span> <span class="n">the</span> <span class="n">index</span> <span class="n">and</span> <span class="n">working</span> <span class="n">tree</span><span class="o">.</span><span class="c1">//重置本地库，暂存区，工作库。
+</span><span class="ln">4</span><span class="c1"></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">merge</span> <span class="o">:</span>
+<span class="ln">5</span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">keep</span> <span class="o">:</span> 
+<span class="ln">6</span><span class="n">git</span><span class="o">-</span><span class="n">revert</span><span class="o">(</span><span class="n">1</span><span class="o">)</span> <span class="o">:</span> <span class="c1">//重置最新版本，返回上一个版本
+</span></code></pre></div><p><strong><code>git reset --hard [hash_valve]</code> 基于索引值前进后退版本，推荐使用</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">reflog</span> <span class="c1">// 显示各版本信息
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">a6070ce</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">0</span><span class="o">}:</span> <span class="n">reset</span><span class="o">:</span> <span class="n">moving</span> <span class="n">to</span> <span class="n">a6070ce</span>
+<span class="ln"> 3</span><span class="n">4a34a05</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">1</span><span class="o">}:</span> <span class="n">reset</span><span class="o">:</span> <span class="n">moving</span> <span class="n">to</span> <span class="n">4a34a05</span>
+<span class="ln"> 4</span><span class="nf">a6070ce</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">2</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">333</span>
+<span class="ln"> 5</span><span class="n">9143841</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">3</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">222</span>
+<span class="ln"> 6</span><span class="n">4a34a05</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">4</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">111</span>
+<span class="ln"> 7</span><span class="n">b963c91</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">5</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln"> 8</span><span class="n">219dc6b</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">6</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln"> 9</span><span class="n">46a3927</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">7</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span> <span class="c1">// 目标版本索引值 46a3927
+</span><span class="ln">10</span><span class="c1"></span><span class="n">d77465c</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">8</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">11</span><span class="n">014b9c9</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">9</span><span class="o">}:</span> <span class="n">commit</span><span class="o">:</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">12</span><span class="n">91151c2</span> <span class="n">HEAD</span><span class="err">@</span><span class="o">{</span><span class="n">10</span><span class="o">}:</span> <span class="n">commit</span> <span class="o">(</span><span class="n">initial</span><span class="o">):</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">13</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//显示当前版本内容
+</span><span class="ln">14</span><span class="c1"></span><span class="n">111</span>
+<span class="ln">15</span><span class="n">222</span>
+<span class="ln">16</span><span class="n">333</span>
+<span class="ln">17</span><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">46a3927</span> <span class="c1">// 基于索引值退回到目标版本
+</span><span class="ln">18</span><span class="c1"></span><span class="n">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span> <span class="c1">//版本回退成功
+</span><span class="ln">19</span><span class="c1"></span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//显示目标版本内容
+</span><span class="ln">20</span><span class="c1"></span><span class="n">test</span> <span class="n">hello</span> <span class="n">world</span>
+<span class="ln">21</span><span class="n">1111dwd</span> <span class="n">dwdd</span>
+<span class="ln">22</span><span class="n">adad</span>
+<span class="ln">23</span><span class="n">add</span> <span class="n">more1</span>
+</code></pre></div><p><strong><code>git reset --hard HEAD^</code> 基于 ^ 异或符号的 版本回退， 只可以回退，不可以前进，不推荐</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span>  <span class="c1">// 单行显示log
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">a6070ce</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">add</span> <span class="n">333</span>
+<span class="ln"> 3</span><span class="n">9143841</span> <span class="n">add</span> <span class="n">222</span>
+<span class="ln"> 4</span><span class="n">4a34a05</span> <span class="n">add</span> <span class="n">111</span>
+<span class="ln"> 5</span><span class="n">b963c91</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln"> 6</span><span class="n">219dc6b</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln"> 7</span><span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln"> 8</span><span class="n">d77465c</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln"> 9</span><span class="n">014b9c9</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">10</span><span class="n">91151c2</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">11</span><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span><span class="o">^</span>  <span class="c1">//一个 ^ 回退一个版本
+</span><span class="ln">12</span><span class="c1"></span><span class="n">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">9143841</span> <span class="n">add</span> <span class="n">222</span>
+<span class="ln">13</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>          
+<span class="ln">14</span><span class="n">111</span>
+<span class="ln">15</span><span class="n">222</span>
+<span class="ln">16</span><span class="c1">// $ git reset --hard HEAD^^^^ //四个^^^^ 回退四个版本
+</span><span class="ln">17</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span><span class="o">~</span><span class="n">4</span>  <span class="c1">// HEAD~4 == HEAD^^^^
+</span><span class="ln">18</span><span class="c1"></span><span class="n">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">19</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>             
+<span class="ln">20</span><span class="n">test</span> <span class="n">hello</span> <span class="n">world</span>
+<span class="ln">21</span><span class="n">1111dwd</span> <span class="n">dwdd</span>
+<span class="ln">22</span><span class="n">adad</span>
+<span class="ln">23</span><span class="n">add</span> <span class="n">more1</span>
+</code></pre></div><p><strong>恢复已删除文件</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">nano</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 工作区新建文件aaa.txt
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">ls</span>
+<span class="ln"> 3</span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>		<span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 添加并提交新建文件到本地仓库
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span><span class="err">&#39;</span>
+<span class="ln"> 7</span><span class="o">[</span><span class="n">master</span> <span class="n">e377c41</span><span class="o">]</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 8</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln"> 9</span> <span class="n">create</span> <span class="n">mode</span> <span class="n">100644</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">10</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">// 查看log
+</span><span class="ln">11</span><span class="c1"></span><span class="n">e377c41</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 当前版本已添加新文件
+</span><span class="ln">12</span><span class="c1"></span><span class="n">a6070ce</span> <span class="n">add</span> <span class="n">333</span>
+<span class="ln">13</span><span class="n">9143841</span> <span class="n">add</span> <span class="n">222</span>
+<span class="ln">14</span><span class="n">4a34a05</span> <span class="n">add</span> <span class="n">111</span>
+<span class="ln">15</span><span class="n">b963c91</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln">16</span><span class="n">219dc6b</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln">17</span><span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">18</span><span class="n">d77465c</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">19</span><span class="n">014b9c9</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">20</span><span class="n">91151c2</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">21</span>  
+<span class="ln">22</span><span class="n">$</span> <span class="n">rm</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// remove 工作区新建的文件
+</span><span class="ln">23</span><span class="c1"></span><span class="n">$</span> <span class="n">ls</span> 
+<span class="ln">24</span><span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">25</span>  
+<span class="ln">26</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> <span class="c1">//查看 git 暂存区当前状态
+</span><span class="ln">27</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">28</span><span class="n">Changes</span> <span class="n">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="o">:</span>
+<span class="ln">29</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add/rm &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="o">)</span>
+<span class="ln">30</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git checkout -- &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="n">in</span> <span class="n">working</span> <span class="n">directory</span><span class="o">)</span>
+<span class="ln">31</span><span class="nl">
+</span><span class="ln">32</span><span class="nl">	deleted:</span>    <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 显示已删除但还未提交本地仓库
+</span><span class="ln">33</span><span class="c1"></span>
+<span class="ln">34</span><span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="nf">commit</span> <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="s">&#34;git commit -a&#34;</span><span class="o">)</span>
+<span class="ln">35</span>   
+<span class="ln">36</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//添加删除请求
+</span><span class="ln">37</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>
+<span class="ln">38</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">39</span><span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="o">:</span>
+<span class="ln">40</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git reset HEAD &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">unstage</span><span class="o">)</span> <span class="c1">// reset 可返回删除前版本
+</span><span class="ln">41</span><span class="c1"></span><span class="nl">
+</span><span class="ln">42</span><span class="nl">	deleted:</span>    <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln">43</span>
+<span class="ln">44</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">delete</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span><span class="err">&#39;</span> <span class="c1">// 提交删除请求
+</span><span class="ln">45</span><span class="c1"></span><span class="o">[</span><span class="n">master</span> <span class="n">a3c257a</span><span class="o">]</span> <span class="n">delete</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">46</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">deletion</span><span class="o">(-)</span>
+<span class="ln">47</span> <span class="n">delete</span> <span class="n">mode</span> <span class="n">100644</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">48</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> <span class="c1">// 查看暂存区状态，clean
+</span><span class="ln">49</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">50</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+<span class="ln">51</span>    
+<span class="ln">52</span><span class="n">$</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//查看日志
+</span><span class="ln">53</span><span class="c1"></span><span class="n">a3c257a</span> <span class="o">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="o">)</span> <span class="n">delete</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//当前版本
+</span><span class="ln">54</span><span class="c1"></span><span class="n">e377c41</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//新建文件版本
+</span><span class="ln">55</span><span class="c1"></span><span class="n">a6070ce</span> <span class="n">add</span> <span class="n">333</span>
+<span class="ln">56</span><span class="n">9143841</span> <span class="n">add</span> <span class="n">222</span>
+<span class="ln">57</span><span class="n">4a34a05</span> <span class="n">add</span> <span class="n">111</span>
+<span class="ln">58</span><span class="n">b963c91</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">3</span>
+<span class="ln">59</span><span class="n">219dc6b</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">2</span>
+<span class="ln">60</span><span class="n">46a3927</span> <span class="n">add</span> <span class="n">more</span> <span class="n">test</span> <span class="n">1</span>
+<span class="ln">61</span><span class="n">d77465c</span> <span class="n">add</span> <span class="n">more</span> <span class="n">text</span>
+<span class="ln">62</span><span class="n">014b9c9</span> <span class="n">first</span> <span class="n">time</span> <span class="n">edit</span>
+<span class="ln">63</span><span class="n">91151c2</span> <span class="n">my</span> <span class="n">first</span> <span class="n">commit</span>
+<span class="ln">64</span><span class="n">$</span> <span class="n">ls</span> <span class="c1">// ls -l 可查看文件信息
+</span><span class="ln">65</span><span class="c1"></span><span class="n">test</span><span class="o">.</span><span class="na">txt</span>   
+<span class="ln">66</span>
+<span class="ln">67</span><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">e377c41</span> <span class="c1">//恢复删除之前版本
+</span><span class="ln">68</span><span class="c1"></span><span class="n">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">e377c41</span> <span class="n">add</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">69</span><span class="err">¥</span> <span class="n">ls</span> <span class="c1">// 查看文件aaa.txt 已恢复
+</span><span class="ln">70</span><span class="c1"></span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>		<span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+</code></pre></div><p><strong><code>git diff [file]</code> 比较文件差异</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// diff 不仅可以和工作区文件进行比较，还可以和暂存区，本地库之前各文件进行比较
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">diff</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln"> 3</span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 4</span><span class="n">index</span> <span class="n">41cfa54</span><span class="o">..</span><span class="na">e452369</span> <span class="n">100644</span>
+<span class="ln"> 5</span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln"> 6</span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 7</span><span class="err">@@</span> <span class="o">-</span><span class="n">1</span> <span class="o">+</span><span class="n">1</span><span class="o">,</span><span class="n">3</span> <span class="err">@@</span>
+<span class="ln"> 8</span> <span class="n">crated</span> <span class="k">for</span> <span class="n">delete</span> <span class="n">testing</span>
+<span class="ln"> 9</span><span class="o">+</span><span class="n">addd</span> <span class="c1">// +表示新增行
+</span><span class="ln">10</span><span class="c1"></span><span class="o">+</span><span class="n">addd</span> <span class="c1">// +表示新增行
+</span></code></pre></div><h2 id="git-branch"><code>git branch</code><a href="#git-branch" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">  1</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 产看全部分支
+</span><span class="ln">  2</span><span class="c1"></span><span class="o">*</span> <span class="n">master</span> <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">  3</span>  
+<span class="ln">  4</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="n">hot_fix</span> <span class="c1">// 创建新的分支
+</span><span class="ln">  5</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span>
+<span class="ln">  6</span>  <span class="c1">// 此时版本hash值是一样的 01c9112，说明分支和master处于同一个版本
+</span><span class="ln">  7</span><span class="c1"></span>  <span class="n">hot_fix</span> <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln">  8</span><span class="o">*</span> <span class="n">master</span>  <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// * 表示现在目前坐在分支
+</span><span class="ln">  9</span><span class="c1"></span>  
+<span class="ln"> 10</span><span class="n">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">hot_fix</span> <span class="c1">// 切换分支
+</span><span class="ln"> 11</span><span class="c1"></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="err">&#39;</span><span class="n">hot_fix</span><span class="err">&#39;</span>
+<span class="ln"> 12</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span>       
+<span class="ln"> 13</span><span class="o">*</span> <span class="n">hot_fix</span> <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>  <span class="c1">// 分支切换到 * hot_fix
+</span><span class="ln"> 14</span><span class="c1"></span>  <span class="n">master</span>  <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 15</span>  
+<span class="ln"> 16</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 在 hot_fix分支上修改 test.txt文件
+</span><span class="ln"> 17</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//提交修改
+</span><span class="ln"> 18</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">edit</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="n">by</span> <span class="n">hot_fix</span><span class="err">&#39;</span>
+<span class="ln"> 19</span><span class="o">[</span><span class="n">hot_fix</span> <span class="n">e2b708c</span><span class="o">]</span> <span class="n">edit</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 20</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln"> 21</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span> 
+<span class="ln"> 22</span>  <span class="c1">//查看分支发现新分支和master的 hash值 已经不一样了，说明分支版本已跟新
+</span><span class="ln"> 23</span><span class="c1"></span><span class="o">*</span> <span class="n">hot_fix</span> <span class="n">e2b708c</span> <span class="n">edit</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 24</span>  <span class="n">master</span>  <span class="n">01c9112</span> <span class="n">edit</span> <span class="n">aaa</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 25</span>  
+<span class="ln"> 26</span><span class="c1">// 合并分支前，要先切换到你想要跟新的分支上，比如你想把hot_fix分支合并到master分支，就需要先切换到master分支，再把hot_fix分支合并进来。 
+</span><span class="ln"> 27</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="ln"> 28</span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span>
+<span class="ln"> 29</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span>
+<span class="ln"> 30</span>  <span class="n">hot_fix</span>
+<span class="ln"> 31</span><span class="o">*</span> <span class="n">master</span>  <span class="c1">// 切换到meter分支
+</span><span class="ln"> 32</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">hot_fix</span> <span class="c1">// 把hot_fix分支 合并到 master分支
+</span><span class="ln"> 33</span><span class="c1"></span><span class="n">Updating</span> <span class="n">01c9112</span><span class="o">..</span><span class="na">e2b708c</span>
+<span class="ln"> 34</span><span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
+<span class="ln"> 35</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="o">|</span> <span class="n">1</span> <span class="o">+</span>
+<span class="ln"> 36</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln"> 37</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//查看文件，合并成功
+</span><span class="ln"> 38</span><span class="c1"></span><span class="n">111</span>
+<span class="ln"> 39</span><span class="n">222</span>
+<span class="ln"> 40</span><span class="n">333</span>
+<span class="ln"> 41</span><span class="n">444</span> <span class="n">add</span> <span class="n">by</span> <span class="n">hot_fix</span> <span class="c1">//这一行是hot_fix分支修改后合并到master的
+</span><span class="ln"> 42</span><span class="c1"></span>
+<span class="ln"> 43</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span> <span class="c1">//合并完成后分支和master hash值一样 e2b708c
+</span><span class="ln"> 44</span><span class="c1"></span>  <span class="n">hot_fix</span> <span class="n">e2b708c</span> <span class="n">edit</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 45</span><span class="o">*</span> <span class="n">master</span>  <span class="n">e2b708c</span> <span class="n">edit</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 46</span>
+<span class="ln"> 47</span><span class="c1">//处理合并冲突conflict
+</span><span class="ln"> 48</span><span class="c1"></span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//在master修改文件
+</span><span class="ln"> 49</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 50</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">add</span> <span class="n">555</span> <span class="n">by</span> <span class="n">master</span><span class="err">&#39;</span>
+<span class="ln"> 51</span><span class="o">[</span><span class="n">master</span> <span class="n">154943a</span><span class="o">]</span> <span class="n">add</span> <span class="n">555</span> <span class="n">by</span> <span class="n">master</span>
+<span class="ln"> 52</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">2</span> <span class="nf">insertions</span><span class="o">(+),</span> <span class="n">1</span> <span class="nf">deletion</span><span class="o">(-)</span>
+<span class="ln"> 53</span><span class="n">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">hot_fix</span> <span class="c1">//切换到hot分支再修改文件
+</span><span class="ln"> 54</span><span class="c1"></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="err">&#39;</span><span class="n">hot_fix</span><span class="err">&#39;</span>
+<span class="ln"> 55</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 56</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 57</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">add</span> <span class="n">666</span> <span class="n">by</span> <span class="n">hot_fix</span><span class="err">&#39;</span>
+<span class="ln"> 58</span><span class="o">[</span><span class="n">hot_fix</span> <span class="n">f22571f</span><span class="o">]</span> <span class="n">add</span> <span class="n">666</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 59</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln"> 60</span><span class="n">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">master</span> <span class="c1">// 合并冲突
+</span><span class="ln"> 61</span><span class="c1"></span><span class="n">Auto</span><span class="o">-</span><span class="n">merging</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 62</span><span class="nf">CONFLICT</span> <span class="o">(</span><span class="n">content</span><span class="o">):</span> <span class="n">Merge</span> <span class="n">conflict</span> <span class="n">in</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 63</span><span class="n">Automatic</span> <span class="n">merge</span> <span class="n">failed</span><span class="o">;</span> <span class="n">fix</span> <span class="n">conflicts</span> <span class="n">and</span> <span class="n">then</span> <span class="n">commit</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span>  
+<span class="ln"> 64</span>
+<span class="ln"> 65</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//查看文件会发现 git 在文件内有标记conflict的位置
+</span><span class="ln"> 66</span><span class="c1"></span><span class="n">111</span>
+<span class="ln"> 67</span><span class="n">222</span>
+<span class="ln"> 68</span><span class="n">333</span>
+<span class="ln"> 69</span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>  
+<span class="ln"> 70</span><span class="n">444</span> <span class="n">add</span> <span class="n">by</span> <span class="n">hot_fix</span> 
+<span class="ln"> 71</span><span class="n">666</span> <span class="n">add</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 72</span><span class="o">=======</span>
+<span class="ln"> 73</span><span class="n">444</span> <span class="n">add</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln"> 74</span><span class="n">555</span> <span class="n">add</span> <span class="n">by</span> <span class="n">master</span> 
+<span class="ln"> 75</span><span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">master</span>
+<span class="ln"> 76</span>
+<span class="ln"> 77</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//修改冲突
+</span><span class="ln"> 78</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> <span class="c1">//查看状态
+</span><span class="ln"> 79</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">hot_fix</span>
+<span class="ln"> 80</span><span class="n">You</span> <span class="n">have</span> <span class="n">unmerged</span> <span class="n">paths</span><span class="o">.</span>
+<span class="ln"> 81</span>  <span class="o">(</span><span class="n">fix</span> <span class="n">conflicts</span> <span class="n">and</span> <span class="n">run</span> <span class="s">&#34;git commit&#34;</span><span class="o">)</span>
+<span class="ln"> 82</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git merge --abort&#34;</span> <span class="n">to</span> <span class="n">abort</span> <span class="n">the</span> <span class="n">merge</span><span class="o">)</span>
+<span class="ln"> 83</span>
+<span class="ln"> 84</span><span class="n">Unmerged</span> <span class="n">paths</span><span class="o">:</span>
+<span class="ln"> 85</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add &lt;file&gt;...&#34;</span> <span class="n">to</span> <span class="n">mark</span> <span class="n">resolution</span><span class="o">)</span>
+<span class="ln"> 86</span>
+<span class="ln"> 87</span>	<span class="n">both</span> <span class="n">modified</span><span class="o">:</span>   <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//所有冲突都被修改
+</span><span class="ln"> 88</span><span class="c1"></span>
+<span class="ln"> 89</span><span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="nf">commit</span> <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git add&#34;</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="s">&#34;git commit -a&#34;</span><span class="o">)</span>
+<span class="ln"> 90</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//添加修改
+</span><span class="ln"> 91</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>      
+<span class="ln"> 92</span><span class="n">On</span> <span class="n">branch</span> <span class="n">hot_fix</span>
+<span class="ln"> 93</span><span class="n">All</span> <span class="n">conflicts</span> <span class="n">fixed</span> <span class="n">but</span> <span class="n">you</span> <span class="n">are</span> <span class="n">still</span> <span class="n">merging</span><span class="o">.</span>
+<span class="ln"> 94</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git commit&#34;</span> <span class="n">to</span> <span class="n">conclude</span> <span class="n">merge</span><span class="o">)</span>
+<span class="ln"> 95</span>
+<span class="ln"> 96</span><span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="o">:</span>
+<span class="ln"> 97</span><span class="nl">
+</span><span class="ln"> 98</span><span class="nl">	modified:</span>   <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//修改完成
+</span><span class="ln"> 99</span><span class="c1"></span>
+<span class="ln">100</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">resolve</span> <span class="n">conflict</span><span class="err">&#39;</span> <span class="c1">//提交修改
+</span><span class="ln">101</span><span class="c1"></span><span class="o">[</span><span class="n">hot_fix</span> <span class="n">7da1a5d</span><span class="o">]</span> <span class="n">resolve</span> <span class="n">conflict</span>
+<span class="ln">102</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span>  <span class="c1">//clean
+</span><span class="ln">103</span><span class="c1"></span><span class="n">On</span> <span class="n">branch</span> <span class="n">hot_fix</span>
+<span class="ln">104</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+<span class="ln">105</span><span class="n">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">v</span>
+<span class="ln">106</span><span class="o">*</span> <span class="n">hot_fix</span> <span class="n">7da1a5d</span> <span class="n">resolve</span> <span class="n">conflict</span>
+<span class="ln">107</span>  <span class="n">master</span>  <span class="n">154943a</span> <span class="n">add</span> <span class="n">555</span> <span class="n">by</span> <span class="n">master</span>
+<span class="ln">108</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">109</span><span class="n">111</span>
+<span class="ln">110</span><span class="n">222</span>
+<span class="ln">111</span><span class="n">333</span>
+<span class="ln">112</span><span class="n">444</span> <span class="n">add</span> <span class="n">by</span> <span class="n">hot_fix</span>
+<span class="ln">113</span><span class="n">555</span> <span class="n">add</span> <span class="n">by</span> <span class="n">master</span>
+<span class="ln">114</span>
+</code></pre></div><h2 id="github">Github<a href="#github" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="新建本地工作文件夹并提交到git本地仓库">新建本地工作文件夹并提交到git本地仓库<a href="#新建本地工作文件夹并提交到git本地仓库" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">cd</span> <span class="n">githubtest</span>
+<span class="ln"> 2</span><span class="n">$</span> <span class="n">git</span> <span class="n">init</span>
+<span class="ln"> 3</span><span class="n">Initialized</span> <span class="n">empty</span> <span class="n">Git</span> <span class="n">repository</span> <span class="n">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">daiwei</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">githubtest</span><span class="o">/.</span><span class="na">git</span><span class="o">/</span>
+<span class="ln"> 4</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 5</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 6</span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln"> 7</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 8</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">test</span> <span class="n">github</span><span class="err">&#39;</span>
+<span class="ln"> 9</span><span class="o">[</span><span class="n">master</span> <span class="o">(</span><span class="n">root</span><span class="o">-</span><span class="n">commit</span><span class="o">)</span> <span class="n">fca7556</span><span class="o">]</span> <span class="n">test</span> <span class="n">github</span>
+<span class="ln">10</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln">11</span> <span class="n">create</span> <span class="n">mode</span> <span class="n">100644</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+</code></pre></div><h3 id="git-remote-add">git remote add<a href="#git-remote-add" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 没有添加远程仓库之前， -v　是空的没有东西显示
+</span><span class="ln">2</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git 
+</span><span class="ln">3</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 添加远程仓库之后， -v 可见远程仓库地址了
+</span><span class="ln">4</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git (fetch)
+</span><span class="ln">5</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git (push)
+</span></code></pre></div><h3 id="git-push">git push<a href="#git-push" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// push到你的远程仓库 master 分支上
+</span><span class="ln">2</span><span class="c1"></span><span class="n">Username</span> <span class="k">for</span> <span class="err">&#39;</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com&#39;: yourusername
+</span><span class="ln">3</span><span class="c1"></span><span class="n">Password</span> <span class="k">for</span> <span class="err">&#39;</span><span class="n">https</span><span class="o">:</span><span class="c1">//yourusername@github.com&#39;: yourPAT [personal access token]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">3</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">5</span><span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">6</span><span class="n">Writing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">217</span> <span class="n">bytes</span> <span class="o">|</span> <span class="n">217</span><span class="o">.</span><span class="na">00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">7</span><span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">0</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">)</span>
+<span class="ln">8</span><span class="n">To</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/yourusername/githubtest.git
+</span><span class="ln">9</span><span class="c1"></span> <span class="o">*</span> <span class="o">[</span><span class="k">new</span> <span class="n">branch</span><span class="o">]</span>      <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+</code></pre></div><h3 id="git-clone">git clone<a href="#git-clone" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/yourusername/githubtest.git
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">Cloning</span> <span class="n">into</span> <span class="err">&#39;</span><span class="n">githubtest</span><span class="err">&#39;</span><span class="o">...</span>
+<span class="ln"> 3</span><span class="nl">remote:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">3</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 4</span><span class="nl">remote:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 5</span><span class="nl">remote:</span> <span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="n">0</span>
+<span class="ln"> 6</span><span class="n">Unpacking</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 7</span>  
+<span class="ln"> 8</span><span class="n">yanqin</span><span class="nd">@35</span> <span class="n">github_clone</span> <span class="o">%</span> <span class="n">ls</span>  <span class="c1">// 1.clone完成后远程仓库文件已下载到本地仓库
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">githubtest</span>
+<span class="ln">10</span><span class="n">$</span> <span class="n">cd</span> <span class="n">githubtest</span>
+<span class="ln">11</span><span class="n">$</span> <span class="n">ls</span>
+<span class="ln">12</span><span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">13</span><span class="n">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">lA</span>
+<span class="ln">14</span><span class="n">total</span> <span class="n">8</span>
+<span class="ln">15</span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="n">12</span> <span class="n">yanqin</span>  <span class="n">staff</span>  <span class="n">384</span> <span class="n">15</span> <span class="n">Nov</span> <span class="n">12</span><span class="o">:</span><span class="n">20</span> <span class="o">.</span><span class="na">git</span> <span class="c1">// 2.clone会自动初始化本地git仓库
+</span><span class="ln">16</span><span class="c1"></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="n">1</span> <span class="n">yanqin</span>  <span class="n">staff</span>   <span class="n">11</span> <span class="n">15</span> <span class="n">Nov</span> <span class="n">12</span><span class="o">:</span><span class="n">20</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">17</span><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 3.clone会自动帮本地仓库添加远程仓库
+</span><span class="ln">18</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/yourusername/githubtest.git (fetch)
+</span><span class="ln">19</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/yourusername/githubtest.git (push)
+</span></code></pre></div><h3 id="git-fetch-拉取">git fetch 拉取<a href="#git-fetch-拉取" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// 
+</span><span class="ln"> 2</span><span class="c1"></span><span class="nl">remote:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">5</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 3</span><span class="nl">remote:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">5</span><span class="o">/</span><span class="n">5</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 4</span><span class="nl">remote:</span> <span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="n">0</span>
+<span class="ln"> 5</span><span class="n">Unpacking</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 6</span><span class="n">From</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/yourusername/githubtest
+</span><span class="ln"> 7</span><span class="c1"></span> <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="ln"> 8</span>   <span class="n">fca7556</span><span class="o">..</span><span class="na">0495c81</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+<span class="ln"> 9</span>   
+<span class="ln">10</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// fetch后本地工作区文件并未改变
+</span><span class="ln">11</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln">12</span><span class="n">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span> <span class="c1">//查看本地git仓库
+</span><span class="ln">13</span><span class="c1"></span><span class="nl">Note:</span> <span class="n">checking</span> <span class="n">out</span> <span class="err">&#39;</span><span class="n">origin</span><span class="o">/</span><span class="n">master</span><span class="err">&#39;</span><span class="o">.</span>
+<span class="ln">14</span>
+<span class="ln">15</span><span class="n">You</span> <span class="n">are</span> <span class="n">in</span> <span class="err">&#39;</span><span class="n">detached</span> <span class="n">HEAD</span><span class="err">&#39;</span> <span class="n">state</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">around</span><span class="o">,</span> <span class="n">make</span> <span class="n">experimental</span>
+<span class="ln">16</span><span class="n">changes</span> <span class="n">and</span> <span class="n">commit</span> <span class="n">them</span><span class="o">,</span> <span class="n">and</span> <span class="n">you</span> <span class="n">can</span> <span class="n">discard</span> <span class="n">any</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">make</span> <span class="n">in</span> <span class="k">this</span>
+<span class="ln">17</span><span class="n">state</span> <span class="n">without</span> <span class="n">impacting</span> <span class="n">any</span> <span class="n">branches</span> <span class="n">by</span> <span class="n">performing</span> <span class="n">another</span> <span class="n">checkout</span><span class="o">.</span>
+<span class="ln">18</span>
+<span class="ln">19</span><span class="n">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="k">new</span> <span class="n">branch</span> <span class="n">to</span> <span class="n">retain</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">create</span><span class="o">,</span> <span class="n">you</span> <span class="n">may</span>
+<span class="ln">20</span><span class="k">do</span> <span class="nf">so</span> <span class="o">(</span><span class="n">now</span> <span class="n">or</span> <span class="n">later</span><span class="o">)</span> <span class="n">by</span> <span class="n">using</span> <span class="o">-</span><span class="n">b</span> <span class="n">with</span> <span class="n">the</span> <span class="n">checkout</span> <span class="n">command</span> <span class="n">again</span><span class="o">.</span> <span class="n">Example</span><span class="o">:</span>
+<span class="ln">21</span>
+<span class="ln">22</span>  <span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="k">new</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="ln">23</span>
+<span class="ln">24</span><span class="n">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">0495c81</span> <span class="n">clone</span> <span class="n">push</span> <span class="n">test</span>
+<span class="ln">25</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// fetch只是把远程仓库文件下载到了本地git仓库
+</span><span class="ln">26</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln">27</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+</code></pre></div><h3 id="git-merge-合并">git merge 合并<a href="#git-merge-合并" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>git merge vs git merge &ndash;no-ff 后者创建一个新的合并提交，让代码维护更加容易。</p>
+<p><img src="https://i.stack.imgur.com/GGkZc.png" alt="git merge &ndash;no-ff 和 git merge 的区别"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> 
+<span class="ln"> 2</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln"> 3</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+<span class="ln"> 4</span><span class="n">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span> <span class="c1">// 
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">Updating</span> <span class="n">fca7556</span><span class="o">..</span><span class="na">0495c81</span>
+<span class="ln"> 6</span><span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
+<span class="ln"> 7</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="o">|</span> <span class="n">1</span> <span class="o">+</span>
+<span class="ln"> 8</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln"> 9</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// merge完成后，工作区test文件已修改同步完成
+</span><span class="ln">10</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln">11</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+</code></pre></div><h3 id="git-pull--fetch--merge">git pull = fetch + merge<a href="#git-pull--fetch--merge" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 2</span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln"> 3</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="n">$</span> <span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">//
+</span><span class="ln"> 6</span><span class="c1"></span><span class="nl">remote:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">5</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 7</span><span class="nl">remote:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">5</span><span class="o">/</span><span class="n">5</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln"> 8</span><span class="nl">remote:</span> <span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="n">0</span>
+<span class="ln"> 9</span><span class="n">Unpacking</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">10</span><span class="n">From</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest
+</span><span class="ln">11</span><span class="c1"></span> <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="ln">12</span>   <span class="n">0495c81</span><span class="o">..</span><span class="na">ad5056c</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+<span class="ln">13</span><span class="n">Updating</span> <span class="n">0495c81</span><span class="o">..</span><span class="na">ad5056c</span>
+<span class="ln">14</span><span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
+<span class="ln">15</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="o">|</span> <span class="n">1</span> <span class="o">+</span>
+<span class="ln">16</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+)</span>
+<span class="ln">17</span>   
+<span class="ln">18</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// pull = fetch + merge
+</span><span class="ln">19</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln">20</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln">21</span><span class="n">github_clone</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span>
+</code></pre></div><h3 id="conflict">conflict<a href="#conflict" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 原文件
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span>
+<span class="ln"> 3</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln"> 4</span><span class="n">github_clone</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span>
+<span class="ln"> 5</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 在 master 仓库修改原文件
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln"> 7</span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span> <span class="n">by</span> <span class="n">gihub_master</span> <span class="c1">//
+</span><span class="ln"> 8</span><span class="c1"></span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln"> 9</span><span class="n">github_clone</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span>
+<span class="ln">10</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">edit</span> <span class="n">by</span> <span class="n">github_master</span><span class="err">&#39;</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//提交到本地仓库
+</span><span class="ln">11</span><span class="c1"></span><span class="o">[</span><span class="n">master</span> <span class="n">8d3e36c</span><span class="o">]</span> <span class="n">edit</span> <span class="n">by</span> <span class="n">github_master</span>
+<span class="ln">12</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+),</span> <span class="n">1</span> <span class="nf">deletion</span><span class="o">(-)</span>
+<span class="ln">13</span><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">//push到远程仓库
+</span><span class="ln">14</span><span class="c1"></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">5</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">15</span><span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">5</span><span class="o">/</span><span class="n">5</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">16</span><span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="n">8</span> <span class="n">threads</span>
+<span class="ln">17</span><span class="n">Compressing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">2</span><span class="o">/</span><span class="n">2</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">18</span><span class="n">Writing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">293</span> <span class="n">bytes</span> <span class="o">|</span> <span class="n">293</span><span class="o">.</span><span class="na">00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">19</span><span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">0</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">)</span>
+<span class="ln">20</span><span class="n">To</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git
+</span><span class="ln">21</span><span class="c1"></span>   <span class="n">ad5056c</span><span class="o">..</span><span class="na">8d3e36c</span>  <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+<span class="ln">22</span>     
+<span class="ln">23</span><span class="n">$</span> <span class="n">githubtest</span> <span class="o">%</span> <span class="n">cd</span> <span class="o">..</span> 
+<span class="ln">24</span><span class="n">$</span> <span class="n">Desktop</span> <span class="o">%</span> <span class="n">cd</span> <span class="n">github_clone</span>
+<span class="ln">25</span><span class="n">$</span> <span class="n">github_clone</span> <span class="o">%</span> <span class="n">cd</span> <span class="n">githubtest</span>
+<span class="ln">26</span><span class="n">$</span> <span class="n">githubtest</span> <span class="o">%</span> <span class="n">ls</span> <span class="c1">// 切换到clone 仓库， 
+</span><span class="ln">27</span><span class="c1"></span><span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">28</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">29</span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 修改clone 仓库工作区文件
+</span><span class="ln">30</span><span class="c1"></span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span> <span class="n">by</span> <span class="n">github_clone</span>
+<span class="ln">31</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln">32</span><span class="n">github_clone</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span>
+<span class="ln">33</span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">test</span> <span class="n">conflict</span><span class="err">&#39;</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//提交到本地仓库
+</span><span class="ln">34</span><span class="c1"></span><span class="o">[</span><span class="n">master</span> <span class="n">f8c19a2</span><span class="o">]</span> <span class="n">test</span> <span class="n">conflict</span>
+<span class="ln">35</span> <span class="n">1</span> <span class="n">file</span> <span class="n">changed</span><span class="o">,</span> <span class="n">1</span> <span class="nf">insertion</span><span class="o">(+),</span> <span class="n">1</span> <span class="nf">deletion</span><span class="o">(-)</span>
+<span class="ln">36</span><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>  <span class="c1">// 也push到远程仓库
+</span><span class="ln">37</span><span class="c1"></span><span class="n">To</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git 
+</span><span class="ln">38</span><span class="c1"></span> <span class="o">!</span> <span class="o">[</span><span class="n">rejected</span><span class="o">]</span>        <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span> <span class="o">(</span><span class="n">fetch</span> <span class="n">first</span><span class="o">)</span> <span class="c1">//push悲剧
+</span><span class="ln">39</span><span class="c1"></span><span class="nl">error:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">push</span> <span class="n">some</span> <span class="n">refs</span> <span class="n">to</span> <span class="err">&#39;</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git&#39;
+</span><span class="ln">40</span><span class="c1"></span><span class="nl">hint:</span> <span class="n">Updates</span> <span class="n">were</span> <span class="n">rejected</span> <span class="n">because</span> <span class="n">the</span> <span class="n">remote</span> <span class="n">contains</span> <span class="n">work</span> <span class="n">that</span> <span class="n">you</span> <span class="k">do</span>
+<span class="ln">41</span><span class="nl">hint:</span> <span class="n">not</span> <span class="n">have</span> <span class="n">locally</span><span class="o">.</span> <span class="n">This</span> <span class="n">is</span> <span class="n">usually</span> <span class="n">caused</span> <span class="n">by</span> <span class="n">another</span> <span class="n">repository</span> <span class="n">pushing</span>
+<span class="ln">42</span><span class="nl">hint:</span> <span class="n">to</span> <span class="n">the</span> <span class="n">same</span> <span class="n">ref</span><span class="o">.</span> <span class="n">You</span> <span class="n">may</span> <span class="n">want</span> <span class="n">to</span> <span class="n">first</span> <span class="n">integrate</span> <span class="n">the</span> <span class="n">remote</span> <span class="n">changes</span>
+<span class="ln">43</span><span class="nl">hint:</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">g</span><span class="o">.,</span> <span class="err">&#39;</span><span class="n">git</span> <span class="n">pull</span> <span class="o">...</span><span class="err">&#39;</span><span class="o">)</span> <span class="n">before</span> <span class="n">pushing</span> <span class="n">again</span><span class="o">.</span> <span class="c1">//提示先pull before push
+</span><span class="ln">44</span><span class="c1"></span><span class="nl">hint:</span> <span class="n">See</span> <span class="n">the</span> <span class="err">&#39;</span><span class="n">Note</span> <span class="n">about</span> <span class="n">fast</span><span class="o">-</span><span class="n">forwards</span><span class="err">&#39;</span> <span class="n">in</span> <span class="err">&#39;</span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">help</span><span class="err">&#39;</span> <span class="k">for</span> <span class="n">details</span><span class="o">.</span>
+<span class="ln">45</span>  
+<span class="ln">46</span><span class="n">$</span> <span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// pull远处仓库
+</span><span class="ln">47</span><span class="c1"></span><span class="nl">remote:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">5</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">48</span><span class="nl">remote:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">5</span><span class="o">/</span><span class="n">5</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">49</span><span class="nl">remote:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">2</span><span class="o">/</span><span class="n">2</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">50</span><span class="nl">remote:</span> <span class="n">Total</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">3</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="n">0</span>
+<span class="ln">51</span><span class="n">Unpacking</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">3</span><span class="o">/</span><span class="n">3</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">52</span><span class="n">From</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest
+</span><span class="ln">53</span><span class="c1"></span> <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="ln">54</span>   <span class="n">ad5056c</span><span class="o">..</span><span class="na">8d3e36c</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+<span class="ln">55</span><span class="n">Auto</span><span class="o">-</span><span class="n">merging</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span>
+<span class="ln">56</span><span class="nf">CONFLICT</span> <span class="o">(</span><span class="n">content</span><span class="o">):</span> <span class="n">Merge</span> <span class="n">conflict</span> <span class="n">in</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">// 提示有conflict 
+</span><span class="ln">57</span><span class="c1"></span><span class="n">Automatic</span> <span class="n">merge</span> <span class="n">failed</span><span class="o">;</span> <span class="n">fix</span> <span class="n">conflicts</span> <span class="n">and</span> <span class="n">then</span> <span class="n">commit</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span>
+<span class="ln">58</span><span class="n">$</span> <span class="n">nano</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//修改本地仓库冲突文件，去掉特殊符号，保留想要修改的内容
+</span><span class="ln">59</span><span class="c1"></span><span class="n">$</span> <span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> 
+<span class="ln">60</span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span> <span class="n">by</span> <span class="n">github_clone</span>
+<span class="ln">61</span><span class="n">test</span> <span class="n">1</span> <span class="n">3</span> <span class="n">3</span> <span class="n">by</span> <span class="n">gihub_master</span>
+<span class="ln">62</span><span class="n">github_clone</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span>
+<span class="ln">63</span><span class="n">github_clone</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span>
+<span class="ln">64</span><span class="n">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="na">txt</span> <span class="c1">//从新提交修改后的文件到本地仓库
+</span><span class="ln">65</span><span class="c1"></span><span class="n">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">resolve</span> <span class="n">conflict</span><span class="err">&#39;</span>
+<span class="ln">66</span><span class="o">[</span><span class="n">master</span> <span class="n">9209bdb</span><span class="o">]</span> <span class="n">resolve</span> <span class="n">conflict</span>
+<span class="ln">67</span><span class="n">$</span> <span class="n">git</span> <span class="n">status</span> 
+<span class="ln">68</span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="ln">69</span><span class="n">Your</span> <span class="n">branch</span> <span class="n">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="err">&#39;</span><span class="n">origin</span><span class="o">/</span><span class="n">master</span><span class="err">&#39;</span> <span class="n">by</span> <span class="n">2</span> <span class="n">commits</span><span class="o">.</span>
+<span class="ln">70</span>  <span class="o">(</span><span class="n">use</span> <span class="s">&#34;git push&#34;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="o">)</span>
+<span class="ln">71</span>
+<span class="ln">72</span><span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="o">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+<span class="ln">73</span><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// 再次从本地仓库push到远程仓库，无冲突
+</span><span class="ln">74</span><span class="c1"></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">10</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">75</span><span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">10</span><span class="o">/</span><span class="n">10</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">76</span><span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="n">8</span> <span class="n">threads</span>
+<span class="ln">77</span><span class="n">Compressing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">4</span><span class="o">/</span><span class="n">4</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">78</span><span class="n">Writing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">6</span><span class="o">/</span><span class="n">6</span><span class="o">),</span> <span class="n">561</span> <span class="n">bytes</span> <span class="o">|</span> <span class="n">561</span><span class="o">.</span><span class="na">00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">79</span><span class="n">Total</span> <span class="nf">6</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">0</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">)</span>
+<span class="ln">80</span><span class="n">To</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/daiweinus/githubtest.git
+</span><span class="ln">81</span><span class="c1"></span>   <span class="n">8d3e36c</span><span class="o">..</span><span class="na">9209bdb</span>  <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+</code></pre></div><h3 id="ssh-免密码登陆设置httpsdocsgithubcomenauthenticationconnecting-to-github-with-sshgenerating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">SSH 免密码登陆设置</a><a href="#ssh-免密码登陆设置httpsdocsgithubcomenauthenticationconnecting-to-github-with-sshgenerating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="s">&#34;your_email@example.com&#34;</span>
+<span class="ln">2</span>  
+<span class="ln">3</span><span class="c1">//Note: If you are using a legacy system that doesnt support the Ed25519 algorithm, use:
+</span><span class="ln">4</span><span class="c1"></span><span class="n">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">b</span> <span class="n">4096</span> <span class="o">-</span><span class="n">C</span> <span class="s">&#34;your_email@example.com&#34;</span>
+</code></pre></div><h5 id="ssh-keygen--secure-shell---key-generate">ssh-keygen : Secure Shell - key generate<a href="#ssh-keygen--secure-shell---key-generate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<h5 id="-t-rsa---type-rsa">-t rsa : -type rsa<a href="#-t-rsa---type-rsa" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>rsa (<strong>Rivest–Shamir–Adleman</strong>) 最古老的非对称加密算法之一;  ed25519 <strong>爱德华兹曲线数字签名算法</strong>( <strong>EdDSA</strong> ) 是一种使用基于扭曲爱德华兹曲线的Schnorr 签名变体的数字签名方案，它旨在在不牺牲安全性的情况下比现有的数字签名方案更快。</p>
+<p>ed25519加密解密很快,生成时间短而且安全性更高,rsa则加密解密稍慢,生成时间长,安全性没有ed25519高,只是rsa基本都是默认,所以用的人更多。</p>
+<h5 id="-b-4096">-b 4096<a href="#-b-4096" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>b 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。命令中的4096指的是RSA密钥长度为4096位。</p>
+<h5 id="-c--comment-添加注释">-C : comment 添加注释<a href="#-c--comment-添加注释" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">githubtest</span> <span class="n">$</span> <span class="n">cd</span> <span class="o">~</span> <span class="c1">//返回更根目录
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">$</span> <span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">.</span><span class="na">ssh</span><span class="o">/</span>  <span class="c1">//删除旧的ssh加密文件
+</span><span class="ln"> 3</span><span class="c1"></span><span class="n">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="n">6608118</span><span class="nd">@gmail.com</span>  <span class="c1">// 生成新ssh加密文件        
+</span><span class="ln"> 4</span><span class="c1"></span><span class="n">Generating</span> <span class="kd">public</span><span class="o">/</span><span class="kd">private</span> <span class="n">ed25519</span> <span class="n">key</span> <span class="n">pair</span><span class="o">.</span>
+<span class="ln"> 5</span><span class="n">Enter</span> <span class="n">file</span> <span class="n">in</span> <span class="n">which</span> <span class="n">to</span> <span class="n">save</span> <span class="n">the</span> <span class="nf">key</span> <span class="o">(/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="na">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="o">):</span> <span class="c1">//回车键，使用默认值
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">Created</span> <span class="n">directory</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">daiwei</span><span class="o">/.</span><span class="na">ssh</span><span class="err">&#39;</span><span class="o">.</span>
+<span class="ln"> 7</span><span class="n">Enter</span> <span class="nf">passphrase</span> <span class="o">(</span><span class="n">empty</span> <span class="k">for</span> <span class="n">no</span> <span class="n">passphrase</span><span class="o">):</span> <span class="c1">//回车键，使用默认值
+</span><span class="ln"> 8</span><span class="c1"></span><span class="n">Enter</span> <span class="n">same</span> <span class="n">passphrase</span> <span class="n">again</span><span class="o">:</span> <span class="c1">//回车键，使用默认值
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="n">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="na">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="o">.</span>
+<span class="ln">10</span><span class="n">Your</span> <span class="kd">public</span> <span class="n">key</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="n">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="na">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="o">.</span><span class="na">pub</span><span class="o">.</span>
+<span class="ln">11</span><span class="n">The</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="n">is</span><span class="o">:</span>
+<span class="ln">12</span><span class="nl">SHA256:</span><span class="n">ktMDqgSKDbWqUAdUd61n63</span><span class="o">+</span><span class="n">DZAgaoUEjtSLvg1e3FpU</span> <span class="n">username</span><span class="nd">@gmail.com</span>
+<span class="ln">13</span><span class="n">The</span> <span class="n">key</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">randomart</span> <span class="n">image</span> <span class="n">is</span><span class="o">:</span>
+<span class="ln">14</span><span class="o">+--[</span><span class="n">ED25519</span> <span class="n">256</span><span class="o">]--+</span>
+<span class="ln">15</span><span class="o">|</span> <span class="o">.=+=</span> <span class="o">.</span> <span class="o">..</span>       <span class="o">|</span>
+<span class="ln">16</span><span class="o">|</span> <span class="o">.</span> <span class="o">+.+..</span> <span class="o">..</span>      <span class="o">|</span>
+<span class="ln">17</span><span class="o">|+</span> <span class="o">+</span> <span class="n">oo</span><span class="o">..</span><span class="na">E</span><span class="o">.</span>       <span class="o">|</span>
+<span class="ln">18</span><span class="o">|</span><span class="n">oO</span> <span class="n">o</span><span class="o">...=</span><span class="n">o</span> <span class="n">o</span>      <span class="o">|</span>
+<span class="ln">19</span><span class="o">|=</span> <span class="o">+</span> <span class="n">o</span> <span class="o">*</span><span class="n">oS</span><span class="o">+</span> <span class="n">o</span>     <span class="o">|</span>
+<span class="ln">20</span><span class="o">|</span><span class="n">o</span><span class="o">+</span> <span class="n">o</span> <span class="o">..=</span> <span class="o">.</span><span class="na">o</span> <span class="n">o</span>    <span class="o">|</span>
+<span class="ln">21</span><span class="o">|</span><span class="n">o</span> <span class="o">=</span>   <span class="n">o</span>  <span class="o">.</span> <span class="n">o</span> <span class="o">.</span>   <span class="o">|</span>
+<span class="ln">22</span><span class="o">|</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>    <span class="o">.</span> <span class="o">.</span> <span class="n">o</span>  <span class="o">|</span>
+<span class="ln">23</span><span class="o">|</span>           <span class="o">...</span> <span class="o">.</span> <span class="o">|</span>
+<span class="ln">24</span><span class="o">+----[</span><span class="n">SHA256</span><span class="o">]-----+</span>
+<span class="ln">25</span><span class="n">$</span> <span class="n">cd</span> <span class="o">.</span><span class="na">ssh</span>
+<span class="ln">26</span><span class="o">.</span><span class="na">ssh</span> <span class="n">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">lA</span>
+<span class="ln">27</span><span class="n">total</span> <span class="n">16</span>
+<span class="ln">28</span><span class="o">-</span><span class="n">rw</span><span class="o">-------</span>  <span class="n">1</span> <span class="n">yanqin</span>  <span class="n">staff</span>  <span class="n">411</span> <span class="n">16</span> <span class="n">Nov</span> <span class="n">11</span><span class="o">:</span><span class="n">33</span> <span class="n">id_ed25519</span>
+<span class="ln">29</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="n">1</span> <span class="n">yanqin</span>  <span class="n">staff</span>   <span class="n">99</span> <span class="n">16</span> <span class="n">Nov</span> <span class="n">11</span><span class="o">:</span><span class="n">33</span> <span class="n">id_ed25519</span><span class="o">.</span><span class="na">pub</span>
+<span class="ln">30</span><span class="o">.</span><span class="na">ssh</span> <span class="n">$</span> <span class="n">cat</span> <span class="n">id_ed25519</span><span class="o">.</span><span class="na">pub</span> <span class="c1">//copy .pub 加密文件
+</span><span class="ln">31</span><span class="c1"></span><span class="n">ssh</span><span class="o">-</span><span class="n">ed25519</span> <span class="n">AAAAC3NzaC1lZDI1NTE5AAAAIPyWgD16fGjNd</span><span class="o">/</span><span class="n">lPUwQ5AFTBNZ0SjKVi9hBw92YWemNi</span> <span class="n">username</span><span class="nd">@gmail.com</span>
+</code></pre></div><p>登陆github -&gt;setting -&gt; SSH and GPS keys -&gt; New SSH key -&gt; 将复制的.pub 文件粘贴保存。</p>
+<p><img src="https://docs.github.com/assets/images/help/settings/ssh-key-paste.png" alt="The key field"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">T</span> <span class="n">git</span><span class="nd">@github.com</span> <span class="c1">//测试 ssh 是否设置成功
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="err">&#39;</span><span class="n">github</span><span class="o">.</span><span class="na">com</span> <span class="o">(</span><span class="n">20</span><span class="o">.</span><span class="na">205</span><span class="o">.</span><span class="na">243</span><span class="o">.</span><span class="na">166</span><span class="o">)</span><span class="err">&#39;</span> <span class="n">cant</span> <span class="n">be</span> <span class="n">established</span><span class="o">.</span>
+<span class="ln"> 3</span><span class="n">RSA</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="n">is</span> <span class="n">SHA256</span><span class="o">:</span><span class="n">nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8</span><span class="o">.</span>
+<span class="ln"> 4</span><span class="n">Are</span> <span class="n">you</span> <span class="n">sure</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="k">continue</span> <span class="nf">connecting</span> <span class="o">(</span><span class="n">yes</span><span class="o">/</span><span class="n">no</span><span class="o">/[</span><span class="n">fingerprint</span><span class="o">])?</span> <span class="n">yes</span>  
+<span class="ln"> 5</span><span class="nl">Warning:</span> <span class="n">Permanently</span> <span class="n">added</span> <span class="err">&#39;</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="o">,</span><span class="n">20</span><span class="o">.</span><span class="na">205</span><span class="o">.</span><span class="na">243</span><span class="o">.</span><span class="na">166</span><span class="err">&#39;</span> <span class="o">(</span><span class="n">RSA</span><span class="o">)</span> <span class="n">to</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">known</span> <span class="n">hosts</span><span class="o">.</span>
+<span class="ln"> 6</span><span class="n">Hi</span> <span class="n">username</span><span class="o">!</span> <span class="n">Youve</span> <span class="err">&#39;</span><span class="n">successfully</span><span class="err">&#39;</span> <span class="n">authenticated</span><span class="o">,</span> <span class="n">but</span> <span class="n">GitHub</span> <span class="n">does</span> <span class="n">not</span> <span class="n">provide</span> <span class="n">shell</span> <span class="n">access</span><span class="o">.</span>
+<span class="ln"> 7</span>  
+<span class="ln"> 8</span><span class="n">githubtest</span> <span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 此时只有两个 https 远程仓库地址
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/usernamegithubtest.git (fetch)
+</span><span class="ln">10</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/username/githubtest.git (push)
+</span><span class="ln">11</span><span class="c1"></span><span class="n">githubtest</span> <span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin_ssh</span> <span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">daiweinus</span><span class="o">/</span><span class="n">githubtest</span><span class="o">.</span><span class="na">git</span>
+<span class="ln">12</span><span class="n">githubtest</span> <span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span> <span class="c1">// 复制添加ssh 远程仓库地址
+</span><span class="ln">13</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/username/githubtest.git (fetch)
+</span><span class="ln">14</span><span class="c1"></span><span class="n">origin</span>	<span class="n">https</span><span class="o">:</span><span class="c1">//github.com/username/githubtest.git (push)
+</span><span class="ln">15</span><span class="c1"></span><span class="n">origin_ssh</span>	<span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">username</span><span class="o">/</span><span class="n">githubtest</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">fetch</span><span class="o">)</span>
+<span class="ln">16</span><span class="n">origin_ssh</span>	<span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">username</span><span class="o">/</span><span class="n">githubtest</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">push</span><span class="o">)</span>
+<span class="ln">17</span>  
+<span class="ln">18</span><span class="n">githubtest</span> <span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin_ssh</span> <span class="n">master</span> <span class="c1">//使用ssh提交到远程仓库
+</span><span class="ln">19</span><span class="c1"></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="o">:</span> <span class="n">10</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">20</span><span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">10</span><span class="o">/</span><span class="n">10</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">21</span><span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="n">8</span> <span class="n">threads</span>
+<span class="ln">22</span><span class="n">Compressing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">4</span><span class="o">/</span><span class="n">4</span><span class="o">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">23</span><span class="n">Writing</span> <span class="n">objects</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">6</span><span class="o">/</span><span class="n">6</span><span class="o">),</span> <span class="n">619</span> <span class="n">bytes</span> <span class="o">|</span> <span class="n">619</span><span class="o">.</span><span class="na">00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="o">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="ln">24</span><span class="n">Total</span> <span class="nf">6</span> <span class="o">(</span><span class="n">delta</span> <span class="n">1</span><span class="o">),</span> <span class="n">reused</span> <span class="nf">0</span> <span class="o">(</span><span class="n">delta</span> <span class="n">0</span><span class="o">)</span>
+<span class="ln">25</span><span class="nl">remote:</span> <span class="n">Resolving</span> <span class="n">deltas</span><span class="o">:</span> <span class="n">100</span><span class="o">%</span> <span class="o">(</span><span class="n">1</span><span class="o">/</span><span class="n">1</span><span class="o">),</span> <span class="n">completed</span> <span class="n">with</span> <span class="n">1</span> <span class="n">local</span> <span class="n">object</span><span class="o">.</span>
+<span class="ln">26</span><span class="n">To</span> <span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="n">daiweinus</span><span class="o">/</span><span class="n">githubtest</span><span class="o">.</span><span class="na">git</span>
+<span class="ln">27</span>   <span class="n">9209bdb</span><span class="o">..</span><span class="na">9878883</span>  <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+</code></pre></div><p>Ref: <a href="https://blog.csdn.net/qq_42255991/article/details/102783991">https://blog.csdn.net/qq_42255991/article/details/102783991</a></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/git">Git</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>3246 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-11-09 16:24 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/node_error/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>env: node: No such file or directory macOS 解决方法</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java_design/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java_design</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/git/" class="leancloud_visitors" data-flag-title="git,github &amp; gitlab">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

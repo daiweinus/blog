@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/git/</link>
+    <description>Recent content in Git on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 16 Nov 2021 17:19:26 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git : Changes not staged for commit</title>
+      <link>https://daiwei.dev/posts/git_bug1/</link>
+      <pubDate>Tue, 16 Nov 2021 17:19:26 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/git_bug1/</guid>
+      <description>1Changes not staged for commit: 2	modified: themes/hermit (modified content, untracked content) 3 4no changes added to commit 出现此问题是因为该路径内有文件已修改但是没被提交到本地仓库，可以尝试 cd 到子文件路径，add &amp;amp; commit, 然后返回原工作区路径，再add &amp;amp; commit一次。
+1$ cd themes/hermit 2hermit $ git add . 3hermit $ git git commit -m &amp;#39;message&amp;#39; 4 5hermit $ cd ../.. 6$ git add . 7$ git git commit -m &amp;#39;message&amp;#39; </description>
+    </item>
+    
+    <item>
+      <title>git,github &amp; gitlab</title>
+      <link>https://daiwei.dev/posts/git/</link>
+      <pubDate>Tue, 09 Nov 2021 16:24:04 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/git/</guid>
+      <description>Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
+github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
+Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
+GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。多用于企业或者个人的代码托管库。
+ Git 常用command： git init 初始化，在本地仓库创建 .git 文档
+1$ git init 2Initialized empty Git repository in /gittest/.git/ 3 4// 查看.git隐藏目录里的本地库管理文件 5$ ls -lA .git/ 6total 24 7-rw-r--r-- 1 user staff 23 9 Nov 17:38 HEAD 8-rw-r--r-- 1 user staff 137 9 Nov 17:38 config 9-rw-r--r-- 1 user staff 73 9 Nov 17:38 description 10drwxr-xr-x 13 user staff 416 9 Nov 17:38 hooks 11drwxr-xr-x 3 user staff 96 9 Nov 17:38 info 12drwxr-xr-x 4 user staff 128 9 Nov 17:38 objects 13drwxr-xr-x 4 user staff 128 9 Nov 17:38 refs git config 设置用户签名（通常只需要设置本地系统签名就足够了）</description>
+    </item>
+    
+  </channel>
+</rss>

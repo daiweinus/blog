@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Array">
+<meta itemprop="description" content="util.Arrays class: 1java.lang.Object 2java.util.Arrays 3public class Arrays extends Object This class contains various methods for manipulating arrays (such as sorting and searching). This class also contains a static factory that allows arrays to be viewed as lists.
+此类Java Collections Framework的成员, 包含用于操作数组的各种方法（例如排序和搜索）。此类还包含一个静态工厂，允许将数组视为列表。它仅由静态方法和 Object 类的方法组成。
+有两种方法可以创建 Arrays 对象:
+1// method 1, declare a new array1 then initialize it 2int[] array1 = new int[3]; 3array1 = {1,2,3}; 4 5// method 2, initialized array2 when declared it 6int[] array2 = new int[]{1,2,3}; 7 8// method 3, declare with values given (variable/field initialization): 9int[] array3 = {1,2,3}; 10 11// Matrix Array 12int[][] matrix1 = new int[2][3]; 13matrix1[0][0] = 1; 14matrix1[0][1] = 2; 15matrix1[0][2] = 3; 16matrix1[1][0] = 4; 17matrix1[1][1] = 5; 18matrix1[1][2] = 6; 19 20// Martix Array 21int[][] matrix2 = { 22 {1,2,3}, 23 {4,5,6} 24}; 25 26System."><meta itemprop="datePublished" content="2021-10-11T14:49:45+08:00" />
+<meta itemprop="dateModified" content="2021-10-11T14:49:45+08:00" />
+<meta itemprop="wordCount" content="393"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Array" />
+<meta property="og:description" content="util.Arrays class: 1java.lang.Object 2java.util.Arrays 3public class Arrays extends Object This class contains various methods for manipulating arrays (such as sorting and searching). This class also contains a static factory that allows arrays to be viewed as lists.
+此类Java Collections Framework的成员, 包含用于操作数组的各种方法（例如排序和搜索）。此类还包含一个静态工厂，允许将数组视为列表。它仅由静态方法和 Object 类的方法组成。
+有两种方法可以创建 Arrays 对象:
+1// method 1, declare a new array1 then initialize it 2int[] array1 = new int[3]; 3array1 = {1,2,3}; 4 5// method 2, initialized array2 when declared it 6int[] array2 = new int[]{1,2,3}; 7 8// method 3, declare with values given (variable/field initialization): 9int[] array3 = {1,2,3}; 10 11// Matrix Array 12int[][] matrix1 = new int[2][3]; 13matrix1[0][0] = 1; 14matrix1[0][1] = 2; 15matrix1[0][2] = 3; 16matrix1[1][0] = 4; 17matrix1[1][1] = 5; 18matrix1[1][2] = 6; 19 20// Martix Array 21int[][] matrix2 = { 22 {1,2,3}, 23 {4,5,6} 24}; 25 26System." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/array/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-11T14:49:45+08:00" />
+<meta property="article:modified_time" content="2021-10-11T14:49:45+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Array"/>
+<meta name="twitter:description" content="util.Arrays class: 1java.lang.Object 2java.util.Arrays 3public class Arrays extends Object This class contains various methods for manipulating arrays (such as sorting and searching). This class also contains a static factory that allows arrays to be viewed as lists.
+此类Java Collections Framework的成员, 包含用于操作数组的各种方法（例如排序和搜索）。此类还包含一个静态工厂，允许将数组视为列表。它仅由静态方法和 Object 类的方法组成。
+有两种方法可以创建 Arrays 对象:
+1// method 1, declare a new array1 then initialize it 2int[] array1 = new int[3]; 3array1 = {1,2,3}; 4 5// method 2, initialized array2 when declared it 6int[] array2 = new int[]{1,2,3}; 7 8// method 3, declare with values given (variable/field initialization): 9int[] array3 = {1,2,3}; 10 11// Matrix Array 12int[][] matrix1 = new int[2][3]; 13matrix1[0][0] = 1; 14matrix1[0][1] = 2; 15matrix1[0][2] = 3; 16matrix1[1][0] = 4; 17matrix1[1][1] = 5; 18matrix1[1][2] = 6; 19 20// Martix Array 21int[][] matrix2 = { 22 {1,2,3}, 23 {4,5,6} 24}; 25 26System."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Array</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 11, 2021</span></div>
+				<h1>Array</h1>
+			</header>
+			<div class="content">
+				<h3 id="utilarrays-class">util.Arrays class:<a href="#utilarrays-class" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<span class="ln">2</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Arrays</span>
+<span class="ln">3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Arrays</span> <span class="kd">extends</span> <span class="n">Object</span>
+</code></pre></div><p>This class contains various methods for manipulating arrays (such as sorting and searching). This class also contains a static factory that allows arrays to be viewed as lists.</p>
+<p>此类<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>的成员, 包含用于操作数组的各种方法（例如排序和搜索）。此类还包含一个静态工厂，允许将数组视为列表。它仅由静态方法和 Object 类的方法组成。</p>
+<p><img src="https://www.edureka.co/blog/wp-content/uploads/2018/01/7-2.png" alt="数组 - Java 数组 - edureka"></p>
+<p>有两种方法可以创建 Arrays 对象:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// method 1, declare a new array1 then initialize it
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kt">int</span><span class="o">[]</span> <span class="n">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">3</span><span class="o">];</span> 
+<span class="ln"> 3</span><span class="n">array1</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">};</span> 
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="c1">// method 2, initialized array2 when declared it
+</span><span class="ln"> 6</span><span class="c1"></span><span class="kt">int</span><span class="o">[]</span> <span class="n">array2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">};</span> 
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">// method 3, declare with values given (variable/field initialization):
+</span><span class="ln"> 9</span><span class="c1"></span><span class="kt">int</span><span class="o">[]</span> <span class="n">array3</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">};</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">// Matrix Array
+</span><span class="ln">12</span><span class="c1"></span><span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">2</span><span class="o">][</span><span class="n">3</span><span class="o">];</span>
+<span class="ln">13</span><span class="n">matrix1</span><span class="o">[</span><span class="n">0</span><span class="o">][</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">14</span><span class="n">matrix1</span><span class="o">[</span><span class="n">0</span><span class="o">][</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">15</span><span class="n">matrix1</span><span class="o">[</span><span class="n">0</span><span class="o">][</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span>
+<span class="ln">16</span><span class="n">matrix1</span><span class="o">[</span><span class="n">1</span><span class="o">][</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span>
+<span class="ln">17</span><span class="n">matrix1</span><span class="o">[</span><span class="n">1</span><span class="o">][</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">5</span><span class="o">;</span>
+<span class="ln">18</span><span class="n">matrix1</span><span class="o">[</span><span class="n">1</span><span class="o">][</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">6</span><span class="o">;</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="c1">// Martix Array
+</span><span class="ln">21</span><span class="c1"></span><span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix2</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">22</span>  <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">},</span>
+<span class="ln">23</span>  <span class="o">{</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">,</span><span class="n">6</span><span class="o">}</span>
+<span class="ln">24</span><span class="o">};</span>
+<span class="ln">25</span>
+<span class="ln">26</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array3</span><span class="o">));</span> <span class="c1">// [1, 2, 3]
+</span><span class="ln">27</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">deepToString</span><span class="o">(</span><span class="n">matrix2</span><span class="o">));</span> <span class="c1">//[[1, 2, 3], [4, 5, 6]]
+</span><span class="ln">28</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">matrix1</span><span class="o">.</span><span class="na">length</span><span class="o">);</span> <span class="c1">// Prints the First Dimension size in the array 2
+</span><span class="ln">29</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">matrix1</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">length</span><span class="o">);</span><span class="c1">//Prints the Second Dimension size in the array 3
+</span></code></pre></div><p>3种创建方法其实是一样的，但是当你需要return一个array时，你需要<code>return new int[]{1,2,3}</code>,不可以直接<code>return {1,2,3}</code>.</p>
+<hr>
+<h3 id="length-vs-length-vs-size">length vs length() vs size()<a href="#length-vs-length-vs-size" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>
+<p><code>length</code> &ndash; <strong>arrays</strong> (<code>int[]</code>, <code>double[]</code>, <code>String[]</code>) &ndash; to know the length of the arrays</p>
+</li>
+<li>
+<p><code>length()</code> &ndash; <strong>String related Object</strong> (<code>String</code>, <code>StringBuilder</code>, etc) &ndash; to know the length of the String</p>
+</li>
+<li>
+<p><code>size()</code> &ndash; <strong>Collection Object</strong> (<code>ArrayList</code>, <code>Set</code>, etc) &ndash; to know the size of the Collection</p>
+</li>
+</ul>
+<p>array 在Java 中有一些特殊，类似Java的原始类，array的长度length是需要在使用前申明的，更像是一个constant，因此由于历史原因，早期的Java designer 更愿意把 array length 当做 一个私有field 才处理，而不是伪装method。</p>
+<p>string 的长度是可变的 dynamic，所以需要call method 去计算长度。</p>
+<hr>
+<h4 id="1-两数之和httpsleetcode-cncomproblemstwo-sum"><a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a><a href="#1-两数之和httpsleetcode-cncomproblemstwo-sum" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="ln"> 4</span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln"> 5</span>            <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="ln"> 6</span>            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">n</span><span class="o">),</span> <span class="n">i</span><span class="o">};</span>
+<span class="ln"> 7</span>            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">i</span><span class="o">);</span>
+<span class="ln"> 8</span>        <span class="o">}</span>
+<span class="ln"> 9</span>        <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{};</span>
+<span class="ln">10</span>    <span class="o">}</span>
+<span class="ln">11</span><span class="o">}</span>
+</code></pre></div><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/01/Asset-2@2x.png" alt="2D Array - Java array - edureka"></p>
+<hr>
+<h3 id="reflectarray-class">reflect.Array Class:<a href="#reflectarray-class" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<span class="ln">2</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Array</span>
+<span class="ln">3</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Array</span> <span class="kd">extends</span> <span class="n">Object</span>
+</code></pre></div><p>The <code>Array</code> class provides static methods to dynamically create and access Java Arrays.</p>
+<p>此类提供静态方法去动态创建和访问Java Arrays。它是一个 final 类，这意味着它<strong>不能被实例化或改变</strong>。使数组保持类型安全。</p>
+<p><strong>util.Array vs reflect.Arrays:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// Java program to show Array vs Arrays  
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span> 
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span> 
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GfG</span> <span class="o">{</span> 
+<span class="ln"> 6</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+<span class="ln"> 7</span>    <span class="o">{</span> 
+<span class="ln"> 8</span>        <span class="c1">// Get the size of the array 
+</span><span class="ln"> 9</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">5</span><span class="o">];</span> 
+<span class="ln">10</span>  
+<span class="ln">11</span>        <span class="c1">// Add elements into the array 
+</span><span class="ln">12</span><span class="c1"></span>        <span class="c1">// using reflect.Array class 
+</span><span class="ln">13</span><span class="c1"></span>        <span class="n">Array</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="n">intArray</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">10</span><span class="o">);</span> 
+<span class="ln">14</span>  
+<span class="ln">15</span>        <span class="c1">// Printing the Array content 
+</span><span class="ln">16</span><span class="c1"></span>        <span class="c1">// using util.Arrays class 
+</span><span class="ln">17</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> 
+<span class="ln">18</span>            <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">intArray</span><span class="o">));</span> 
+<span class="ln">19</span>    <span class="o">}</span> 
+<span class="ln">20</span><span class="o">}</span> 
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>393 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-11 14:49 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/java-architecture/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Architecture: JVM, JRE &amp; JDK</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure-in-java/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Data Structure In Java</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/array/" class="leancloud_visitors" data-flag-title="Array">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>
