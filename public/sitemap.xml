@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://daiwei.dev/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/java/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java_roadmap/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+  </url><url>
     <loc>https://daiwei.dev/tags/git/</loc>
     <lastmod>2021-11-16T17:19:26+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/git_bug1/</loc>
-    <lastmod>2021-11-16T17:19:26+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/</loc>
-    <lastmod>2021-11-16T17:19:26+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/</loc>
-    <lastmod>2021-11-16T17:19:26+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/tags/</loc>
     <lastmod>2021-11-16T17:19:26+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/bug/</loc>
@@ -28,9 +34,6 @@
   </url><url>
     <loc>https://daiwei.dev/posts/git/</loc>
     <lastmod>2021-11-09T16:24:04+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/tags/java/</loc>
-    <lastmod>2021-11-09T12:11:11+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/java_design/</loc>
     <lastmod>2021-11-09T12:11:11+08:00</lastmod>

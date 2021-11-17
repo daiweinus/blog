@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 09 Nov 2021 12:11:11 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 16:19:45 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java_Roadmap</title>
+      <link>https://daiwei.dev/posts/java_roadmap/</link>
+      <pubDate>Wed, 17 Nov 2021 16:19:45 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_roadmap/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Java_design</title>
       <link>https://daiwei.dev/posts/java_design/</link>
@@ -115,16 +124,6 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
       
       <guid>https://daiwei.dev/posts/javathread/</guid>
       <description>1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread.</description>
-    </item>
-    
-    <item>
-      <title>Java threadpool</title>
-      <link>https://daiwei.dev/posts/javathreadpool/</link>
-      <pubDate>Wed, 20 Oct 2021 11:18:55 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/javathreadpool/</guid>
-      <description>What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
-In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool.</description>
     </item>
     
   </channel>

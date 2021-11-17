@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 16 Nov 2021 17:19:26 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 16:19:45 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java_Roadmap</title>
+      <link>https://daiwei.dev/posts/java_roadmap/</link>
+      <pubDate>Wed, 17 Nov 2021 16:19:45 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_roadmap/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>git : Changes not staged for commit</title>
       <link>https://daiwei.dev/posts/git_bug1/</link>
@@ -112,21 +121,6 @@ What is an Object 什么是对象？对象就是一组数据 data 和行为 beha
       
       <guid>https://daiwei.dev/posts/thread_communication/</guid>
       <description>1/** 2* 线程通信例子：两个线程交替打印 integer 1-10 3* 涉及3个方法： 4* wait(): 当前线程进入wait状态，并释放线程监视器。 5* notify(): 唤醒一个处于wait状态中优先级最高的线程。 6* notifyAll(): 唤醒所有处于wait状态的线程。 7* 8* 1. 3个方法都必须是用在同步代码块或者同步方法中。 9* 2. 3个方法的调用者必须是同步代码块或者同步方法中的同步监视器。 10* 3. 3个方法是定义在java.Lang.Object类中， 并不是 thread 类中。 11*/ 12public class CommunicationTest { 13 public static void main (String[] args) { 14 NumberPrinter n = new NumberPrinter(); 15 Thread t1 = new Thread(n); 16 Thread t2 = new Thread(n); 17 18 t1.start(); 19 t2.start(); 20 } 21} 22 23class NumberPrinter implements Runnable { 24 int i = 1; 25 26 @Override 27 public void run() { 28 while (true) { 29 synchronized (this) { 30 notify(); // 必须使用同步监视器this来调用，this.</description>
-    </item>
-    
-    <item>
-      <title>Java Lock</title>
-      <link>https://daiwei.dev/posts/java_lock/</link>
-      <pubDate>Wed, 03 Nov 2021 10:10:07 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/java_lock/</guid>
-      <description>1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
-锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
-synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
-虽然synchronized方法和语句的作用域机制使使用监视器锁编程变得更加容易，并有助于避免许多涉及锁的常见编程错误，但在某些情况下，您需要以更灵活的方式使用锁。例如，一些遍历并发访问数据结构的算法需要使用“hand-over-hand”或“chainlocking”：你先获取节点A的锁，然后节点B，然后释放A，获取C，然后释放B并获得 D 等等。所述的实施方式中 Lock接口通过允许获得并在不同的范围释放的锁，并允许获得并以任何顺序释放多个锁使得能够使用这样的技术。
-这种增加的灵活性带来了额外的责任。块结构锁的缺失消除了synchronized 方法和语句中发生的锁的自动释放。在大多数情况下，应使用以下习语：
-1 Lock l = new Lock; 2 l.lock(); 3 try { 4 // access the resource protected by this lock 5 } finally { 6 l.unlock(); 7 } 当锁定和解锁发生在不同的作用域时，必须注意确保持有锁时执行的所有代码都受到 try-finally 或 try-catch 的保护，以确保在必要时释放锁。
-1package lockTest; 2 3 4import java.util.concurrent.locks.ReentrantLock; 5 6/** 7* ConcurrentThread Safety 8* The solution 1: synchronized 9* The solution 2: lock 10*/ 11public class LockTest { 12 public static void main(String[] args) { 13 Window w = new Window(); 14 15 Thread t1 = new Thread(w); 16 Thread t2 = new Thread(w); 17 Thread t3 = new Thread(w); 18 19 t1.</description>
     </item>
     
   </channel>
