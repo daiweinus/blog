@@ -6,8 +6,164 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 17 Nov 2021 16:19:45 +0800</lastBuildDate>
+		<lastBuildDate>Wed, 17 Nov 2021 16:38:00 +0800</lastBuildDate>
 		<atom:link href="https://daiwei.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
+			<link>https://daiwei.dev/posts/java_gradle/</link>
+			<pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/java_gradle/</guid>
+			<description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
+**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+最初，我们曾经通过以下方式管理依赖项：
+ 从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+什么是构建工具？
+ 构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
+基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
+ 下载并管理依赖项。 将源代码编译成二进制代码。 打包那个二进制代码。 运行测试。 部署到生产系统。   我们为什么要使用构建工具或构建自动化？
+ 在小型项目中，开发人员通常会手动调用构建过程。这对于大型项目来说是不切实际的，因为很难跟踪需要构建的内容、构建过程中的顺序和依赖关系。使用自动化工具可以使构建过程更加一致。
+ 各种可用的构建工具 ：
+  Java - Ant、Maven、Gradle。 .NET 框架 - NAnt c# - MsBuild。   Apache Ant Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布.</description>
+			<content type="html"><![CDATA[<p>在进入<em>ANT</em>、<em>Maven</em>或<em>Gradle 之前</em>，我们必须首先了解与它们相关的一些事情。</p>
+<p>**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &lsquo;A&rsquo; 需要 &lsquo;B&rsquo; 才能成功执行，则 &lsquo;A&rsquo; 依赖于 &lsquo;B&rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。</p>
+<p>最初，我们曾经通过以下方式管理依赖项：</p>
+<ul>
+<li>从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。</li>
+<li>编写一个脚本，该脚本将通过网络从外部源自动下载库。</li>
+</ul>
+<p>使用这些工具之前面临的问题：</p>
+<ul>
+<li>通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。</li>
+<li>如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。</li>
+<li>在我们的应用程序中识别和管理传递依赖是非常困难的。</li>
+</ul>
+<p>**Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。</p>
+<p><strong>什么是构建工具？</strong></p>
+<blockquote>
+<p>构建工具是从源代码自动创建可执行应用程序的程序（例如，<code>.apk</code>对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。</p>
+<p>基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：</p>
+<ol>
+<li>下载并管理依赖项。</li>
+<li>将源代码编译成二进制代码。</li>
+<li>打包那个二进制代码。</li>
+<li>运行测试。</li>
+<li>部署到生产系统。</li>
+</ol>
+</blockquote>
+<p><strong>我们为什么要使用构建工具或构建自动化？</strong></p>
+<blockquote>
+<p>在小型项目中，开发人员通常会手动调用构建过程。这对于大型项目来说是不切实际的，因为很难跟踪需要构建的内容、构建过程中的顺序和依赖关系。使用自动化工具可以使构建过程更加一致。</p>
+</blockquote>
+<p><strong>各种可用的构建工具 ：</strong></p>
+<blockquote>
+<ol>
+<li>Java - Ant、Maven、Gradle。</li>
+<li>.NET 框架 - NAnt</li>
+<li>c# - MsBuild。</li>
+</ol>
+</blockquote>
+<h3 id="apache-ant"><strong>Apache Ant</strong></h3>
+<p>Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布. Ant 的主要好处是它的灵活性。Ant 不会对开发人员强加任何编码约定或项目结构。因此，这意味着 Ant 需要开发人员自己编写所有命令，这有时会导致构建文件很大并且难以维护。最初，Ant 没有对依赖项管理的内置支持。后来它采用了Apache Ivy，作为Apache Ant项目的一个子项目开发，用于依赖管理。<strong>过时的构建工具。</strong></p>
+<h3 id="apache-maven"><strong>Apache Maven</strong></h3>
+<p><a href="https://maven.apache.org/">Apache Maven</a>是一个依赖管理和构建自动化工具，于 2004 年发布。它继续使用*XML，*但通过遵循“<em>约定优于配置</em>”的原则克服了缺点。它依赖于约定并提供预定义的命令（目标）。它的配置文件，包含构建和依赖管理指令，按照惯例称为“ <em>pom.xml</em> ”，存在于项目的根文件夹中。<strong>Ant 升级版</strong>。</p>
+<p><img src="https://miro.medium.com/max/1324/1*p9j7JsTDxRLdsdks4ADlaQ.jpeg" alt="img"></p>
+<p>Maven 引擎将<em>pom.xml</em>和项目作为输入。它读取<em>pom.xml</em>文件并将其中提到的依赖项作为 jar 文件下载到本地存储库中。然后，它执行生命周期、构建阶段和插件。最后，生成一个打包和测试的工件。</p>
+<p><strong>pom.xml 示例：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="o">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">&#34;1.0&#34;</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="o">?&gt;</span> 
+<span class="ln"> 2</span><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">&#34; http://maven.apache.org/POM/4.0.0 &#34;</span> 
+<span class="ln"> 3</span><span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">&#34; http://www.w3 .org/2001/XMLSchema-instance &#34;</span>   
+<span class="ln"> 4</span><span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">&#34; http://maven.apache.org/POM/4.0.0  
+</span><span class="ln"> 5</span><span class="s"> https://maven.apache.org/xsd/maven-4.0.0.xsd &#34;</span><span class="o">&gt;</span> 
+<span class="ln"> 6</span>       <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="n">4</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span> 
+<span class="ln"> 7</span>       <span class="o">&lt;</span><span class="n">parent</span><span class="o">&gt;</span>    
+<span class="ln"> 8</span>               <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">boot</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span> 
+<span class="ln"> 9</span>               <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">parent</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span> 
+<span class="ln">10</span>               <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">5</span><span class="o">.</span><span class="na">RELEASE</span><span class="o">&lt;/</span><span class="n">version</span> <span class="o">&gt;</span>   
+<span class="ln">11</span>               <span class="o">&lt;</span><span class="n">relativePath</span><span class="o">/&gt;</span> 
+<span class="ln">12</span>       <span class="o">&lt;/</span><span class="n">parent</span><span class="o">&gt;</span>
+<span class="ln">13</span>       <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>  
+<span class="ln">14</span>       <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">demo</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>   
+<span class="ln">15</span>       <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">1</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>   
+<span class="ln">16</span>       <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">demo</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>   
+<span class="ln">17</span>       <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">Spring</span> <span class="n">Boot</span> <span class="n">的演示项目</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>    
+<span class="ln">18</span>       <span class="o">&lt;</span><span class="n">properties</span><span class="o">&gt;</span>   
+<span class="ln">19</span>                  <span class="o">&lt;</span><span class="n">java</span><span class="o">.</span><span class="na">version</span><span class="o">&gt;</span><span class="n">1</span><span class="o">.</span><span class="na">8</span><span class="o">&lt;</span> <span class="o">/</span><span class="n">java</span><span class="o">.</span><span class="na">version</span><span class="o">&gt;</span> 
+<span class="ln">20</span>       <span class="o">&lt;/</span><span class="n">properties</span><span class="o">&gt;</span>    
+<span class="ln">21</span>       <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span> 
+<span class="ln">22</span>                    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>    
+<span class="ln">23</span>                               <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">projectlombok</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span> 
+<span class="ln">24</span>                               <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">lombok</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>    
+<span class="ln">25</span>                               <span class="o">&lt;</span><span class="n">optional</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">optional</span><span class="o">&gt;</span> 
+<span class="ln">26</span>                    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span> 
+<span class="ln">27</span>       <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>   
+<span class="ln">28</span><span class="o">&lt;/</span><span class="n">项目</span><span class="o">&gt;</span>
+</code></pre></div><p>pom.xml 文件中的一些重要标签：</p>
+<ul>
+<li>**groupId：**代表项目所属的组织。</li>
+<li>**artifactId：**它是项目的名称。</li>
+<li>**version：**它代表项目的版本。</li>
+<li>**包装：**它代表了项目构建的最终形式。</li>
+</ul>
+<p><strong>在maven中添加依赖：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span> 
+<span class="ln">2</span>    <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">projectlombok</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span> 
+<span class="ln">3</span>    <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">lombok</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span> 
+<span class="ln">4</span>    <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="n">1</span><span class="o">.</span><span class="na">18</span><span class="o">.</span><span class="na">10</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span> 
+<span class="ln">5</span><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</code></pre></div><p>Maven 规定了严格的项目结构，而 Ant 也提供了灵活性。严格的约定伴随着比 Ant 灵活得多的代价——目标定制非常困难。</p>
+<p><strong>maven的缺点：</strong></p>
+<ol>
+<li>依赖管理不能很好地处理同一个库的不同版本之间的冲突。</li>
+<li>目标的定制很难。</li>
+</ol>
+<h3 id="gradle"><strong>Gradle</strong></h3>
+<p>Grade 是一个开源的依赖管理和构建自动化工具，于 2012 年发布。它结合了 Apache Ant 和 Apache Maven 的优点，并在它们之上构建，并使用域特定语言（基于 Groovy）而不是 XML。它采用了 Ant 的灵活性和 Maven 的生命周期。它还遵循“<em>约定优于配置</em>”的原则。它支持用于检索依赖项的 Maven 和 Ivy 存储库。它的配置文件通常称为“ <em>build.gradle</em> ”，位于项目的根文件夹中。Gradle 将其构建步骤命名为“任务”，而不是 Ant 的“目标”或 Maven 的“阶段”。Google 采用 Gradle 作为 Android 操作系统的默认构建工具。</p>
+<p>Gradle 不使用 XML。相反，它有它自己<strong>d</strong> omain<strong>小号</strong>pecific<strong>大号</strong>基于Groovy的（JVM语言之一）anguage。因此，与为 Ant 或 Maven 编写的脚本相比，Gradle 构建脚本往往更短、更清晰。Gradle 的样板代码量要小得多。</p>
+<p><strong>Gradle 配置</strong></p>
+<ul>
+<li>**实现：**它用于声明我们不想暴露给消费者编译时的依赖项。</li>
+<li>**api：**它用于声明作为我们 API 一部分的<em>依赖项，即我们明确希望向消费者公开的依赖项。</em></li>
+<li>**compileOnly：**它 允许我们声明只应在编译时可用但在运行时不需要的依赖项。此配置的一个示例用例是像<a href="https://projectlombok.org/">Lombok</a>这样的注释处理器，它在编译时修改字节码。编译后不再需要它，因此该依赖项在运行时不可用。</li>
+<li>**runtimeOnly：**它允许我们声明在编译时不需要但在运行时可用的依赖项。一个例子是<a href="https://www.slf4j.org/">SLF4J</a>，我们<code>slf4j-api</code>将其包含到<code>implementation</code>配置中，并将该 API（如<code>slf4j-log4j12</code>或<code>logback-classic</code>）的实现包含在<code>runtimeOnly</code>配置中。</li>
+<li>**testImplementation：**类似于<code>implementation</code>，但声明的依赖项<code>testImplementation</code>仅在测试的编译和运行时可用。我们可以使用它来声明对测试框架（如<a href="https://junit.org/junit5/">JUnit</a>或<a href="https://site.mockito.org/">Mockito）的</a>依赖<a href="https://site.mockito.org/">项</a>，我们只在测试中需要，而在生产代码中不应该提供这些依赖项。</li>
+<li>**testCompileOnly：**类似于<code>compileOnly</code>，但声明的依赖项<code>testCompileOnly</code>仅在测试编译期间可用，在运行时不可用。</li>
+<li>**testRuntimeOnly：**与 类似<code>runtimeOnly</code>，但声明为 的依赖项<code>testRuntimeOnly</code>仅在测试运行时可用，而在编译时不可用。</li>
+</ul>
+<p><strong>Gradle 中的项目和任务</strong></p>
+<p>每个 Gradle 构建都包含一个或多个项目。每个项目由一组任务组成。每个任务代表构建执行的单个工作，例如生成 JavaDoc，将一些档案发布到存储库等。</p>
+<p><strong>build.gradle 示例</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">plugins</span> <span class="o">{</span>
+<span class="ln"> 2</span> <span class="n">id</span> <span class="err">&#39;</span><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">boot</span><span class="err">&#39;</span> <span class="n">version</span> <span class="err">&#39;</span><span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">5</span><span class="o">.</span><span class="na">RELEASE</span><span class="err">&#39;</span>
+<span class="ln"> 3</span> <span class="n">id</span> <span class="err">&#39;</span><span class="n">io</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">dependency</span><span class="o">-</span><span class="n">management</span><span class="err">&#39;</span> <span class="n">version</span> <span class="err">&#39;</span><span class="n">1</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">9</span><span class="o">.</span><span class="na">RELEASE</span><span class="err">&#39;</span>
+<span class="ln"> 4</span> <span class="n">id</span> <span class="err">&#39;</span><span class="n">java</span><span class="err">&#39;</span>
+<span class="ln"> 5</span><span class="o">}</span>
+<span class="ln"> 6</span><span class="n">group</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="err">&#39;</span>
+<span class="ln"> 7</span><span class="n">version</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">1</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="err">&#39;</span>
+<span class="ln"> 8</span><span class="n">sourceCompatibility</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">1</span><span class="o">.</span><span class="na">8</span><span class="err">&#39;</span>
+<span class="ln"> 9</span><span class="n">repositories</span> <span class="o">{</span>
+<span class="ln">10</span> <span class="n">mavenCentral</span><span class="o">()</span>
+<span class="ln">11</span><span class="o">}</span>
+<span class="ln">12</span><span class="n">dependencies</span> <span class="o">{</span>
+<span class="ln">13</span> <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">boot</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">starter</span><span class="err">&#39;</span>
+<span class="ln">14</span> <span class="o">}</span>
+<span class="ln">15</span><span class="o">}</span>
+</code></pre></div><p>示例：在我们的项目中添加中央 Maven 存储库，将以下代码片段添加到我们的**“build.gradle”**文件中：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">repositories</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="n">mavenCentral</span><span class="o">()</span>
+<span class="ln">3</span><span class="o">}</span>
+</code></pre></div><p><strong>在 Gradle 中添加依赖项：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">compile</span> <span class="n">group</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">org</span><span class="o">.</span><span class="na">hibernate</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">name</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">hibernate</span><span class="o">-</span><span class="n">core</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">version</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">3</span><span class="o">.</span><span class="na">6</span><span class="o">.</span><span class="na">7</span><span class="o">.</span><span class="na">Final</span><span class="err">&#39;</span>
+</code></pre></div><p><strong>好处：</strong></p>
+<ol>
+<li>它可以很好地处理传递依赖。如果项目中存在冲突的传递依赖项，那么为了解决它，它选择依赖项的最新版本。例如，依赖“A”在内部需要依赖“C”和版本 2.0，依赖“B”在内部需要依赖“C”和版本 3.0。然后 Gradle 将使用最新版本的依赖项“C”。</li>
+<li>Gradle 的配置文件更小，更干净，因为它使用领域特定语言，基于 Groovy 而不是 XML。</li>
+<li>摇篮采用增量构建理念和跟踪任务的输入和输出，并只在运行什么是必要的，只有处理避免了工作，改变在可能的情况，因此尔斯，执行比Maven的更快。</li>
+</ol>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Java_Roadmap</title>

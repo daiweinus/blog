@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 17 Nov 2021 16:19:45 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 16:38:00 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
+      <link>https://daiwei.dev/posts/java_gradle/</link>
+      <pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_gradle/</guid>
+      <description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
+**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+最初，我们曾经通过以下方式管理依赖项：
+ 从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+什么是构建工具？
+ 构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
+基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
+ 下载并管理依赖项。 将源代码编译成二进制代码。 打包那个二进制代码。 运行测试。 部署到生产系统。   我们为什么要使用构建工具或构建自动化？
+ 在小型项目中，开发人员通常会手动调用构建过程。这对于大型项目来说是不切实际的，因为很难跟踪需要构建的内容、构建过程中的顺序和依赖关系。使用自动化工具可以使构建过程更加一致。
+ 各种可用的构建工具 ：
+  Java - Ant、Maven、Gradle。 .NET 框架 - NAnt c# - MsBuild。   Apache Ant Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布.</description>
+    </item>
+    
     <item>
       <title>Java_Roadmap</title>
       <link>https://daiwei.dev/posts/java_roadmap/</link>
@@ -115,15 +135,6 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
 从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
 1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &amp;#34;Benjamin Franklin&amp;#34;, 8 date = &amp;#34;3/27/2003&amp;#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &amp;#34;unchecked&amp;#34;) 14void myMethod() { .</description>
-    </item>
-    
-    <item>
-      <title>Java Threads</title>
-      <link>https://daiwei.dev/posts/javathread/</link>
-      <pubDate>Wed, 20 Oct 2021 11:37:08 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/javathread/</guid>
-      <description>1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread.</description>
     </item>
     
   </channel>

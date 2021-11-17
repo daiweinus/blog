@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 17 Nov 2021 16:19:45 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 16:38:00 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
+      <link>https://daiwei.dev/posts/java_gradle/</link>
+      <pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java_gradle/</guid>
+      <description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
+**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+最初，我们曾经通过以下方式管理依赖项：
+ 从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+什么是构建工具？
+ 构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
+基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
+ 下载并管理依赖项。 将源代码编译成二进制代码。 打包那个二进制代码。 运行测试。 部署到生产系统。   我们为什么要使用构建工具或构建自动化？
+ 在小型项目中，开发人员通常会手动调用构建过程。这对于大型项目来说是不切实际的，因为很难跟踪需要构建的内容、构建过程中的顺序和依赖关系。使用自动化工具可以使构建过程更加一致。
+ 各种可用的构建工具 ：
+  Java - Ant、Maven、Gradle。 .NET 框架 - NAnt c# - MsBuild。   Apache Ant Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布.</description>
+    </item>
+    
     <item>
       <title>Java_Roadmap</title>
       <link>https://daiwei.dev/posts/java_roadmap/</link>
@@ -112,15 +132,6 @@ What is an Object 什么是对象？对象就是一组数据 data 和行为 beha
       
       <guid>https://daiwei.dev/posts/java_callable/</guid>
       <description>1package callableTest; 2 3import java.util.concurrent.Callable; 4import java.util.concurrent.ExecutionException; 5import java.util.concurrent.FutureTask; 6 7/** 8* 创建线程方式3：实现 callable 接口。-----JDK5.0新增 9*/ 10public class ThreadNew { 11 public static void main (String[] arg) { 12 NumThread num = new NumThread(); 13 14 // Future接口可以对Runnable, callable的执行结果进行取消，查询和获取。 15 // FutureTask 同时实现了Runnable &amp;amp; Future接口， 16 // 既可作为线程被Runnable执行，又可以作为Future得到Callable的返回值。 17 FutureTask&amp;lt;Integer&amp;gt; futureTask = new FutureTask&amp;lt;&amp;gt;(num); 18 19 new Thread(futureTask).start(); 20 21 try { 22 //get()返回值即callable实现类override call() 返回值 23 Integer sum = futureTask.</description>
-    </item>
-    
-    <item>
-      <title>Thread Communication</title>
-      <link>https://daiwei.dev/posts/thread_communication/</link>
-      <pubDate>Wed, 03 Nov 2021 13:16:20 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/thread_communication/</guid>
-      <description>1/** 2* 线程通信例子：两个线程交替打印 integer 1-10 3* 涉及3个方法： 4* wait(): 当前线程进入wait状态，并释放线程监视器。 5* notify(): 唤醒一个处于wait状态中优先级最高的线程。 6* notifyAll(): 唤醒所有处于wait状态的线程。 7* 8* 1. 3个方法都必须是用在同步代码块或者同步方法中。 9* 2. 3个方法的调用者必须是同步代码块或者同步方法中的同步监视器。 10* 3. 3个方法是定义在java.Lang.Object类中， 并不是 thread 类中。 11*/ 12public class CommunicationTest { 13 public static void main (String[] args) { 14 NumberPrinter n = new NumberPrinter(); 15 Thread t1 = new Thread(n); 16 Thread t2 = new Thread(n); 17 18 t1.start(); 19 t2.start(); 20 } 21} 22 23class NumberPrinter implements Runnable { 24 int i = 1; 25 26 @Override 27 public void run() { 28 while (true) { 29 synchronized (this) { 30 notify(); // 必须使用同步监视器this来调用，this.</description>
     </item>
     
   </channel>
