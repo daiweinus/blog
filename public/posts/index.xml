@@ -6,8 +6,202 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 17 Nov 2021 16:38:00 +0800</lastBuildDate>
+		<lastBuildDate>Wed, 24 Nov 2021 17:04:49 +0800</lastBuildDate>
 		<atom:link href="https://daiwei.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Go Introduction</title>
+			<link>https://daiwei.dev/posts/go_introduction/</link>
+			<pubDate>Wed, 24 Nov 2021 17:04:49 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/go_introduction/</guid>
+			<description>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。
+Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。
+Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。
+Go语言特性：
+ 清除依赖 清晰的语法 清晰的语义 组合优于继承 编程模型提供的简单性（垃圾收集、并发） 简易工具（go工具, gofmt, godoc, gofix）  Go vs C 这些包括：
+ 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  **Go vs Java **其中包括对以下方面的语言支持：
+ 并发 垃圾收集 接口类型 反射 类型开关  Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.</description>
+			<content type="html"><![CDATA[<p>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。</p>
+<p><strong>Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。</strong></p>
+<p>Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。</p>
+<p><strong>Go语言特性：</strong></p>
+<ul>
+<li>清除依赖</li>
+<li>清晰的语法</li>
+<li>清晰的语义</li>
+<li>组合优于继承</li>
+<li>编程模型提供的简单性（垃圾收集、并发）</li>
+<li>简易工具（<code>go</code>工具, <code>gofmt</code>, <code>godoc</code>, <code>gofix</code>）</li>
+</ul>
+<p><strong>Go vs C</strong> 这些包括：</p>
+<ul>
+<li>没有指针算法</li>
+<li>没有隐式数字转换</li>
+<li>总是检查数组边界</li>
+<li>没有类型别名（在 之后<code>type X int</code>，<code>X</code>并且<code>int</code>是不同的类型而不是别名）</li>
+<li><code>++</code>和<code>--</code>是陈述不表达</li>
+<li>赋值不是表达式</li>
+<li>获取堆栈变量的地址是合法的（甚至鼓励）</li>
+<li>还有很多</li>
+</ul>
+<p>**Go vs  Java **其中包括对以下方面的语言支持：</p>
+<ul>
+<li>并发</li>
+<li>垃圾收集</li>
+<li>接口类型</li>
+<li>反射</li>
+<li>类型开关</li>
+</ul>
+<h3 id="hello-world-code-in-go">Hello World code in Go:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>package main
+<span class="ln">2</span>
+<span class="ln">3</span>import <span class="s2">&#34;fmt&#34;</span>
+<span class="ln">4</span>
+<span class="ln">5</span>func main<span class="o">()</span> <span class="o">{</span>
+<span class="ln">6</span>  fmt.Println<span class="o">(</span><span class="s2">&#34;Hello World&#34;</span><span class="o">)</span>
+<span class="ln">7</span><span class="o">}</span>
+</code></pre></div><p>运行程序：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>$ go build main.go
+<span class="ln">2</span>$ ls
+<span class="ln">3</span>main  main.go
+<span class="ln">4</span>$ ./main
+<span class="ln">5</span>Hello World
+</code></pre></div><h3 id="go-命令">Go 命令：</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>// <span class="nb">command</span> line via a generic command:
+<span class="ln">2</span>$ go &lt;command&gt; <span class="o">[</span>arguments<span class="o">]</span>
+<span class="ln">3</span>// such as:
+<span class="ln">4</span>$ go doc fmt.println
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>// Running Files in Go
+<span class="ln">2</span>$ go run exampleFile.go
+<span class="ln">3</span>// Compile Go
+<span class="ln">4</span>$ go build test.go
+<span class="ln">5</span>// To run test, <span class="nb">type</span> in the <span class="nb">command</span> line:
+<span class="ln">6</span>$ ./test
+</code></pre></div><h3 id="go-value">Go Value:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="c1">// literal unnamed value
+</span><span class="ln">2</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;PI = &#34;</span><span class="p">,</span> <span class="mf">3.14159</span><span class="p">)</span>
+<span class="ln">3</span> 
+<span class="ln">4</span><span class="c1">// constant named value
+</span><span class="ln">5</span><span class="c1"></span><span class="kd">const</span> <span class="nx">pi</span> <span class="p">=</span> <span class="mf">3.14159</span>
+<span class="ln">6</span> 
+<span class="ln">7</span><span class="c1">// variable named value
+</span><span class="ln">8</span><span class="c1"></span><span class="kd">var</span> <span class="nx">radius</span> <span class="p">=</span> <span class="mi">6</span>
+</code></pre></div><h3 id="go-default-values">Go Default Values</h3>
+<p>当一个变量variable没有被赋值时，这个变量会有一个默认值。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">Type</span>    <span class="nx">Zero</span> <span class="nx">Value</span>
+<span class="ln">2</span><span class="nx">ints</span>     <span class="mi">0</span>
+<span class="ln">3</span><span class="nx">floats</span>   <span class="mi">0</span>
+<span class="ln">4</span><span class="kt">string</span>   <span class="s">&#34;&#34;</span> <span class="p">(</span><span class="nx">empty</span> <span class="kt">string</span><span class="p">)</span>
+<span class="ln">5</span><span class="nx">boolean</span>  <span class="kc">false</span>
+</code></pre></div><h3 id="go-data-types">Go Data Types</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kt">string</span>
+<span class="ln">2</span><span class="kt">bool</span>
+<span class="ln">3</span><span class="nx">numeric</span> <span class="nx">types</span><span class="p">:</span>
+<span class="ln">4</span><span class="kt">int8</span><span class="p">,</span> <span class="kt">uint8</span><span class="p">,</span> <span class="kt">int16</span><span class="p">,</span> <span class="kt">uint16</span><span class="p">,</span> <span class="kt">int32</span> <span class="p">,</span> <span class="kt">uint32</span><span class="p">,</span> <span class="kt">int64</span><span class="p">,</span> <span class="kt">uint64</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">uint</span><span class="p">,</span> <span class="kt">uintptr</span>
+<span class="ln">5</span><span class="kt">float32</span><span class="p">,</span> <span class="kt">float64</span>
+<span class="ln">6</span><span class="kt">complex64</span><span class="p">,</span> <span class="kt">complex128</span>
+</code></pre></div><h3 id="go-variable">Go Variable</h3>
+<ul>
+<li>
+<p>use the  <strong><code>var</code></strong>  keyword followed by a name and its data type. This variable can be assigned later in the program. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="kt">string</span>
+<span class="ln">2</span><span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>use the   <strong><code>var</code></strong> keyword followed by a name, data type, <strong><code>=</code></strong> and value.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>use the   <strong><code>var</code></strong>  keyword, followed by a name, <strong><code>=</code></strong> and value. Ignore the data type and let the compiler infer its type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>skip the  <strong><code>var</code></strong> keyword, define a name followed by <strong><code>:=</code></strong> and value and let the compiler infer its type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">fruit</span> <span class="o">:=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="go-errors">Go Errors</h3>
+<p>The error message is printed to the terminal and contains the following information:</p>
+<ul>
+<li>The filename</li>
+<li>The line that raises the error</li>
+<li>The number of characters from the left side that raises the error</li>
+<li>The type of error and reason for raising the error</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="p">.</span><span class="o">/</span><span class="nx">Main</span><span class="p">.</span><span class="k">go</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span> <span class="nx">undefined</span><span class="p">:</span> <span class="nx">dinner</span>
+</code></pre></div><p>This particular error occurs in the file <strong>main.go</strong> at line <strong><code>11</code></strong>, <strong><code>3</code></strong> characters into the line, and its error type and reason is <strong><code>&quot;undefined: dinner&quot;</code></strong>.</p>
+<h3 id="go-fmt-print-and-println">Go Fmt .Print() and .Println()</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">,</span> <span class="s">&#34;am&#34;</span><span class="p">,</span> <span class="s">&#34;cool&#34;</span><span class="p">)</span>
+<span class="ln">2</span><span class="c1">// Iamcool 没有空格 without any spacing
+</span><span class="ln">3</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">,</span> <span class="s">&#34;am&#34;</span><span class="p">,</span> <span class="s">&#34;cool&#34;</span><span class="p">)</span>
+<span class="ln">4</span><span class="c1">// I am cool 
+</span></code></pre></div><h3 id="go-fmt-printf-function">Go Fmt .Printf() Function</h3>
+<ul>
+<li><code>%v</code> represents the named value in its default format;</li>
+<li><code>%d</code> expects the named value to be an integer type;</li>
+<li><code>%f</code> expects the named value to be a float type;</li>
+<li><code>%T</code> represents the type for the named value.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="nx">name</span> <span class="o">:=</span> <span class="s">&#34;Leslie&#34;</span>
+<span class="ln"> 2</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;My name is %v&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="ln"> 3</span><span class="c1">// My name is Leslie
+</span><span class="ln"> 4</span><span class="c1"></span> 
+<span class="ln"> 5</span><span class="nx">age</span> <span class="o">:=</span> <span class="mi">34</span>
+<span class="ln"> 6</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;I am %d years old&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+<span class="ln"> 7</span><span class="c1">// I am 34 years old
+</span><span class="ln"> 8</span><span class="c1"></span> 
+<span class="ln"> 9</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v is of type %T&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="ln">10</span><span class="c1">// Leslie is of type string
+</span></code></pre></div><h3 id="go-fmt-scan-function">Go Fmt .Scan() Function</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kn">package</span> <span class="nx">main</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+<span class="ln"> 3</span> 
+<span class="ln"> 4</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln"> 5</span>  <span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span>
+<span class="ln"> 6</span>  <span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span>
+<span class="ln"> 7</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;What&#39;s your name and age?&#34;</span><span class="p">)</span>
+<span class="ln"> 8</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">age</span><span class="p">)</span>
+<span class="ln"> 9</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;You entered %v and %d.\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+<span class="ln">10</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>$ What<span class="err">&#39;</span>s your name and age?
+<span class="ln">2</span>$ Marcia <span class="m">32</span>
+<span class="ln">3</span>$ You entered Marcia and 32.
+</code></pre></div><h3 id="go-short-variable-declaration">Go Short Variable Declaration</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="k">if</span> <span class="nx">age</span> <span class="o">:=</span> <span class="mi">55</span><span class="p">;</span> <span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">55</span> <span class="p">{</span>
+<span class="ln">2</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;You are retiring!&#34;</span><span class="p">)</span>
+<span class="ln">3</span><span class="p">}</span>
+<span class="ln">4</span><span class="k">switch</span> <span class="nx">season</span> <span class="o">:=</span> <span class="s">&#34;spring&#34;</span><span class="p">;</span> <span class="nx">season</span> <span class="p">{</span>
+<span class="ln">5</span>  <span class="k">case</span> <span class="s">&#34;spring&#34;</span><span class="p">:</span>
+<span class="ln">6</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Plant some bulbs.&#34;</span><span class="p">)</span>
+<span class="ln">7</span>  <span class="k">case</span> <span class="s">&#34;summer&#34;</span><span class="p">:</span>
+<span class="ln">8</span>    <span class="o">...</span>
+<span class="ln">9</span><span class="p">}</span>
+</code></pre></div><h3 id="go-switch-statement">Go Switch Statement</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="nx">day</span> <span class="o">:=</span> <span class="s">&#34;Tuesday&#34;</span>
+<span class="ln"> 2</span><span class="k">switch</span> <span class="nx">day</span> <span class="p">{</span>
+<span class="ln"> 3</span>  <span class="k">case</span> <span class="s">&#34;Monday&#34;</span><span class="p">:</span>
+<span class="ln"> 4</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Monday is magnificent.&#34;</span><span class="p">)</span>
+<span class="ln"> 5</span>  <span class="k">case</span> <span class="s">&#34;Tuesday&#34;</span><span class="p">:</span>
+<span class="ln"> 6</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Tuesday is terrific.&#34;</span><span class="p">)</span>
+<span class="ln"> 7</span>  <span class="k">case</span> <span class="s">&#34;Wednesday&#34;</span><span class="p">:</span>
+<span class="ln"> 8</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Wednesday is wacky.&#34;</span><span class="p">)</span>
+<span class="ln"> 9</span>  <span class="k">default</span><span class="p">:</span>
+<span class="ln">10</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;We survived.&#34;</span><span class="p">)</span>
+<span class="ln">11</span><span class="p">}</span>
+</code></pre></div><h3 id="go-random-number-generator">Go Random Number Generator</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">number</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div><h3 id="go-pointer-dereferencing">Go Pointer Dereferencing</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">pointerToInt</span> <span class="o">*</span><span class="kt">int</span> 
+<span class="ln">2</span><span class="c1">// a pointer to a variable of type int
+</span><span class="ln">3</span><span class="c1"></span>
+<span class="ln">4</span><span class="nx">y</span> <span class="o">:=</span> <span class="mi">3</span>
+<span class="ln">5</span><span class="kd">var</span> <span class="nx">x</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">y</span> <span class="c1">// pointer variable x assigned the address of variable y
+</span><span class="ln">6</span><span class="c1"></span><span class="o">*</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">5</span> <span class="c1">// dereference x by typing *x
+</span><span class="ln">7</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// y is now 5
+</span></code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
@@ -2334,10 +2528,10 @@ AME, NTS, Faith_bian, XinQ，y 是我最喜欢的几个在役选手了，希望l
 		
 		<item>
 			<title>Java Architecture: JVM, JRE &amp; JDK</title>
-			<link>https://daiwei.dev/posts/java-architecture/</link>
+			<link>https://daiwei.dev/posts/java/java-architecture/</link>
 			<pubDate>Mon, 11 Oct 2021 17:11:25 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java-architecture/</guid>
+			<guid>https://daiwei.dev/posts/java/java-architecture/</guid>
 			<description>Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。
  Java Virtual Machine JVM Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).
 Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.
@@ -2697,10 +2891,10 @@ Strings 是常量 constant；它们的值在创建后无法更改，不可变的
 		
 		<item>
 			<title>Hello World</title>
-			<link>https://daiwei.dev/posts/hello-world/</link>
+			<link>https://daiwei.dev/posts/java/hello-world/</link>
 			<pubDate>Tue, 28 Sep 2021 15:25:50 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/hello-world/</guid>
+			<guid>https://daiwei.dev/posts/java/hello-world/</guid>
 			<description>Hello World, Hello Friend!
 1#include &amp;lt;stdio.h&amp;gt;2int main() { 3 // printf() displays the string inside quotation 4 printf(&amp;#34;Hello, World!&amp;#34;); 5 return 0; 6} </description>
 			<content type="html"><![CDATA[<p>Hello World, Hello Friend!</p>

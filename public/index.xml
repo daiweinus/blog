@@ -7,7 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 17 Nov 2021 16:38:00 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Nov 2021 17:04:49 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Introduction</title>
+      <link>https://daiwei.dev/posts/go_introduction/</link>
+      <pubDate>Wed, 24 Nov 2021 17:04:49 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/go_introduction/</guid>
+      <description>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。
+Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。
+Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。
+Go语言特性：
+ 清除依赖 清晰的语法 清晰的语义 组合优于继承 编程模型提供的简单性（垃圾收集、并发） 简易工具（go工具, gofmt, godoc, gofix）  Go vs C 这些包括：
+ 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  **Go vs Java **其中包括对以下方面的语言支持：
+ 并发 垃圾收集 接口类型 反射 类型开关  Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.</description>
+    </item>
+    
     <item>
       <title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
       <link>https://daiwei.dev/posts/java_gradle/</link>
@@ -123,15 +138,6 @@ What is an Object 什么是对象？对象就是一组数据 data 和行为 beha
 好处：
  建好线程创建时间，提高程序相应速度。 线程可重复利用，降低系统资源消耗。 便于线程管理，提高编程效率。  线程池API:
  ExecutorService 线程池接口，常见子类 ThreadPoolExecutor Executor 工具类，线程池工厂类，用于创建并返回不同类型的线程。  1package threadpool; 2 3import java.util.concurrent.ExecutorService; 4import java.util.concurrent.Executors; 5import java.util.concurrent.ThreadPoolExecutor; 6import java.util.concurrent.TimeUnit; 7 8/** 9* 线程创建方式4： ThreadPool 10*/ 11public class ThreadPool { 12 public static void main(String[] args) { 13 ExecutorService service = Executors.newScheduledThreadPool(10); 14 15 //设置线程池属性，先把ExecutorService 转换成 ThreadPoolExecutor 16 //ThreadPoolExecutor service1 = (ThreadPoolExecutor) service; 17 //service1.setCorePoolSize(5); 18 //service1.setKeepAliveTime(100, TimeUnit.MILLISECONDS); 19 20 //service.submit(Callable callable);//适合适用于Callable 21 service.</description>
-    </item>
-    
-    <item>
-      <title>创建线程的方式3: Callable</title>
-      <link>https://daiwei.dev/posts/java_callable/</link>
-      <pubDate>Wed, 03 Nov 2021 15:39:23 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/java_callable/</guid>
-      <description>1package callableTest; 2 3import java.util.concurrent.Callable; 4import java.util.concurrent.ExecutionException; 5import java.util.concurrent.FutureTask; 6 7/** 8* 创建线程方式3：实现 callable 接口。-----JDK5.0新增 9*/ 10public class ThreadNew { 11 public static void main (String[] arg) { 12 NumThread num = new NumThread(); 13 14 // Future接口可以对Runnable, callable的执行结果进行取消，查询和获取。 15 // FutureTask 同时实现了Runnable &amp;amp; Future接口， 16 // 既可作为线程被Runnable执行，又可以作为Future得到Callable的返回值。 17 FutureTask&amp;lt;Integer&amp;gt; futureTask = new FutureTask&amp;lt;&amp;gt;(num); 18 19 new Thread(futureTask).start(); 20 21 try { 22 //get()返回值即callable实现类override call() 返回值 23 Integer sum = futureTask.</description>
     </item>
     
   </channel>

@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://daiwei.dev/tags/go/</loc>
+    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/go_introduction/</loc>
+    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
+  </url><url>
     <loc>https://daiwei.dev/</loc>
-    <lastmod>2021-11-17T16:38:00+08:00</lastmod>
+    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/</loc>
+    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/</loc>
+    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/java/</loc>
     <lastmod>2021-11-17T16:38:00+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/java_gradle/</loc>
-    <lastmod>2021-11-17T16:38:00+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/</loc>
-    <lastmod>2021-11-17T16:38:00+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/tags/</loc>
     <lastmod>2021-11-17T16:38:00+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/java_roadmap/</loc>
@@ -89,7 +95,7 @@
     <loc>https://daiwei.dev/posts/ternary_operator/</loc>
     <lastmod>2021-10-12T13:28:50+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java-architecture/</loc>
+    <loc>https://daiwei.dev/posts/java/java-architecture/</loc>
     <lastmod>2021-10-11T17:11:25+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/array/</loc>
@@ -104,7 +110,7 @@
     <loc>https://daiwei.dev/tags/hello-world/</loc>
     <lastmod>2021-09-28T15:25:50+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/hello-world/</loc>
+    <loc>https://daiwei.dev/posts/java/hello-world/</loc>
     <lastmod>2021-09-28T15:25:50+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/about/</loc>
