@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/spring/</link>
+    <description>Recent content in Spring on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lombok</title>
+      <link>https://daiwei.dev/posts/spring/lombok/</link>
+      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/lombok/</guid>
+      <description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
+1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
+1// 2// Source code recreated from a .</description>
+    </item>
+    
+    <item>
+      <title>Spring_intro</title>
+      <link>https://daiwei.dev/posts/spring/spring_intro/</link>
+      <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
+      <description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
+MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
+ Model 负责存储系统的中心数据;
+View 负责存储系统的中心数据;
+Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。
+ 表示层框架：struts1，struts2，springMVC
+业务层框架，设计型框架：spring
+持久层框架：hibernate(全自动), mybatis(半自动)
+建议优先学习 Springboot 。
+Spring Boot   Spring Boot 简介
+ 简化Spring应用开发的框架。
+整个Spring技术栈的大整合。
+J2EE开发的一站式解决方案。
+   微服务
+2014， Martin Fowler
+微服务：架构风格（服务微化）
+一个应用应该是一组小型服务，可以通过http方式互通；
+每一个功能元素最终都是一个可独立替换可升级的软件单元；
+microservices guide
+  Spring Boot主要特性
+ 遵循“约定优于配置”的原则，简化配置 可以完全脱离XML配置文件,采用注解配置和java Config 内嵌Servlet容器，应用可用jar包执行：java -jar 快速完成项目搭建、整合第三方类库，方便易用 提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置 与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案    Spring Boot集成第三方类库的步骤</description>
+    </item>
+    
+  </channel>
+</rss>

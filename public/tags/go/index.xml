@@ -7,19 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 24 Nov 2021 17:04:49 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Nov 2021 17:59:37 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Pointer</title>
+      <link>https://daiwei.dev/posts/go/go_pointer/</link>
+      <pubDate>Mon, 29 Nov 2021 17:59:37 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/go/go_pointer/</guid>
+      <description>Go is a pass-by-value language.   addresses
+ An address is where a value is stored, To find an address of a variable, use the &amp;amp; operator before a variable.  1x := &amp;#34;My very first address&amp;#34; 2fmt.Println(&amp;amp;x) // Prints address 0x414020   pointers
+ A pointer is specific to what type of address it can store. The * operator can be used to assign a pointer the type of the value its address holds.</description>
+    </item>
+    
+    <item>
+      <title>Go Helloworld</title>
+      <link>https://daiwei.dev/posts/go/go_helloworld/</link>
+      <pubDate>Mon, 29 Nov 2021 17:54:17 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/go/go_helloworld/</guid>
+      <description>Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.Println(&amp;#34;Hello World&amp;#34;) 7} 运行程序：
+1$ go build main.go 2$ ls 3main main.go 4$ ./main 5Hello World Go 命令： 1// command line via a generic command: 2$ go &amp;lt;command&amp;gt; [arguments] 3// such as: 4$ go doc fmt.println 1// Running Files in Go 2$ go run exampleFile.go 3// Compile Go 4$ go build test.go 5// To run test, type in the command line: 6$ .</description>
+    </item>
+    
     <item>
       <title>Go Introduction</title>
-      <link>https://daiwei.dev/posts/go_introduction/</link>
+      <link>https://daiwei.dev/posts/go/go_introduction/</link>
       <pubDate>Wed, 24 Nov 2021 17:04:49 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/go_introduction/</guid>
+      <guid>https://daiwei.dev/posts/go/go_introduction/</guid>
       <description>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。
 Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。
 Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。
 Go语言特性：
  清除依赖 清晰的语法 清晰的语义 组合优于继承 编程模型提供的简单性（垃圾收集、并发） 简易工具（go工具, gofmt, godoc, gofix）  Go vs C 这些包括：
- 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  **Go vs Java **其中包括对以下方面的语言支持：
+ 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  Go vs Java 其中包括对以下方面的语言支持：
  并发 垃圾收集 接口类型 反射 类型开关  Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.</description>
     </item>
     

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Boot on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/spring-boot/</link>
+    <description>Recent content in Spring Boot on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 07 Dec 2021 16:17:23 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringBoot Hello world</title>
+      <link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
+      <pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
+      <description>  使用Spring Initializr 新建spring boot project
+  在application.properties文件新建服务器端口
+  新建HelloController class
+  执行BootLunchApplication main class
+  </description>
+    </item>
+    
+  </channel>
+</rss>

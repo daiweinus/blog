@@ -35,7 +35,7 @@ Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类
 - 获取堆栈变量的地址是合法的（甚至鼓励）
 - 还有很多
 
-**Go vs  Java **其中包括对以下方面的语言支持：
+**Go vs  Java** 其中包括对以下方面的语言支持：
 
 - 并发
 - 垃圾收集
@@ -260,6 +260,23 @@ var x *int = &y // pointer variable x assigned the address of variable y
 *x = 5 // dereference x by typing *x
 fmt.Println(y) // y is now 5
 ```
+
+### Go Function
+
+```go
+func makeMeOlder(age int) {
+  age += 5
+}
+ 
+func main() {
+  myAge := 10
+  makeMeOlder(myAge)
+  fmt.Println(myAge)
+  // myAge is still 10
+}
+```
+
+
 
 
 

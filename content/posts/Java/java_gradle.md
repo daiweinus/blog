@@ -11,7 +11,7 @@ tags:
 
 在进入*ANT*、*Maven*或*Gradle 之前*，我们必须首先了解与它们相关的一些事情。
 
-**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 'A' 需要 'B' 才能成功执行，则 'A' 依赖于 'B'。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+**依赖:**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 'A' 需要 'B' 才能成功执行，则 'A' 依赖于 'B'。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
 
 最初，我们曾经通过以下方式管理依赖项：
 
@@ -24,7 +24,7 @@ tags:
 - 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。
 - 在我们的应用程序中识别和管理传递依赖是非常困难的。
 
-**Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+**Depende Management Tools依赖管理工具:**它解决和管理应用程序所需的依赖关系。
 
 **什么是构建工具？**
 
@@ -95,10 +95,10 @@ xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0
 
 pom.xml 文件中的一些重要标签：
 
-- **groupId：**代表项目所属的组织。
-- **artifactId：**它是项目的名称。
-- **version：**它代表项目的版本。
-- **包装：**它代表了项目构建的最终形式。
+- **groupId:**代表项目所属的组织。
+- **artifactId:**它是项目的名称。
+- **version:**它代表项目的版本。
+- **包装:**它代表了项目构建的最终形式。
 
 **在maven中添加依赖：**
 
@@ -125,13 +125,13 @@ Gradle 不使用 XML。相反，它有它自己**d** omain**小号**pecific**大
 
 **Gradle 配置**
 
-- **实现：**它用于声明我们不想暴露给消费者编译时的依赖项。
-- **api：**它用于声明作为我们 API 一部分的*依赖项，即我们明确希望向消费者公开的依赖项。*
-- **compileOnly：**它 允许我们声明只应在编译时可用但在运行时不需要的依赖项。此配置的一个示例用例是像[Lombok](https://projectlombok.org/)这样的注释处理器，它在编译时修改字节码。编译后不再需要它，因此该依赖项在运行时不可用。
-- **runtimeOnly：**它允许我们声明在编译时不需要但在运行时可用的依赖项。一个例子是[SLF4J](https://www.slf4j.org/)，我们`slf4j-api`将其包含到`implementation`配置中，并将该 API（如`slf4j-log4j12`或`logback-classic`）的实现包含在`runtimeOnly`配置中。
-- **testImplementation：**类似于`implementation`，但声明的依赖项`testImplementation`仅在测试的编译和运行时可用。我们可以使用它来声明对测试框架（如[JUnit](https://junit.org/junit5/)或[Mockito）的](https://site.mockito.org/)依赖[项](https://site.mockito.org/)，我们只在测试中需要，而在生产代码中不应该提供这些依赖项。
-- **testCompileOnly：**类似于`compileOnly`，但声明的依赖项`testCompileOnly`仅在测试编译期间可用，在运行时不可用。
-- **testRuntimeOnly：**与 类似`runtimeOnly`，但声明为 的依赖项`testRuntimeOnly`仅在测试运行时可用，而在编译时不可用。
+- **实现:**它用于声明我们不想暴露给消费者编译时的依赖项。
+- **api:**它用于声明作为我们 API 一部分的*依赖项，即我们明确希望向消费者公开的依赖项。*
+- **compileOnly:**它 允许我们声明只应在编译时可用但在运行时不需要的依赖项。此配置的一个示例用例是像[Lombok](https://projectlombok.org/)这样的注释处理器，它在编译时修改字节码。编译后不再需要它，因此该依赖项在运行时不可用。
+- **runtimeOnly:**它允许我们声明在编译时不需要但在运行时可用的依赖项。一个例子是[SLF4J](https://www.slf4j.org/)，我们`slf4j-api`将其包含到`implementation`配置中，并将该 API（如`slf4j-log4j12`或`logback-classic`）的实现包含在`runtimeOnly`配置中。
+- **testImplementation:**类似于`implementation`，但声明的依赖项`testImplementation`仅在测试的编译和运行时可用。我们可以使用它来声明对测试框架（如[JUnit](https://junit.org/junit5/)或[Mockito）的](https://site.mockito.org/)依赖[项](https://site.mockito.org/)，我们只在测试中需要，而在生产代码中不应该提供这些依赖项。
+- **testCompileOnly:**类似于`compileOnly`，但声明的依赖项`testCompileOnly`仅在测试编译期间可用，在运行时不可用。
+- **testRuntimeOnly:**与 类似`runtimeOnly`，但声明为 的依赖项`testRuntimeOnly`仅在测试运行时可用，而在编译时不可用。
 
 **Gradle 中的项目和任务**
 
@@ -157,7 +157,7 @@ dependencies {
 }
 ```
 
-示例：在我们的项目中添加中央 Maven 存储库，将以下代码片段添加到我们的**“build.gradle”**文件中：
+示例：在我们的项目中添加中央 Maven 存储库，将以下代码片段添加到我们的**build.gradle**文件中：
 
 ```java
 repositories {

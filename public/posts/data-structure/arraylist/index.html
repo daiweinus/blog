@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="ArrayList">
+<meta itemprop="description" content="1Module java.base 2Package java.util 3 4java.lang.Object 5java.util.AbstractCollection&lt;E&gt; 6java.util.AbstractList&lt;E&gt; 7java.util.ArrayList&lt;E&gt; 8 9public class ArrayList&lt;E&gt; 10extends AbstractList&lt;E&gt; 11implements List&lt;E&gt;, RandomAccess, Cloneable, Serializable 下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = ArrayList&lt;&gt;(); // type-cast  initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList. initialize as ArrayList&lt;E&gt; 可以访问使用所有的ArrayList class method, such as such as ArrayList#ensureCapacity or ArrayList#trimToSize. 通常情况下，尽量使用方法1 List 来初始化 arrayList.  1List&lt;String&gt; list = new ArrayList&lt;&gt;();// 初始化可变数组 2list."><meta itemprop="datePublished" content="2021-10-20T10:52:00+08:00" />
+<meta itemprop="dateModified" content="2021-10-20T10:52:00+08:00" />
+<meta itemprop="wordCount" content="94"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="ArrayList" />
+<meta property="og:description" content="1Module java.base 2Package java.util 3 4java.lang.Object 5java.util.AbstractCollection&lt;E&gt; 6java.util.AbstractList&lt;E&gt; 7java.util.ArrayList&lt;E&gt; 8 9public class ArrayList&lt;E&gt; 10extends AbstractList&lt;E&gt; 11implements List&lt;E&gt;, RandomAccess, Cloneable, Serializable 下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = ArrayList&lt;&gt;(); // type-cast  initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList. initialize as ArrayList&lt;E&gt; 可以访问使用所有的ArrayList class method, such as such as ArrayList#ensureCapacity or ArrayList#trimToSize. 通常情况下，尽量使用方法1 List 来初始化 arrayList.  1List&lt;String&gt; list = new ArrayList&lt;&gt;();// 初始化可变数组 2list." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/arraylist/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-20T10:52:00+08:00" />
+<meta property="article:modified_time" content="2021-10-20T10:52:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="ArrayList"/>
+<meta name="twitter:description" content="1Module java.base 2Package java.util 3 4java.lang.Object 5java.util.AbstractCollection&lt;E&gt; 6java.util.AbstractList&lt;E&gt; 7java.util.ArrayList&lt;E&gt; 8 9public class ArrayList&lt;E&gt; 10extends AbstractList&lt;E&gt; 11implements List&lt;E&gt;, RandomAccess, Cloneable, Serializable 下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
+1List&lt;Integer&gt; list1 = new ArrayList&lt;&gt;(); //generally preferred 2ArrayList&lt;Integer&gt; list2 = ArrayList&lt;&gt;(); // type-cast  initialize as List&lt;E&gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList. initialize as ArrayList&lt;E&gt; 可以访问使用所有的ArrayList class method, such as such as ArrayList#ensureCapacity or ArrayList#trimToSize. 通常情况下，尽量使用方法1 List 来初始化 arrayList.  1List&lt;String&gt; list = new ArrayList&lt;&gt;();// 初始化可变数组 2list."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>ArrayList</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 20, 2021</span></div>
+				<h1>ArrayList</h1>
+			</header>
+			<div class="content">
+				<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
+<span class="ln"> 2</span><span class="n">Package</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span>
+<span class="ln"> 3</span>  
+<span class="ln"> 4</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<span class="ln"> 5</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AbstractCollection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 6</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AbstractList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 7</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">ArrayList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 8</span>  
+<span class="ln"> 9</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln">10</span><span class="kd">extends</span> <span class="n">AbstractList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln">11</span><span class="kd">implements</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;,</span> <span class="n">RandomAccess</span><span class="o">,</span> <span class="n">Cloneable</span><span class="o">,</span> <span class="n">Serializable</span>
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/20190227211326757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhcnRvb25f,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://java2blog.com/wp-content/webpc-passthru.php?src=https://java2blog.com/wp-content/uploads/2016/05/ArrayList.jpg&amp;nocache=1" alt="img"></p>
+<p>下面两种ArrayList初始化方式都是正确的，List is an <strong><code>interface</code></strong> and ArrayList is a <strong><code>class</code></strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span> <span class="c1">//generally preferred
+</span><span class="ln">2</span><span class="c1"></span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span> <span class="c1">// type-cast
+</span></code></pre></div><ul>
+<li>initialize as <strong><code>List&lt;E&gt;</code></strong> 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList.</li>
+<li>initialize as <strong><code>ArrayList&lt;E&gt;</code></strong> 可以访问使用所有的ArrayList class method, such as such as <em><code>ArrayList#ensureCapacity</code></em> or <em><code>ArrayList#trimToSize</code></em>.</li>
+<li>通常情况下，尽量使用方法1 <strong>List<!-- raw HTML omitted --></strong> 来初始化 arrayList.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span><span class="c1">// 初始化可变数组
+</span><span class="ln">2</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;one&#34;</span><span class="o">);</span> <span class="c1">// list[&#34;one&#34;]
+</span><span class="ln">3</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;two&#34;</span><span class="o">);</span> <span class="c1">// list[&#34;one&#34;,&#34;two&#34;]
+</span><span class="ln">4</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">0</span><span class="o">);</span> <span class="c1">//list[&#34;two&#34;]
+</span><span class="ln">5</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">4</span><span class="o">);</span> <span class="c1">//list[&#34;two&#34;,4]
+</span><span class="ln">6</span><span class="c1"></span><span class="kt">boolean</span> <span class="n">a</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">//true
+</span></code></pre></div><p>ArrayList的 <strong>toArray</strong> 方法返回一个数组, ArrayList的 <strong>asList</strong> 方法返回一个列表.</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>94 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-20 10:52 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/linkedlist/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>LinkedList</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/i&#43;&#43;/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>i&#43;&#43; vs &#43;&#43;i</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/arraylist/" class="leancloud_visitors" data-flag-title="ArrayList">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

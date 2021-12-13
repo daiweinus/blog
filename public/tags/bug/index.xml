@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bug on Hello, Friends!</title>
+    <title>Bug on Hello, Friends!</title>
     <link>https://daiwei.dev/tags/bug/</link>
-    <description>Recent content in bug on Hello, Friends!</description>
+    <description>Recent content in Bug on Hello, Friends!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 15 Nov 2021 12:02:42 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/bug/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>fatal: Authentication failed for &#39;https://github.com/yourusername/githubtest.git/&#39; </title>
-      <link>https://daiwei.dev/posts/git_authentication/</link>
+      <link>https://daiwei.dev/posts/git/git_authentication/</link>
       <pubDate>Mon, 15 Nov 2021 12:02:42 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/git_authentication/</guid>
+      <guid>https://daiwei.dev/posts/git/git_authentication/</guid>
       <description>fatal: Authentication failed for &amp;lsquo;https:/githubtest.git/&amp;rsquo; 这是因为github开启了Two Factor Authentication (2FA）验证，所以当你使用这些 git clone, git fetch, git pull or git push命令的时候就会需要输入你的 PAT (Personal Access Token).
 在github settings 打开 Developer settings, 创建PAT, 创建完成后copy 你的PAT 再 使用之前的 git push 命令就可以输入用户名和你的PAT了（注意输入PAT,不是你的github密码）. 请参考 GitHub　Creating a personal access token.
 1$ git clone https://github.com/username/repo.git 2Username: your_username 3Password: your_token </description>
@@ -21,10 +21,10 @@
     
     <item>
       <title>env: node: No such file or directory macOS 解决方法</title>
-      <link>https://daiwei.dev/posts/node_error/</link>
+      <link>https://daiwei.dev/posts/data-structure/node_error/</link>
       <pubDate>Wed, 10 Nov 2021 12:37:00 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/node_error/</guid>
+      <guid>https://daiwei.dev/posts/data-structure/node_error/</guid>
       <description>使用nmp命令时报错
 1env: noder: No such file or directory 网上冲浪得到的解决方案
  uninstall and reinstall Node.js execute this command to create a link for node : sudo ln -s /usr/bin/nodejs /usr/local/bin/node  我用的方案1 重装 node.js 有效， 方案2 会报错。

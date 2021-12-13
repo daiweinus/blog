@@ -6,21 +6,550 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 24 Nov 2021 17:04:49 +0800</lastBuildDate>
+		<lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate>
 		<atom:link href="https://daiwei.dev/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Lombok</title>
+			<link>https://daiwei.dev/posts/spring/lombok/</link>
+			<pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/spring/lombok/</guid>
+			<description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
+1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
+1// 2// Source code recreated from a .</description>
+			<content type="html"><![CDATA[<p>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&hellip;.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112081144164.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">com.example.bootlunch.model</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">lombok.AllArgsConstructor</span><span class="o">;</span>
+<span class="ln"> 4</span><span class="kn">import</span> <span class="nn">lombok.Builder</span><span class="o">;</span>
+<span class="ln"> 5</span><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+<span class="ln"> 6</span><span class="kn">import</span> <span class="nn">lombok.NoArgsConstructor</span><span class="o">;</span>
+<span class="ln"> 7</span><span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="nd">@Data</span> <span class="c1">// generate set, get method
+</span><span class="ln">10</span><span class="c1"></span><span class="nd">@Slf4j</span> <span class="c1">// generate project logger
+</span><span class="ln">11</span><span class="c1"></span><span class="nd">@Builder</span> <span class="c1">// create object
+</span><span class="ln">12</span><span class="c1"></span><span class="nd">@AllArgsConstructor</span> <span class="c1">// generate all args constructor
+</span><span class="ln">13</span><span class="c1"></span><span class="nd">@NoArgsConstructor</span> <span class="c1">// generate no args constructor
+</span><span class="ln">14</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LombokPOJO</span> <span class="o">{</span>
+<span class="ln">15</span>
+<span class="ln">16</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln">17</span>
+<span class="ln">18</span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln">19</span><span class="o">}</span>
+</code></pre></div><p>complied bytecode 编译后的字节码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">  1</span><span class="c1">//
+</span><span class="ln">  2</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="ln">  3</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="ln">  4</span><span class="c1">//
+</span><span class="ln">  5</span><span class="c1"></span>
+<span class="ln">  6</span><span class="kn">package</span> <span class="nn">com.example.bootlunch.model</span><span class="o">;</span>
+<span class="ln">  7</span>
+<span class="ln">  8</span><span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="ln">  9</span><span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="ln"> 10</span>
+<span class="ln"> 11</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LombokPOJO</span> <span class="o">{</span>
+<span class="ln"> 12</span>  <span class="c1">// generate project logger
+</span><span class="ln"> 13</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LombokPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="ln"> 14</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln"> 15</span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln"> 16</span>
+<span class="ln"> 17</span>  <span class="c1">// create object
+</span><span class="ln"> 18</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">bootlunch</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">LombokPOJO</span><span class="o">.</span><span class="na">LombokPOJOBuilder</span> <span class="nf">builder</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 19</span>        <span class="k">return</span> <span class="k">new</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">bootlunch</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">LombokPOJO</span><span class="o">.</span><span class="na">LombokPOJOBuilder</span><span class="o">();</span>
+<span class="ln"> 20</span>    <span class="o">}</span>
+<span class="ln"> 21</span>
+<span class="ln"> 22</span>  <span class="c1">// generate set, get method
+</span><span class="ln"> 23</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 24</span>        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+<span class="ln"> 25</span>    <span class="o">}</span>
+<span class="ln"> 26</span>
+<span class="ln"> 27</span>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 28</span>        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+<span class="ln"> 29</span>    <span class="o">}</span>
+<span class="ln"> 30</span>
+<span class="ln"> 31</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 32</span>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln"> 33</span>    <span class="o">}</span>
+<span class="ln"> 34</span>
+<span class="ln"> 35</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 36</span>        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln"> 37</span>    <span class="o">}</span>
+<span class="ln"> 38</span>
+<span class="ln"> 39</span>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="kd">final</span> <span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 40</span>        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 41</span>            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln"> 42</span>        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">LombokPOJO</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln"> 43</span>            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 44</span>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<span class="ln"> 45</span>            <span class="n">LombokPOJO</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">LombokPOJO</span><span class="o">)</span><span class="n">o</span><span class="o">;</span>
+<span class="ln"> 46</span>            <span class="k">if</span> <span class="o">(!</span><span class="n">other</span><span class="o">.</span><span class="na">canEqual</span><span class="o">(</span><span class="k">this</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln"> 47</span>                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 48</span>            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<span class="ln"> 49</span>                <span class="n">Object</span> <span class="k">this</span><span class="n">$age</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+<span class="ln"> 50</span>                <span class="n">Object</span> <span class="n">other$age</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+<span class="ln"> 51</span>                <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="n">$age</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 52</span>                    <span class="k">if</span> <span class="o">(</span><span class="n">other$age</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 53</span>                        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 54</span>                    <span class="o">}</span>
+<span class="ln"> 55</span>                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(!</span><span class="k">this</span><span class="n">$age</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">other$age</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln"> 56</span>                    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 57</span>                <span class="o">}</span>
+<span class="ln"> 58</span>
+<span class="ln"> 59</span>                <span class="n">Object</span> <span class="k">this</span><span class="n">$name</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="ln"> 60</span>                <span class="n">Object</span> <span class="n">other$name</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="ln"> 61</span>                <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="n">$name</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 62</span>                    <span class="k">if</span> <span class="o">(</span><span class="n">other$name</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 63</span>                        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 64</span>                    <span class="o">}</span>
+<span class="ln"> 65</span>                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(!</span><span class="k">this</span><span class="n">$name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">other$name</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln"> 66</span>                    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln"> 67</span>                <span class="o">}</span>
+<span class="ln"> 68</span>
+<span class="ln"> 69</span>                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln"> 70</span>            <span class="o">}</span>
+<span class="ln"> 71</span>        <span class="o">}</span>
+<span class="ln"> 72</span>    <span class="o">}</span>
+<span class="ln"> 73</span>
+<span class="ln"> 74</span>    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">canEqual</span><span class="o">(</span><span class="kd">final</span> <span class="n">Object</span> <span class="n">other</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 75</span>        <span class="k">return</span> <span class="n">other</span> <span class="k">instanceof</span> <span class="n">LombokPOJO</span><span class="o">;</span>
+<span class="ln"> 76</span>    <span class="o">}</span>
+<span class="ln"> 77</span>
+<span class="ln"> 78</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 79</span>        <span class="kt">int</span> <span class="n">PRIME</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln"> 80</span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln"> 81</span>        <span class="n">Object</span> <span class="n">$age</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+<span class="ln"> 82</span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">59</span> <span class="o">+</span> <span class="o">(</span><span class="n">$age</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">43</span> <span class="o">:</span> <span class="n">$age</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+<span class="ln"> 83</span>        <span class="n">Object</span> <span class="n">$name</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="ln"> 84</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">59</span> <span class="o">+</span> <span class="o">(</span><span class="n">$name</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">43</span> <span class="o">:</span> <span class="n">$name</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+<span class="ln"> 85</span>        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="ln"> 86</span>    <span class="o">}</span>
+<span class="ln"> 87</span>
+<span class="ln"> 88</span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 89</span>        <span class="n">String</span> <span class="n">var10000</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="ln"> 90</span>        <span class="k">return</span> <span class="s">&#34;LombokPOJO(name=&#34;</span> <span class="o">+</span> <span class="n">var10000</span> <span class="o">+</span> <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;)&#34;</span><span class="o">;</span>
+<span class="ln"> 91</span>    <span class="o">}</span>
+<span class="ln"> 92</span>
+<span class="ln"> 93</span>  <span class="c1">// generate all args constructor
+</span><span class="ln"> 94</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">LombokPOJO</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 95</span>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln"> 96</span>        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln"> 97</span>    <span class="o">}</span>
+<span class="ln"> 98</span>
+<span class="ln"> 99</span>  <span class="c1">// generate no args constructor
+</span><span class="ln">100</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">LombokPOJO</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">101</span>    <span class="o">}</span>
+<span class="ln">102</span><span class="o">}</span>
+</code></pre></div><p>使用Lombok可以提升开发效率，节省编写固定模式代码时间，同时使源代码更加简洁可读。</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>SpringBoot Hello world</title>
+			<link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
+			<pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
+			<description>  使用Spring Initializr 新建spring boot project
+  在application.properties文件新建服务器端口
+  新建HelloController class
+  执行BootLunchApplication main class
+  </description>
+			<content type="html"><![CDATA[<ol>
+<li>
+<p>使用Spring Initializr 新建spring boot project</p>
+<p><img src="https://github.com/daiweinus/blog_pictures/blob/master/springboot_helloworld1.png?raw=true" alt="springboot_helloworld1.png"></p>
+</li>
+<li>
+<p>在application.properties文件新建服务器端口</p>
+<p><img src="https://github.com/daiweinus/blog_pictures/blob/master/springboot_helloworld2.png?raw=true" alt="springboot_helloworld2.png"></p>
+</li>
+<li>
+<p>新建HelloController class</p>
+<p><img src="https://github.com/daiweinus/blog_pictures/blob/master/Screenshot%202021-12-07%20at%2018.44.45.png?raw=true" alt="Screenshot 2021-12-07 at 18.44.45.png"></p>
+</li>
+<li>
+<p>执行BootLunchApplication main class</p>
+<p><img src="https://github.com/daiweinus/blog_pictures/blob/master/Screenshot%202021-12-07%20at%2018.47.32.png?raw=true" alt="Screenshot 2021-12-07 at 18.47.32.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112071909939.png" alt=""></p>
+<p><img src="https://github.com/daiweinus/blog_pictures/blob/master/Screenshot%202021-12-07%20at%2018.47.49.png?raw=true" alt="Screenshot 2021-12-07 at 18.47.49.png"></p>
+</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Spring_intro</title>
+			<link>https://daiwei.dev/posts/spring/spring_intro/</link>
+			<pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
+			<description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
+MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
+ Model 负责存储系统的中心数据;
+View 负责存储系统的中心数据;
+Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。
+ 表示层框架：struts1，struts2，springMVC
+业务层框架，设计型框架：spring
+持久层框架：hibernate(全自动), mybatis(半自动)
+建议优先学习 Springboot 。
+Spring Boot   Spring Boot 简介
+ 简化Spring应用开发的框架。
+整个Spring技术栈的大整合。
+J2EE开发的一站式解决方案。
+   微服务
+2014， Martin Fowler
+微服务：架构风格（服务微化）
+一个应用应该是一组小型服务，可以通过http方式互通；
+每一个功能元素最终都是一个可独立替换可升级的软件单元；
+microservices guide
+  Spring Boot主要特性
+ 遵循“约定优于配置”的原则，简化配置 可以完全脱离XML配置文件,采用注解配置和java Config 内嵌Servlet容器，应用可用jar包执行：java -jar 快速完成项目搭建、整合第三方类库，方便易用 提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置 与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案    Spring Boot集成第三方类库的步骤</description>
+			<content type="html"><![CDATA[<h3 id="什么是框架-framework">什么是框架 <strong>framework</strong>？</h3>
+<p>具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。</p>
+<p>MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
+<blockquote>
+<p>Model 负责存储系统的中心数据;</p>
+<p>View 负责存储系统的中心数据;</p>
+<p>Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。</p>
+</blockquote>
+<p>表示层框架：struts1，struts2，springMVC</p>
+<p>业务层框架，设计型框架：spring</p>
+<p>持久层框架：hibernate(全自动), mybatis(半自动)</p>
+<p>建议优先学习 Springboot 。</p>
+<h3 id="spring-boot">Spring Boot</h3>
+<ol>
+<li>
+<p>Spring Boot 简介</p>
+<blockquote>
+<p>简化Spring应用开发的框架。</p>
+<p>整个Spring技术栈的大整合。</p>
+<p>J2EE开发的一站式解决方案。</p>
+</blockquote>
+</li>
+<li>
+<p>微服务</p>
+<p>2014， Martin Fowler</p>
+<p>微服务：架构风格（服务微化）</p>
+<p>一个应用应该是一组小型服务，可以通过http方式互通；</p>
+<p>每一个功能元素最终都是一个可独立替换可升级的软件单元；</p>
+<p><a href="https://martinfowler.com/microservices/">microservices guide</a></p>
+</li>
+<li>
+<p>Spring Boot主要特性</p>
+<ul>
+<li>遵循“约定优于配置”的原则，简化配置</li>
+<li>可以完全脱离XML配置文件,采用注解配置和java Config</li>
+<li>内嵌Servlet容器，应用可用jar包执行：java -jar</li>
+<li>快速完成项目搭建、整合第三方类库，方便易用</li>
+<li>提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置</li>
+<li>与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案</li>
+</ul>
+</li>
+<li>
+<p>Spring Boot集成第三方类库的步骤</p>
+<ol>
+<li>通过maven引入springboot-XXXX-starter</li>
+<li>修改ymal或properties全局统一配置文件</li>
+<li>加入一个Java Config。这个属于个性化配置，如果使用通用配置，这一步不需要。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Go Pointer</title>
+			<link>https://daiwei.dev/posts/go/go_pointer/</link>
+			<pubDate>Mon, 29 Nov 2021 17:59:37 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/go/go_pointer/</guid>
+			<description>Go is a pass-by-value language.   addresses
+ An address is where a value is stored, To find an address of a variable, use the &amp;amp; operator before a variable.  1x := &amp;#34;My very first address&amp;#34; 2fmt.Println(&amp;amp;x) // Prints address 0x414020   pointers
+ A pointer is specific to what type of address it can store. The * operator can be used to assign a pointer the type of the value its address holds.</description>
+			<content type="html"><![CDATA[<h3 id="go-is-a-pass-by-value-language">Go is a pass-by-value language.</h3>
+<ul>
+<li>
+<p><strong>addresses</strong></p>
+<ul>
+<li>An address is where a value is stored, To find an address of a variable, use the <code>&amp;</code> operator before a variable.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">x</span> <span class="o">:=</span> <span class="s">&#34;My very first address&#34;</span>
+<span class="ln">2</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// Prints address 0x414020
+</span></code></pre></div></li>
+<li>
+<p><strong>pointers</strong></p>
+<ul>
+<li>A pointer is specific to what type of address it can store.</li>
+<li>The <code>*</code> operator can be used to assign a pointer the type of the value its address holds.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">pointerForInt</span> <span class="o">*</span><span class="kt">int</span>
+</code></pre></div></li>
+<li>
+<p><strong>dereferencing</strong></p>
+<ul>
+<li>The <code>*</code> operator can also be used to dereference a pointer and assign a new value.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">lyrics</span> <span class="o">:=</span> <span class="s">&#34;Moments so dear&#34;</span> 
+<span class="ln">2</span><span class="nx">pointerForStr</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">lyrics</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="o">*</span><span class="nx">pointerForStr</span> <span class="p">=</span> <span class="s">&#34;Journeys to plan&#34;</span> 
+<span class="ln">5</span>
+<span class="ln">6</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">lyrics</span><span class="p">)</span> <span class="c1">// Prints: Journeys to plan
+</span></code></pre></div></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kd">func</span> <span class="nf">addHundred1</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>  <span class="nx">num</span> <span class="o">+=</span> <span class="mi">100</span>
+<span class="ln"> 3</span><span class="p">}</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="kd">func</span> <span class="nf">addHundred12</span> <span class="p">(</span><span class="nx">numPtr</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 6</span>  <span class="o">*</span><span class="nx">numPtr</span> <span class="o">+=</span> <span class="mi">100</span>
+<span class="ln"> 7</span><span class="p">}</span>
+<span class="ln"> 8</span> 
+<span class="ln"> 9</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">10</span>  <span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span>
+<span class="ln">11</span>  <span class="nf">addHundred1</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="ln">12</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// Prints 1
+</span><span class="ln">13</span><span class="c1"></span>  
+<span class="ln">14</span>  <span class="nf">addHundred2</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">)</span> <span class="c1">//&amp;x
+</span><span class="ln">15</span><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// Prints 101
+</span><span class="ln">16</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Go Helloworld</title>
+			<link>https://daiwei.dev/posts/go/go_helloworld/</link>
+			<pubDate>Mon, 29 Nov 2021 17:54:17 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/go/go_helloworld/</guid>
+			<description>Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.Println(&amp;#34;Hello World&amp;#34;) 7} 运行程序：
+1$ go build main.go 2$ ls 3main main.go 4$ ./main 5Hello World Go 命令： 1// command line via a generic command: 2$ go &amp;lt;command&amp;gt; [arguments] 3// such as: 4$ go doc fmt.println 1// Running Files in Go 2$ go run exampleFile.go 3// Compile Go 4$ go build test.go 5// To run test, type in the command line: 6$ .</description>
+			<content type="html"><![CDATA[<h3 id="hello-world-code-in-go">Hello World code in Go:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>package main
+<span class="ln">2</span>
+<span class="ln">3</span>import <span class="s2">&#34;fmt&#34;</span>
+<span class="ln">4</span>
+<span class="ln">5</span>func main<span class="o">()</span> <span class="o">{</span>
+<span class="ln">6</span>  fmt.Println<span class="o">(</span><span class="s2">&#34;Hello World&#34;</span><span class="o">)</span>
+<span class="ln">7</span><span class="o">}</span>
+</code></pre></div><p>运行程序：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>$ go build main.go
+<span class="ln">2</span>$ ls
+<span class="ln">3</span>main  main.go
+<span class="ln">4</span>$ ./main
+<span class="ln">5</span>Hello World
+</code></pre></div><h3 id="go-命令">Go 命令：</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>// <span class="nb">command</span> line via a generic command:
+<span class="ln">2</span>$ go &lt;command&gt; <span class="o">[</span>arguments<span class="o">]</span>
+<span class="ln">3</span>// such as:
+<span class="ln">4</span>$ go doc fmt.println
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>// Running Files in Go
+<span class="ln">2</span>$ go run exampleFile.go
+<span class="ln">3</span>// Compile Go
+<span class="ln">4</span>$ go build test.go
+<span class="ln">5</span>// To run test, <span class="nb">type</span> in the <span class="nb">command</span> line:
+<span class="ln">6</span>$ ./test
+</code></pre></div><h3 id="go-value">Go Value:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="c1">// literal unnamed value
+</span><span class="ln">2</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;PI = &#34;</span><span class="p">,</span> <span class="mf">3.14159</span><span class="p">)</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c1">// constant named value
+</span><span class="ln">5</span><span class="c1"></span><span class="kd">const</span> <span class="nx">pi</span> <span class="p">=</span> <span class="mf">3.14159</span>
+<span class="ln">6</span>
+<span class="ln">7</span><span class="c1">// variable named value
+</span><span class="ln">8</span><span class="c1"></span><span class="kd">var</span> <span class="nx">radius</span> <span class="p">=</span> <span class="mi">6</span>
+</code></pre></div><h3 id="go-default-values">Go Default Values</h3>
+<p>当一个变量variable没有被赋值时，这个变量会有一个默认值。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">Type</span>    <span class="nx">Zero</span> <span class="nx">Value</span>
+<span class="ln">2</span><span class="nx">ints</span>     <span class="mi">0</span>
+<span class="ln">3</span><span class="nx">floats</span>   <span class="mi">0</span>
+<span class="ln">4</span><span class="kt">string</span>   <span class="s">&#34;&#34;</span> <span class="p">(</span><span class="nx">empty</span> <span class="kt">string</span><span class="p">)</span>
+<span class="ln">5</span><span class="nx">boolean</span>  <span class="kc">false</span>
+</code></pre></div><h3 id="go-data-types">Go Data Types</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kt">string</span>
+<span class="ln">2</span><span class="kt">bool</span>
+<span class="ln">3</span><span class="nx">numeric</span> <span class="nx">types</span><span class="p">:</span>
+<span class="ln">4</span><span class="kt">int8</span><span class="p">,</span> <span class="kt">uint8</span><span class="p">,</span> <span class="kt">int16</span><span class="p">,</span> <span class="kt">uint16</span><span class="p">,</span> <span class="kt">int32</span> <span class="p">,</span> <span class="kt">uint32</span><span class="p">,</span> <span class="kt">int64</span><span class="p">,</span> <span class="kt">uint64</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">uint</span><span class="p">,</span> <span class="kt">uintptr</span>
+<span class="ln">5</span><span class="kt">float32</span><span class="p">,</span> <span class="kt">float64</span>
+<span class="ln">6</span><span class="kt">complex64</span><span class="p">,</span> <span class="kt">complex128</span>
+</code></pre></div><h3 id="go-variable">Go Variable</h3>
+<ul>
+<li>
+<p>use the  <strong><code>var</code></strong>  keyword followed by a name and its data type. This variable can be assigned later in the program. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="kt">string</span>
+<span class="ln">2</span><span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>use the   <strong><code>var</code></strong> keyword followed by a name, data type, <strong><code>=</code></strong> and value.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>use the   <strong><code>var</code></strong>  keyword, followed by a name, <strong><code>=</code></strong> and value. Ignore the data type and let the compiler infer its type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">fruit</span> <span class="p">=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+<li>
+<p>skip the  <strong><code>var</code></strong> keyword, define a name followed by <strong><code>:=</code></strong> and value and let the compiler infer its type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">fruit</span> <span class="o">:=</span> <span class="s">&#34;apple&#34;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="go-errors">Go Errors</h3>
+<p>The error message is printed to the terminal and contains the following information:</p>
+<ul>
+<li>The filename</li>
+<li>The line that raises the error</li>
+<li>The number of characters from the left side that raises the error</li>
+<li>The type of error and reason for raising the error</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="p">.</span><span class="o">/</span><span class="nx">Main</span><span class="p">.</span><span class="k">go</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span> <span class="nx">undefined</span><span class="p">:</span> <span class="nx">dinner</span>
+</code></pre></div><p>This particular error occurs in the file <strong>main.go</strong> at line <strong><code>11</code></strong>, <strong><code>3</code></strong> characters into the line, and its error type and reason is <strong><code>&quot;undefined: dinner&quot;</code></strong>.</p>
+<h3 id="go-fmt-print-and-println">Go Fmt .Print() and .Println()</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">,</span> <span class="s">&#34;am&#34;</span><span class="p">,</span> <span class="s">&#34;cool&#34;</span><span class="p">)</span>
+<span class="ln">2</span><span class="c1">// Iamcool 没有空格 without any spacing
+</span><span class="ln">3</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">,</span> <span class="s">&#34;am&#34;</span><span class="p">,</span> <span class="s">&#34;cool&#34;</span><span class="p">)</span>
+<span class="ln">4</span><span class="c1">// I am cool 
+</span></code></pre></div><h3 id="go-fmt-printf-function">Go Fmt .Printf() Function</h3>
+<ul>
+<li><code>%v</code> represents the named value in its default format;</li>
+<li><code>%d</code> expects the named value to be an integer type;</li>
+<li><code>%f</code> expects the named value to be a float type;</li>
+<li><code>%T</code> represents the type for the named value.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="nx">name</span> <span class="o">:=</span> <span class="s">&#34;Leslie&#34;</span>
+<span class="ln"> 2</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;My name is %v&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="ln"> 3</span><span class="c1">// My name is Leslie
+</span><span class="ln"> 4</span><span class="c1"></span>
+<span class="ln"> 5</span><span class="nx">age</span> <span class="o">:=</span> <span class="mi">34</span>
+<span class="ln"> 6</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;I am %d years old&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+<span class="ln"> 7</span><span class="c1">// I am 34 years old
+</span><span class="ln"> 8</span><span class="c1"></span>
+<span class="ln"> 9</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v is of type %T&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="ln">10</span><span class="c1">// Leslie is of type string
+</span></code></pre></div><h3 id="go-fmt-scan-function">Go Fmt .Scan() Function</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kn">package</span> <span class="nx">main</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln"> 5</span>  <span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span>
+<span class="ln"> 6</span>  <span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span>
+<span class="ln"> 7</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;What&#39;s your name and age?&#34;</span><span class="p">)</span>
+<span class="ln"> 8</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">age</span><span class="p">)</span>
+<span class="ln"> 9</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;You entered %v and %d.\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+<span class="ln">10</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>$ What<span class="err">&#39;</span>s your name and age?
+<span class="ln">2</span>$ Marcia <span class="m">32</span>
+<span class="ln">3</span>$ You entered Marcia and 32.
+</code></pre></div><h3 id="go-short-variable-declaration">Go Short Variable Declaration</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="k">if</span> <span class="nx">age</span> <span class="o">:=</span> <span class="mi">55</span><span class="p">;</span> <span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">55</span> <span class="p">{</span>
+<span class="ln">2</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;You are retiring!&#34;</span><span class="p">)</span>
+<span class="ln">3</span><span class="p">}</span>
+<span class="ln">4</span><span class="k">switch</span> <span class="nx">season</span> <span class="o">:=</span> <span class="s">&#34;spring&#34;</span><span class="p">;</span> <span class="nx">season</span> <span class="p">{</span>
+<span class="ln">5</span>  <span class="k">case</span> <span class="s">&#34;spring&#34;</span><span class="p">:</span>
+<span class="ln">6</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Plant some bulbs.&#34;</span><span class="p">)</span>
+<span class="ln">7</span>  <span class="k">case</span> <span class="s">&#34;summer&#34;</span><span class="p">:</span>
+<span class="ln">8</span>    <span class="o">...</span>
+<span class="ln">9</span><span class="p">}</span>
+</code></pre></div><h3 id="go-switch-statement">Go Switch Statement</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="nx">day</span> <span class="o">:=</span> <span class="s">&#34;Tuesday&#34;</span>
+<span class="ln"> 2</span><span class="k">switch</span> <span class="nx">day</span> <span class="p">{</span>
+<span class="ln"> 3</span>  <span class="k">case</span> <span class="s">&#34;Monday&#34;</span><span class="p">:</span>
+<span class="ln"> 4</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Monday is magnificent.&#34;</span><span class="p">)</span>
+<span class="ln"> 5</span>  <span class="k">case</span> <span class="s">&#34;Tuesday&#34;</span><span class="p">:</span>
+<span class="ln"> 6</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Tuesday is terrific.&#34;</span><span class="p">)</span>
+<span class="ln"> 7</span>  <span class="k">case</span> <span class="s">&#34;Wednesday&#34;</span><span class="p">:</span>
+<span class="ln"> 8</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Wednesday is wacky.&#34;</span><span class="p">)</span>
+<span class="ln"> 9</span>  <span class="k">default</span><span class="p">:</span>
+<span class="ln">10</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;We survived.&#34;</span><span class="p">)</span>
+<span class="ln">11</span><span class="p">}</span>
+</code></pre></div><h3 id="go-random-number-generator">Go Random Number Generator</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="nx">number</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div><h3 id="go-pointer-dereferencing">Go Pointer Dereferencing</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln">1</span><span class="kd">var</span> <span class="nx">pointerToInt</span> <span class="o">*</span><span class="kt">int</span> 
+<span class="ln">2</span><span class="c1">// a pointer to a variable of type int
+</span><span class="ln">3</span><span class="c1"></span>
+<span class="ln">4</span><span class="nx">y</span> <span class="o">:=</span> <span class="mi">3</span>
+<span class="ln">5</span><span class="kd">var</span> <span class="nx">x</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">y</span> <span class="c1">// pointer variable x assigned the address of variable y
+</span><span class="ln">6</span><span class="c1"></span><span class="o">*</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">5</span> <span class="c1">// dereference x by typing *x
+</span><span class="ln">7</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// y is now 5
+</span></code></pre></div><h3 id="multiple-return-values">Multiple Return Values</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kn">package</span> <span class="nx">main</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="kd">func</span> <span class="nf">GPA</span><span class="p">(</span><span class="nx">midtermGrade</span> <span class="kt">float32</span><span class="p">,</span> <span class="nx">finalGrade</span> <span class="kt">float32</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">float32</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 5</span>  <span class="nx">averageGrade</span> <span class="o">:=</span> <span class="p">(</span><span class="nx">midtermGrade</span> <span class="o">+</span> <span class="nx">finalGrade</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="ln"> 6</span>  <span class="kd">var</span> <span class="nx">gradeLetter</span> <span class="kt">string</span>
+<span class="ln"> 7</span>  <span class="k">if</span> <span class="nx">averageGrade</span> <span class="p">&gt;</span> <span class="mi">90</span> <span class="p">{</span>
+<span class="ln"> 8</span>    <span class="nx">gradeLetter</span> <span class="p">=</span> <span class="s">&#34;A&#34;</span>
+<span class="ln"> 9</span>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">averageGrade</span> <span class="p">&gt;</span> <span class="mi">80</span> <span class="p">{</span>
+<span class="ln">10</span>    <span class="nx">gradeLetter</span> <span class="p">=</span> <span class="s">&#34;B&#34;</span>
+<span class="ln">11</span>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">averageGrade</span> <span class="p">&gt;</span> <span class="mi">70</span> <span class="p">{</span>
+<span class="ln">12</span>    <span class="nx">gradeLetter</span> <span class="p">=</span> <span class="s">&#34;C&#34;</span>
+<span class="ln">13</span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="ln">14</span>    <span class="nx">gradeLetter</span> <span class="p">=</span> <span class="s">&#34;F&#34;</span>
+<span class="ln">15</span>  <span class="p">}</span>
+<span class="ln">16</span> 
+<span class="ln">17</span>  <span class="k">return</span> <span class="nx">gradeLetter</span><span class="p">,</span> <span class="nx">averageGrade</span> 
+<span class="ln">18</span><span class="p">}</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">21</span>  <span class="kd">var</span> <span class="nx">myMidterm</span><span class="p">,</span> <span class="nx">myFinal</span> <span class="kt">float32</span>
+<span class="ln">22</span>  <span class="nx">myMidterm</span> <span class="p">=</span> <span class="mf">89.4</span>
+<span class="ln">23</span>  <span class="nx">myFinal</span> <span class="p">=</span> <span class="mf">74.9</span>
+<span class="ln">24</span>  <span class="kd">var</span> <span class="nx">myAverage</span> <span class="kt">float32</span>
+<span class="ln">25</span>  <span class="kd">var</span> <span class="nx">myGrade</span> <span class="kt">string</span>
+<span class="ln">26</span>  <span class="nx">myGrade</span><span class="p">,</span> <span class="nx">myAverage</span> <span class="p">=</span> <span class="nf">GPA</span><span class="p">(</span><span class="nx">myMidterm</span><span class="p">,</span> <span class="nx">myFinal</span><span class="p">)</span>
+<span class="ln">27</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">myAverage</span><span class="p">,</span> <span class="nx">myGrade</span><span class="p">)</span> <span class="c1">// Prints 82.12 B
+</span><span class="ln">28</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h3 id="defer-关键字告诉程序在function结尾执行defer-call的程序">defer 关键字，告诉程序在function结尾执行defer call的程序</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kn">package</span> <span class="nx">main</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="kd">func</span> <span class="nf">queryDatabase</span><span class="p">(</span><span class="nx">query</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="ln"> 5</span>  <span class="kd">var</span> <span class="nx">result</span> <span class="kt">string</span>
+<span class="ln"> 6</span>  <span class="nf">connectDatabase</span><span class="p">()</span>
+<span class="ln"> 7</span>  <span class="c1">// defer keyword tells Go to run a function at the end of the current function.
+</span><span class="ln"> 8</span><span class="c1"></span>  <span class="k">defer</span> <span class="nf">disconnectDatabase</span><span class="p">()</span>
+<span class="ln"> 9</span>  
+<span class="ln">10</span>  <span class="k">if</span> <span class="nx">query</span> <span class="o">==</span> <span class="s">&#34;SELECT * FROM coolTable;&#34;</span> <span class="p">{</span>
+<span class="ln">11</span>    <span class="nx">result</span> <span class="p">=</span> <span class="s">&#34;NAME|DOB\nVincent Van Gogh|March 30, 1853&#34;</span>
+<span class="ln">12</span>  <span class="p">}</span>  
+<span class="ln">13</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="ln">14</span>  <span class="k">return</span> <span class="nx">result</span>
+<span class="ln">15</span><span class="p">}</span>
+<span class="ln">16</span>
+<span class="ln">17</span><span class="kd">func</span> <span class="nf">connectDatabase</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">18</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Connecting to the database.&#34;</span><span class="p">)</span>
+<span class="ln">19</span><span class="p">}</span>
+<span class="ln">20</span>
+<span class="ln">21</span><span class="kd">func</span> <span class="nf">disconnectDatabase</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">22</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Disconnecting from the database.&#34;</span><span class="p">)</span>
+<span class="ln">23</span><span class="p">}</span>
+<span class="ln">24</span>
+<span class="ln">25</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">26</span>  <span class="nf">queryDatabase</span><span class="p">(</span><span class="s">&#34;SELECT * FROM coolTable;&#34;</span><span class="p">)</span>
+<span class="ln">27</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>Connecting to the database.
+<span class="ln">2</span>NAME<span class="p">|</span>DOB
+<span class="ln">3</span>Vincent Van Gogh<span class="p">|</span>March 30, <span class="m">1853</span>
+<span class="ln">4</span>Disconnecting from the database.
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>Go Introduction</title>
-			<link>https://daiwei.dev/posts/go_introduction/</link>
+			<link>https://daiwei.dev/posts/go/go_introduction/</link>
 			<pubDate>Wed, 24 Nov 2021 17:04:49 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/go_introduction/</guid>
+			<guid>https://daiwei.dev/posts/go/go_introduction/</guid>
 			<description>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。
 Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。
 Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。
 Go语言特性：
  清除依赖 清晰的语法 清晰的语义 组合优于继承 编程模型提供的简单性（垃圾收集、并发） 简易工具（go工具, gofmt, godoc, gofix）  Go vs C 这些包括：
- 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  **Go vs Java **其中包括对以下方面的语言支持：
+ 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  Go vs Java 其中包括对以下方面的语言支持：
  并发 垃圾收集 接口类型 反射 类型开关  Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.</description>
 			<content type="html"><![CDATA[<p>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。</p>
 <p><strong>Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。</strong></p>
@@ -45,7 +574,7 @@ Go语言特性：
 <li>获取堆栈变量的地址是合法的（甚至鼓励）</li>
 <li>还有很多</li>
 </ul>
-<p>**Go vs  Java **其中包括对以下方面的语言支持：</p>
+<p><strong>Go vs  Java</strong> 其中包括对以下方面的语言支持：</p>
 <ul>
 <li>并发</li>
 <li>垃圾收集</li>
@@ -200,20 +729,31 @@ Go语言特性：
 <span class="ln">5</span><span class="kd">var</span> <span class="nx">x</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">y</span> <span class="c1">// pointer variable x assigned the address of variable y
 </span><span class="ln">6</span><span class="c1"></span><span class="o">*</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">5</span> <span class="c1">// dereference x by typing *x
 </span><span class="ln">7</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// y is now 5
-</span></code></pre></div>]]></content>
+</span></code></pre></div><h3 id="go-function">Go Function</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="kd">func</span> <span class="nf">makeMeOlder</span><span class="p">(</span><span class="nx">age</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>  <span class="nx">age</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="ln"> 3</span><span class="p">}</span>
+<span class="ln"> 4</span> 
+<span class="ln"> 5</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln"> 6</span>  <span class="nx">myAge</span> <span class="o">:=</span> <span class="mi">10</span>
+<span class="ln"> 7</span>  <span class="nf">makeMeOlder</span><span class="p">(</span><span class="nx">myAge</span><span class="p">)</span>
+<span class="ln"> 8</span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">myAge</span><span class="p">)</span>
+<span class="ln"> 9</span>  <span class="c1">// myAge is still 10
+</span><span class="ln">10</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div>]]></content>
 		</item>
 		
 		<item>
 			<title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
-			<link>https://daiwei.dev/posts/java_gradle/</link>
+			<link>https://daiwei.dev/posts/java/java_gradle/</link>
 			<pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_gradle/</guid>
+			<guid>https://daiwei.dev/posts/java/java_gradle/</guid>
 			<description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
-**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+**依赖:**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
 最初，我们曾经通过以下方式管理依赖项：
  从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
- 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具:**它解决和管理应用程序所需的依赖关系。
 什么是构建工具？
  构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
 基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
@@ -222,7 +762,7 @@ Go语言特性：
  各种可用的构建工具 ：
   Java - Ant、Maven、Gradle。 .NET 框架 - NAnt c# - MsBuild。   Apache Ant Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布.</description>
 			<content type="html"><![CDATA[<p>在进入<em>ANT</em>、<em>Maven</em>或<em>Gradle 之前</em>，我们必须首先了解与它们相关的一些事情。</p>
-<p>**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &lsquo;A&rsquo; 需要 &lsquo;B&rsquo; 才能成功执行，则 &lsquo;A&rsquo; 依赖于 &lsquo;B&rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。</p>
+<p>**依赖:**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &lsquo;A&rsquo; 需要 &lsquo;B&rsquo; 才能成功执行，则 &lsquo;A&rsquo; 依赖于 &lsquo;B&rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。</p>
 <p>最初，我们曾经通过以下方式管理依赖项：</p>
 <ul>
 <li>从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。</li>
@@ -234,7 +774,7 @@ Go语言特性：
 <li>如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。</li>
 <li>在我们的应用程序中识别和管理传递依赖是非常困难的。</li>
 </ul>
-<p>**Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。</p>
+<p>**Depende Management Tools依赖管理工具:**它解决和管理应用程序所需的依赖关系。</p>
 <p><strong>什么是构建工具？</strong></p>
 <blockquote>
 <p>构建工具是从源代码自动创建可执行应用程序的程序（例如，<code>.apk</code>对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。</p>
@@ -296,10 +836,10 @@ Go语言特性：
 <span class="ln">28</span><span class="o">&lt;/</span><span class="n">项目</span><span class="o">&gt;</span>
 </code></pre></div><p>pom.xml 文件中的一些重要标签：</p>
 <ul>
-<li>**groupId：**代表项目所属的组织。</li>
-<li>**artifactId：**它是项目的名称。</li>
-<li>**version：**它代表项目的版本。</li>
-<li>**包装：**它代表了项目构建的最终形式。</li>
+<li>**groupId:**代表项目所属的组织。</li>
+<li>**artifactId:**它是项目的名称。</li>
+<li>**version:**它代表项目的版本。</li>
+<li>**包装:**它代表了项目构建的最终形式。</li>
 </ul>
 <p><strong>在maven中添加依赖：</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span> 
@@ -318,13 +858,13 @@ Go语言特性：
 <p>Gradle 不使用 XML。相反，它有它自己<strong>d</strong> omain<strong>小号</strong>pecific<strong>大号</strong>基于Groovy的（JVM语言之一）anguage。因此，与为 Ant 或 Maven 编写的脚本相比，Gradle 构建脚本往往更短、更清晰。Gradle 的样板代码量要小得多。</p>
 <p><strong>Gradle 配置</strong></p>
 <ul>
-<li>**实现：**它用于声明我们不想暴露给消费者编译时的依赖项。</li>
-<li>**api：**它用于声明作为我们 API 一部分的<em>依赖项，即我们明确希望向消费者公开的依赖项。</em></li>
-<li>**compileOnly：**它 允许我们声明只应在编译时可用但在运行时不需要的依赖项。此配置的一个示例用例是像<a href="https://projectlombok.org/">Lombok</a>这样的注释处理器，它在编译时修改字节码。编译后不再需要它，因此该依赖项在运行时不可用。</li>
-<li>**runtimeOnly：**它允许我们声明在编译时不需要但在运行时可用的依赖项。一个例子是<a href="https://www.slf4j.org/">SLF4J</a>，我们<code>slf4j-api</code>将其包含到<code>implementation</code>配置中，并将该 API（如<code>slf4j-log4j12</code>或<code>logback-classic</code>）的实现包含在<code>runtimeOnly</code>配置中。</li>
-<li>**testImplementation：**类似于<code>implementation</code>，但声明的依赖项<code>testImplementation</code>仅在测试的编译和运行时可用。我们可以使用它来声明对测试框架（如<a href="https://junit.org/junit5/">JUnit</a>或<a href="https://site.mockito.org/">Mockito）的</a>依赖<a href="https://site.mockito.org/">项</a>，我们只在测试中需要，而在生产代码中不应该提供这些依赖项。</li>
-<li>**testCompileOnly：**类似于<code>compileOnly</code>，但声明的依赖项<code>testCompileOnly</code>仅在测试编译期间可用，在运行时不可用。</li>
-<li>**testRuntimeOnly：**与 类似<code>runtimeOnly</code>，但声明为 的依赖项<code>testRuntimeOnly</code>仅在测试运行时可用，而在编译时不可用。</li>
+<li>**实现:**它用于声明我们不想暴露给消费者编译时的依赖项。</li>
+<li>**api:**它用于声明作为我们 API 一部分的<em>依赖项，即我们明确希望向消费者公开的依赖项。</em></li>
+<li>**compileOnly:**它 允许我们声明只应在编译时可用但在运行时不需要的依赖项。此配置的一个示例用例是像<a href="https://projectlombok.org/">Lombok</a>这样的注释处理器，它在编译时修改字节码。编译后不再需要它，因此该依赖项在运行时不可用。</li>
+<li>**runtimeOnly:**它允许我们声明在编译时不需要但在运行时可用的依赖项。一个例子是<a href="https://www.slf4j.org/">SLF4J</a>，我们<code>slf4j-api</code>将其包含到<code>implementation</code>配置中，并将该 API（如<code>slf4j-log4j12</code>或<code>logback-classic</code>）的实现包含在<code>runtimeOnly</code>配置中。</li>
+<li>**testImplementation:**类似于<code>implementation</code>，但声明的依赖项<code>testImplementation</code>仅在测试的编译和运行时可用。我们可以使用它来声明对测试框架（如<a href="https://junit.org/junit5/">JUnit</a>或<a href="https://site.mockito.org/">Mockito）的</a>依赖<a href="https://site.mockito.org/">项</a>，我们只在测试中需要，而在生产代码中不应该提供这些依赖项。</li>
+<li>**testCompileOnly:**类似于<code>compileOnly</code>，但声明的依赖项<code>testCompileOnly</code>仅在测试编译期间可用，在运行时不可用。</li>
+<li>**testRuntimeOnly:**与 类似<code>runtimeOnly</code>，但声明为 的依赖项<code>testRuntimeOnly</code>仅在测试运行时可用，而在编译时不可用。</li>
 </ul>
 <p><strong>Gradle 中的项目和任务</strong></p>
 <p>每个 Gradle 构建都包含一个或多个项目。每个项目由一组任务组成。每个任务代表构建执行的单个工作，例如生成 JavaDoc，将一些档案发布到存储库等。</p>
@@ -344,7 +884,7 @@ Go语言特性：
 <span class="ln">13</span> <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">boot</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">starter</span><span class="err">&#39;</span>
 <span class="ln">14</span> <span class="o">}</span>
 <span class="ln">15</span><span class="o">}</span>
-</code></pre></div><p>示例：在我们的项目中添加中央 Maven 存储库，将以下代码片段添加到我们的**“build.gradle”**文件中：</p>
+</code></pre></div><p>示例：在我们的项目中添加中央 Maven 存储库，将以下代码片段添加到我们的<strong>build.gradle</strong>文件中：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">repositories</span> <span class="o">{</span>
 <span class="ln">2</span>    <span class="n">mavenCentral</span><span class="o">()</span>
 <span class="ln">3</span><span class="o">}</span>
@@ -361,10 +901,10 @@ Go语言特性：
 		
 		<item>
 			<title>Java_Roadmap</title>
-			<link>https://daiwei.dev/posts/java_roadmap/</link>
+			<link>https://daiwei.dev/posts/java/java_roadmap/</link>
 			<pubDate>Wed, 17 Nov 2021 16:19:45 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_roadmap/</guid>
+			<guid>https://daiwei.dev/posts/java/java_roadmap/</guid>
 			<description></description>
 			<content type="html"><![CDATA[<p><img src="https://roadmap.sh/roadmaps/java.png" alt="img"></p>
 <p><img src="https://roadmap.sh/roadmaps/backend.png" alt="Frontend Roadmap"></p>
@@ -373,10 +913,10 @@ Go语言特性：
 		
 		<item>
 			<title>git : Changes not staged for commit</title>
-			<link>https://daiwei.dev/posts/git_bug1/</link>
+			<link>https://daiwei.dev/posts/git/git_bug1/</link>
 			<pubDate>Tue, 16 Nov 2021 17:19:26 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/git_bug1/</guid>
+			<guid>https://daiwei.dev/posts/git/git_bug1/</guid>
 			<description>1Changes not staged for commit: 2	modified: themes/hermit (modified content, untracked content) 3 4no changes added to commit 出现此问题是因为该路径内有文件已修改但是没被提交到本地仓库，可以尝试 cd 到子文件路径，add &amp;amp; commit, 然后返回原工作区路径，再add &amp;amp; commit一次。
 1$ cd themes/hermit 2hermit $ git add . 3hermit $ git git commit -m &amp;#39;message&amp;#39; 4 5hermit $ cd ../.. 6$ git add . 7$ git git commit -m &amp;#39;message&amp;#39; </description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Changes not staged for commit:
@@ -396,10 +936,10 @@ Go语言特性：
 		
 		<item>
 			<title>fatal: Authentication failed for &#39;https://github.com/yourusername/githubtest.git/&#39; </title>
-			<link>https://daiwei.dev/posts/git_authentication/</link>
+			<link>https://daiwei.dev/posts/git/git_authentication/</link>
 			<pubDate>Mon, 15 Nov 2021 12:02:42 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/git_authentication/</guid>
+			<guid>https://daiwei.dev/posts/git/git_authentication/</guid>
 			<description>fatal: Authentication failed for &amp;lsquo;https:/githubtest.git/&amp;rsquo; 这是因为github开启了Two Factor Authentication (2FA）验证，所以当你使用这些 git clone, git fetch, git pull or git push命令的时候就会需要输入你的 PAT (Personal Access Token).
 在github settings 打开 Developer settings, 创建PAT, 创建完成后copy 你的PAT 再 使用之前的 git push 命令就可以输入用户名和你的PAT了（注意输入PAT,不是你的github密码）. 请参考 GitHub　Creating a personal access token.
 1$ git clone https://github.com/username/repo.git 2Username: your_username 3Password: your_token </description>
@@ -419,10 +959,10 @@ Go语言特性：
 		
 		<item>
 			<title>env: node: No such file or directory macOS 解决方法</title>
-			<link>https://daiwei.dev/posts/node_error/</link>
+			<link>https://daiwei.dev/posts/data-structure/node_error/</link>
 			<pubDate>Wed, 10 Nov 2021 12:37:00 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/node_error/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/node_error/</guid>
 			<description>使用nmp命令时报错
 1env: noder: No such file or directory 网上冲浪得到的解决方案
  uninstall and reinstall Node.js execute this command to create a link for node : sudo ln -s /usr/bin/nodejs /usr/local/bin/node  我用的方案1 重装 node.js 有效， 方案2 会报错。
@@ -449,10 +989,10 @@ Go语言特性：
 		
 		<item>
 			<title>git,github &amp; gitlab</title>
-			<link>https://daiwei.dev/posts/git/</link>
+			<link>https://daiwei.dev/posts/git/git/</link>
 			<pubDate>Tue, 09 Nov 2021 16:24:04 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/git/</guid>
+			<guid>https://daiwei.dev/posts/git/git/</guid>
 			<description>Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
 github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
 Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
@@ -1138,10 +1678,10 @@ GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它�
 		
 		<item>
 			<title>Java_design</title>
-			<link>https://daiwei.dev/posts/java_design/</link>
+			<link>https://daiwei.dev/posts/java/java_design/</link>
 			<pubDate>Tue, 09 Nov 2021 12:11:11 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_design/</guid>
+			<guid>https://daiwei.dev/posts/java/java_design/</guid>
 			<description>Design Principles   SOILD
   Single Responsibility Principle (SRP) 单一职责原则
 Each class should have a single purpose.
@@ -1211,10 +1751,10 @@ functions that use pointers or references to base classes must be able to use ob
 		
 		<item>
 			<title>Java_oop</title>
-			<link>https://daiwei.dev/posts/java_oop/</link>
+			<link>https://daiwei.dev/posts/java/java_oop/</link>
 			<pubDate>Tue, 09 Nov 2021 11:30:25 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_oop/</guid>
+			<guid>https://daiwei.dev/posts/java/java_oop/</guid>
 			<description>Object-oriented programming (OOP) is a programming based on the concept of “objects” that contain data and methods. The primary purpose of object-oriented programming is to increase the flexibility and maintainability of programs. Object oriented programming brings together data and its behaviour(methods) in a single location(object) makes it easier to understand how a program works.
 面向对象程序设计（Object Oriented Programming，OOP）是一种计算机编程架构。OOP的一条基本原则是计算机程序由单个能够起到子程序作用的单元或对象组合而成。OOP达到了软件工程的三个主要目标：重用性、灵活性和扩展性。OOP=对象+类+继承+多态+消息，其中核心概念是类和对象。
 除了OOP, 还有面向过程(Procedure Oriented Programming)，是一种以过程为中心的编程思想。这些都是以什么正在发生为主要目标进行编程。函数式编程（Functional Programming），data更多的围绕operation， 所以添加新的方法很容易。
@@ -1255,10 +1795,10 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		
 		<item>
 			<title>线程创建方式4: threadpool</title>
-			<link>https://daiwei.dev/posts/java_threadpool/</link>
+			<link>https://daiwei.dev/posts/java/java_threadpool/</link>
 			<pubDate>Wed, 03 Nov 2021 15:57:02 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_threadpool/</guid>
+			<guid>https://daiwei.dev/posts/java/java_threadpool/</guid>
 			<description>提前建好多个线程放入线程池中，使用时直接获取。避免频繁创建销毁线程，实现线程重复利用。
 线程池类似公交车🚌，每个人都可以按自己的需选择乘坐任何一辆公交车。
 好处：
@@ -1332,10 +1872,10 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		
 		<item>
 			<title>创建线程的方式3: Callable</title>
-			<link>https://daiwei.dev/posts/java_callable/</link>
+			<link>https://daiwei.dev/posts/java/java_callable/</link>
 			<pubDate>Wed, 03 Nov 2021 15:39:23 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_callable/</guid>
+			<guid>https://daiwei.dev/posts/java/java_callable/</guid>
 			<description>1package callableTest; 2 3import java.util.concurrent.Callable; 4import java.util.concurrent.ExecutionException; 5import java.util.concurrent.FutureTask; 6 7/** 8* 创建线程方式3：实现 callable 接口。-----JDK5.0新增 9*/ 10public class ThreadNew { 11 public static void main (String[] arg) { 12 NumThread num = new NumThread(); 13 14 // Future接口可以对Runnable, callable的执行结果进行取消，查询和获取。 15 // FutureTask 同时实现了Runnable &amp;amp; Future接口， 16 // 既可作为线程被Runnable执行，又可以作为Future得到Callable的返回值。 17 FutureTask&amp;lt;Integer&amp;gt; futureTask = new FutureTask&amp;lt;&amp;gt;(num); 18 19 new Thread(futureTask).start(); 20 21 try { 22 //get()返回值即callable实现类override call() 返回值 23 Integer sum = futureTask.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">callableTest</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -1399,10 +1939,10 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		
 		<item>
 			<title>Thread Communication</title>
-			<link>https://daiwei.dev/posts/thread_communication/</link>
+			<link>https://daiwei.dev/posts/java/thread_communication/</link>
 			<pubDate>Wed, 03 Nov 2021 13:16:20 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/thread_communication/</guid>
+			<guid>https://daiwei.dev/posts/java/thread_communication/</guid>
 			<description>1/** 2* 线程通信例子：两个线程交替打印 integer 1-10 3* 涉及3个方法： 4* wait(): 当前线程进入wait状态，并释放线程监视器。 5* notify(): 唤醒一个处于wait状态中优先级最高的线程。 6* notifyAll(): 唤醒所有处于wait状态的线程。 7* 8* 1. 3个方法都必须是用在同步代码块或者同步方法中。 9* 2. 3个方法的调用者必须是同步代码块或者同步方法中的同步监视器。 10* 3. 3个方法是定义在java.Lang.Object类中， 并不是 thread 类中。 11*/ 12public class CommunicationTest { 13 public static void main (String[] args) { 14 NumberPrinter n = new NumberPrinter(); 15 Thread t1 = new Thread(n); 16 Thread t2 = new Thread(n); 17 18 t1.start(); 19 t2.start(); 20 } 21} 22 23class NumberPrinter implements Runnable { 24 int i = 1; 25 26 @Override 27 public void run() { 28 while (true) { 29 synchronized (this) { 30 notify(); // 必须使用同步监视器this来调用，this.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="cm">/**
 </span><span class="ln"> 2</span><span class="cm"> * 线程通信例子：两个线程交替打印 integer 1-10
@@ -1552,10 +2092,10 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		
 		<item>
 			<title>Java Lock</title>
-			<link>https://daiwei.dev/posts/java_lock/</link>
+			<link>https://daiwei.dev/posts/java/java_lock/</link>
 			<pubDate>Wed, 03 Nov 2021 10:10:07 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java_lock/</guid>
+			<guid>https://daiwei.dev/posts/java/java_lock/</guid>
 			<description>1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
 锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
 synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
@@ -1725,10 +2265,10 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		
 		<item>
 			<title>Threads Safety</title>
-			<link>https://daiwei.dev/posts/threadssafety/</link>
+			<link>https://daiwei.dev/posts/java/threadssafety/</link>
 			<pubDate>Tue, 26 Oct 2021 12:08:57 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/threadssafety/</guid>
+			<guid>https://daiwei.dev/posts/java/threadssafety/</guid>
 			<description>Unsafe threads in tickets system 不安全线程:
 1public class WindowTest2 { 2 public static void main (String[] args) { 3 Window2 w = new Window2(); 4 5 Thread t1 = new Thread (w); 6 Thread t2 = new Thread (w); 7 Thread t3 = new Thread (w); 8 9 t1.setName(&amp;#34;Window_1&amp;#34;); 10 t2.setName(&amp;#34;Window_2&amp;#34;); 11 t3.setName(&amp;#34;Window_3&amp;#34;); 12 13 t1.start(); 14 t2.start(); 15 t3.start(); 16 } 17} 18 19class Window2 implements Runnable { 20 private int tickets = 100; 21 22 @Override 23 public void run() { 24 while(true) { 25 if(tickets &amp;gt; 0) { 26 try { 27 Thread.</description>
 			<content type="html"><![CDATA[<p>Unsafe threads in tickets system 不安全线程:</p>
@@ -1974,10 +2514,10 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		
 		<item>
 			<title>Java Annotation</title>
-			<link>https://daiwei.dev/posts/javaannotation/</link>
+			<link>https://daiwei.dev/posts/java/javaannotation/</link>
 			<pubDate>Wed, 20 Oct 2021 17:26:19 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/javaannotation/</guid>
+			<guid>https://daiwei.dev/posts/java/javaannotation/</guid>
 			<description>The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
 @Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
 @Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
@@ -2029,10 +2569,10 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		
 		<item>
 			<title>Java Threads</title>
-			<link>https://daiwei.dev/posts/javathread/</link>
+			<link>https://daiwei.dev/posts/java/javathread/</link>
 			<pubDate>Wed, 20 Oct 2021 11:37:08 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/javathread/</guid>
+			<guid>https://daiwei.dev/posts/java/javathread/</guid>
 			<description>1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
 <span class="ln">2</span><span class="n">Package</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span>
@@ -2236,10 +2776,10 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		
 		<item>
 			<title>Java threadpool</title>
-			<link>https://daiwei.dev/posts/javathreadpool/</link>
+			<link>https://daiwei.dev/posts/java/javathreadpool/</link>
 			<pubDate>Wed, 20 Oct 2021 11:18:55 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/javathreadpool/</guid>
+			<guid>https://daiwei.dev/posts/java/javathreadpool/</guid>
 			<description>What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
 In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool.</description>
 			<content type="html"><![CDATA[<h2 id="what-is-the-thread-pool-in-java"><strong>What is the Thread Pool in Java?</strong></h2>
@@ -2305,10 +2845,10 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		
 		<item>
 			<title>arrayList vs linkedList</title>
-			<link>https://daiwei.dev/posts/arraylistvslinkedlist/</link>
+			<link>https://daiwei.dev/posts/data-structure/arraylistvslinkedlist/</link>
 			<pubDate>Wed, 20 Oct 2021 11:11:34 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/arraylistvslinkedlist/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/arraylistvslinkedlist/</guid>
 			<description>ArrayList vs LinkedList   ArrayList 底层是数组,内存地址连续可随机访问元素，查询快O(1), ArrayList 动态扩容和元素拷贝 增删慢, 实现了List 接口; LinkedList 底层是链表,内存地址不连续必须按顺序访问元素，查询慢O(N), LinkedList 只需要修改节点指针指向 增删快O(1), 实现List &amp;amp; Deque 接口。   </description>
 			<content type="html"><![CDATA[<h2 id="arraylist-vs-linkedlist">ArrayList vs LinkedList</h2>
 <p><img src="https://static.studytonight.com/data-structures/images/array-vs-linked-list.png" alt="img"></p>
@@ -2325,10 +2865,10 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		
 		<item>
 			<title>LinkedList</title>
-			<link>https://daiwei.dev/posts/linkedlist/</link>
+			<link>https://daiwei.dev/posts/data-structure/linkedlist/</link>
 			<pubDate>Wed, 20 Oct 2021 11:05:33 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/linkedlist/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/linkedlist/</guid>
 			<description>1Module java.base 2Package java.util 3 4java.lang.Object 5java.util.AbstractCollection&amp;lt;E&amp;gt; 6java.util.AbstractList&amp;lt;E&amp;gt; 7java.util.AbstractSequentialList&amp;lt;E&amp;gt; 8java.util.LinkedList&amp;lt;E&amp;gt; 9 10public class LinkedList&amp;lt;E&amp;gt; 11extends AbstractSequentialList&amp;lt;E&amp;gt; 12implements List&amp;lt;E&amp;gt;, Deque&amp;lt;E&amp;gt;, Cloneable, Serializable 链表以节点为单位，每个元素都是一个独立对象，在内存空间的存储是非连续的。链表的节点对象具有两个成员变量：「值 val」，「后继节点引用 next」 。 可实现Stacks, Queues, and trees等数据结构。
 1class ListNode { 2 int val; // 节点值 3 ListNode next; // 后继节点引用 4 ListNode(int x) { val = x; } 5} 和ArrayList 一样，下面两种ArrayList初始化方式都是正确的，List is an interface and LinkedList is a class.
 1List&amp;lt;String&amp;gt; list1 = new LinkedList&amp;lt;&amp;gt;(); //generally preferred 2LinkedList&amp;lt;String&amp;gt; list2 = new LinkedList&amp;lt;&amp;gt;(); // type-cast List&amp;lt;E&amp;gt; is more generally preferred over LinkedList&amp;lt;E&amp;gt;, but If needed to add cells in the beginning/middle/end of the list LinkedList proved you addFirst, addLast &amp;amp; removeFirst, removeLast &amp;amp; getFirst, getLast method.</description>
@@ -2366,10 +2906,10 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		
 		<item>
 			<title>ArrayList</title>
-			<link>https://daiwei.dev/posts/arraylist/</link>
+			<link>https://daiwei.dev/posts/data-structure/arraylist/</link>
 			<pubDate>Wed, 20 Oct 2021 10:52:00 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/arraylist/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/arraylist/</guid>
 			<description>1Module java.base 2Package java.util 3 4java.lang.Object 5java.util.AbstractCollection&amp;lt;E&amp;gt; 6java.util.AbstractList&amp;lt;E&amp;gt; 7java.util.ArrayList&amp;lt;E&amp;gt; 8 9public class ArrayList&amp;lt;E&amp;gt; 10extends AbstractList&amp;lt;E&amp;gt; 11implements List&amp;lt;E&amp;gt;, RandomAccess, Cloneable, Serializable 下面两种ArrayList初始化方式都是正确的，List is an interface and ArrayList is a class.
 1List&amp;lt;Integer&amp;gt; list1 = new ArrayList&amp;lt;&amp;gt;(); //generally preferred 2ArrayList&amp;lt;Integer&amp;gt; list2 = ArrayList&amp;lt;&amp;gt;(); // type-cast  initialize as List&amp;lt;E&amp;gt; 更加灵活flexible, preferable，可以随后选择 LinkedList or ArrayList. initialize as ArrayList&amp;lt;E&amp;gt; 可以访问使用所有的ArrayList class method, such as such as ArrayList#ensureCapacity or ArrayList#trimToSize. 通常情况下，尽量使用方法1 List 来初始化 arrayList.  1List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();// 初始化可变数组 2list.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
@@ -2405,10 +2945,10 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		
 		<item>
 			<title>i&#43;&#43; vs &#43;&#43;i</title>
-			<link>https://daiwei.dev/posts/i&#43;&#43;/</link>
+			<link>https://daiwei.dev/posts/data-structure/i&#43;&#43;/</link>
 			<pubDate>Wed, 20 Oct 2021 10:20:00 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/i&#43;&#43;/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/i&#43;&#43;/</guid>
 			<description>1public class Main { 2 public static void main (String[] args) { 3 int a = 0, b = 0; 4 for (int i = 0; i &amp;lt; 1; i++) { 5 System.out.println(a += i); // a = 0 6 System.out.println(i++); // i++ = 0 7 System.out.println(i); // i = 1 8 } 9 10 for (int i = 0; i &amp;lt; 1; ++i) { 11 System.out.println(b += i); // b = 0 12 System.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -2434,10 +2974,10 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		
 		<item>
 			<title>TI 10</title>
-			<link>https://daiwei.dev/posts/ti10/</link>
+			<link>https://daiwei.dev/posts/game/ti10/</link>
 			<pubDate>Mon, 18 Oct 2021 15:13:13 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/ti10/</guid>
+			<guid>https://daiwei.dev/posts/game/ti10/</guid>
 			<description>熬夜看完TI10, Team Spirit vs LGD 的决赛。
 首先，恭喜 team spirit 的五位第一次打进ti就成功圆梦举盾的年轻人，这个冠军🏆他们赢得实至名归！
  连续3年了，即使这一次AME背后插上了wings，可全村的希望LGD.AME又一次倒在了举盾的门口。
@@ -2475,10 +3015,10 @@ AME, NTS, Faith_bian, XinQ，y 是我最喜欢的几个在役选手了，希望l
 		
 		<item>
 			<title>Ternary Operator 三元运算符</title>
-			<link>https://daiwei.dev/posts/ternary_operator/</link>
+			<link>https://daiwei.dev/posts/java/ternary_operator/</link>
 			<pubDate>Tue, 12 Oct 2021 13:28:50 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/ternary_operator/</guid>
+			<guid>https://daiwei.dev/posts/java/ternary_operator/</guid>
 			<description>Syntax:
 1Variablename = (Condition) ? the value assigned if &amp;#39;true&amp;#39; is returned: t example：
 1if (BooleanValue) { 2 Greetings = &amp;#34;Hello!&amp;#34;; 3} 4else { 5 Greetings = &amp;#34;Bye!&amp;#34;; 6} using ternary operator the above expression involves 1 line:
@@ -2658,10 +3198,10 @@ ClassLoader 类加载器 It is a subsystem that is used to load class files.</de
 		
 		<item>
 			<title>Array</title>
-			<link>https://daiwei.dev/posts/array/</link>
+			<link>https://daiwei.dev/posts/data-structure/array/</link>
 			<pubDate>Mon, 11 Oct 2021 14:49:45 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/array/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/array/</guid>
 			<description>util.Arrays class: 1java.lang.Object 2java.util.Arrays 3public class Arrays extends Object This class contains various methods for manipulating arrays (such as sorting and searching). This class also contains a static factory that allows arrays to be viewed as lists.
 此类Java Collections Framework的成员, 包含用于操作数组的各种方法（例如排序和搜索）。此类还包含一个静态工厂，允许将数组视为列表。它仅由静态方法和 Object 类的方法组成。
 有两种方法可以创建 Arrays 对象:
@@ -2766,10 +3306,10 @@ ClassLoader 类加载器 It is a subsystem that is used to load class files.</de
 		
 		<item>
 			<title>Data Structure In Java</title>
-			<link>https://daiwei.dev/posts/data-structure-in-java/</link>
+			<link>https://daiwei.dev/posts/data-structure/data-structure-in-java/</link>
 			<pubDate>Wed, 06 Oct 2021 18:30:40 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/data-structure-in-java/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/data-structure-in-java/</guid>
 			<description>According to the properties they possess, data types are divided into two groups:
 Primitive Data Types: A primitive data type is pre-defined by the programming language. The size and type of variable values are specified, and it has no additional methods.
  byte, short, int, long, float, double, char, boolean.  **Non-Primitive Data Types: ** These data types are not actually defined by the programming language but are created by the programmer, they have additional methods.</description>
@@ -2828,10 +3368,10 @@ Primitive Data Types: A primitive data type is pre-defined by the programming la
 		
 		<item>
 			<title>String</title>
-			<link>https://daiwei.dev/posts/string/</link>
+			<link>https://daiwei.dev/posts/data-structure/string/</link>
 			<pubDate>Wed, 06 Oct 2021 16:00:35 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/string/</guid>
+			<guid>https://daiwei.dev/posts/data-structure/string/</guid>
 			<description>Class String  java.lang.Object  java.lang.String    1public final class String 2extends Object 3implements Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence String在Java属于java.lang.Object package, The String class represents character strings.
 Java 程序中的所有字符串文字，例如&amp;quot;abc&amp;quot;，都作为此类的实例实现。
 Strings 是常量 constant；它们的值在创建后无法更改，不可变的。

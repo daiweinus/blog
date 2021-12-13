@@ -7,33 +7,107 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 24 Nov 2021 17:04:49 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lombok</title>
+      <link>https://daiwei.dev/posts/spring/lombok/</link>
+      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/lombok/</guid>
+      <description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
+1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
+1// 2// Source code recreated from a .</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot Hello world</title>
+      <link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
+      <pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
+      <description>  使用Spring Initializr 新建spring boot project
+  在application.properties文件新建服务器端口
+  新建HelloController class
+  执行BootLunchApplication main class
+  </description>
+    </item>
+    
+    <item>
+      <title>Spring_intro</title>
+      <link>https://daiwei.dev/posts/spring/spring_intro/</link>
+      <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
+      <description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
+MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
+ Model 负责存储系统的中心数据;
+View 负责存储系统的中心数据;
+Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。
+ 表示层框架：struts1，struts2，springMVC
+业务层框架，设计型框架：spring
+持久层框架：hibernate(全自动), mybatis(半自动)
+建议优先学习 Springboot 。
+Spring Boot   Spring Boot 简介
+ 简化Spring应用开发的框架。
+整个Spring技术栈的大整合。
+J2EE开发的一站式解决方案。
+   微服务
+2014， Martin Fowler
+微服务：架构风格（服务微化）
+一个应用应该是一组小型服务，可以通过http方式互通；
+每一个功能元素最终都是一个可独立替换可升级的软件单元；
+microservices guide
+  Spring Boot主要特性
+ 遵循“约定优于配置”的原则，简化配置 可以完全脱离XML配置文件,采用注解配置和java Config 内嵌Servlet容器，应用可用jar包执行：java -jar 快速完成项目搭建、整合第三方类库，方便易用 提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置 与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案    Spring Boot集成第三方类库的步骤</description>
+    </item>
+    
+    <item>
+      <title>Go Pointer</title>
+      <link>https://daiwei.dev/posts/go/go_pointer/</link>
+      <pubDate>Mon, 29 Nov 2021 17:59:37 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/go/go_pointer/</guid>
+      <description>Go is a pass-by-value language.   addresses
+ An address is where a value is stored, To find an address of a variable, use the &amp;amp; operator before a variable.  1x := &amp;#34;My very first address&amp;#34; 2fmt.Println(&amp;amp;x) // Prints address 0x414020   pointers
+ A pointer is specific to what type of address it can store. The * operator can be used to assign a pointer the type of the value its address holds.</description>
+    </item>
+    
+    <item>
+      <title>Go Helloworld</title>
+      <link>https://daiwei.dev/posts/go/go_helloworld/</link>
+      <pubDate>Mon, 29 Nov 2021 17:54:17 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/go/go_helloworld/</guid>
+      <description>Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.Println(&amp;#34;Hello World&amp;#34;) 7} 运行程序：
+1$ go build main.go 2$ ls 3main main.go 4$ ./main 5Hello World Go 命令： 1// command line via a generic command: 2$ go &amp;lt;command&amp;gt; [arguments] 3// such as: 4$ go doc fmt.println 1// Running Files in Go 2$ go run exampleFile.go 3// Compile Go 4$ go build test.go 5// To run test, type in the command line: 6$ .</description>
+    </item>
+    
     <item>
       <title>Go Introduction</title>
-      <link>https://daiwei.dev/posts/go_introduction/</link>
+      <link>https://daiwei.dev/posts/go/go_introduction/</link>
       <pubDate>Wed, 24 Nov 2021 17:04:49 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/go_introduction/</guid>
+      <guid>https://daiwei.dev/posts/go/go_introduction/</guid>
       <description>Go语言aka Golang, 发布于2012年。是由3名Google员工：Robert Griesemer, Rob Pike, and Ken Thompson，设计开发的一门开源语言。
 Go 旨在解决我们在构建大型服务器软件时遇到的一系列软件工程问题。
 Go 是 Google 开发的一种编译的、并发的、垃圾收集的、静态类型的语言。
 Go语言特性：
  清除依赖 清晰的语法 清晰的语义 组合优于继承 编程模型提供的简单性（垃圾收集、并发） 简易工具（go工具, gofmt, godoc, gofix）  Go vs C 这些包括：
- 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  **Go vs Java **其中包括对以下方面的语言支持：
+ 没有指针算法 没有隐式数字转换 总是检查数组边界 没有类型别名（在 之后type X int，X并且int是不同的类型而不是别名） ++和--是陈述不表达 赋值不是表达式 获取堆栈变量的地址是合法的（甚至鼓励） 还有很多  Go vs Java 其中包括对以下方面的语言支持：
  并发 垃圾收集 接口类型 反射 类型开关  Hello World code in Go: 1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.</description>
     </item>
     
     <item>
       <title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
-      <link>https://daiwei.dev/posts/java_gradle/</link>
+      <link>https://daiwei.dev/posts/java/java_gradle/</link>
       <pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/java_gradle/</guid>
+      <guid>https://daiwei.dev/posts/java/java_gradle/</guid>
       <description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
-**依赖：**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+**依赖:**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
 最初，我们曾经通过以下方式管理依赖项：
  从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
- 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具：**它解决和管理应用程序所需的依赖关系。
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具:**它解决和管理应用程序所需的依赖关系。
 什么是构建工具？
  构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
 基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
@@ -45,99 +119,32 @@ Go语言特性：
     
     <item>
       <title>Java_Roadmap</title>
-      <link>https://daiwei.dev/posts/java_roadmap/</link>
+      <link>https://daiwei.dev/posts/java/java_roadmap/</link>
       <pubDate>Wed, 17 Nov 2021 16:19:45 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/java_roadmap/</guid>
+      <guid>https://daiwei.dev/posts/java/java_roadmap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git : Changes not staged for commit</title>
-      <link>https://daiwei.dev/posts/git_bug1/</link>
+      <link>https://daiwei.dev/posts/git/git_bug1/</link>
       <pubDate>Tue, 16 Nov 2021 17:19:26 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/git_bug1/</guid>
+      <guid>https://daiwei.dev/posts/git/git_bug1/</guid>
       <description>1Changes not staged for commit: 2	modified: themes/hermit (modified content, untracked content) 3 4no changes added to commit 出现此问题是因为该路径内有文件已修改但是没被提交到本地仓库，可以尝试 cd 到子文件路径，add &amp;amp; commit, 然后返回原工作区路径，再add &amp;amp; commit一次。
 1$ cd themes/hermit 2hermit $ git add . 3hermit $ git git commit -m &amp;#39;message&amp;#39; 4 5hermit $ cd ../.. 6$ git add . 7$ git git commit -m &amp;#39;message&amp;#39; </description>
     </item>
     
     <item>
       <title>fatal: Authentication failed for &#39;https://github.com/yourusername/githubtest.git/&#39; </title>
-      <link>https://daiwei.dev/posts/git_authentication/</link>
+      <link>https://daiwei.dev/posts/git/git_authentication/</link>
       <pubDate>Mon, 15 Nov 2021 12:02:42 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/git_authentication/</guid>
+      <guid>https://daiwei.dev/posts/git/git_authentication/</guid>
       <description>fatal: Authentication failed for &amp;lsquo;https:/githubtest.git/&amp;rsquo; 这是因为github开启了Two Factor Authentication (2FA）验证，所以当你使用这些 git clone, git fetch, git pull or git push命令的时候就会需要输入你的 PAT (Personal Access Token).
 在github settings 打开 Developer settings, 创建PAT, 创建完成后copy 你的PAT 再 使用之前的 git push 命令就可以输入用户名和你的PAT了（注意输入PAT,不是你的github密码）. 请参考 GitHub　Creating a personal access token.
 1$ git clone https://github.com/username/repo.git 2Username: your_username 3Password: your_token </description>
-    </item>
-    
-    <item>
-      <title>env: node: No such file or directory macOS 解决方法</title>
-      <link>https://daiwei.dev/posts/node_error/</link>
-      <pubDate>Wed, 10 Nov 2021 12:37:00 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/node_error/</guid>
-      <description>使用nmp命令时报错
-1env: noder: No such file or directory 网上冲浪得到的解决方案
- uninstall and reinstall Node.js execute this command to create a link for node : sudo ln -s /usr/bin/nodejs /usr/local/bin/node  我用的方案1 重装 node.js 有效， 方案2 会报错。
-1$ brew uninstall node 2$ brew update 3$ brew upgrade 4$ brew cleanup 5$ brew install node 6$ brew link --overwrite node // 如果报错可跑此命名:$ brew unlink node &amp;amp;&amp;amp; brew link node 7$ brew postinstall node 8$ node -v //能看到版本号就可以正常使用了 9 v17.</description>
-    </item>
-    
-    <item>
-      <title>git,github &amp; gitlab</title>
-      <link>https://daiwei.dev/posts/git/</link>
-      <pubDate>Tue, 09 Nov 2021 16:24:04 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/git/</guid>
-      <description>Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。
-github，和gitlab都是基于git开发的管理托管服务。其他 Git 存储库托管服务还有：BitBucket， SourceForge.
-Github 发布于2008年，是一种基于云的git仓库托管服务。提供免费的公共仓库(代码会被所有人看到)和收费的私有仓库(代码仅自己可见)。通常用于托管开源项目。
-GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它提供Git 存储库管理器。和GitHub相比gitlab允许免费创建私有仓库。 另外 gitlab还可以部署到本地服务器上，让开发团队对他们的代码仓库拥有更多的控制。多用于企业或者个人的代码托管库。
- Git 常用command： git init 初始化，在本地仓库创建 .git 文档
-1$ git init 2Initialized empty Git repository in /gittest/.git/ 3 4// 查看.git隐藏目录里的本地库管理文件 5$ ls -lA .git/ 6total 24 7-rw-r--r-- 1 user staff 23 9 Nov 17:38 HEAD 8-rw-r--r-- 1 user staff 137 9 Nov 17:38 config 9-rw-r--r-- 1 user staff 73 9 Nov 17:38 description 10drwxr-xr-x 13 user staff 416 9 Nov 17:38 hooks 11drwxr-xr-x 3 user staff 96 9 Nov 17:38 info 12drwxr-xr-x 4 user staff 128 9 Nov 17:38 objects 13drwxr-xr-x 4 user staff 128 9 Nov 17:38 refs git config 设置用户签名（通常只需要设置本地系统签名就足够了）</description>
-    </item>
-    
-    <item>
-      <title>Java_design</title>
-      <link>https://daiwei.dev/posts/java_design/</link>
-      <pubDate>Tue, 09 Nov 2021 12:11:11 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/java_design/</guid>
-      <description>Design Principles   SOILD
-  Single Responsibility Principle (SRP) 单一职责原则
-Each class should have a single purpose.
-  Open/Closed Principle (OCP) 开闭原则
-software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
-  Liscov Substitution Principle (LSP) 替换原则
-functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
-  Interface Segregation Principle (ISP) 接口隔离原则</description>
-    </item>
-    
-    <item>
-      <title>Java_oop</title>
-      <link>https://daiwei.dev/posts/java_oop/</link>
-      <pubDate>Tue, 09 Nov 2021 11:30:25 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/java_oop/</guid>
-      <description>Object-oriented programming (OOP) is a programming based on the concept of “objects” that contain data and methods. The primary purpose of object-oriented programming is to increase the flexibility and maintainability of programs. Object oriented programming brings together data and its behaviour(methods) in a single location(object) makes it easier to understand how a program works.
-面向对象程序设计（Object Oriented Programming，OOP）是一种计算机编程架构。OOP的一条基本原则是计算机程序由单个能够起到子程序作用的单元或对象组合而成。OOP达到了软件工程的三个主要目标：重用性、灵活性和扩展性。OOP=对象+类+继承+多态+消息，其中核心概念是类和对象。
-除了OOP, 还有面向过程(Procedure Oriented Programming)，是一种以过程为中心的编程思想。这些都是以什么正在发生为主要目标进行编程。函数式编程（Functional Programming），data更多的围绕operation， 所以添加新的方法很容易。
-What is an Object 什么是对象？对象就是一组数据 data 和行为 behaviour (aka method).</description>
-    </item>
-    
-    <item>
-      <title>线程创建方式4: threadpool</title>
-      <link>https://daiwei.dev/posts/java_threadpool/</link>
-      <pubDate>Wed, 03 Nov 2021 15:57:02 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/java_threadpool/</guid>
-      <description>提前建好多个线程放入线程池中，使用时直接获取。避免频繁创建销毁线程，实现线程重复利用。
-线程池类似公交车🚌，每个人都可以按自己的需选择乘坐任何一辆公交车。
-好处：
- 建好线程创建时间，提高程序相应速度。 线程可重复利用，降低系统资源消耗。 便于线程管理，提高编程效率。  线程池API:
- ExecutorService 线程池接口，常见子类 ThreadPoolExecutor Executor 工具类，线程池工厂类，用于创建并返回不同类型的线程。  1package threadpool; 2 3import java.util.concurrent.ExecutorService; 4import java.util.concurrent.Executors; 5import java.util.concurrent.ThreadPoolExecutor; 6import java.util.concurrent.TimeUnit; 7 8/** 9* 线程创建方式4： ThreadPool 10*/ 11public class ThreadPool { 12 public static void main(String[] args) { 13 ExecutorService service = Executors.newScheduledThreadPool(10); 14 15 //设置线程池属性，先把ExecutorService 转换成 ThreadPoolExecutor 16 //ThreadPoolExecutor service1 = (ThreadPoolExecutor) service; 17 //service1.setCorePoolSize(5); 18 //service1.setKeepAliveTime(100, TimeUnit.MILLISECONDS); 19 20 //service.submit(Callable callable);//适合适用于Callable 21 service.</description>
     </item>
     
   </channel>
