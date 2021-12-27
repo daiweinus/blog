@@ -30,3 +30,20 @@ tags:
 
    ![Screenshot 2021-12-07 at 18.47.49.png](https://github.com/daiweinus/blog_pictures/blob/master/Screenshot%202021-12-07%20at%2018.47.49.png?raw=true)
 
+```java
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+	@GetMapping
+	public String hello() {
+		return "Hello World";
+	}
+
+}
+```
+

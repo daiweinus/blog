@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hello, Friends!</title>
-    <link>https://daiwei.dev/</link>
-    <description>Recent content on Hello, Friends!</description>
+    <title>Network on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/network/</link>
+    <description>Recent content in Network on Hello, Friends!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Http vs Https</title>
       <link>https://daiwei.dev/posts/networking/http-vs-https/</link>
@@ -33,17 +33,6 @@ IPv6 是 Internet 协议的最新版本。部署此新 IP 地址版本是为了�
     </item>
     
     <item>
-      <title>Lombok</title>
-      <link>https://daiwei.dev/posts/spring/lombok/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/lombok/</guid>
-      <description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
-1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
-1// 2// Source code recreated from a .</description>
-    </item>
-    
-    <item>
       <title>OSI vs TCP/IP Model</title>
       <link>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</link>
       <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
@@ -63,17 +52,6 @@ TCP/IP 模型 传输层 既面向连接又面向无连接。
 TCP/IP 帮助您在不同类型的计算机之间建立连接。
   优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
 TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。</description>
-    </item>
-    
-    <item>
-      <title>RESTful API</title>
-      <link>https://daiwei.dev/posts/spring/restful/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/restful/</guid>
-      <description>什么是RESTful 风格 API API（Application Programming Interface），顾名思义：是一组编程接口规范，客户端与服务端通过请求响应进行数据通信。REST（Representational State Transfer）表述性状态传递，决定了接口的形式与规则。RESTful是基于http方法的API设计风格，而不是一种新的技术.
- 看Url就知道要什么资源 看http method就知道针对资源干什么 看http status code就知道结果如何  RESTful是面向资源的（名词） REST 通过 URI 暴露资源时，会强调不要在 URI 中出现动词。比如：
-   不符合REST的接口URI 符合REST接口URI 功能     GET /api/getDogs/{id} GET /api/dogs/{id} 获取一个小狗狗   GET /api/getDogs GET /api/dogs 获取所有小狗狗   GET /api/addDogs POST /api/dogs 添加一个小狗狗   GET /api/editDogs/{id} PUT /api/dogs/{id} 修改一个小狗狗   GET /api/deleteDogs/{id} DELETE /api/dogs/{id} 删除一个小狗狗    HTTP状态码 通过HTTP状态码体现动作的结果,不要自定义</description>
     </item>
     
     <item>
@@ -110,48 +88,6 @@ Why need 4 ways handshake? 四次挥手的过程为什么server端ACK和FIN不�
 流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
 拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
  </description>
-    </item>
-    
-    <item>
-      <title>SpringBoot Hello world</title>
-      <link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
-      <pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
-      <description>  使用Spring Initializr 新建spring boot project
-  在application.properties文件新建服务器端口
-  新建HelloController class
-  执行BootLunchApplication main class
-  1@SpringBootApplication 2@RestController 3public class DemoApplication { 4 5	public static void main(String[] args) { 6	SpringApplication.run(DemoApplication.class, args); 7	} 8 9	@GetMapping 10	public String hello() { 11	return &amp;#34;Hello World&amp;#34;; 12	} 13 14} </description>
-    </item>
-    
-    <item>
-      <title>Spring_intro</title>
-      <link>https://daiwei.dev/posts/spring/spring_intro/</link>
-      <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
-      <description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
-MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
- Model 负责存储系统的中心数据;
-View 负责存储系统的中心数据;
-Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。
- 表示层框架：struts1，struts2，springMVC
-业务层框架，设计型框架：spring
-持久层框架：hibernate(全自动), mybatis(半自动)
-建议优先学习 Springboot 。
-Spring Boot   Spring Boot 简介
- 简化Spring应用开发的框架。
-整个Spring技术栈的大整合。
-J2EE开发的一站式解决方案。
-   微服务
-2014， Martin Fowler
-微服务：架构风格（服务微化）
-一个应用应该是一组小型服务，可以通过http方式互通；
-每一个功能元素最终都是一个可独立替换可升级的软件单元；
-microservices guide
-  Spring Boot主要特性
- 遵循“约定优于配置”的原则，简化配置 可以完全脱离XML配置文件,采用注解配置和java Config 内嵌Servlet容器，应用可用jar包执行：java -jar 快速完成项目搭建、整合第三方类库，方便易用 提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置 与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案    Spring Boot集成第三方类库的步骤</description>
     </item>
     
   </channel>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="OSI vs TCP/IP Model">
+<meta itemprop="description" content="TCP/IP (Transmission Control Protocol/Internet Protocol Model) 传输控制协议/互联网协议模型最早由美国国防部赞助研究，定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP model的基础上制定的。定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI vs TCP/IP Model   OSI 模型有7层；
+TCP/IP模型只有4层，更加简洁，应用更加广泛。
+  OSI header = 5 byte;
+TCP/IP header = 20 byte.
+  OSI 遵循垂直方法；
+TCP/IP 遵循水平方法。
+  OSI 模型 中 传输层 仅面向连接；
+TCP/IP 模型 传输层 既面向连接又面向无连接。
+  OSI 模型帮助您标准化路由器、交换机、主板和其他硬件；
+TCP/IP 帮助您在不同类型的计算机之间建立连接。
+  优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
+TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。"><meta itemprop="datePublished" content="2021-12-08T11:43:43+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T11:43:43+08:00" />
+<meta itemprop="wordCount" content="139"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Network," /><meta property="og:title" content="OSI vs TCP/IP Model" />
+<meta property="og:description" content="TCP/IP (Transmission Control Protocol/Internet Protocol Model) 传输控制协议/互联网协议模型最早由美国国防部赞助研究，定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP model的基础上制定的。定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI vs TCP/IP Model   OSI 模型有7层；
+TCP/IP模型只有4层，更加简洁，应用更加广泛。
+  OSI header = 5 byte;
+TCP/IP header = 20 byte.
+  OSI 遵循垂直方法；
+TCP/IP 遵循水平方法。
+  OSI 模型 中 传输层 仅面向连接；
+TCP/IP 模型 传输层 既面向连接又面向无连接。
+  OSI 模型帮助您标准化路由器、交换机、主板和其他硬件；
+TCP/IP 帮助您在不同类型的计算机之间建立连接。
+  优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
+TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/networking/osi-vs-tcp_ip/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T11:43:43+08:00" />
+<meta property="article:modified_time" content="2021-12-08T11:43:43+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="OSI vs TCP/IP Model"/>
+<meta name="twitter:description" content="TCP/IP (Transmission Control Protocol/Internet Protocol Model) 传输控制协议/互联网协议模型最早由美国国防部赞助研究，定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP model的基础上制定的。定义系统和系统之间 开放连接和通信所使用的通信网络。
+OSI vs TCP/IP Model   OSI 模型有7层；
+TCP/IP模型只有4层，更加简洁，应用更加广泛。
+  OSI header = 5 byte;
+TCP/IP header = 20 byte.
+  OSI 遵循垂直方法；
+TCP/IP 遵循水平方法。
+  OSI 模型 中 传输层 仅面向连接；
+TCP/IP 模型 传输层 既面向连接又面向无连接。
+  OSI 模型帮助您标准化路由器、交换机、主板和其他硬件；
+TCP/IP 帮助您在不同类型的计算机之间建立连接。
+  优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
+TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。"/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>OSI vs TCP/IP Model</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 8, 2021</span></div>
+				<h1>OSI vs TCP/IP Model</h1>
+			</header>
+			<div class="content">
+				<p><strong>TCP/IP (Transmission Control Protocol/Internet Protocol Model)</strong> <strong>传输控制协议/互联网协议模型</strong>最早由美国国防部赞助研究，定义<strong>系统和系统之间</strong> 开放连接和通信所使用的通信网络。</p>
+<p><strong>OSI (Open System Interconnection Reference Model) <strong>开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP  model的基础上制定的。定义</strong>系统和系统之间</strong> 开放连接和通信所使用的通信网络。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112201432952.png" alt=""></p>
+<h3 id="osi-vs-tcpip-model">OSI vs TCP/IP Model<a href="#osi-vs-tcpip-model" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>
+<p>OSI 模型有7层；</p>
+<p>TCP/IP模型只有4层，更加简洁，应用更加广泛。</p>
+</li>
+<li>
+<p>OSI header = <strong>5 byte</strong>;</p>
+<p>TCP/IP header = <strong>20 byte</strong>.</p>
+</li>
+<li>
+<p>OSI 遵循垂直方法；</p>
+<p>TCP/IP 遵循水平方法。</p>
+</li>
+<li>
+<p>OSI 模型 中 传输层 <strong>仅面向连接</strong>；</p>
+<p>TCP/IP 模型 传输层 <strong>既面向连接又面向无连接</strong>。</p>
+</li>
+<li>
+<p>OSI 模型帮助您<strong>标准化路由器、交换机、主板和其他硬件</strong>；</p>
+<p>TCP/IP 帮助您在<strong>不同类型的计算机之间建立连接</strong>。</p>
+</li>
+<li>
+<p>优缺点：OSI <strong>没有定义任何特定的协议</strong>；<strong>层不能并行单独工作</strong>，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是<strong>重复</strong>的。</p>
+<p>TCP/IP <strong>模型设置和管理负责，服务、接口和协议没有明确的分离</strong>。</p>
+</li>
+</ol>
+<p><img src="https://media.fs.com/images/community/wp-content/uploads/2017/11/how-data-is-processed-in-OSI-and-TCPIP-models1.jpg" alt="how data is processed in OSI and TCPIP models"></p>
+<p><img src="https://media.fs.com/images/community/upload/kindEditor/202107/29/original-seven-layers-of-osi-model-1627523878-JYjV8oybcC.png" alt="seven layers of OSI model"></p>
+<p><img src="https://media.fs.com/images/community/wp-content/uploads/2017/11/comparison-of-OSI-and-TCPIP.jpg" alt="comparison of OSI and TCPIP"></p>
+<p>————————————————</p>
+<h2 id="物理层-physical-layer">物理层 Physical Layer<a href="#物理层-physical-layer" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>字面意思解释：物理传输、硬件、物理特性。在深圳的你与北京的朋友聊天，你的电脑必须要能上网，物理体现是什么？是不是接一根网线，插个路由器，北京的朋友那边是不是也有根网线，也得插个路由器。也就是说计算机与计算机之间的通信，必须要有底层物理层方面的连通，就类似于你打电话，中间是不是必须得连电话线。</p>
+<p>中间的物理链接可以是光缆、电缆、双绞线、无线电波。中间传的是电信号，即010101&hellip;这些二进制位。</p>
+<p>要让这些010010101001&hellip;有意思，人为的分组再适合不过了，8位一组，发送及接收都按照8位一组来划分。接收到8位为一组的话，那么就可以按照这8位数来做运算。如果没有分组，对方接收的计算机根本就不知道从哪一位开始来做计算，也解析不了收到的数据。我发了16位你就按照16位来做计算吗？我发100位你就按照100位做计算吗？没什么意义是吧。因此要想让底层的电信号有意义，必须要把底层的电信号做分组。我做好8位一组，那么我收到数据，我就知道这几个8位做一组，这几个8位做一组。那么每个8位就可以得到一个确定的数。分组是谁干的活呢？物理层干不了，这个是数据链路层干的。</p>
+<h2 id="数据链路层-data-link-layer">数据链路层 Data Link Layer<a href="#数据链路层-data-link-layer" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>早期的时候，数据链路层就是来对电信号来做分组的。以前每个公司都有自己的分组方式，非常的乱，后来形成了统一的标准（标准就是协议），即以太网协议Ethernet。</p>
+<p>Ethernet规定</p>
+<p>一组电信号称之为一个数据包，或者叫做一个“帧”</p>
+<p>每一数据帧分成：报头head和数据data两部分
+head包含：（固定18个字节）</p>
+<p>发送者（源地址，6个字节）
+接收者（目标地址，6个字节）
+数据类型（6个字节）
+data包含：（最短46字节，最长1500字节）</p>
+<p><strong>数据包的具体内容</strong>
+head长度+data长度=最短64字节，最长1518字节，超过最大限制就分片发送。</p>
+<p>这就像写信，发送者的地址（源地址）就是你家的地址，接收者地址（目标地址）就是对方的收信地址，你家的路由器就相当于邮局。其实在计算机通信中的源地址和目标地址指的是mac地址。</p>
+<p><strong>Mac地址的由来：</strong></p>
+<p>head中包含的源和目标地址由来：Ethernet规定接入Internet的设备都必须具备网卡，发送端的和接收端的地址便是指网卡的地址，即Mac地址。</p>
+<p>每块网卡出厂时都被烧录上一个实际上唯一的Mac地址，长度为48位2进制，通常由12位16进制数表示，（前六位是厂商编码，后六位是流水线号）</p>
+<p><strong><code>Hardware (MAC) Address:	f0:18:98:99:0d:88</code></strong></p>
+<p>有了mac地址以后，计算机就可以通信了，假设一个教室就是一个局域网（隔离的网络），这个教室里面有几台计算机，计算机的通信和人的通信是一个道理，把教室里面的人都比作一个个计算机，假设教室里面的人都是瞎子，其实计算机就是瞎子的，计算机通信基本靠吼，现在我要找教室里面的飞哥要战狼2的片，然后我就吼一声，说我要找飞哥要战狼2的片，战狼2的片就属于我的数据，但是我在发的时候我是不是要标识我是谁，我要找谁，我是谁就是我的mac地址，我要找谁就是飞哥的mac地址，这两个地址做数据包的头部，再加上数据战狼2的片就构成了一个数据帧。</p>
+<p>这个数据包封装好以后就往外发，到物理层以后就全部转成二级制，往外发是怎么发的呢？就是靠吼。即“我是Edison，我找飞哥要战狼2的片”。这么吼了一嗓子以后，全屋子的人都能听到，这就是广播。</p>
+<p>计算机底层，只要在一个教室里（一个局域网），都是靠广播的方式，吼。</p>
+<p>局域网的理解：什么是互联网，互联网就是由一个个局域网组成，局域网内的计算机不管是对内还是对外都是靠吼，这就是数据链路层的工作方式&mdash;&ndash;广播。</p>
+<p>广播出去以后，所有人都听得见，所有人都会拆开这个包，读发送者是谁，接收者是谁，只要接收者不是自己就丢弃掉。对计算机来说，它会看自己的Mac地址，飞哥收到以后，他就会把片发给我，发送回来同样采用广播的方式了，靠吼。</p>
+<p>同一个教室（同一个局域网）的计算机靠吼来通信，那不同教室的计算机又如何？</p>
+<p>比如说局域网1的pc1与局域网2的pc10如何通信？你在教室1（局域网1）吼，教室2（局域网2）的人肯定是听不见的。这就是跨网络进行通信，数据链路层就解决不了这个问题了，这就得靠网络层出面了。</p>
+<p>在讲网络层之前，其实基于广播的这种通信就可以实现全世界通信了，你吼一声，如果全世界是一个局域网，全世界的计算机肯定可以听得见，从理论上似乎行得通，如果全世界的计算机都在吼，你想一想，这是不是一个灾难。因此，全世界不能是一个局域网。于是就有了网络层。</p>
+<h2 id="网络层-network-layer">网络层 Network Layer<a href="#网络层-network-layer" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>网络层定义了一个<strong>IP协议</strong>，</p>
+<p>你想，我是这个教室的一个学生，我想找隔壁教室一个叫老王的学生，我也不认识老王，那怎么办，我吼？老王在另外一个教室肯定是听不到的。找教室的负责人，这个教室的负责人就负责和隔壁教室的负责人说话，说我们教室的有个学生要找你们教室的老王。往外传的东西交给负责人就可以了，内部的话上面已经提到，通过广播的方式，对外的东西广播失效。教室的负责人就是网关，<strong>网关</strong>即网络关口的意思。</p>
+<p>Mac地址是用来标识你这个教室的某个位置，IP地址是用来标识你在哪个教室（哪个局域网）。你要跨网络发包你是不是要知道对方的IP地址，比如你要访问百度，你肯定得知道百度服务器的IP地址。计算机在发包前，会判断你在哪个教室，对方在哪个教室，如果在一个教室，基于mac地址的广播发包就OK了；如果不在一个教室，即跨网络发包，那么就会把你的包交给教室负责人（网关）来转发。Mac地址及IP地址唯一标识了你在互联网中的位置。</p>
+<p>数据链路层中会把网络层的数据包封装到数数据链路层的数据位置，然后再添加上自己的包头，再发给物理层，物理层发给网关，网关再发给对方教室的网关，对方教室的网关收到后在那个教室做广播。</p>
+<p>在数据链路层看，数据封装了两层，跟玩俄罗斯套娃有点类似，一层套了一层
+<img src="https://img-blog.csdn.net/20180802144026546?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3RvbmduaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>最终变成</p>
+<p><img src="https://img-blog.csdn.net/20180802144225976?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3RvbmduaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>现在来看另一个问题，在吼之前怎么知道对方的Mac地址？这就得靠ARP协议。</p>
+<p>ARP协议的由来：在你找飞哥要片之前，你的先干一件事，想办法知道飞哥的Mac地址。即你的机器必须先发一个ARP包出去，ARP也是靠广播的方式发，ARP发送广播包的方式如下：</p>
+<p><img src="https://img-blog.csdn.net/20180802145027656?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3RvbmduaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>局域网中怎么获取对方的Mac地址：</p>
+<p>肯定要知道对方的IP地址，这是最基本的，就像你要访问百度，肯定得知道百度的域名，域名就是百度的IP地址。自己的IP可以轻松获得，自己的Mac也轻松获取，目标Mac为12个F，我们叫广播地址，表达的意思是我想要获取这个目标IP地址172.16.10.11的机器的Mac地址。Mac为12个F代表的是一种功能，这个功能就是获取对方的MAC地址，计算机的Mac永远不可能是12个F。假设是在本教室广播，一嗓子吼出去了，所有人开始解包，只有IP地址是172.16.10.11的这个人才会返回他的Mac地址，其他人全部丢弃。发回来源Mac改成飞哥自己的Mac地址，同时把飞哥的Mac地址放在数据部分。</p>
+<p>跨网络怎么获取对方的Mac地址：</p>
+<p>通过IP地址区分，计算机运算判断出飞哥不在同一个教室，目标IP就变成了网关的IP了。网关的IP在计算机上配死了，可以轻松获取。</p>
+<p><img src="https://img-blog.csdn.net/20180802145027656?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3RvbmduaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>这样网关就会把它的Mac地址返回给你，然后正常发包</p>
+<p>网关帮你去找飞哥，但对用户来说，我们根本就感觉不到网关的存在。</p>
+<h2 id="传输层">传输层<a href="#传输层" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>传输层的由来：网络层的ip帮我们区分子网，以太网层的mac帮我们找到主机，然后大家使用的都是应用程序，你的电脑上可能同时开启qq，暴风影音，等多个应用程序，</p>
+<p>那么我们通过ip和mac找到了一台特定的主机，如何标识这台主机上的应用程序，答案就是<strong>端口</strong>，<strong>端口即应用程序与网卡关联的编号</strong>。</p>
+<p>传输层功能：<strong>建立端口到端口的通信</strong></p>
+<p>补充：<strong>端口范围0-65535，0-1023为系统占用端口</strong>,例如<code>8080</code>为http服务的备用端口,</p>
+<p>tcp协议：</p>
+<p>可靠传输，TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的长度，以确保单个TCP数据包不必再分割。</p>
+<p>以太网头	ip 头              	tcp头              	数据</p>
+<p>udp协议：</p>
+<p>不可靠传输，”报头”部分一共只有8个字节，总长度不超过65,535字节，正好放进一个IP数据包。</p>
+<p>以太网头	ip头                 	    udp头                           	数据</p>
+<h2 id="应用层">应用层<a href="#应用层" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>应用层由来：用户使用的都是应用程序，均工作于应用层，互联网是开发的，大家都可以开发自己的应用程序，数据多种多样，必须规定好数据的组织形式 。</p>
+<p>应用层功能：规定应用程序的数据格式。</p>
+<p>例：TCP协议可以为各种各样的程序传递数据，比如Email、WWW、FTP等等。那么，必须有不同协议规定电子邮件、网页、FTP数据的格式，这些应用程序协议就构成了”应用层”。</p>
+<p>原文链接：https://blog.csdn.net/taotongning/article/details/81352985</p>
+<p>————————————————</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112211343575" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112211344693" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202112211344984" alt=""></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/network">Network</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>139 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-08 11:43 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/spring/lombok/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Lombok</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/spring/restful/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>RESTful API</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/networking/osi-vs-tcp_ip/" class="leancloud_visitors" data-flag-title="OSI vs TCP/IP Model">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

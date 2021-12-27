@@ -18,7 +18,7 @@
   在application.properties文件新建服务器端口
   新建HelloController class
   执行BootLunchApplication main class
-  </description>
+  1@SpringBootApplication 2@RestController 3public class DemoApplication { 4 5	public static void main(String[] args) { 6	SpringApplication.run(DemoApplication.class, args); 7	} 8 9	@GetMapping 10	public String hello() { 11	return &amp;#34;Hello World&amp;#34;; 12	} 13 14} </description>
     </item>
     
   </channel>

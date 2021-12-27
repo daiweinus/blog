@@ -20,6 +20,17 @@
     </item>
     
     <item>
+      <title>RESTful API</title>
+      <link>https://daiwei.dev/posts/spring/restful/</link>
+      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/restful/</guid>
+      <description>什么是RESTful 风格 API API（Application Programming Interface），顾名思义：是一组编程接口规范，客户端与服务端通过请求响应进行数据通信。REST（Representational State Transfer）表述性状态传递，决定了接口的形式与规则。RESTful是基于http方法的API设计风格，而不是一种新的技术.
+ 看Url就知道要什么资源 看http method就知道针对资源干什么 看http status code就知道结果如何  RESTful是面向资源的（名词） REST 通过 URI 暴露资源时，会强调不要在 URI 中出现动词。比如：
+   不符合REST的接口URI 符合REST接口URI 功能     GET /api/getDogs/{id} GET /api/dogs/{id} 获取一个小狗狗   GET /api/getDogs GET /api/dogs 获取所有小狗狗   GET /api/addDogs POST /api/dogs 添加一个小狗狗   GET /api/editDogs/{id} PUT /api/dogs/{id} 修改一个小狗狗   GET /api/deleteDogs/{id} DELETE /api/dogs/{id} 删除一个小狗狗    HTTP状态码 通过HTTP状态码体现动作的结果,不要自定义</description>
+    </item>
+    
+    <item>
       <title>Spring_intro</title>
       <link>https://daiwei.dev/posts/spring/spring_intro/</link>
       <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>

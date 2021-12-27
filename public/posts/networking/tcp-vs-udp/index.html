@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="TCP VS UDP PROTOCAL">
+<meta itemprop="description" content="TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
+区别：
+ TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
+确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
+超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
+连接管理：三次握手和四次挥手的过程。
+流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
+拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口&#43;1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
+ "><meta itemprop="datePublished" content="2021-12-08T11:43:43+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T11:43:43+08:00" />
+<meta itemprop="wordCount" content="61"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Network," /><meta property="og:title" content="TCP VS UDP PROTOCAL" />
+<meta property="og:description" content="TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
+区别：
+ TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
+确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
+超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
+连接管理：三次握手和四次挥手的过程。
+流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
+拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口&#43;1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
+ " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/networking/tcp-vs-udp/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T11:43:43+08:00" />
+<meta property="article:modified_time" content="2021-12-08T11:43:43+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="TCP VS UDP PROTOCAL"/>
+<meta name="twitter:description" content="TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
+区别：
+ TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
+确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
+超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
+连接管理：三次握手和四次挥手的过程。
+流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
+拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口&#43;1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
+ "/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>TCP VS UDP PROTOCAL</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 8, 2021</span></div>
+				<h1>TCP VS UDP PROTOCAL</h1>
+			</header>
+			<div class="content">
+				<p><strong>TCP</strong>（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。
+<strong>UDP</strong> (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。</p>
+<p>区别：</p>
+<ol>
+<li>TCP协议是connection-oriented protoco<strong>面向连接的协议</strong>； UDP 是connectionless protocol<strong>无连接的协议</strong>.</li>
+<li>TCP 以<strong>字节流的形式读取数据</strong>，并将消息传输到段边界；UDP 消息包含一个一个<strong>发送的数据包</strong>。它还在到达时间检查完整性。</li>
+<li>TCP 消息通过 Internet 从<strong>一台计算机传输到另一台计算机</strong>；UDP <strong>一个程序可以向另一个程序</strong>发送大量数据包。</li>
+<li>TCP <strong>按特定顺序重新排列数据包</strong>；UDP 协议没有固定的顺序，所有的数据包都是<strong>相互独立的</strong>。</li>
+<li>TCP 的<strong>速度较慢，header = 20 bytes</strong>; UDP <strong>速度快， header = 8 bytes</strong>。</li>
+<li>TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法<strong>checksums</strong>,执行错误检查，但它会丢弃错误的数据包。</li>
+<li>TCP 使用握手协议是<strong>可靠</strong>的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，<strong>不可靠</strong>，无法保证将数据传送到目的地。</li>
+<li>TCP 可靠，稳定 用于计算机之间连接,例如<strong>HTTP, HTTPS,SMTP</strong>；UDP 传输数据速度快，用于<strong>语音，视频和在线游戏连接</strong>。</li>
+<li>缺点：TCP <strong>不能用于广播或多播传输</strong>, <strong>速度慢，效率比较低</strong>，<strong>占用系统资源</strong>，<strong>容易被攻击</strong>。三次握手机制导致TCP容易被人利用，实现<strong>DOS，DDOS攻击</strong>。      UDP <strong>不可靠，不稳定</strong>，在网络质量不好的时候<strong>容易丢包</strong>。</li>
+</ol>
+<h3 id="tcp怎么保证传输过程的可靠性"><strong>TCP怎么保证传输过程的可靠性？</strong><a href="#tcp怎么保证传输过程的可靠性" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<blockquote>
+<p><strong>校验和 checksums</strong>：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。</p>
+<p><strong>确认应答，序列号</strong>：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。</p>
+<p><strong>超时重传</strong>：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。</p>
+<p><strong>连接管理</strong>：三次握手和四次挥手的过程。</p>
+<p><strong>流量控制</strong>：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。</p>
+<p><strong>拥塞控制</strong>：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。</p>
+</blockquote>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/network">Network</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>61 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-08 11:43 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>TCP 4-way Handshake</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/spring/springboot_helloword/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>SpringBoot Hello world</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/networking/tcp-vs-udp/" class="leancloud_visitors" data-flag-title="TCP VS UDP PROTOCAL">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

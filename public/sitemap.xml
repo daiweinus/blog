@@ -5,16 +5,40 @@
     <loc>https://daiwei.dev/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
+    <loc>https://daiwei.dev/posts/networking/http-vs-https/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
     <loc>https://daiwei.dev/posts/spring/lombok/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
+    <loc>https://daiwei.dev/tags/network/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
     <loc>https://daiwei.dev/posts/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/restful/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/spring/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/tcp-vs-udp/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/spring-boot/</loc>
@@ -43,6 +67,9 @@
   </url><url>
     <loc>https://daiwei.dev/posts/java/java_gradle/</loc>
     <lastmod>2021-11-17T16:38:00+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java/java_socket/</loc>
+    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/java/java_roadmap/</loc>
     <lastmod>2021-11-17T16:19:45+08:00</lastmod>
