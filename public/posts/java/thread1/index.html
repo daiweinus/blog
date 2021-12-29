@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Threads多线程">
+<meta itemprop="description" content="1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread."><meta itemprop="datePublished" content="2021-10-20T11:37:08+08:00" />
+<meta itemprop="dateModified" content="2021-10-20T11:37:08+08:00" />
+<meta itemprop="wordCount" content="971"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Java Threads多线程" />
+<meta property="og:description" content="1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/thread1/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-20T11:37:08+08:00" />
+<meta property="article:modified_time" content="2021-10-20T11:37:08+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Threads多线程"/>
+<meta name="twitter:description" content="1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Threads多线程</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 20, 2021</span></div>
+				<h1>Java Threads多线程</h1>
+			</header>
+			<div class="content">
+				<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
+<span class="ln">2</span><span class="n">Package</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<span class="ln">5</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Thread</span>
+<span class="ln">6</span>  
+<span class="ln">7</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread</span>
+<span class="ln">8</span><span class="kd">extends</span> <span class="n">Object</span>
+<span class="ln">9</span><span class="kd">implements</span> <span class="n">Runnable</span>
+</code></pre></div><h2 id="what-are-threads-in-java"><strong>What are Threads in Java?</strong><a href="#what-are-threads-in-java" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the <strong>main thread</strong>, which is created by the Java Virtual Machine (JVM) at the program’s start, when the <strong><code>main()</code></strong> method is invoked with the main thread.</p>
+<ul>
+<li>
+<p><strong>Program</strong> 程序是指为了完成特定任务，用某一种言语编写的静态代码指令集合。例: 360安全卫士。</p>
+</li>
+<li>
+<p><strong>Process</strong> 进程是指程序的一次执行的动态过程，它有自己的开始，运行，停止生命周期。系统会为每个进程分配不一样的内存区域。 例: 打开运行360安全卫士，系统就会360卫士的运行进程分配内存空间。</p>
+</li>
+<li>
+<p><strong>Thread</strong> 线程是程序的最小执行单位，是程序内部的一条执行路径。在 Java 里所有program 都至少有一个 thread，比如 <code>main()</code> thread 它是 JVM 在所有程序开始时创建的。</p>
+<ul>
+<li>实际上一个Java.exe程序至少有三个线程：<strong><code>main()</code>主线程</strong>，<strong><code>gc</code>垃圾回收线程</strong> 和 <strong>异常处理线程</strong>。</li>
+<li>线程作为调度和执行单位，每个线程都有独立的运行stack 和 pc (程序计数器)。一个进程可以同时执行多个线. 程，就是多线程，多线程之间可以共享相同的内存单元和地址。</li>
+<li>例: 迅雷就是程序，正在运行的迅雷就是进程，下载一部电影就是单线程，同时下载多部电影就是多线程。</li>
+</ul>
+<p><strong>简单的说：程序是静态代码指令集合，进程是动态正在运行的程序，线程是进程的最小执行单位。</strong></p>
+</li>
+</ul>
+<p>In Java, creating a thread is accomplished by **implementing an interface **and <strong>extending a class</strong>. Every Java thread is created and controlled by the <strong><code>java.lang.Thread</code></strong> class.</p>
+<ul>
+<li>
+<p><strong>并行</strong> 多个CPU同时执行多个任务。</p>
+</li>
+<li>
+<p><strong>并发</strong> 一个CPU同时（时间片）执行多个任务。</p>
+</li>
+</ul>
+<p><img src="https://lh4.googleusercontent.com/oR0_liUxjMnfgFS-fSuc0x2vCCPLQ0Vdw6w2rBVGloaE_84tRNprqNJEJiyI1unMY8Vpj2CDK9GiQGy03_RmteRz-aM31iIQcZsVZhIH2cLrne_5nY9miXKDmQqEHdY60_WopC0" alt="JavaMadeSoEasy.com (JMSE): Thread states/ Thread life cycle in java"></p>
+<h3 id="there-are-actually-total-4-ways-to-create-thread-in-java-">There are actually total 4 ways to create thread in java :<a href="#there-are-actually-total-4-ways-to-create-thread-in-java-" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>
+<p>By extending <strong><code>java.lang.Thread</code></strong> class</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">SampleThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="c1">//method where the thread execution will start 
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+<span class="ln"> 5</span>        <span class="c1">//logic to execute in a thread    
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    <span class="c1">//let’s see how to start the threads
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+<span class="ln">10</span>       <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleThread</span><span class="o">();</span>
+<span class="ln">11</span>       <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleThread</span><span class="o">();</span>
+<span class="ln">12</span>       <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  <span class="c1">//start the first thread. This calls the run() method.
+</span><span class="ln">13</span><span class="c1"></span>       <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//this starts the 2nd thread. This calls the run() method.  
+</span><span class="ln">14</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">15</span><span class="o">}</span> 
+</code></pre></div></li>
+<li>
+<p>By implementing <strong><code>java.lang.Runnable</code></strong> interface</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">A</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="nd">@Override</span>
+<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span>        <span class="c1">// implement run method here 
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">10</span>        <span class="kd">final</span> <span class="n">A</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">();</span>
+<span class="ln">11</span>
+<span class="ln">12</span>        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">A</span><span class="o">());</span>
+<span class="ln">13</span>
+<span class="ln">14</span>        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p>By implementing <strong><code>java.util.concurrent.Callable</code></strong>  interface.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">Counter</span> <span class="kd">implements</span> <span class="n">Callable</span> <span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">THREAD_POOL_SIZE</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>    <span class="c1">// method where the thread execution takes place
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 7</span>        <span class="k">return</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; executing ...&#34;</span><span class="o">;</span>
+<span class="ln"> 8</span>    <span class="o">}</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span><span class="o">,</span>
+<span class="ln">11</span>            <span class="n">ExecutionException</span> <span class="o">{</span>
+<span class="ln">12</span>        <span class="c1">// create a pool of 2 threads
+</span><span class="ln">13</span><span class="c1"></span>        <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span>
+<span class="ln">14</span>                <span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="n">THREAD_POOL_SIZE</span><span class="o">);</span>
+<span class="ln">15</span>
+<span class="ln">16</span>        <span class="n">Future</span> <span class="n">future1</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">Counter</span><span class="o">());</span>
+<span class="ln">17</span>        <span class="n">Future</span> <span class="n">future2</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">Counter</span><span class="o">());</span>
+<span class="ln">18</span>
+<span class="ln">19</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; executing ...&#34;</span><span class="o">);</span>
+<span class="ln">20</span>
+<span class="ln">21</span>        <span class="c1">//asynchronously get from the worker threads
+</span><span class="ln">22</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">future1</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="ln">23</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">future2</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="ln">24</span>
+<span class="ln">25</span>    <span class="o">}</span>
+<span class="ln">26</span><span class="o">}</span>
+</code></pre></div><p><strong>Callable 接口支持与 Executor 框架用于线程池。</strong></p>
+<p><strong>Runnable 或 Callable 接口优于extends Thread class。</strong></p>
+</li>
+</ol>
+<h3 id="there-are-two-ways-to-create-a-thread-in-java">There are two ways to create a thread in Java:<a href="#there-are-two-ways-to-create-a-thread-in-java" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// Method 1: Thread creation by extending Thread class
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">class</span> <span class="nc">MultithreadingDemo</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="nd">@Override</span>
+<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+<span class="ln"> 5</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span><span class="c1">//显示当前线程name
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 7</span>  
+<span class="ln"> 8</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 9</span>        <span class="n">MultithreadingDemo</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MultithreadingDemo</span><span class="o">();</span>
+<span class="ln">10</span>        <span class="n">obj</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">// 如果调用obj.run()不行启用新的线程，只会在main线程执行run()方法.
+</span><span class="ln">11</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span><span class="o">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// Method 2: Thread creation by implementing Runnable Interface
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">class</span> <span class="nc">MultithreadingDemo</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span> 
+<span class="ln"> 3</span>    <span class="nd">@Override</span>
+<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>  
+<span class="ln"> 5</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span> <span class="c1">//显示当前线程name
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="o">}</span>   
+<span class="ln"> 7</span>  
+<span class="ln"> 8</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>  
+<span class="ln"> 9</span>     <span class="n">MultithreadingDemo</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MultithreadingDemo</span><span class="o">();</span>  
+<span class="ln">10</span>     <span class="n">Thread</span> <span class="n">tobj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>  
+<span class="ln">11</span>     <span class="n">tobj</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+<span class="ln">12</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+<span class="ln">13</span>    <span class="o">}</span>  
+<span class="ln">14</span><span class="o">}</span>
+</code></pre></div><h3 id="extends-threads-vs-implements-runnable">extends Threads vs implements Runnable<a href="#extends-threads-vs-implements-runnable" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://i.stack.imgur.com/vLRdp.gif" alt="enter image description here"></p>
+<ul>
+<li>Something that can run inside a Thread (Runnable).</li>
+<li>Something That can start a new Thread (Thread).</li>
+</ul>
+<p><strong><code>implements Runnable</code></strong> is the preferred way, it means you can <code>implement Runnable</code> and extend from another class as well.</p>
+<p>使用 <strong>Runable</strong> 接口的同时，你还可以继承其他类。但是使用<strong>extends Threads</strong>就无法再继承其他类了。</p>
+<p><strong>Inherit less, interface more,</strong> only use inherit when you need override some behavior.</p>
+<p>少继承，多接口。只有在你需要重写某些行为时才使用继承。</p>
+<p>Multi-threads Ticket system 多线程卖票案例</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WindowTest1</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Window1</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Window1</span><span class="o">();</span>
+<span class="ln"> 4</span>        <span class="n">Window1</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Window1</span><span class="o">();</span>
+<span class="ln"> 5</span>        <span class="n">Window1</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Window1</span><span class="o">();</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span>        <span class="n">t1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_1&#34;</span><span class="o">);</span>
+<span class="ln"> 8</span>        <span class="n">t2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_2&#34;</span><span class="o">);</span>
+<span class="ln"> 9</span>        <span class="n">t3</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_3&#34;</span><span class="o">);</span>
+<span class="ln">10</span>
+<span class="ln">11</span>        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">12</span>        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">13</span>        <span class="n">t3</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">14</span>    <span class="o">}</span>
+<span class="ln">15</span><span class="o">}</span>
+<span class="ln">16</span>
+<span class="ln">17</span><span class="kd">class</span> <span class="nc">Window1</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+<span class="ln">18</span>  <span class="c1">//if not use static, all 3 every threads will have their own 100 tickets.
+</span><span class="ln">19</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">tickets</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span> 
+<span class="ln">20</span>  
+<span class="ln">21</span>    <span class="nd">@Override</span>
+<span class="ln">22</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">23</span>        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">24</span>            <span class="k">if</span><span class="o">(</span><span class="n">tickets</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">25</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()+</span> <span class="s">&#34; Sold ticket No: &#34;</span> <span class="o">+</span> <span class="n">tickets</span><span class="o">);</span>
+<span class="ln">26</span>                <span class="n">tickets</span><span class="o">--;</span>
+<span class="ln">27</span>            <span class="o">}</span> <span class="k">else</span> <span class="k">break</span><span class="o">;</span>
+<span class="ln">28</span>        <span class="o">}</span>
+<span class="ln">29</span>    <span class="o">}</span>
+<span class="ln">30</span><span class="o">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WindowTest2</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Window2</span> <span class="n">w</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Window2</span><span class="o">();</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln"> 6</span>        <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln"> 7</span>        <span class="n">Thread</span> <span class="n">t3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="n">w</span><span class="o">);</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span>        <span class="n">t1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_1&#34;</span><span class="o">);</span>
+<span class="ln">10</span>        <span class="n">t2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_2&#34;</span><span class="o">);</span>
+<span class="ln">11</span>        <span class="n">t3</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Window_3&#34;</span><span class="o">);</span>
+<span class="ln">12</span>
+<span class="ln">13</span>        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">14</span>        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">15</span>        <span class="n">t3</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">16</span>    <span class="o">}</span>
+<span class="ln">17</span><span class="o">}</span>
+<span class="ln">18</span>
+<span class="ln">19</span><span class="kd">class</span> <span class="nc">Window2</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+<span class="ln">20</span>  <span class="c1">// implenments Runnable means all 3 threads are inherit from 1 object
+</span><span class="ln">21</span><span class="c1"></span>  <span class="c1">// so they will share the 100 tickets, no need use modifier static
+</span><span class="ln">22</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">tickets</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+<span class="ln">23</span>
+<span class="ln">24</span>    <span class="nd">@Override</span>
+<span class="ln">25</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">26</span>        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">27</span>            <span class="k">if</span><span class="o">(</span><span class="n">tickets</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">28</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; has sold ticket No : &#34;</span> <span class="o">+</span> <span class="n">tickets</span><span class="o">);</span>
+<span class="ln">29</span>                <span class="n">tickets</span><span class="o">--;</span>
+<span class="ln">30</span>            <span class="o">}</span> <span class="k">else</span> <span class="k">break</span><span class="o">;</span>
+<span class="ln">31</span>        <span class="o">}</span>
+<span class="ln">32</span>    <span class="o">}</span>
+<span class="ln">33</span><span class="o">}</span>
+</code></pre></div><h3 id="为什么要调用start不直接调用run方法">为什么要调用<code>start()</code>不直接调用<code>run()</code>方法?<a href="#为什么要调用start不直接调用run方法" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>如果直接调用这些线程的 run() 方法，则所有线程的执行都由同一个当前线程处理，不会发生多线程. 当通过 start() 方法调用 <code>run()</code> 方法时，就会分配一个新的单独线程来执行 <code>run()</code> 方法，因此如果有多个线程调用 start() 方法，多线程就行同时运行。</p>
+<p><strong>直接调用<code>run()</code>方法</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunMethodExample</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+<span class="ln"> 2</span>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>  
+<span class="ln"> 3</span>      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">3</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>  
+<span class="ln"> 4</span>	<span class="k">try</span><span class="o">{</span>
+<span class="ln"> 5</span>              <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+<span class="ln"> 6</span>	   <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">ie</span><span class="o">){</span>
+<span class="ln"> 7</span>		<span class="n">ie</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln"> 8</span>	    <span class="o">}</span>  
+<span class="ln"> 9</span>	 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  
+<span class="ln">10</span>      <span class="o">}</span>  
+<span class="ln">11</span>   <span class="o">}</span>  
+<span class="ln">12</span>   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>  
+<span class="ln">13</span>      <span class="n">Thread</span> <span class="n">th1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">RunMethodExample</span><span class="o">(),</span> <span class="s">&#34;th1&#34;</span><span class="o">);</span>
+<span class="ln">14</span>      <span class="n">Thread</span> <span class="n">th2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">RunMethodExample</span><span class="o">(),</span> <span class="s">&#34;th2&#34;</span><span class="o">);</span> 
+<span class="ln">15</span>      <span class="n">th1</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>  
+<span class="ln">16</span>      <span class="n">th2</span><span class="o">.</span><span class="na">run</span><span class="o">();</span> 
+<span class="ln">17</span>   <span class="o">}</span>
+<span class="ln">18</span><span class="o">}</span>
+</code></pre></div><p>output</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">1</span>
+<span class="ln">2</span><span class="n">2</span>
+<span class="ln">3</span><span class="n">3</span>
+<span class="ln">4</span><span class="n">1</span>
+<span class="ln">5</span><span class="n">2</span>
+<span class="ln">6</span><span class="n">3</span>
+</code></pre></div><p><strong>调用<code>start()</code>方法</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunMethodExample2</span> <span class="o">{</span>
+<span class="ln"> 2</span>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>  
+<span class="ln"> 3</span>     <span class="o">...</span>
+<span class="ln"> 4</span>   <span class="o">}</span>  
+<span class="ln"> 5</span>   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>  
+<span class="ln"> 6</span>      <span class="n">Thread</span> <span class="n">th1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">RunMethodExample</span><span class="o">(),</span> <span class="s">&#34;th1&#34;</span><span class="o">);</span>
+<span class="ln"> 7</span>      <span class="n">Thread</span> <span class="n">th2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">RunMethodExample</span><span class="o">(),</span> <span class="s">&#34;th2&#34;</span><span class="o">);</span> 
+<span class="ln"> 8</span>      <span class="n">th1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+<span class="ln"> 9</span>      <span class="n">th2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> 
+<span class="ln">10</span>   <span class="o">}</span>
+<span class="ln">11</span><span class="o">}</span>
+</code></pre></div><p>output</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">1</span>
+<span class="ln">2</span><span class="n">1</span>
+<span class="ln">3</span><span class="n">2</span>
+<span class="ln">4</span><span class="n">2</span>
+<span class="ln">5</span><span class="n">3</span>
+<span class="ln">6</span><span class="n">3</span>
+</code></pre></div><h3 id="可以在-java-中启动一个线程两次吗">可以在 Java 中启动一个线程两次吗？<a href="#可以在-java-中启动一个线程两次吗" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>不可以，线程一旦启动，就不能再启动。这样做会抛出一个<code>IllegalThreadStateException</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>  
+<span class="ln">2</span>	<span class="n">Thread</span> <span class="n">th1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">ThreadTwiceExample</span><span class="o">(),</span> <span class="s">&#34;th1&#34;</span><span class="o">);</span> 
+<span class="ln">3</span>	<span class="n">th1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+<span class="ln">4</span>	<span class="n">th1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+<span class="ln">5</span><span class="o">}</span>
+</code></pre></div><p>ouput:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="s">&#34;main&#34;</span> <span class="n">th1</span> <span class="n">is</span> <span class="n">executing</span><span class="o">.</span>
+<span class="ln">2</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">IllegalThreadStateException</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>971 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-20 11:37 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/java/java_annotation/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Annotation注解</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java/javathreadpool/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java threadpool 线程池</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/thread1/" class="leancloud_visitors" data-flag-title="Java Threads多线程">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

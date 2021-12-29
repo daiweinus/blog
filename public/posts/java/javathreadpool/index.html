@@ -5,12 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta itemprop="name" content="Java threadpool">
+<meta itemprop="name" content="Java threadpool 线程池">
 <meta itemprop="description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
 In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool."><meta itemprop="datePublished" content="2021-10-20T11:18:55+08:00" />
 <meta itemprop="dateModified" content="2021-10-20T11:18:55+08:00" />
-<meta itemprop="wordCount" content="362"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
-<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Java threadpool" />
+<meta itemprop="wordCount" content="363"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Java threadpool 线程池" />
 <meta property="og:description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
 In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool." />
 <meta property="og:type" content="article" />
@@ -21,7 +21,7 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
 
-<meta name="twitter:title" content="Java threadpool"/>
+<meta name="twitter:title" content="Java threadpool 线程池"/>
 <meta name="twitter:description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
 In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool."/>
 
@@ -34,7 +34,7 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 
-	<title>Java threadpool</title>
+	<title>Java threadpool 线程池</title>
 	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
 	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
 </head>
@@ -72,7 +72,7 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 		<article class="thin">
 			<header class="post-header">
 				<div class="post-meta"><span>Oct 20, 2021</span></div>
-				<h1>Java threadpool</h1>
+				<h1>Java threadpool 线程池</h1>
 			</header>
 			<div class="content">
 				<h2 id="what-is-the-thread-pool-in-java"><strong>What is the Thread Pool in Java?</strong><a href="#what-is-the-thread-pool-in-java" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
@@ -122,11 +122,11 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 <ul>
 <li>
 <p><strong>Thread Leakage:</strong> If a thread is removed from the pool to perform a task but not returned back to it when the task is completed, thread leakage occurs.</p>
-<p>**线程泄漏：**如果线程被从池中移除以执行任务但在任务完成时没有返回到它，则发生线程泄漏。</p>
+<p>**线程泄漏：**如果线程从池中移除去执行任务但在任务完成时没有返回到它，则发生线程泄漏。</p>
 </li>
 <li>
 <p><strong>Deadlock:</strong> In thread pool is executing thread is waiting for the output from the block the thread waiting in the queue due to unavailability of thread for execution, there’s a case of a deadlock.</p>
-<p>**死锁：**在线程池中正在执行线程正在等待块的输出由于线程不可用而在队列中等待的线程执行，存在死锁的情况。</p>
+<p><strong>死锁：</strong> 在线程池里</p>
 </li>
 <li>
 <p><strong>Resource Thrashing:</strong> More number of threads than the optimal number required can cause starvation problems leading to resource thrashing.</p>
@@ -140,20 +140,20 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>362 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>363 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-20 11:18 &#43;0800</p>
 			</footer>
 		</article>
 		<div class="post-nav thin">
-			<a class="next-post" href="https://daiwei.dev/posts/java/javathread/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Threads</span>
+			<a class="next-post" href="https://daiwei.dev/posts/java/thread1/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Threads多线程</span>
 			</a>
 			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/arraylistvslinkedlist/">
 				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>arrayList vs linkedList</span>
 			</a>
 		</div>
 		<div id="comments" class="thin">
-  <span id="/posts/java/javathreadpool/" class="leancloud_visitors" data-flag-title="Java threadpool">
+  <span id="/posts/java/javathreadpool/" class="leancloud_visitors" data-flag-title="Java threadpool 线程池">
       <p></p>
   </span>
   <div id="vcomments"></div>

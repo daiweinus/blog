@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Annotation注解">
+<meta itemprop="description" content="The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
+@Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
+@Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
+@SuppressWarnings注释告诉编译器抑制它会生成的特定警告。
+使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。
+但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
+从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
+1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &#34;Benjamin Franklin&#34;, 8 date = &#34;3/27/2003&#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &#34;unchecked&#34;) 14void myMethod() { ."><meta itemprop="datePublished" content="2021-10-20T17:26:19+08:00" />
+<meta itemprop="dateModified" content="2021-10-20T17:26:19+08:00" />
+<meta itemprop="wordCount" content="132"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java," /><meta property="og:title" content="Java Annotation注解" />
+<meta property="og:description" content="The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
+@Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
+@Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
+@SuppressWarnings注释告诉编译器抑制它会生成的特定警告。
+使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。
+但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
+从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
+1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &#34;Benjamin Franklin&#34;, 8 date = &#34;3/27/2003&#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &#34;unchecked&#34;) 14void myMethod() { ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/java_annotation/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-20T17:26:19+08:00" />
+<meta property="article:modified_time" content="2021-10-20T17:26:19+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Annotation注解"/>
+<meta name="twitter:description" content="The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
+@Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
+@Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
+@SuppressWarnings注释告诉编译器抑制它会生成的特定警告。
+使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。
+但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
+从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
+1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &#34;Benjamin Franklin&#34;, 8 date = &#34;3/27/2003&#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &#34;unchecked&#34;) 14void myMethod() { ."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Annotation注解</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 20, 2021</span></div>
+				<h1>Java Annotation注解</h1>
+			</header>
+			<div class="content">
+				<p>The predefined <a href="https://docs.oracle.com/javase/tutorial/java/annotations/index.html">annotation</a> types defined in <code>java.lang</code> are <strong><code>@Deprecated</code>, <code>@Override</code>, and <code>@SuppressWarnings</code></strong>.</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html"><code>@Deprecated</code></a>注释表示被标记的元素已被<em>弃用</em>，不应再使用。每当程序使用带有<code>@Deprecated</code>注释的方法、类或字段时，编译器都会生成警告</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html"><code>@Override</code></a>注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在<a href="https://docs.oracle.com/javase/tutorial/java/IandI/index.html">接口和继承中</a>讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法<code>@Override</code>未能正确覆盖其超类之一中的方法，则编译器会生成错误</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/SuppressWarnings.html"><code>@SuppressWarnings</code></a>注释告诉编译器抑制它会生成的特定警告。</p>
+<p>使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。</p>
+<p>但是如果你使用<code>@Override</code>注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。</p>
+<p>从 Java SE 8 版本开始，注释也可以应用于任何<em>类型的 use</em>。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( <code>new</code>)、强制转换、<code>implements</code>子句和<code>throws</code>子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="nd">@Entity</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="nd">@Override</span>
+<span class="ln"> 4</span><span class="kt">void</span> <span class="nf">mySuperMethod</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="nd">@Author</span><span class="o">(</span>
+<span class="ln"> 7</span>   <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;Benjamin Franklin&#34;</span><span class="o">,</span>
+<span class="ln"> 8</span>   <span class="n">date</span> <span class="o">=</span> <span class="s">&#34;3/27/2003&#34;</span>
+<span class="ln"> 9</span><span class="o">)</span>
+<span class="ln">10</span><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="c1">//If only one element named value, then the name can be omitted
+</span><span class="ln">13</span><span class="c1"></span><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+<span class="ln">14</span><span class="kt">void</span> <span class="nf">myMethod</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln">15</span>
+<span class="ln">16</span><span class="c1">//multiple annotations on the same declarati
+</span><span class="ln">17</span><span class="c1"></span><span class="nd">@Author</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;Jane Doe&#34;</span><span class="o">)</span>
+<span class="ln">18</span><span class="nd">@EBook</span>
+<span class="ln">19</span><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln">20</span>
+<span class="ln">21</span><span class="c1">//Type cast
+</span><span class="ln">22</span><span class="c1"></span><span class="n">myString</span> <span class="o">=</span> <span class="o">(</span><span class="nd">@NonNull</span> <span class="n">String</span><span class="o">)</span> <span class="n">str</span><span class="o">;</span>
+<span class="ln">23</span>
+<span class="ln">24</span><span class="c1">//implements clause:
+</span><span class="ln">25</span><span class="c1"></span><span class="kd">class</span> <span class="nc">UnmodifiableList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span>
+<span class="ln">26</span>    <span class="nd">@Readonly</span> <span class="n">List</span><span class="o">&lt;</span><span class="nd">@Readonly</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln">27</span>
+<span class="ln">28</span><span class="c1">//Thrown exception declaration:
+</span><span class="ln">29</span><span class="c1"></span><span class="kt">void</span> <span class="nf">monitorTemperature</span><span class="o">()</span> <span class="kd">throws</span>
+<span class="ln">30</span>    <span class="nd">@Critical</span> <span class="n">TemperatureException</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="ln">31</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java">Java</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>132 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-20 17:26 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/java/thread4_safety/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Threads Safety 线程安全</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java/thread1/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Threads多线程</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/java_annotation/" class="leancloud_visitors" data-flag-title="Java Annotation注解">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

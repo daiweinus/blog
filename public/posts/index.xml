@@ -6,8 +6,163 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate>
+		<lastBuildDate>Mon, 27 Dec 2021 18:18:55 +0800</lastBuildDate>
 		<atom:link href="https://daiwei.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Java Stream</title>
+			<link>https://daiwei.dev/posts/java/stream/</link>
+			<pubDate>Mon, 27 Dec 2021 18:18:55 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/java/stream/</guid>
+			<description> </description>
+			<content type="html"><![CDATA[<h2 id="heading"></h2>
+]]></content>
+		</item>
+		
+		<item>
+			<title>IOC &amp; AOP Spring 中的控制反转和面向切面编程</title>
+			<link>https://daiwei.dev/posts/spring/ioc-aop/</link>
+			<pubDate>Mon, 27 Dec 2021 18:17:23 +0800</pubDate>
+			
+			<guid>https://daiwei.dev/posts/spring/ioc-aop/</guid>
+			<description>spring相关的书和博文看了很多，一直也没明白依赖注入和面向切面编程到底是什么，spring企业实战看到第三遍突然恍然大悟，也许是因为之前动手写过代码，所以终于潜移默化，慢慢理解了吧。
+http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml这篇文章写得挺好的
+首先控制反转和面向切面编程是spring的核心机制，由于控制反转不好理解，因此有人提出依赖注入的概念，其实依赖注入是控制反转的一种方式，但现在大家默认控制反转等同于依赖注入
+一.控制反转：控制反转是指spring容器通过依赖注入的方式使得创建依赖对象的控制权由对象转移到spring容器。举个例子：
+我们有一个明星，要举办演唱会，在他唱歌之前有记者要采访他，通常我们的做法是创建一个明星类，在明星类里面new一个记者类,或者将记者类作为构造器的参数传入。如下图所示
+在这里对象依赖的对象是由自己创建的。使用spring之后，reporter对象不再由superStar来创建而是交给spring容器来创建和管理，如下图：
+我们在spring的配置文件中配置superstar和reporter两个bean，并把reporter注入到supers中，这样我们在superStard对象中不需要再自己去new一个reporter了，spring容器会帮我们创建。这就是控制反转，对象依赖ioc容器注入依赖的对象。实现解耦合。
+二.面向切面编程
+面向切面编程有几个术语需要理解：（来自百度百科）
+1）aspect（切面）：实现了cross-cutting功能，是针对切面的模块。最常见的是logging模块，这样，程序按功能被分为好几层，如果按传统的继承的话，商业模型继承日志模块的话根本没有什么意义，而通过创建一个logging切面就可以使用AOP来实现相同的功能了。
+2）jointpoint（连接点）：连接点是切面插入应用程序的地方，该点能被方法调用，而且也会被抛出意外。连接点是应用程序提供给切面插入的地方，可以添加新的方法。比如以上我们的切点可以认为是findInfo(String)方法。
+3）advice（处理逻辑）：advice是我们切面功能的实现，它通知程序新的行为。如在logging里，logging advice包括logging的实现代码，比如像写日志到一个文件中。advice在jointpoint处插入到应用程序中。以上我们在MyHandler.java中实现了advice的功能
+4）pointcut（切点）：pointcut可以控制你把哪些advice应用于jointpoint上去，通常你使用pointcuts通过正则表达式来把明显的名字和模式进行匹配应用。决定了那个jointpoint会获得通知。
+上面提到的例子中，记者在明星开场前进行采访，在明星演唱结束时报道，我们可以在superstar的singing方法前去调用reporter的interview方法，但我们发现这样我们的类会比较混乱，我们不希望在superstar的方法里看到reporter的方法，这时我们就需要面向切面编程AOP的帮忙了
+我们可以将reporter配置成一个切面，通过配置的方式插入superstar中，完成采访任务，如下图：
+ 学习过Spring框架的人一定都会听过Spring的IoC(控制反转) 、DI(依赖注入)这两个概念，对于初学Spring的人来说，总觉得IoC 、DI这两个概念是模糊不清的，是很难理解的，今天和大家分享网上的一些技术大牛们对Spring框架的IOC的理解以及谈谈我对Spring Ioc的理解。
+一、分享Iteye的开涛对Ioc的精彩讲解 首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：http://jinnianshilongnian.iteye.com/blog/1413846
+1.1、IoC是什么 Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：
+●谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+●为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。
+　用图例说明一下，传统程序设计如图2-1，都是主动去创建相关对象然后再组合起来：
+图1-1 传统应用程序示意图
+　当有了IoC/DI的容器后，在客户端类中不再主动去创建这些对象了，如图2-2所示:
+图1-2有IoC/DI容器后程序结构示意图
+1.2、IoC能做什么 IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是 松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。
+　其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。
+IoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。
+1.3、IoC和DI DI—Dependency Injection，即“依赖注入”：组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。
+　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：
+●谁依赖于谁：当然是应用程序依赖于IoC容器；
+●为什么需要依赖：应用程序需要IoC容器来提供对象需要的外部资源；
+●谁注入谁：很明显是IoC容器注入应用程序某个对象，应用程序依赖的对象；
+●注入了什么：就是注入某个对象所需要的外部资源（包括对象、资源、常量数据）。
+IoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述，由于控制反转概念比较含糊（可能只是理解为容器控制对象这一个层面，很难让人想到谁来维护对象关系），所以2004年大师级人物Martin Fowler又给出了一个新的名字：“依赖注入”，相对IoC 而言，“依赖注入”明确描述了“被注入对象依赖IoC容器配置依赖对象”。
+　看过很多对Spring的Ioc理解的文章，好多人对Ioc和DI的解释都晦涩难懂，反正就是一种说不清，道不明的感觉，读完之后依然是一头雾水，感觉就是开涛这位技术牛人写得特别通俗易懂，他清楚地解释了IoC(控制反转) 和DI(依赖注入)中的每一个字，读完之后给人一种豁然开朗的感觉。我相信对于初学Spring框架的人对Ioc的理解应该是有很大帮助的。
+二、分享Bromon的blog上对IoC与DI浅显易懂的讲解 2.1、IoC(控制反转) 首先想说说IoC（Inversion of Control，控制反转）。这是spring的核心，贯穿始终。所谓IoC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系。这是什么意思呢，举个简单的例子，我们是如何找女朋友的？常见的情况是，我们到处去看哪里有长得漂亮身材又好的mm，然后打听她们的兴趣爱好、qq号、电话号、ip号、iq号………，想办法认识她们，投其所好送其所要，然后嘿嘿……这个过程是复杂深奥的，我们必须自己设计和面对每个环节。传统的程序开发也是如此，在一个对象中，如果要使用另外的对象，就必须得到它（自己new一个，或者从JNDI中查询一个），使用完之后还要将对象销毁（比如Connection等），对象始终会和其他的接口或类藕合起来。
+　那么IoC是如何做的呢？有点像通过婚介找女朋友，在我和女朋友之间引入了一个第三者：婚姻介绍所。婚介管理了很多男男女女的资料，我可以向婚介提出一个列表，告诉它我想找个什么样的女朋友，比如长得像李嘉欣，身材像林熙雷，唱歌像周杰伦，速度像卡洛斯，技术像齐达内之类的，然后婚介就会按照我们的要求，提供一个mm，我们只需要去和她谈恋爱、结婚就行了。简单明了，如果婚介给我们的人选不符合要求，我们就会抛出异常。整个过程不再由我自己控制，而是有婚介这样一个类似容器的机构来控制。Spring所倡导的开发方式就是如此，所有的类都会在spring容器中登记，告诉spring你是个什么东西，你需要什么东西，然后spring会在系统运行到适当的时候，把你要的东西主动给你，同时也把你交给其他需要你的东西。所有的类的创建、销毁都由 spring来控制，也就是说控制对象生存周期的不再是引用它的对象，而是spring。对于某个具体的对象而言，以前是它控制其他对象，现在是所有对象都被spring控制，所以这叫控制反转。</description>
+			<content type="html"><![CDATA[<p>spring相关的书和博文看了很多，一直也没明白依赖注入和面向切面编程到底是什么，spring企业实战看到第三遍突然恍然大悟，也许是因为之前动手写过代码，所以终于潜移默化，慢慢理解了吧。</p>
+<p><a href="http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml">http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml</a>这篇文章写得挺好的</p>
+<p>首先控制反转和面向切面编程是spring的核心机制，由于控制反转不好理解，因此有人提出依赖注入的概念，其实依赖注入是控制反转的一种方式，但现在大家默认控制反转等同于依赖注入</p>
+<p>一.控制反转：控制反转是指spring容器通过依赖注入的方式使得创建依赖对象的控制权由对象转移到spring容器。举个例子：</p>
+<p>我们有一个明星，要举办演唱会，在他唱歌之前有记者要采访他，通常我们的做法是创建一个明星类，在明星类里面new一个记者类,或者将记者类作为构造器的参数传入。如下图所示</p>
+<p><img src="https://img-blog.csdn.net/20180728201334609?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4NDA1MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>在这里对象依赖的对象是由自己创建的。使用spring之后，reporter对象不再由superStar来创建而是交给spring容器来创建和管理，如下图：</p>
+<p><img src="https://img-blog.csdn.net/20180728202735870?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4NDA1MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>我们在spring的配置文件中配置superstar和reporter两个bean，并把reporter注入到supers中，这样我们在superStard对象中不需要再自己去new一个reporter了，spring容器会帮我们创建。这就是控制反转，对象依赖ioc容器注入依赖的对象。实现解耦合。</p>
+<p>二.面向切面编程</p>
+<p>面向切面编程有几个术语需要理解：（来自百度百科）</p>
+<p>1）aspect（切面）：实现了cross-cutting功能，是针对切面的模块。最常见的是logging模块，这样，程序按功能被分为好几层，如果按传统的继承的话，商业模型继承日志模块的话根本没有什么意义，而通过创建一个logging切面就可以使用AOP来实现相同的功能了。</p>
+<p>2）jointpoint（连接点）：连接点是切面插入应用程序的地方，该点能被方法调用，而且也会被抛出意外。连接点是应用程序提供给切面插入的地方，可以添加新的方法。比如以上我们的切点可以认为是findInfo(String)方法。</p>
+<p>3）advice（处理逻辑）：advice是我们切面功能的实现，它通知程序新的行为。如在logging里，logging advice包括logging的实现代码，比如像写日志到一个文件中。advice在jointpoint处插入到应用程序中。以上我们在MyHandler.java中实现了advice的功能</p>
+<p>4）pointcut（切点）：pointcut可以控制你把哪些advice应用于jointpoint上去，通常你使用pointcuts通过正则表达式来把明显的名字和模式进行匹配应用。决定了那个jointpoint会获得通知。</p>
+<p>上面提到的例子中，记者在明星开场前进行采访，在明星演唱结束时报道，我们可以在superstar的singing方法前去调用reporter的interview方法，但我们发现这样我们的类会比较混乱，我们不希望在superstar的方法里看到reporter的方法，这时我们就需要面向切面编程AOP的帮忙了</p>
+<p>我们可以将reporter配置成一个切面，通过配置的方式插入superstar中，完成采访任务，如下图：</p>
+<p><img src="https://img-blog.csdn.net/20180728203107415?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4NDA1MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<hr>
+<p>学习过Spring框架的人一定都会听过Spring的IoC(控制反转) 、DI(依赖注入)这两个概念，对于初学Spring的人来说，总觉得IoC 、DI这两个概念是模糊不清的，是很难理解的，今天和大家分享网上的一些技术大牛们对Spring框架的IOC的理解以及谈谈我对Spring Ioc的理解。</p>
+<p>一、分享Iteye的开涛对Ioc的精彩讲解
+　　首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：http://jinnianshilongnian.iteye.com/blog/1413846</p>
+<p>1.1、IoC是什么
+Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
+<p>●谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</p>
+<p>●为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</p>
+<p>　　用图例说明一下，传统程序设计如图2-1，都是主动去创建相关对象然后再组合起来：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190801182143267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5ydWkzMTA=,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>图1-1 传统应用程序示意图</p>
+<p>　　当有了IoC/DI的容器后，在客户端类中不再主动去创建这些对象了，如图2-2所示:</p>
+<p>图1-2有IoC/DI容器后程序结构示意图</p>
+<p>1.2、IoC能做什么
+IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是 松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。</p>
+<p>　　其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。</p>
+<p>IoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。</p>
+<p>1.3、IoC和DI
+DI—Dependency Injection，即“依赖注入”：组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
+<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
+<p>●谁依赖于谁：当然是应用程序依赖于IoC容器；</p>
+<p>●为什么需要依赖：应用程序需要IoC容器来提供对象需要的外部资源；</p>
+<p>●谁注入谁：很明显是IoC容器注入应用程序某个对象，应用程序依赖的对象；</p>
+<p>●注入了什么：就是注入某个对象所需要的外部资源（包括对象、资源、常量数据）。</p>
+<p>IoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述，由于控制反转概念比较含糊（可能只是理解为容器控制对象这一个层面，很难让人想到谁来维护对象关系），所以2004年大师级人物Martin Fowler又给出了一个新的名字：“依赖注入”，相对IoC 而言，“依赖注入”明确描述了“被注入对象依赖IoC容器配置依赖对象”。</p>
+<p>　　看过很多对Spring的Ioc理解的文章，好多人对Ioc和DI的解释都晦涩难懂，反正就是一种说不清，道不明的感觉，读完之后依然是一头雾水，感觉就是开涛这位技术牛人写得特别通俗易懂，他清楚地解释了IoC(控制反转) 和DI(依赖注入)中的每一个字，读完之后给人一种豁然开朗的感觉。我相信对于初学Spring框架的人对Ioc的理解应该是有很大帮助的。</p>
+<p>二、分享Bromon的blog上对IoC与DI浅显易懂的讲解
+2.1、IoC(控制反转)
+　　首先想说说IoC（Inversion of Control，控制反转）。这是spring的核心，贯穿始终。所谓IoC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系。这是什么意思呢，举个简单的例子，我们是如何找女朋友的？常见的情况是，我们到处去看哪里有长得漂亮身材又好的mm，然后打听她们的兴趣爱好、qq号、电话号、ip号、iq号………，想办法认识她们，投其所好送其所要，然后嘿嘿……这个过程是复杂深奥的，我们必须自己设计和面对每个环节。传统的程序开发也是如此，在一个对象中，如果要使用另外的对象，就必须得到它（自己new一个，或者从JNDI中查询一个），使用完之后还要将对象销毁（比如Connection等），对象始终会和其他的接口或类藕合起来。</p>
+<p>　　那么IoC是如何做的呢？有点像通过婚介找女朋友，在我和女朋友之间引入了一个第三者：婚姻介绍所。婚介管理了很多男男女女的资料，我可以向婚介提出一个列表，告诉它我想找个什么样的女朋友，比如长得像李嘉欣，身材像林熙雷，唱歌像周杰伦，速度像卡洛斯，技术像齐达内之类的，然后婚介就会按照我们的要求，提供一个mm，我们只需要去和她谈恋爱、结婚就行了。简单明了，如果婚介给我们的人选不符合要求，我们就会抛出异常。整个过程不再由我自己控制，而是有婚介这样一个类似容器的机构来控制。Spring所倡导的开发方式就是如此，所有的类都会在spring容器中登记，告诉spring你是个什么东西，你需要什么东西，然后spring会在系统运行到适当的时候，把你要的东西主动给你，同时也把你交给其他需要你的东西。所有的类的创建、销毁都由 spring来控制，也就是说控制对象生存周期的不再是引用它的对象，而是spring。对于某个具体的对象而言，以前是它控制其他对象，现在是所有对象都被spring控制，所以这叫控制反转。</p>
+<p>2.2、DI(依赖注入)
+IoC的一个重点是在系统运行中，动态的向某个对象提供它所需要的其他对象。这一点是通过DI（Dependency Injection，依赖注入）来实现的。比如对象A需要操作数据库，以前我们总是要在A中自己编写代码来获得一个Connection对象，有了 spring我们就只需要告诉spring，A中需要一个Connection，至于这个Connection怎么构造，何时构造，A不需要知道。在系统运行时，spring会在适当的时候制造一个Connection，然后像打针一样，注射到A当中，这样就完成了对各个对象之间关系的控制。A需要依赖 Connection才能正常运行，而这个Connection是由spring注入到A中的，依赖注入的名字就这么来的。那么DI是如何实现的呢？ Java 1.3之后一个重要特征是反射（reflection），它允许程序在运行的时候动态的生成对象、执行对象的方法、改变对象的属性，spring就是通过反射来实现注入的。</p>
+<p>　　理解了IoC和DI的概念后，一切都将变得简单明了，剩下的工作只是在spring的框架中堆积木而已。</p>
+<p>三、我对IoC(控制反转)和DI(依赖注入)的理解
+　　在平时的java应用开发中，我们要实现某一个功能或者说是完成某个业务逻辑时至少需要两个或以上的对象来协作完成，在没有使用Spring的时候，每个对象在需要使用他的合作对象时，自己均要使用像new object() 这样的语法来将合作对象创建出来，这个合作对象是由自己主动创建出来的，创建合作对象的主动权在自己手上，自己需要哪个合作对象，就主动去创建，创建合作对象的主动权和创建时机是由自己把控的，而这样就会使得对象间的耦合度高了，A对象需要使用合作对象B来共同完成一件事，A要使用B，那么A就对B产生了依赖，也就是A和B之间存在一种耦合关系，并且是紧密耦合在一起，而使用了Spring之后就不一样了，创建合作对象B的工作是由Spring来做的，Spring创建好B对象，然后存储到一个容器里面，当A对象需要使用B对象时，Spring就从存放对象的那个容器里面取出A要使用的那个B对象，然后交给A对象使用，至于Spring是如何创建那个对象，以及什么时候创建好对象的，A对象不需要关心这些细节问题(你是什么时候生的，怎么生出来的我可不关心，能帮我干活就行)，A得到Spring给我们的对象之后，两个人一起协作完成要完成的工作即可。</p>
+<p>　　所以控制反转IoC(Inversion of Control)是说创建对象的控制权进行转移，以前创建对象的主动权和创建时机是由自己把控的，而现在这种权力转移到第三方，比如转移交给了IoC容器，它就是一个专门用来创建对象的工厂，你要什么对象，它就给你什么对象，有了 IoC容器，依赖关系就变了，原先的依赖关系就没了，它们都依赖IoC容器了，通过IoC容器来建立它们之间的关系。</p>
+<p>　　这是我对Spring的IoC(控制反转)的理解。DI(依赖注入)其实就是IOC的另外一种说法，DI是由Martin Fowler 在2004年初的一篇论文中首次提出的。他总结：控制的什么被反转了？就是：获得依赖对象的方式反转了。</p>
+<p>四、小结
+　　对于Spring Ioc这个核心概念，我相信每一个学习Spring的人都会有自己的理解。这种概念上的理解没有绝对的标准答案，仁者见仁智者见智。如果有理解不到位或者理解错的地方，欢迎广大园友指正！</p>
+<hr>
+<p>众所周知，Spring的核心特性就是IOC和AOP，IOC（Inversion of Control），即“控制反转”；AOP（Aspect-OrientedProgramming），即“面向切面编程”。参考书《Spring In Action》，下面分享一下我对这两大特性的个人理解。</p>
+<p>IOC：IOC，另外一种说法叫DI（Dependency Injection），即依赖注入。它并不是一种技术实现，而是一种设计思想。在任何一个有实际开发意义的程序项目中，我们会使用很多类来描述它们特有的功能，并且通过类与类之间的相互协作来完成特定的业务逻辑。这个时候，每个类都需要负责管理与自己有交互的类的引用和依赖，代码将会变的异常难以维护和极度的高耦合。而IOC的出现正是用来解决这个问题，我们通过IOC将这些相互依赖对象的创建、协调工作交给Spring容器去处理，每个对象只需要关注其自身的业务逻辑关系就可以了。在这样的角度上来看，获得依赖的对象的方式，进行了反转，变成了由spring容器控制对象如何获取外部资源（包括其他对象和文件资料等等）。</p>
+<p>举例：某一天，你生病了，但是你不清楚自己到底得了什么病，你只知道自己头疼，咳嗽，全身无力。这个时候你决定去药店买药，药店有很多种药，仅仅是治疗头疼就有好几十种，还有西药中药等区别。然后你自己看了看说明书，选择了一盒你自己觉得最能治疗自己病症的药，付钱吃药，期待可以早点好起来。</p>
+<p>但是这个过程，对于一个病人来说，太辛苦了。头疼，咳嗽，全身无力，还要一个个的看药品说明书，一个个的比较哪个药比较好，简直是太累了。这个时候，你决定直接去医院看医生。</p>
+<p>医生给你做了检查，知道你的病症是什么，有什么原因引起的；同时医生非常了解有哪些药能治疗你的病痛，并且能根据你的自身情况进行筛选。只需要短短的十几分钟，你就能拿到对症下药的药品，即省时又省力。</p>
+<p>在上面这个例子中，IOC起到的就是医生的作用，它收集你的需求要求，并且对症下药，直接把药开给你。你就是对象，药品就是你所需要的外部资源。通过医生，你不用再去找药品，而是通过医生把药品开给你。这就是整个IOC的精髓所在。</p>
+<p>AOP：面向切面编程，往往被定义为促使软件系统实现关注点的分离的技术。系统是由许多不同的组件所组成的，每一个组件各负责一块特定功能。除了实现自身核心功能之外，这些组件还经常承担着额外的职责。例如日志、事务管理和安全这样的核心服务经常融入到自身具有核心业务逻辑的组件中去。这些系统服务经常被称为横切关注点，因为它们会跨越系统的多个组件。</p>
+<p>AOP的概念不好像IOC一样实例化举例，现在我们以一个系统中的具体实现来讲讲AOP具体是个什么技术。</p>
+<p>我们以系统中常用到的事务管控举例子。在系统操作数据库的过程中，不可避免地要考虑到事务相关的内容。如果在每一个方法中都新建一个事务管理器，那么无疑是对代码严重的耦合和侵入。为了简化我们的开发过程（实际上spring所做的一切实现都是为了简化开发过程），需要把事务相关的代码抽成出来做为一个独立的模块。通过AOP，确认每一个操作数据库方法为一个连接点，这些连接点组成了一个切面。当程序运行到其中某个一个切点时，我们将事务管理模块顺势织入对象中，通过通知功能，完成整个事务管控的实现。这样一来，所有的操作数据库的方法中不需要再单独关心事务管理的内容，只需要关注自身的业务代码的实现即可。所有的事务管控相关的内容都通过AOP的方式进行了实现。简化了代码的内容，将目标对象复杂的内容进行解耦，分离业务逻辑与横切关注点。</p>
+<p>下面介绍一下AOP相关的术语：</p>
+<ul>
+<li>
+<p>通知： 通知定义了切面是什么以及何时使用的概念。Spring 切面可以应用5种类型的通知：</p>
+<pre><code>  * 前置通知（Before）：在目标方法被调用之前调用通知功能。
+
+  * 后置通知（After）：在目标方法完成之后调用通知，此时不会关心方法的输出是什么。
+
+  * 返回通知（After-returning）：在目标方法成功执行之后调用通知。
+
+  * 异常通知（After-throwing）：在目标方法抛出异常后调用通知。
+
+  * 环绕通知（Around）：通知包裹了被通知的方法，在被通知的方法调用之前和调用之后执行自定义的行为。
+
+  * 连接点：是在应用执行过程中能够插入切面的一个点。
+</code></pre>
+</li>
+</ul>
+<p>*切点： 切点定义了切面在何处要织入的一个或者多个连接点。</p>
+<p>*切面：是通知和切点的结合。通知和切点共同定义了切面的全部内容。</p>
+<p>*引入：引入允许我们向现有类添加新方法或属性。</p>
+<p>*织入：是把切面应用到目标对象，并创建新的代理对象的过程。切面在指定的连接点被织入到目标对象中。在目标对象的生命周期中有多个点可以进行织入：</p>
+<pre><code>     * 编译期： 在目标类编译时，切面被织入。这种方式需要特殊的编译器。AspectJ的织入编译器就是以这种方式织入切面的。
+
+    * 类加载期：切面在目标加载到JVM时被织入。这种方式需要特殊的类加载器(class loader)它可以在目标类被引入应用之前增强该目标类的字节码。
+
+    * 运行期： 切面在应用运行到某个时刻时被织入。一般情况下，在织入切面时，AOP容器会为目标对象动态地创建一个代理对象。SpringAOP就是以这种方式织入切面的。
+</code></pre>
+<p>————————————————
+版权声明：本文为CSDN博主「chenrui310」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/chenrui310/article/details/98086360</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Http vs Https</title>
@@ -1175,7 +1330,7 @@ Go语言特性：
 		</item>
 		
 		<item>
-			<title>Java Build Automation Tools：Ant, Gradle &amp; Maven</title>
+			<title>Java项目自动构建工具 Build Automation Tools：Ant, Gradle &amp; Maven</title>
 			<link>https://daiwei.dev/posts/java/java_gradle/</link>
 			<pubDate>Wed, 17 Nov 2021 16:38:00 +0800</pubDate>
 			
@@ -2319,7 +2474,7 @@ GitLab 发布于2013年，是一个基于 Web 的DevOps生命周期工具，它�
 		</item>
 		
 		<item>
-			<title>Java_design</title>
+			<title>Java Design Principles</title>
 			<link>https://daiwei.dev/posts/java/java_design/</link>
 			<pubDate>Tue, 09 Nov 2021 12:11:11 +0800</pubDate>
 			
@@ -2392,7 +2547,7 @@ functions that use pointers or references to base classes must be able to use ob
 		</item>
 		
 		<item>
-			<title>Java_oop</title>
+			<title>Java OOP简介</title>
 			<link>https://daiwei.dev/posts/java/java_oop/</link>
 			<pubDate>Tue, 09 Nov 2021 11:30:25 +0800</pubDate>
 			
@@ -2432,15 +2587,20 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 <h4 id="polymorphism-多态">Polymorphism 多态</h4>
 <p>Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.</p>
 <p>多态是一个对象具有多种形式的能力。OOP中最常见的多态性用法是使用父类引用来引用子类对象。</p>
+<h3 id="inhertance继承-vs-interface接口">Inhertance继承 vs Interface接口</h3>
+<p><strong>Inhertance继承</strong> 使用关键字 **<code>extends</code>**实现继承，一个类只可以继承一个父类。在继承中可以定义属性方法,变量,常量等。并在子类中重写复用父类方法，可以去掉多个子类间的功能类似的重复代码，保持代码的简洁性。但是回增加代码的耦合性。</p>
+<p><strong>Interface接口</strong>使用关键字 <strong><code>interface</code></strong> 修饰，使用关键字**<code>implements</code>**实现接口。一个类可以继承多个接口。接口中只能定义全局常量,和抽象方法，不能实例化，接口中不能有构造。子类任然需要实现自己的方法，但是可以降低代码的耦合性。</p>
+<p>接口更像是一种规范，而不是具体方法的实现。接口可以约束继承统该接口的类的方法和参数，以供调用方统一调配。</p>
+<p>因此我们应该面向接口编程，科学编程。</p>
 ]]></content>
 		</item>
 		
 		<item>
 			<title>线程创建方式4: threadpool</title>
-			<link>https://daiwei.dev/posts/java/java_threadpool/</link>
+			<link>https://daiwei.dev/posts/java/thread3_threadpool/</link>
 			<pubDate>Wed, 03 Nov 2021 15:57:02 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/java_threadpool/</guid>
+			<guid>https://daiwei.dev/posts/java/thread3_threadpool/</guid>
 			<description>提前建好多个线程放入线程池中，使用时直接获取。避免频繁创建销毁线程，实现线程重复利用。
 线程池类似公交车🚌，每个人都可以按自己的需选择乘坐任何一辆公交车。
 好处：
@@ -2514,10 +2674,10 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		
 		<item>
 			<title>创建线程的方式3: Callable</title>
-			<link>https://daiwei.dev/posts/java/java_callable/</link>
+			<link>https://daiwei.dev/posts/java/thread2_callable/</link>
 			<pubDate>Wed, 03 Nov 2021 15:39:23 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/java_callable/</guid>
+			<guid>https://daiwei.dev/posts/java/thread2_callable/</guid>
 			<description>1package callableTest; 2 3import java.util.concurrent.Callable; 4import java.util.concurrent.ExecutionException; 5import java.util.concurrent.FutureTask; 6 7/** 8* 创建线程方式3：实现 callable 接口。-----JDK5.0新增 9*/ 10public class ThreadNew { 11 public static void main (String[] arg) { 12 NumThread num = new NumThread(); 13 14 // Future接口可以对Runnable, callable的执行结果进行取消，查询和获取。 15 // FutureTask 同时实现了Runnable &amp;amp; Future接口， 16 // 既可作为线程被Runnable执行，又可以作为Future得到Callable的返回值。 17 FutureTask&amp;lt;Integer&amp;gt; futureTask = new FutureTask&amp;lt;&amp;gt;(num); 18 19 new Thread(futureTask).start(); 20 21 try { 22 //get()返回值即callable实现类override call() 返回值 23 Integer sum = futureTask.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">callableTest</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -2580,11 +2740,11 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		</item>
 		
 		<item>
-			<title>Thread Communication</title>
-			<link>https://daiwei.dev/posts/java/thread_communication/</link>
+			<title>多线程通信安全 Thread Communication synchronized</title>
+			<link>https://daiwei.dev/posts/java/thread5_synchronized/</link>
 			<pubDate>Wed, 03 Nov 2021 13:16:20 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/thread_communication/</guid>
+			<guid>https://daiwei.dev/posts/java/thread5_synchronized/</guid>
 			<description>1/** 2* 线程通信例子：两个线程交替打印 integer 1-10 3* 涉及3个方法： 4* wait(): 当前线程进入wait状态，并释放线程监视器。 5* notify(): 唤醒一个处于wait状态中优先级最高的线程。 6* notifyAll(): 唤醒所有处于wait状态的线程。 7* 8* 1. 3个方法都必须是用在同步代码块或者同步方法中。 9* 2. 3个方法的调用者必须是同步代码块或者同步方法中的同步监视器。 10* 3. 3个方法是定义在java.Lang.Object类中， 并不是 thread 类中。 11*/ 12public class CommunicationTest { 13 public static void main (String[] args) { 14 NumberPrinter n = new NumberPrinter(); 15 Thread t1 = new Thread(n); 16 Thread t2 = new Thread(n); 17 18 t1.start(); 19 t2.start(); 20 } 21} 22 23class NumberPrinter implements Runnable { 24 int i = 1; 25 26 @Override 27 public void run() { 28 while (true) { 29 synchronized (this) { 30 notify(); // 必须使用同步监视器this来调用，this.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="cm">/**
 </span><span class="ln"> 2</span><span class="cm"> * 线程通信例子：两个线程交替打印 integer 1-10
@@ -2733,11 +2893,11 @@ In Java, abstraction is achieved using <strong>Abstract classes</strong> and <st
 		</item>
 		
 		<item>
-			<title>Java Lock</title>
-			<link>https://daiwei.dev/posts/java/java_lock/</link>
+			<title>Java 多线程 Lock</title>
+			<link>https://daiwei.dev/posts/java/thread6_lock/</link>
 			<pubDate>Wed, 03 Nov 2021 10:10:07 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/java_lock/</guid>
+			<guid>https://daiwei.dev/posts/java/thread6_lock/</guid>
 			<description>1Module: java.base 2Package: java.util.concurrent.locks 3Interface Lock 4 5All Known Implementing Classes: 6ReentrantLock, ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock Lock实现提供了比使用synchronized方法和语句获得的更广泛的锁定操作。它们允许更灵活的结构，可能具有完全不同的属性，并且可能支持多个关联 Condition对象。
 锁是用于控制多个线程对共享资源的访问的工具。通常，锁提供对共享资源的独占访问：一次只有一个线程可以获取锁，所有对共享资源的访问都需要先获取锁。但是，某些锁可能允许并发访问共享资源，例如ReadWriteLock.
 synchronized方法或语句的使用提供对与每个对象关联的隐式监视器锁的访问，但强制所有锁的获取和释放以块结构的方式发生：当获取多个锁时，它们必须以相反的顺序释放，并且所有锁必须在获得它们的同一个词法范围内释放。
@@ -2902,15 +3062,77 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 <span class="ln">65</span>           <span class="n">acct</span><span class="o">.</span><span class="na">deposed</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
 <span class="ln">66</span>    <span class="o">}</span>
 <span class="ln">67</span><span class="o">}</span>
-</code></pre></div>]]></content>
+</code></pre></div><h3 id="deadlock-vs-livelock-vs-starvation-死锁-vs-活锁-vs-饿死">Deadlock vs Livelock vs Starvation 死锁 VS 活锁 VS 饿死</h3>
+<p><strong>Deadlock</strong> thread A waiting for thread B &amp;&amp; thread B also waiting for thread A, the dependence is a circular they are waiting each other. 死锁就像刚在一起的小情侣打电话，男生说：女生先挂电话，女生说：男生先挂电话，最后谁都不先挂电话，无解。。。</p>
+<p><strong>死锁</strong> 是指两个或两个以上的线程在执行过程中，因争夺资源而造成的一种互相等待的现象，这些永远在互相等待的线程称为死锁。死锁就像是独木桥上的两人，互不相让，都想等对方退后，最后两个人都被困在桥上。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">synchronized</span> <span class="o">(</span><span class="n">objRef1</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 2</span>  <span class="kd">synchronized</span> <span class="o">(</span><span class="n">objRef2</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//...
+</span><span class="ln"> 4</span><span class="c1"></span>  <span class="o">}</span>
+<span class="ln"> 5</span><span class="o">}</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="kd">synchronized</span> <span class="o">(</span><span class="n">objRef2</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 8</span>  <span class="kd">synchronized</span> <span class="o">(</span><span class="n">objRef1</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 9</span>    <span class="c1">//...
+</span><span class="ln">10</span><span class="c1"></span>  <span class="o">}</span>
+<span class="ln">11</span><span class="o">}</span>
+</code></pre></div><p><strong>Livelock</strong> thread are too busy to responding other threads to progress.</p>
+<p><strong>活锁</strong> 线程没有被阻塞，由于某些条件没有满足，导致一直重复尝试，失败，尝试，失败。活锁就像是要过独木桥但还没上桥的两个人，相互礼让，都想让对方先过，最后两个人都过不了桥。</p>
+<p><strong>Starvation</strong> 可运行的线程尽管可以执行，但被调度器无限期地忽视，而不能被调度执行一直处于等待状态的行为。饿死就像路人甲正要过独木桥回家吃饭，对面来了一群老大爷，路人甲让老人先过，接着又来一群小学生，路人甲有让小学生先过，最后天黑了路人甲还没能过桥饿死在桥边了。</p>
+<p><strong>活锁和死锁的区别：</strong> 活锁的状态可以改变，有可能自行解开，死锁只能是等待状态，无法自行解开。</p>
+<p><strong>产生死锁的必要条件</strong>：</p>
+<ol>
+<li>互斥使用（资源独占），一个资源每次只能给一个进程使用。</li>
+<li>占有且等待，进程在申请新的资源的同时，保持对原有资源的占有。</li>
+<li>不可抢占，资源申请者不能强行从资源占有者手中夺取资源，资源只能由占有者自愿释放。</li>
+<li>循环等待，P1等待P2占有的资源，P2等待P3的资源，&hellip;Pn等待P1的资源，形成一个进程等待回路。</li>
+</ol>
+<p><strong>既然知道了出现死锁的必要条件，其实只要破坏其中一条就可避免死锁！</strong></p>
+<p>其中，互斥这个条件我们没有办法破坏，因为我们用锁为的就是互斥。</p>
+<p>对于<strong>占用且等待</strong>这个条件，我们可以<strong>一次性申请所有的资源</strong>，这样就不存在等待了。
+对于<strong>不可抢占</strong>这个条件，占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源。
+对于<strong>循环等待</strong>这个条件，可以按顺序申请资源来预防。所谓按序申请，是指资源是有线性顺序的，申请的时候可以先申请资源序号小的，再申请资源序号大的，这样线性化后自然就不存在循环了。</p>
+<p><strong>如何解决活锁？</strong>  为线程增加一个随机等待时间，时间到了切换状态。</p>
+<p><strong>如何解决饥饿？</strong></p>
+<ol>
+<li>增加供给，保证资源充足</li>
+<li>公平地分配资源</li>
+<li>避免持有锁的线程长时间执行</li>
+</ol>
+<h3 id="互斥锁">互斥锁</h3>
+<p>当有一个线程要访问共享资源（临界资源）之前，会对线程访问的这段代码（临界区）进行加锁。如果在加锁之后没释放锁之前其他线程要对临界资源进行访问，则这些线程会被阻塞睡眠，直到解锁，如果解锁时有一个或者多个线程阻塞，那么这些锁上的线程就会变成就绪状态，然后第一个变为就绪状态的线程就会获取资源的使用权，并且再次加锁，其他线程继续阻塞等待。</p>
+<h3 id="自旋锁">自旋锁</h3>
+<p>自旋锁和互斥锁很像，唯一不同的是自旋锁访问加锁资源时，会一直循环的查看是否释放锁。这样要比互斥锁效率高很多，但是仍然需要占用CPU。如果线程竞争不激烈适合使用自旋锁。但是但当线程数不断增加时，性能下降明显，因为每个线程都需要执行，会占用大量CPU时间片，就不适用自旋锁了。</p>
+<h3 id="悲观锁-pessimistic-lock">悲观锁 (Pessimistic Lock)</h3>
+<ul>
+<li>悲观锁认为自己在获取数据的时候一定有别的线程来修改数据，在获取数据的时候会先加锁，确保数据不会被别的线程修改</li>
+<li>锁实现:Java中关键字synchronized、接口Lock的实现类</li>
+<li>适用场景:写操作较多，先加锁可以保证写操作时数据正确</li>
+</ul>
+<h3 id="乐观锁-optimistic-lock">乐观锁 (Optimistic Lock)</h3>
+<ul>
+<li>乐观锁认为自已在获取数据时不会有别的线程修改数据，所以不会添加锁，只是在更新数据的时候去判断之前有没有别的线程更新了这个数据</li>
+<li>锁实现: CAS算法， 例如AtomicInteger 类的原子自增是同过CAS自旋实现</li>
+<li>适用场景:读操作较多，不加锁的特点能够使其读操作的性能大幅提升</li>
+</ul>
+<p><strong>乐观锁和悲观锁都是一种思想，并不是真实存在于数据库中的一种机制。</strong></p>
+<h3 id="读写锁">读写锁</h3>
+<p>也叫做共享互斥锁，读模式共享，写模式互斥。有点像数据库负载均衡的读写分离模式。它有三种模式：读加锁状态，写加锁状态和不加锁状态。简单来说就是只有一个线程可以占有写模式的读写锁，但是可以有多个线程占用读模式的读写锁。
+当写加锁的模式下，任何线程对其进行加锁操作都会被阻塞，直到解锁。
+当在读加锁的模式下，任何线程都可以对其进行读加锁的操作，但所有试图进行写加锁操作的线程都会被阻塞。直到所有读线程解锁。但是当读线程太多时，写线程一直被阻塞显然是不对的，所以一个线程想要对其进行写加锁时，就会阻塞读加锁，先让写加锁线程加锁</p>
+<h3 id="公平锁fair-lock">公平锁(Fair Lock)</h3>
+<p>加锁前检查是否有排队等待的线程，优先排队等待的线程，先来先得。</p>
+<h3 id="非公平锁nonfair-lock">非公平锁(Nonfair Lock)</h3>
+<p>加锁时不考虑排队等待问题，直接尝试获取锁，获取不到自动到队尾等待。</p>
+]]></content>
 		</item>
 		
 		<item>
-			<title>Threads Safety</title>
-			<link>https://daiwei.dev/posts/java/threadssafety/</link>
+			<title>Threads Safety 线程安全</title>
+			<link>https://daiwei.dev/posts/java/thread4_safety/</link>
 			<pubDate>Tue, 26 Oct 2021 12:08:57 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/threadssafety/</guid>
+			<guid>https://daiwei.dev/posts/java/thread4_safety/</guid>
 			<description>Unsafe threads in tickets system 不安全线程:
 1public class WindowTest2 { 2 public static void main (String[] args) { 3 Window2 w = new Window2(); 4 5 Thread t1 = new Thread (w); 6 Thread t2 = new Thread (w); 7 Thread t3 = new Thread (w); 8 9 t1.setName(&amp;#34;Window_1&amp;#34;); 10 t2.setName(&amp;#34;Window_2&amp;#34;); 11 t3.setName(&amp;#34;Window_3&amp;#34;); 12 13 t1.start(); 14 t2.start(); 15 t3.start(); 16 } 17} 18 19class Window2 implements Runnable { 20 private int tickets = 100; 21 22 @Override 23 public void run() { 24 while(true) { 25 if(tickets &amp;gt; 0) { 26 try { 27 Thread.</description>
 			<content type="html"><![CDATA[<p>Unsafe threads in tickets system 不安全线程:</p>
@@ -3155,11 +3377,11 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		</item>
 		
 		<item>
-			<title>Java Annotation</title>
-			<link>https://daiwei.dev/posts/java/javaannotation/</link>
+			<title>Java Annotation注解</title>
+			<link>https://daiwei.dev/posts/java/java_annotation/</link>
 			<pubDate>Wed, 20 Oct 2021 17:26:19 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/javaannotation/</guid>
+			<guid>https://daiwei.dev/posts/java/java_annotation/</guid>
 			<description>The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
 @Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
 @Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
@@ -3210,11 +3432,11 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		</item>
 		
 		<item>
-			<title>Java Threads</title>
-			<link>https://daiwei.dev/posts/java/javathread/</link>
+			<title>Java Threads多线程</title>
+			<link>https://daiwei.dev/posts/java/thread1/</link>
 			<pubDate>Wed, 20 Oct 2021 11:37:08 +0800</pubDate>
 			
-			<guid>https://daiwei.dev/posts/java/javathread/</guid>
+			<guid>https://daiwei.dev/posts/java/thread1/</guid>
 			<description>1Module java.base 2Package java.lang 3 4java.lang.Object 5java.lang.Thread 6 7public class Thread 8extends Object 9implements Runnable What are Threads in Java? A thread, in the context of Java, is the path followed when executing a program. All Java programs have at least one thread, known as the main thread, which is created by the Java Virtual Machine (JVM) at the program’s start, when the main() method is invoked with the main thread.</description>
 			<content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
 <span class="ln">2</span><span class="n">Package</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span>
@@ -3239,7 +3461,7 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 <ul>
 <li>实际上一个Java.exe程序至少有三个线程：<strong><code>main()</code>主线程</strong>，<strong><code>gc</code>垃圾回收线程</strong> 和 <strong>异常处理线程</strong>。</li>
 <li>线程作为调度和执行单位，每个线程都有独立的运行stack 和 pc (程序计数器)。一个进程可以同时执行多个线. 程，就是多线程，多线程之间可以共享相同的内存单元和地址。</li>
-<li>例: 同时运行360卫士的电脑体检，木马查杀，垃圾清理三个任务，相当于3线程同时进行。</li>
+<li>例: 迅雷就是程序，正在运行的迅雷就是进程，下载一部电影就是单线程，同时下载多部电影就是多线程。</li>
 </ul>
 <p><strong>简单的说：程序是静态代码指令集合，进程是动态正在运行的程序，线程是进程的最小执行单位。</strong></p>
 </li>
@@ -3254,6 +3476,77 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 </li>
 </ul>
 <p><img src="https://lh4.googleusercontent.com/oR0_liUxjMnfgFS-fSuc0x2vCCPLQ0Vdw6w2rBVGloaE_84tRNprqNJEJiyI1unMY8Vpj2CDK9GiQGy03_RmteRz-aM31iIQcZsVZhIH2cLrne_5nY9miXKDmQqEHdY60_WopC0" alt="JavaMadeSoEasy.com (JMSE): Thread states/ Thread life cycle in java"></p>
+<h3 id="there-are-actually-total-4-ways-to-create-thread-in-java-">There are actually total 4 ways to create thread in java :</h3>
+<ol>
+<li>
+<p>By extending <strong><code>java.lang.Thread</code></strong> class</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">SampleThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="c1">//method where the thread execution will start 
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+<span class="ln"> 5</span>        <span class="c1">//logic to execute in a thread    
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    <span class="c1">//let’s see how to start the threads
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+<span class="ln">10</span>       <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleThread</span><span class="o">();</span>
+<span class="ln">11</span>       <span class="n">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleThread</span><span class="o">();</span>
+<span class="ln">12</span>       <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  <span class="c1">//start the first thread. This calls the run() method.
+</span><span class="ln">13</span><span class="c1"></span>       <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//this starts the 2nd thread. This calls the run() method.  
+</span><span class="ln">14</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">15</span><span class="o">}</span> 
+</code></pre></div></li>
+<li>
+<p>By implementing <strong><code>java.lang.Runnable</code></strong> interface</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">A</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="nd">@Override</span>
+<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span>        <span class="c1">// implement run method here 
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">10</span>        <span class="kd">final</span> <span class="n">A</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">();</span>
+<span class="ln">11</span>
+<span class="ln">12</span>        <span class="n">Thread</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">A</span><span class="o">());</span>
+<span class="ln">13</span>
+<span class="ln">14</span>        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p>By implementing <strong><code>java.util.concurrent.Callable</code></strong>  interface.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">Counter</span> <span class="kd">implements</span> <span class="n">Callable</span> <span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">THREAD_POOL_SIZE</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>    <span class="c1">// method where the thread execution takes place
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 7</span>        <span class="k">return</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; executing ...&#34;</span><span class="o">;</span>
+<span class="ln"> 8</span>    <span class="o">}</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span><span class="o">,</span>
+<span class="ln">11</span>            <span class="n">ExecutionException</span> <span class="o">{</span>
+<span class="ln">12</span>        <span class="c1">// create a pool of 2 threads
+</span><span class="ln">13</span><span class="c1"></span>        <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span>
+<span class="ln">14</span>                <span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="n">THREAD_POOL_SIZE</span><span class="o">);</span>
+<span class="ln">15</span>
+<span class="ln">16</span>        <span class="n">Future</span> <span class="n">future1</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">Counter</span><span class="o">());</span>
+<span class="ln">17</span>        <span class="n">Future</span> <span class="n">future2</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">Counter</span><span class="o">());</span>
+<span class="ln">18</span>
+<span class="ln">19</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; executing ...&#34;</span><span class="o">);</span>
+<span class="ln">20</span>
+<span class="ln">21</span>        <span class="c1">//asynchronously get from the worker threads
+</span><span class="ln">22</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">future1</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="ln">23</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">future2</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="ln">24</span>
+<span class="ln">25</span>    <span class="o">}</span>
+<span class="ln">26</span><span class="o">}</span>
+</code></pre></div><p><strong>Callable 接口支持与 Executor 框架用于线程池。</strong></p>
+<p><strong>Runnable 或 Callable 接口优于extends Thread class。</strong></p>
+</li>
+</ol>
 <h3 id="there-are-two-ways-to-create-a-thread-in-java">There are two ways to create a thread in Java:</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// Method 1: Thread creation by extending Thread class
 </span><span class="ln"> 2</span><span class="c1"></span><span class="kd">class</span> <span class="nc">MultithreadingDemo</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
@@ -3291,7 +3584,7 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 <p><strong><code>implements Runnable</code></strong> is the preferred way, it means you can <code>implement Runnable</code> and extend from another class as well.</p>
 <p>使用 <strong>Runable</strong> 接口的同时，你还可以继承其他类。但是使用<strong>extends Threads</strong>就无法再继承其他类了。</p>
 <p><strong>Inherit less, interface more,</strong> only use inherit when you need override some behavior.</p>
-<p>少继承，多接口。只有在你需要重写某些行为时才使用基础。</p>
+<p>少继承，多接口。只有在你需要重写某些行为时才使用继承。</p>
 <p>Multi-threads Ticket system 多线程卖票案例</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WindowTest1</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -3417,7 +3710,7 @@ synchronized方法或语句的使用提供对与每个对象关联的隐式监�
 		</item>
 		
 		<item>
-			<title>Java threadpool</title>
+			<title>Java threadpool 线程池</title>
 			<link>https://daiwei.dev/posts/java/javathreadpool/</link>
 			<pubDate>Wed, 20 Oct 2021 11:18:55 +0800</pubDate>
 			
@@ -3471,11 +3764,11 @@ In a Thread Pool, a group of fixed size threads is created. Whenever a task has 
 <ul>
 <li>
 <p><strong>Thread Leakage:</strong> If a thread is removed from the pool to perform a task but not returned back to it when the task is completed, thread leakage occurs.</p>
-<p>**线程泄漏：**如果线程被从池中移除以执行任务但在任务完成时没有返回到它，则发生线程泄漏。</p>
+<p>**线程泄漏：**如果线程从池中移除去执行任务但在任务完成时没有返回到它，则发生线程泄漏。</p>
 </li>
 <li>
 <p><strong>Deadlock:</strong> In thread pool is executing thread is waiting for the output from the block the thread waiting in the queue due to unavailability of thread for execution, there’s a case of a deadlock.</p>
-<p>**死锁：**在线程池中正在执行线程正在等待块的输出由于线程不可用而在队列中等待的线程执行，存在死锁的情况。</p>
+<p><strong>死锁：</strong> 在线程池里</p>
 </li>
 <li>
 <p><strong>Resource Thrashing:</strong> More number of threads than the optimal number required can cause starvation problems leading to resource thrashing.</p>
@@ -4003,8 +4296,8 @@ Primitive Data Types: A primitive data type is pre-defined by the programming la
 <li>A primitive type starts with a lowercase letter, while non-primitive types start with an uppercase letter.</li>
 <li>The size of a primitive type depends on the data type, while non-primitive types have all the same size.</li>
 </ol>
-<p>很多人说编程等于 数据结构 + 操作数据的算法，不一定是完全正确的，但是小白的身份来看，先学习整体框架，再一个个深入了解。可能开始会觉得学的很慢，怎么还不能写一个东西出来，但等到把基础知识掌握牢靠后，后面的面向对象编程，学起来就会更加得心应手。</p>
-<p>我的大学老师是没有教我们去看Java官方文档的，也并没有从头给我们讲解Java的语言框架，开始就是面向对象编程，和一些Java 语法，导致后来很多问题都学的很困惑，比如为什么 <code>int[] a = {1,2,3}</code> 不需要new， <code>ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;()</code> 需要new？为什么会有 <code>a.lenght</code> 和<code>a.size()</code>，为什么一个需要后面加括号，一个不需要？<code>List&lt;Integer&gt; a = new Arraylist&lt;&gt;() </code>和 <code>ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;()</code>有什么区别？等等这些问题都是后来Google看官方文档后，才开始慢慢理解的。</p>
+<p>很多人说编程等于 数据结构 + 操作数据的算法，不一定是完全正确的，但是先学习整体框架，再一个个深入了解。可能开始会觉得学的很慢，怎么还不能写一个东西出来，但等到把基础知识掌握牢靠后，后面的面向对象编程，学起来就会更加得心应手。</p>
+<p>大学老师是没有教Java官方文档，也并没有从头给我们讲解Java的语言框架，开始就是面向对象编程，和一些Java 语法，导致后来很多问题都学的很困惑，比如为什么 <code>int[] a = {1,2,3}</code> 不需要new， <code>ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;()</code> 需要new？为什么会有 <code>a.lenght</code> 和<code>a.size()</code>，为什么一个需要后面加括号，一个不需要？<code>List&lt;Integer&gt; a = new Arraylist&lt;&gt;() </code>和 <code>ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;()</code>有什么区别？等等这些问题都是看官方文档后，才开始慢慢理解的。</p>
 ]]></content>
 		</item>
 		

@@ -7,7 +7,61 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 18:18:55 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Stream</title>
+      <link>https://daiwei.dev/posts/java/stream/</link>
+      <pubDate>Mon, 27 Dec 2021 18:18:55 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/stream/</guid>
+      <description> </description>
+    </item>
+    
+    <item>
+      <title>IOC &amp; AOP Spring 中的控制反转和面向切面编程</title>
+      <link>https://daiwei.dev/posts/spring/ioc-aop/</link>
+      <pubDate>Mon, 27 Dec 2021 18:17:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/spring/ioc-aop/</guid>
+      <description>spring相关的书和博文看了很多，一直也没明白依赖注入和面向切面编程到底是什么，spring企业实战看到第三遍突然恍然大悟，也许是因为之前动手写过代码，所以终于潜移默化，慢慢理解了吧。
+http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml这篇文章写得挺好的
+首先控制反转和面向切面编程是spring的核心机制，由于控制反转不好理解，因此有人提出依赖注入的概念，其实依赖注入是控制反转的一种方式，但现在大家默认控制反转等同于依赖注入
+一.控制反转：控制反转是指spring容器通过依赖注入的方式使得创建依赖对象的控制权由对象转移到spring容器。举个例子：
+我们有一个明星，要举办演唱会，在他唱歌之前有记者要采访他，通常我们的做法是创建一个明星类，在明星类里面new一个记者类,或者将记者类作为构造器的参数传入。如下图所示
+在这里对象依赖的对象是由自己创建的。使用spring之后，reporter对象不再由superStar来创建而是交给spring容器来创建和管理，如下图：
+我们在spring的配置文件中配置superstar和reporter两个bean，并把reporter注入到supers中，这样我们在superStard对象中不需要再自己去new一个reporter了，spring容器会帮我们创建。这就是控制反转，对象依赖ioc容器注入依赖的对象。实现解耦合。
+二.面向切面编程
+面向切面编程有几个术语需要理解：（来自百度百科）
+1）aspect（切面）：实现了cross-cutting功能，是针对切面的模块。最常见的是logging模块，这样，程序按功能被分为好几层，如果按传统的继承的话，商业模型继承日志模块的话根本没有什么意义，而通过创建一个logging切面就可以使用AOP来实现相同的功能了。
+2）jointpoint（连接点）：连接点是切面插入应用程序的地方，该点能被方法调用，而且也会被抛出意外。连接点是应用程序提供给切面插入的地方，可以添加新的方法。比如以上我们的切点可以认为是findInfo(String)方法。
+3）advice（处理逻辑）：advice是我们切面功能的实现，它通知程序新的行为。如在logging里，logging advice包括logging的实现代码，比如像写日志到一个文件中。advice在jointpoint处插入到应用程序中。以上我们在MyHandler.java中实现了advice的功能
+4）pointcut（切点）：pointcut可以控制你把哪些advice应用于jointpoint上去，通常你使用pointcuts通过正则表达式来把明显的名字和模式进行匹配应用。决定了那个jointpoint会获得通知。
+上面提到的例子中，记者在明星开场前进行采访，在明星演唱结束时报道，我们可以在superstar的singing方法前去调用reporter的interview方法，但我们发现这样我们的类会比较混乱，我们不希望在superstar的方法里看到reporter的方法，这时我们就需要面向切面编程AOP的帮忙了
+我们可以将reporter配置成一个切面，通过配置的方式插入superstar中，完成采访任务，如下图：
+ 学习过Spring框架的人一定都会听过Spring的IoC(控制反转) 、DI(依赖注入)这两个概念，对于初学Spring的人来说，总觉得IoC 、DI这两个概念是模糊不清的，是很难理解的，今天和大家分享网上的一些技术大牛们对Spring框架的IOC的理解以及谈谈我对Spring Ioc的理解。
+一、分享Iteye的开涛对Ioc的精彩讲解 首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：http://jinnianshilongnian.iteye.com/blog/1413846
+1.1、IoC是什么 Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：
+●谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+●为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。
+　用图例说明一下，传统程序设计如图2-1，都是主动去创建相关对象然后再组合起来：
+图1-1 传统应用程序示意图
+　当有了IoC/DI的容器后，在客户端类中不再主动去创建这些对象了，如图2-2所示:
+图1-2有IoC/DI容器后程序结构示意图
+1.2、IoC能做什么 IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是 松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。
+　其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。
+IoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。
+1.3、IoC和DI DI—Dependency Injection，即“依赖注入”：组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。
+　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：
+●谁依赖于谁：当然是应用程序依赖于IoC容器；
+●为什么需要依赖：应用程序需要IoC容器来提供对象需要的外部资源；
+●谁注入谁：很明显是IoC容器注入应用程序某个对象，应用程序依赖的对象；
+●注入了什么：就是注入某个对象所需要的外部资源（包括对象、资源、常量数据）。
+IoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述，由于控制反转概念比较含糊（可能只是理解为容器控制对象这一个层面，很难让人想到谁来维护对象关系），所以2004年大师级人物Martin Fowler又给出了一个新的名字：“依赖注入”，相对IoC 而言，“依赖注入”明确描述了“被注入对象依赖IoC容器配置依赖对象”。
+　看过很多对Spring的Ioc理解的文章，好多人对Ioc和DI的解释都晦涩难懂，反正就是一种说不清，道不明的感觉，读完之后依然是一头雾水，感觉就是开涛这位技术牛人写得特别通俗易懂，他清楚地解释了IoC(控制反转) 和DI(依赖注入)中的每一个字，读完之后给人一种豁然开朗的感觉。我相信对于初学Spring框架的人对Ioc的理解应该是有很大帮助的。
+二、分享Bromon的blog上对IoC与DI浅显易懂的讲解 2.1、IoC(控制反转) 首先想说说IoC（Inversion of Control，控制反转）。这是spring的核心，贯穿始终。所谓IoC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系。这是什么意思呢，举个简单的例子，我们是如何找女朋友的？常见的情况是，我们到处去看哪里有长得漂亮身材又好的mm，然后打听她们的兴趣爱好、qq号、电话号、ip号、iq号………，想办法认识她们，投其所好送其所要，然后嘿嘿……这个过程是复杂深奥的，我们必须自己设计和面对每个环节。传统的程序开发也是如此，在一个对象中，如果要使用另外的对象，就必须得到它（自己new一个，或者从JNDI中查询一个），使用完之后还要将对象销毁（比如Connection等），对象始终会和其他的接口或类藕合起来。
+　那么IoC是如何做的呢？有点像通过婚介找女朋友，在我和女朋友之间引入了一个第三者：婚姻介绍所。婚介管理了很多男男女女的资料，我可以向婚介提出一个列表，告诉它我想找个什么样的女朋友，比如长得像李嘉欣，身材像林熙雷，唱歌像周杰伦，速度像卡洛斯，技术像齐达内之类的，然后婚介就会按照我们的要求，提供一个mm，我们只需要去和她谈恋爱、结婚就行了。简单明了，如果婚介给我们的人选不符合要求，我们就会抛出异常。整个过程不再由我自己控制，而是有婚介这样一个类似容器的机构来控制。Spring所倡导的开发方式就是如此，所有的类都会在spring容器中登记，告诉spring你是个什么东西，你需要什么东西，然后spring会在系统运行到适当的时候，把你要的东西主动给你，同时也把你交给其他需要你的东西。所有的类的创建、销毁都由 spring来控制，也就是说控制对象生存周期的不再是引用它的对象，而是spring。对于某个具体的对象而言，以前是它控制其他对象，现在是所有对象都被spring控制，所以这叫控制反转。</description>
+    </item>
+    
     <item>
       <title>Http vs Https</title>
       <link>https://daiwei.dev/posts/networking/http-vs-https/</link>
@@ -110,48 +164,6 @@ Why need 4 ways handshake? 四次挥手的过程为什么server端ACK和FIN不�
 流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
 拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
  </description>
-    </item>
-    
-    <item>
-      <title>SpringBoot Hello world</title>
-      <link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
-      <pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
-      <description>  使用Spring Initializr 新建spring boot project
-  在application.properties文件新建服务器端口
-  新建HelloController class
-  执行BootLunchApplication main class
-  1@SpringBootApplication 2@RestController 3public class DemoApplication { 4 5	public static void main(String[] args) { 6	SpringApplication.run(DemoApplication.class, args); 7	} 8 9	@GetMapping 10	public String hello() { 11	return &amp;#34;Hello World&amp;#34;; 12	} 13 14} </description>
-    </item>
-    
-    <item>
-      <title>Spring_intro</title>
-      <link>https://daiwei.dev/posts/spring/spring_intro/</link>
-      <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
-      <description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
-MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
- Model 负责存储系统的中心数据;
-View 负责存储系统的中心数据;
-Controller 处理用户输入的信息。负责从视图读取数据，控制用户输入，并向模型发送数据，是应用程序中处理用户交互的部分。负责管理与用户交互交互控制。
- 表示层框架：struts1，struts2，springMVC
-业务层框架，设计型框架：spring
-持久层框架：hibernate(全自动), mybatis(半自动)
-建议优先学习 Springboot 。
-Spring Boot   Spring Boot 简介
- 简化Spring应用开发的框架。
-整个Spring技术栈的大整合。
-J2EE开发的一站式解决方案。
-   微服务
-2014， Martin Fowler
-微服务：架构风格（服务微化）
-一个应用应该是一组小型服务，可以通过http方式互通；
-每一个功能元素最终都是一个可独立替换可升级的软件单元；
-microservices guide
-  Spring Boot主要特性
- 遵循“约定优于配置”的原则，简化配置 可以完全脱离XML配置文件,采用注解配置和java Config 内嵌Servlet容器，应用可用jar包执行：java -jar 快速完成项目搭建、整合第三方类库，方便易用 提供了starter POM, 能够非常方便的进行包管理, 简化包管理配置 与Spring cloud天然集成，spring boot是目前java体系内实现微服务最佳方案    Spring Boot集成第三方类库的步骤</description>
     </item>
     
   </channel>
