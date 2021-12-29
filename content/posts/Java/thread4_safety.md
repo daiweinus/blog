@@ -1,5 +1,5 @@
 ---
-title: "Threads Safety"
+title: "Threads Safety 线程安全"
 date: 2021-10-26T12:08:57+08:00
 draft: true
 toc: false

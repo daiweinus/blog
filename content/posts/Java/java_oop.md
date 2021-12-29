@@ -1,5 +1,5 @@
 ---
-title: "Java_oop"
+title: "Java OOP简介"
 date: 2021-11-09T11:30:25+08:00
 draft: true
 toc: false
@@ -65,3 +65,15 @@ Declare the variables of a class as **private**.Provide **public setter and gett
 Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
 
 多态是一个对象具有多种形式的能力。OOP中最常见的多态性用法是使用父类引用来引用子类对象。
+
+
+
+### Inhertance继承 vs Interface接口
+
+**Inhertance继承** 使用关键字 **`extends`**实现继承，一个类只可以继承一个父类。在继承中可以定义属性方法,变量,常量等。并在子类中重写复用父类方法，可以去掉多个子类间的功能类似的重复代码，保持代码的简洁性。但是回增加代码的耦合性。
+
+**Interface接口**使用关键字 **`interface`** 修饰，使用关键字**`implements`**实现接口。一个类可以继承多个接口。接口中只能定义全局常量,和抽象方法，不能实例化，接口中不能有构造。子类任然需要实现自己的方法，但是可以降低代码的耦合性。
+
+接口更像是一种规范，而不是具体方法的实现。接口可以约束继承统该接口的类的方法和参数，以供调用方统一调配。
+
+因此我们应该面向接口编程，科学编程。

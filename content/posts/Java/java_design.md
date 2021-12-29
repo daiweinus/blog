@@ -1,5 +1,5 @@
 ---
-title: "Java_design"
+title: "Java Design Principles"
 date: 2021-11-09T12:11:11+08:00
 draft: true
 toc: false

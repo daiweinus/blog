@@ -1,5 +1,5 @@
 ---
-title: "Thread Communication"
+title: "多线程通信安全 Thread Communication synchronized"
 date: 2021-11-03T13:16:20+08:00
 draft: true
 toc: false

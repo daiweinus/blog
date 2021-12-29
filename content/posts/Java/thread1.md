@@ -1,6 +1,6 @@
 ---
 
-title: "Java Threads"
+title: "Java Threads多线程"
 date: 2021-10-20T11:37:08+08:00
 draft: true
 toc: false
@@ -34,7 +34,7 @@ A thread, in the context of Java, is the path followed when executing a program.
 
   * 实际上一个Java.exe程序至少有三个线程：**`main()`主线程**，**`gc`垃圾回收线程** 和 **异常处理线程**。
   * 线程作为调度和执行单位，每个线程都有独立的运行stack 和 pc (程序计数器)。一个进程可以同时执行多个线. 程，就是多线程，多线程之间可以共享相同的内存单元和地址。
-  * 例: 同时运行360卫士的电脑体检，木马查杀，垃圾清理三个任务，相当于3线程同时进行。
+  * 例: 迅雷就是程序，正在运行的迅雷就是进程，下载一部电影就是单线程，同时下载多部电影就是多线程。
 
   **简单的说：程序是静态代码指令集合，进程是动态正在运行的程序，线程是进程的最小执行单位。**
 
@@ -45,6 +45,86 @@ In Java, creating a thread is accomplished by **implementing an interface **and 
 * **并发** 一个CPU同时（时间片）执行多个任务。
 
 ![JavaMadeSoEasy.com (JMSE): Thread states/ Thread life cycle in java](https://lh4.googleusercontent.com/oR0_liUxjMnfgFS-fSuc0x2vCCPLQ0Vdw6w2rBVGloaE_84tRNprqNJEJiyI1unMY8Vpj2CDK9GiQGy03_RmteRz-aM31iIQcZsVZhIH2cLrne_5nY9miXKDmQqEHdY60_WopC0)
+
+### There are actually total 4 ways to create thread in java :
+
+1. By extending **`java.lang.Thread`** class
+
+   ```java
+   class SampleThread extends Thread {
+   
+       //method where the thread execution will start 
+       public void run(){
+           //logic to execute in a thread    
+       }
+   
+       //let’s see how to start the threads
+       public static void main(String[] args){
+          Thread t1 = new SampleThread();
+          Thread t2 = new SampleThread();
+          t1.start();  //start the first thread. This calls the run() method.
+          t2.start(); //this starts the 2nd thread. This calls the run() method.  
+       }
+   } 
+   ```
+
+2. By implementing **`java.lang.Runnable`** interface
+
+   ```java
+   class A implements Runnable{
+   
+       @Override
+       public void run() {
+   
+           // implement run method here 
+       }
+   
+       public static void main() {
+           final A obj = new A();
+   
+           Thread t1 = new Thread(new A());
+   
+           t1.start();
+       }
+   }
+   ```
+
+3. By implementing **`java.util.concurrent.Callable`**  interface.
+
+   ```java
+   class Counter implements Callable {
+   
+       private static final int THREAD_POOL_SIZE = 2;
+   
+       // method where the thread execution takes place
+       public String call() {
+           return Thread.currentThread().getName() + " executing ...";
+       }
+   
+       public static void main(String[] args) throws InterruptedException,
+               ExecutionException {
+           // create a pool of 2 threads
+           ExecutorService executor = Executors
+                   .newFixedThreadPool(THREAD_POOL_SIZE);
+   
+           Future future1 = executor.submit(new Counter());
+           Future future2 = executor.submit(new Counter());
+   
+           System.out.println(Thread.currentThread().getName() + " executing ...");
+   
+           //asynchronously get from the worker threads
+           System.out.println(future1.get());
+           System.out.println(future2.get());
+   
+       }
+   }
+   ```
+
+   **Callable 接口支持与 Executor 框架用于线程池。**
+
+   **Runnable 或 Callable 接口优于extends Thread class。**
+
+
 
 ### There are two ways to create a thread in Java:
 
@@ -94,7 +174,7 @@ class MultithreadingDemo implements Runnable {
 
 **Inherit less, interface more,** only use inherit when you need override some behavior.
 
-少继承，多接口。只有在你需要重写某些行为时才使用基础。
+少继承，多接口。只有在你需要重写某些行为时才使用继承。
 
 Multi-threads Ticket system 多线程卖票案例
 

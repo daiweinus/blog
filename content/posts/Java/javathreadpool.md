@@ -1,5 +1,5 @@
 ---
-title: "Java threadpool"
+title: "Java threadpool 线程池"
 date: 2021-10-20T11:18:55+08:00
 draft: true
 toc: false
@@ -51,11 +51,11 @@ There are a few risks while you are dealing with the thread pool, like;
 
 - **Thread Leakage:** If a thread is removed from the pool to perform a task but not returned back to it when the task is completed, thread leakage occurs.
 
-  **线程泄漏：**如果线程被从池中移除以执行任务但在任务完成时没有返回到它，则发生线程泄漏。
+  **线程泄漏：**如果线程从池中移除去执行任务但在任务完成时没有返回到它，则发生线程泄漏。
 
 - **Deadlock:** In thread pool is executing thread is waiting for the output from the block the thread waiting in the queue due to unavailability of thread for execution, there’s a case of a deadlock.
 
-  **死锁：**在线程池中正在执行线程正在等待块的输出由于线程不可用而在队列中等待的线程执行，存在死锁的情况。
+  **死锁：** 在线程池里
 
 - **Resource Thrashing:** More number of threads than the optimal number required can cause starvation problems leading to resource thrashing.
 

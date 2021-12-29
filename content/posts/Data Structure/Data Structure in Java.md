@@ -57,6 +57,6 @@ These data types are not actually defined by the programming language but are cr
 4. A primitive type starts with a lowercase letter, while non-primitive types start with an uppercase letter.
 5. The size of a primitive type depends on the data type, while non-primitive types have all the same size.
 
-很多人说编程等于 数据结构 + 操作数据的算法，不一定是完全正确的，但是小白的身份来看，先学习整体框架，再一个个深入了解。可能开始会觉得学的很慢，怎么还不能写一个东西出来，但等到把基础知识掌握牢靠后，后面的面向对象编程，学起来就会更加得心应手。
+很多人说编程等于 数据结构 + 操作数据的算法，不一定是完全正确的，但是先学习整体框架，再一个个深入了解。可能开始会觉得学的很慢，怎么还不能写一个东西出来，但等到把基础知识掌握牢靠后，后面的面向对象编程，学起来就会更加得心应手。
 
-我的大学老师是没有教我们去看Java官方文档的，也并没有从头给我们讲解Java的语言框架，开始就是面向对象编程，和一些Java 语法，导致后来很多问题都学的很困惑，比如为什么 `int[] a = {1,2,3}` 不需要new， `ArrayList<Integer> a = new ArrayList<>()` 需要new？为什么会有 `a.lenght` 和`a.size()`，为什么一个需要后面加括号，一个不需要？`List<Integer> a = new Arraylist<>() `和 `ArrayList<Integer> a = new ArrayList<>()`有什么区别？等等这些问题都是后来Google看官方文档后，才开始慢慢理解的。
+大学老师是没有教Java官方文档，也并没有从头给我们讲解Java的语言框架，开始就是面向对象编程，和一些Java 语法，导致后来很多问题都学的很困惑，比如为什么 `int[] a = {1,2,3}` 不需要new， `ArrayList<Integer> a = new ArrayList<>()` 需要new？为什么会有 `a.lenght` 和`a.size()`，为什么一个需要后面加括号，一个不需要？`List<Integer> a = new Arraylist<>() `和 `ArrayList<Integer> a = new ArrayList<>()`有什么区别？等等这些问题都是看官方文档后，才开始慢慢理解的。
