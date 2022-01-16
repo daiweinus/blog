@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java Operator on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/java-operator/</link>
+    <description>Recent content in Java Operator on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 03 Nov 2021 13:28:50 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java-operator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Operator 3: Ternary Operator 三元运算符</title>
+      <link>https://daiwei.dev/posts/data-structure/13_ternary_operator/</link>
+      <pubDate>Wed, 03 Nov 2021 13:28:50 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/13_ternary_operator/</guid>
+      <description>Syntax:
+1Variablename = (Condition) ? the value assigned if &amp;#39;true&amp;#39; is returned: t example：
+1if (BooleanValue) { 2 Greetings = &amp;#34;Hello!&amp;#34;; 3} 4else { 5 Greetings = &amp;#34;Bye!&amp;#34;; 6} using ternary operator the above expression involves 1 line:
+1Greeetings = (BooleanValue) ? &amp;#34;Hello!&amp;#34; : &amp;#34;Bye!&amp;#34;; Chained Operations
+1public class Ternaryy { 2 public static void main(String[] args) { 3 4 String coffeeOrder = &amp;#34;Piccolo Latte&amp;#34;; 5 if (coffeeOrder == &amp;#34;Espresso&amp;#34; ) { 6 System.</description>
+    </item>
+    
+    <item>
+      <title>Java Operator 2: i&#43;&#43; vs &#43;&#43;i</title>
+      <link>https://daiwei.dev/posts/data-structure/12_i&#43;&#43;/</link>
+      <pubDate>Tue, 02 Nov 2021 20:20:00 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/12_i&#43;&#43;/</guid>
+      <description>1public class Main { 2 public static void main (String[] args) { 3 int a = 0, b = 0; 4 for (int i = 0; i &amp;lt; 1; i++) { 5 System.out.println(a += i); // a = 0 6 System.out.println(i++); // i++ = 0 7 System.out.println(i); // i = 1 8 } 9 10 for (int i = 0; i &amp;lt; 1; ++i) { 11 System.out.println(b += i); // b = 0 12 System.</description>
+    </item>
+    
+    <item>
+      <title>Java Operator 1: Bitwise Operator</title>
+      <link>https://daiwei.dev/posts/data-structure/11_bitwise/</link>
+      <pubDate>Mon, 01 Nov 2021 13:13:13 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/11_bitwise/</guid>
+      <description>An operator that acts on individual bits (0 or 1) of the operands is called bitwise operator in java.
+It acts only integer data types such as byte, short, int, and long. Bitwise operators in java cannot be applied to float and double data types.
+操作 bit 单位 0 和 1 成为 位操作， 在Java 位操作只可以使用在整数，不可以在小数上使用。
+Bitwise Operator Table:    Operator Meaning     1. &amp;amp; bitwise AND   2.</description>
+    </item>
+    
+  </channel>
+</rss>

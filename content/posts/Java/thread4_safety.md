@@ -1,12 +1,12 @@
 ---
-title: "Threads Safety 线程安全"
-date: 2021-10-26T12:08:57+08:00
+title: "Java Threads 4:Threads Safety"
+date: 2021-11-23T12:08:57+08:00
 draft: true
 toc: false
 images:
   - "images/totoro.jpeg"
 tags: 
-  - Java
+  - Java Threads
 ---
 
 Unsafe threads in tickets system 不安全线程:

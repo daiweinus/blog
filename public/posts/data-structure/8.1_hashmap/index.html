@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Data Structure 8.1: Map_HashMap">
+<meta itemprop="description" content="HashMap 1public class HashMap&lt;K,V&gt; // underlying is Array &#43; LinkedList 2extends AbstractMap&lt;K,V&gt; 3implements Map&lt;K,V&gt;, Cloneable, Serializable 4 5// Direct Known Subclasses: 6LinkedHashMap, PrinterStateReasons 7 8Map&lt;String, String&gt; hashMap1 = new HashMap&lt;&gt;(); 9Map&lt;String, String&gt; hashMap2 = new HashMap&lt;&gt;(hashMap1); 10Map&lt;String, String&gt; hashMap3 = new HashMap&lt;&gt;(10,0.75f); 11 12// add elements 13hashMap1.put(101,&#34; John&#34;); 14hashMap1.put(202,&#34; Ricky&#34;); 15hashMap1.put(303,&#34; Deep&#34;); 16hashMap1.put(404,&#34; Mark&#34;); 17hashMap1.put(505,&#34; Maya&#34;); 18 19// Map Iteration 20for(Integer i:hashMap1.keySet())System.out.println(i); // Iterate Kay 21 22for(String s:hashMap1.values())System.out.println(s); // Iterate Value 23 24for(Map."><meta itemprop="datePublished" content="2022-01-08T20:00:11+08:00" />
+<meta itemprop="dateModified" content="2022-01-08T20:00:11+08:00" />
+<meta itemprop="wordCount" content="386"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Data Structure," /><meta property="og:title" content="Java Data Structure 8.1: Map_HashMap" />
+<meta property="og:description" content="HashMap 1public class HashMap&lt;K,V&gt; // underlying is Array &#43; LinkedList 2extends AbstractMap&lt;K,V&gt; 3implements Map&lt;K,V&gt;, Cloneable, Serializable 4 5// Direct Known Subclasses: 6LinkedHashMap, PrinterStateReasons 7 8Map&lt;String, String&gt; hashMap1 = new HashMap&lt;&gt;(); 9Map&lt;String, String&gt; hashMap2 = new HashMap&lt;&gt;(hashMap1); 10Map&lt;String, String&gt; hashMap3 = new HashMap&lt;&gt;(10,0.75f); 11 12// add elements 13hashMap1.put(101,&#34; John&#34;); 14hashMap1.put(202,&#34; Ricky&#34;); 15hashMap1.put(303,&#34; Deep&#34;); 16hashMap1.put(404,&#34; Mark&#34;); 17hashMap1.put(505,&#34; Maya&#34;); 18 19// Map Iteration 20for(Integer i:hashMap1.keySet())System.out.println(i); // Iterate Kay 21 22for(String s:hashMap1.values())System.out.println(s); // Iterate Value 23 24for(Map." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/8.1_hashmap/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-08T20:00:11+08:00" />
+<meta property="article:modified_time" content="2022-01-08T20:00:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Data Structure 8.1: Map_HashMap"/>
+<meta name="twitter:description" content="HashMap 1public class HashMap&lt;K,V&gt; // underlying is Array &#43; LinkedList 2extends AbstractMap&lt;K,V&gt; 3implements Map&lt;K,V&gt;, Cloneable, Serializable 4 5// Direct Known Subclasses: 6LinkedHashMap, PrinterStateReasons 7 8Map&lt;String, String&gt; hashMap1 = new HashMap&lt;&gt;(); 9Map&lt;String, String&gt; hashMap2 = new HashMap&lt;&gt;(hashMap1); 10Map&lt;String, String&gt; hashMap3 = new HashMap&lt;&gt;(10,0.75f); 11 12// add elements 13hashMap1.put(101,&#34; John&#34;); 14hashMap1.put(202,&#34; Ricky&#34;); 15hashMap1.put(303,&#34; Deep&#34;); 16hashMap1.put(404,&#34; Mark&#34;); 17hashMap1.put(505,&#34; Maya&#34;); 18 19// Map Iteration 20for(Integer i:hashMap1.keySet())System.out.println(i); // Iterate Kay 21 22for(String s:hashMap1.values())System.out.println(s); // Iterate Value 23 24for(Map."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Data Structure 8.1: Map_HashMap</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 8, 2022</span></div>
+				<h1>Java Data Structure 8.1: Map_HashMap</h1>
+			</header>
+			<div class="content">
+				<h2 id="hashmap">HashMap<a href="#hashmap" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="c1">// underlying is Array + LinkedList
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">extends</span> <span class="n">AbstractMap</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span>
+<span class="ln"> 3</span><span class="kd">implements</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;,</span> <span class="n">Cloneable</span><span class="o">,</span> <span class="n">Serializable</span>
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="c1">// Direct Known Subclasses:
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">LinkedHashMap</span><span class="o">,</span> <span class="n">PrinterStateReasons</span>
+<span class="ln"> 7</span>  
+<span class="ln"> 8</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">hashMap1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="ln"> 9</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">hashMap2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="n">hashMap1</span><span class="o">);</span>
+<span class="ln">10</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">hashMap3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="n">10</span><span class="o">,</span><span class="n">0</span><span class="o">.</span><span class="na">75f</span><span class="o">);</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="c1">// add elements
+</span><span class="ln">13</span><span class="c1"></span><span class="n">hashMap1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">101</span><span class="o">,</span><span class="s">&#34; John&#34;</span><span class="o">);</span>
+<span class="ln">14</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">202</span><span class="o">,</span><span class="s">&#34; Ricky&#34;</span><span class="o">);</span>
+<span class="ln">15</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">303</span><span class="o">,</span><span class="s">&#34; Deep&#34;</span><span class="o">);</span>
+<span class="ln">16</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">404</span><span class="o">,</span><span class="s">&#34; Mark&#34;</span><span class="o">);</span>
+<span class="ln">17</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">505</span><span class="o">,</span><span class="s">&#34; Maya&#34;</span><span class="o">);</span>
+<span class="ln">18</span>
+<span class="ln">19</span><span class="c1">// Map Iteration
+</span><span class="ln">20</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">Integer</span> <span class="n">i</span><span class="o">:</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">// Iterate Kay
+</span><span class="ln">21</span><span class="c1"></span>
+<span class="ln">22</span><span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">:</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">values</span><span class="o">())</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span> <span class="c1">// Iterate Value
+</span><span class="ln">23</span><span class="c1"></span>
+<span class="ln">24</span><span class="k">for</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span><span class="o">:</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="c1">// Iterate Kay + Value
+</span><span class="ln">25</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Key &#34;</span><span class="o">+</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()+</span><span class="s">&#34; : Value&#34;</span><span class="o">+</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="ln">26</span>
+<span class="ln">27</span><span class="k">for</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span><span class="o">:</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="c1">// Iterate Entry
+</span><span class="ln">28</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Entry: &#34;</span><span class="o">+</span><span class="n">entry</span><span class="o">);</span>
+<span class="ln">29</span>
+<span class="ln">30</span><span class="n">hashMap1</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">k</span><span class="o">,</span><span class="n">v</span><span class="o">)-&gt;</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Key &#34;</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="s">&#34; : Value &#34;</span><span class="o">+</span><span class="n">v</span><span class="o">));</span> <span class="c1">// Iterate Entry
+</span><span class="ln">31</span><span class="c1"></span>
+<span class="ln">32</span><span class="c1">// result
+</span><span class="ln">33</span><span class="c1"></span><span class="o">&gt;</span> <span class="n">Task</span> <span class="o">:</span><span class="n">MapTest</span><span class="o">.</span><span class="na">main</span><span class="o">()</span>
+<span class="ln">34</span><span class="n">404</span>
+<span class="ln">35</span><span class="n">101</span>
+<span class="ln">36</span><span class="n">505</span>
+<span class="ln">37</span><span class="n">202</span>
+<span class="ln">38</span><span class="n">303</span>
+<span class="ln">39</span> <span class="n">Mark</span>
+<span class="ln">40</span> <span class="n">John</span>
+<span class="ln">41</span> <span class="n">Maya</span>
+<span class="ln">42</span> <span class="n">Ricky</span>
+<span class="ln">43</span> <span class="n">Deep</span>
+<span class="ln">44</span><span class="n">Key</span> <span class="n">404</span> <span class="o">:</span> <span class="n">Value</span> <span class="n">Mark</span>
+<span class="ln">45</span><span class="n">Key</span> <span class="n">101</span> <span class="o">:</span> <span class="n">Value</span> <span class="n">John</span>
+<span class="ln">46</span><span class="n">Key</span> <span class="n">505</span> <span class="o">:</span> <span class="n">Value</span> <span class="n">Maya</span>
+<span class="ln">47</span><span class="n">Key</span> <span class="n">202</span> <span class="o">:</span> <span class="n">Value</span> <span class="n">Ricky</span>
+<span class="ln">48</span><span class="n">Key</span> <span class="n">303</span> <span class="o">:</span> <span class="n">Value</span> <span class="n">Deep</span>
+<span class="ln">49</span><span class="nl">Entry:</span> <span class="n">404</span><span class="o">=</span> <span class="n">Mark</span>
+<span class="ln">50</span><span class="nl">Entry:</span> <span class="n">101</span><span class="o">=</span> <span class="n">John</span>
+<span class="ln">51</span><span class="nl">Entry:</span> <span class="n">505</span><span class="o">=</span> <span class="n">Maya</span>
+<span class="ln">52</span><span class="nl">Entry:</span> <span class="n">202</span><span class="o">=</span> <span class="n">Ricky</span>
+<span class="ln">53</span><span class="nl">Entry:</span> <span class="n">303</span><span class="o">=</span> <span class="n">Deep</span>
+<span class="ln">54</span><span class="n">Key</span> <span class="n">404</span> <span class="o">:</span> <span class="n">Value</span>  <span class="n">Mark</span>
+<span class="ln">55</span><span class="n">Key</span> <span class="n">101</span> <span class="o">:</span> <span class="n">Value</span>  <span class="n">John</span>
+<span class="ln">56</span><span class="n">Key</span> <span class="n">505</span> <span class="o">:</span> <span class="n">Value</span>  <span class="n">Maya</span>
+<span class="ln">57</span><span class="n">Key</span> <span class="n">202</span> <span class="o">:</span> <span class="n">Value</span>  <span class="n">Ricky</span>
+<span class="ln">58</span><span class="n">Key</span> <span class="n">303</span> <span class="o">:</span> <span class="n">Value</span>  <span class="n">Deep</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201131314189.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201131919115.png" alt=""></p>
+<p><strong>HashMap</strong>是基于哈希表的<code>Map</code>接口实现。此实现提供所有可选的映射操作，并允许 <code>null</code>值和<code>null</code>键。（这个<code>HashMap</code> 类大致相当于<code>Hashtable</code>，除了它是不同步的并且允许 null 值。）这个类不保证映射的顺序。</p>
+<p>此实现为基本操作 (<code>get</code>和<code>put</code>) 提供常数<code>O(1)</code>时间性能，假设哈希函数将元素正确地分散在桶中。对集合视图的迭代需要的时间与 <code>HashMap</code>实例的“容量”（桶的数量）加上其大小（键值映射的数量）成正比。因此，如果迭代性能很重要，则不要将初始容量设置得太高（或负载因子太低），这一点非常重要。</p>
+<p><code>HashMap</code>有两个影响其性能的参数：<em>初始容量 initial capacity 16</em> 和<em>负载因子 load factor 0.75</em>。<em>容量</em>是哈希表中的 桶数 buckets，初始容量只是哈希表创建时的容量。<em>负载因子</em>是哈希表在其容量自动增加之前允许达到的程度的度量。 当哈希表中的条目数超过负载因子和当前容量的乘积时，对哈希表进行<em>重新</em>哈希（即重建内部数据结构），使哈希表的桶数大约增加0.75倍。</p>
+<p>作为一般规则，默认负载因子 (.75) 在时间和空间成本之间提供了良好的折衷。较高的值会减少空间开销，但会增加查找成本（反映在<code>HashMap</code>类的大多数操作中，包括 <code>get</code>and <code>put</code>）。在设置其初始容量时，应考虑映射中的预期条目数及其负载因子，以尽量减少重新哈希操作 hashcode 的次数。如果初始容量大于最大条目数除以负载因子，则不会发生重新哈希操作。</p>
+<hr>
+<p>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。</p>
+<p>HashMap 实现了 Map 接口，根据键的 HashCode 值存储数据，具有很快的访问速度，最多允许一条记录的键为 null，不支持线程同步。</p>
+<p>HashMap 是无序的，即不会记录插入的顺序。</p>
+<p>HashMap 继承于AbstractMap，实现了 Map、Cloneable、java.io.Serializable 接口。</p>
+<p>HashMap 如果再次添加相同的key值，它会<strong>覆盖</strong>key值所对应的内容，这也是与HashSet不同的一点，Set通过add添加相同的对象，<strong>不会再添加到Set中</strong>去。</p>
+<h3 id="hashmap的底层实现">HashMap的底层实现<a href="#hashmap的底层实现" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>jdk1.7 中 <strong>HashMap 底层</strong>是基于<strong>数组Array和链表List</strong>实现的。</p>
+<p>jdk8中 <strong>HashMap ** 的底层实现添加了</strong>红黑树**，当链表长度大于等于<strong>8</strong>的时候链表会变成红黑树。</p>
+<h3 id="为什么采用这种结构来存储元素呢">为什么采用这种结构来存储元素呢？<a href="#为什么采用这种结构来存储元素呢" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><strong>数组的特点：查询效率高，插入，删除效率低</strong>。</p>
+<p><strong>链表的特点：查询效率低，插入删除效率高</strong>。</p>
+<p>在HashMap底层使用数组加（链表或红黑树）的结构完美的解决了数组和链表的问题，使得查询和插入，删除的效率都很高。</p>
+<h4 id="jdk8中hashmap为什么要引入红黑树"><strong>jdk8中HashMap为什么要引入红黑树？</strong><a href="#jdk8中hashmap为什么要引入红黑树" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>避免在最极端的情况下链表变得很长很长，在查询的时候，效率会非常慢时间复杂度会由O(1)退化成O(n)。在链表长度大于8的时候引入红黑树可以增加链表查询的效率，红黑树是一种近似平衡的二叉查找树，其主要的优点就是“平衡“，即左右子树高度几乎一致，以此来防止树退化为链表，通过这种方式来保障查找的时间复杂度为 log(n)。</p>
+<ul>
+<li>红黑树查询：其访问性能近似于折半查找，时间复杂度 O(logn)；</li>
+<li>链表查询：这种情况下，需要遍历全部元素才行，时间复杂度 O(n)；</li>
+</ul>
+<h3 id="红黑树的特性">红黑树的特性：<a href="#红黑树的特性" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>1、每个节点要么是红色，要么是黑色，但根节点永远是黑色的；</p>
+<p>2、每个红色节点的两个子节点一定都是黑色；</p>
+<p>3、红色节点不能连续（也即是，红色节点的孩子和父亲都不能是红色）；</p>
+<p>4、从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</p>
+<p>5、所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</p>
+<p>在树的结构发生改变时（插入或者删除操作），往往会破坏上述条件 3 或条件 4，需要通过调整使得查找树重新满足红黑树的条件。</p>
+<h3 id="hashmap-put">HashMap <code>put()</code><a href="#hashmap-put" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>map.put(k,v)实现原理
+（1）首先将k,v封装到Node对象当中（节点）。
+（2）然后它的底层会调用K的hashCode()方法得出hash值。
+（3）通过哈希表函数/哈希算法，将hash值转换成数组的下标，下标位置上如果没有任何元素，就把Node添加到这个位置上。如果说下标对应的位置上有链表。此时，就会拿着k和链表上每个节点的k进行equal。如果所有的equals方法返回都是false，那么这个新的节点将被添加到链表的末尾。如其中有一个equals返回了true，那么这个节点的value将会被覆盖。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201031701629.jpeg" alt=""></p>
+<h3 id="hashmap-get">HashMap <code>get()</code><a href="#hashmap-get" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>map.put(k,v)实现原理
+（1）首先将k,v封装到Node对象当中（节点）。
+（2）然后它的底层会调用K的hashCode()方法得出hash值。
+（3）通过哈希表函数/哈希算法，将hash值转换成数组的下标，下标位置上如果没有任何元素，就把Node添加到这个位置上。如果说下标对应的位置上有链表。此时，就会拿着k和链表上每个节点的k进行equal。如果所有的equals方法返回都是false，那么这个新的节点将被添加到链表的末尾。如其中有一个equals返回了true，那么这个节点的value将会被覆盖。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201031702419.jpeg" alt=""></p>
+<p><strong>一：HashMap的节点</strong>：HashMap是一个集合，键值对的集合,源码中每个节点用Node&lt;K,V&gt;表示</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="ln">2</span>   <span class="kd">final</span> <span class="kt">int</span> <span class="n">hash</span><span class="o">;</span>
+<span class="ln">3</span>   <span class="kd">final</span> <span class="n">K</span> <span class="n">key</span><span class="o">;</span>
+<span class="ln">4</span>   <span class="n">V</span> <span class="n">value</span><span class="o">;</span>
+<span class="ln">5</span>   <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">;</span>
+</code></pre></div><p>Node是一个内部类，这里的key为键，value为值，next指向下一个元素，可以看出HashMap中的元素不是一个单纯的键值对，<strong>还包含下一个元素的引用</strong>。</p>
+<p>每个元素节点都有一个next属性指向下一个节点，这里由数组结构变成了数组+链表结构,红黑树又是怎么回事呢？</p>
+<p>因为链表中元素太多的时候会影响查找效率，所以当链表的元素个数达到8的时候使用链表存储就转变成了使用红黑树存储，原因就是<strong>红黑树是平衡二叉树，在查找性能方面比链表要高</strong>.</p>
+<p><strong>二：HashMap的数据结构</strong>：HashMap的数据结构为 <strong>数组+(链表或红黑树)</strong>，上图：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-894d2f03f6672c9b6a1ced07fe27e1be_1440w.jpg" alt="img"></p>
+<p>为什么采用这种结构来存储元素呢？</p>
+<p><strong>数组的特点：查询效率高，插入，删除效率低</strong>。</p>
+<p><strong>链表的特点：查询效率低，插入删除效率高</strong>。</p>
+<p>在HashMap底层使用数组加（<strong>链表或红黑树</strong>）的结构完美的解决了数组和链表的问题，使得查询和插入，删除的效率都很高。</p>
+<p><strong>三：HashMap存储元素的过程：</strong></p>
+<p>有这样一段代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="ln">1</span>HashMap&lt;String,String&gt; map = new HashMap&lt;String,String&gt;();
+<span class="ln">2</span>map.put(&#34;刘德华&#34;,&#34;张惠妹&#34;);
+<span class="ln">3</span>map.put(&#34;张学友&#34;,&#34;大S&#34;);
+</code></pre></div><p>现在我要把键值对 “刘德华”,”张惠妹”存入map:</p>
+<p>第一步：计算出键“刘德华”的hashcode，该值用来定位要将这个元素存放到数组中的什么位置.</p>
+<p><strong>什么是hashcode？</strong></p>
+<p>在Object类中有一个方法:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="ln">1</span>public native int hashCode();
+</code></pre></div><p>该方法用native修饰，所以是一个本地方法，<strong>所谓本地方法就是非java代码，这个代码通常用c或c++写成，在java中可以去调用它</strong>。</p>
+<p>调用这个方法会生成一个int型的整数，我们叫它哈希码，哈希码和调用它的对象地址和内容有关.</p>
+<p><strong>哈希码的特点是:</strong></p>
+<p><strong>对于同一个对象如果没有被修改（使用equals比较返回true）那么无论何时它的hashcode值都是相同的</strong></p>
+<p><strong>对于两个对象如果他们的equals返回false,那么他们的hashcode值也有可能相等</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">// The formula for calculating the index of bucket (where n is the size of an array of the bucket)：
+</span><span class="ln">2</span><span class="c1"></span><span class="n">Index</span> <span class="o">=</span> <span class="n">hashCode</span><span class="o">(</span><span class="n">key</span><span class="o">)</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+<span class="ln">3</span><span class="n">Index</span> <span class="o">=</span> <span class="n">2657860</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">16</span><span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span>
+</code></pre></div><hr>
+<p><strong>HashMap存储流程</strong></p>
+<p>前面寻址算法都是一样的，根据key的hashcode经过高低位异或之后的值，再按位与 &amp;(table.lingth - 1),得到一个数组下标，然后根据这个数组下标内的状况，状况不同，然后情况也不同，大概分为了4种状态：</p>
+<p>**( 1.)第一种就是数组下标下内容为空：**这种情况没什么好说的，为空据直接占有这个slot槽位就好了，然后把当前.put方法传进来的key和value包装成一个node对象,放到这个slot中就好了。</p>
+<p>**( 2.)第二种情况就是数组下标下内容不为空，但它引用的node还没有链化：**这种情况下先要对比一下这个node对象的key与当前put对象的key是否完全.相等，如果完全相等的情况下，就行进行replace操作，把之前的槽位中node.下的value替换成新的value就可以了，否则的话这个put操作就是一个正儿.八经的hash冲突,这种情况在slot槽位后面追加一个node就可以了,用尾插法 ( 前面讲过，jdk7是把新增元素添加到头部节点，而jdk8则添加到尾部节点)。</p>
+<p>**( 3.)第三种就是该数组下标下内容已经被链化了：**这种情况和第二种情况处理很相似，首先也是迭代查找node，看看链表上中元素的key，与当前传过来的key是否完全一致，如果完全一致的话还是repleace操作，用put过来的新value替换掉之前node中的value，否则的话就是一致迭代到链表尾节点也没有匹配到完全一致的node，就和之前的一样，把put进来数据包装成node追加到链表的尾部，再检查一下当前链表的长度，有没有达到树化阈值，如果达到了阈值就调用一个树化方法，树化操作都是在这个方法里完成的。</p>
+<p>**( 4.)第四种情况就是冲突很严重的情况下，这个链表已经转化成红黑树了：**红黑树就比较复杂 要将清楚这个红黑树还得从TreeNode说起 TreeNode继承了Node结构，在Node基础上加了几个字段，分别是指向父节点parent字段，指向左子节点left字段，指向右子节点right字段，还有一个表示颜色的red字段，这就是TreeNode的基本结构，然后红黑树的插入操作，首先找到一个合适的插入点，就是找到插入节点的父节点，然后红黑树它又满足二叉树的所有特性，所以找这个父节点的操作和二叉树排序是完全一致的，然后说一下这个二叉树排序，其实就是二分查找算法映射出来的结构，就是一个倒立的二叉树，然后每个节点都可以有自己的子节点，本且左节点小于但前节点，右节点大于当前节点，然后每次向下查找一层就能那个排除掉一半的数据，查找效率非常的高效，当查找的过程中也是分情况的。</p>
+<p>首先第一种情况就是一直向下探测，直到查询到左子树或者右子树位null，说明整个树中，并没有发现node链表中的key与当前put key一致的TreeNode,那此时探测节点就是插入父节点的所在了，然后就是判断插入节点的hash值和父节点的hash值大小决定插入到父节点的左子树还是右子树。当然插入会打破平衡，还需要一个红黑树的平衡算法保持平衡。其次第二种情况就是根节点在向下探测过程中发现TreeNode中key与当前put的key完全一致，然后就也是一次repleace操作，替换value。</p>
+<hr>
+<p><strong>HashMap中的两个重要的参数：</strong> 初始容量大小和加载因子**，初始容量大小是创建时给数组分配的容量大小，默认值为16，**用数组容量大小乘以加载因子得到一个值，一旦数组中存储的元素个数超过该值就会调用rehash方法将数组容量增加到原来的两倍，专业术语叫做扩容.</p>
+<p><strong>在做扩容的时候会生成一个新的数组，原来的所有数据需要重新计算哈希码值重新分配到新的数组，所以扩容的操作非常消耗性能.</strong></p>
+<p>创建HashMap时我们可以通过合理的设置初始容量大小来达到尽量少的扩容的目的。加载因子也可以设置，但是除非特殊情况不建议设置.</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-data-structure">Java Data Structure</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>386 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-01-08 20:00 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Data Structure 8.1: Map_LinkedHashMap</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/8_map/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Data Structure 8: Map</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/8.1_hashmap/" class="leancloud_visitors" data-flag-title="Java Data Structure 8.1: Map_HashMap">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

@@ -7,24 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Http vs Https</title>
-      <link>https://daiwei.dev/posts/networking/http-vs-https/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Networking 4: IPv4 vs IPv6</title>
+      <link>https://daiwei.dev/posts/networking/networking4_ipv4-vs-ipv6/</link>
+      <pubDate>Mon, 13 Dec 2021 11:43:43 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/http-vs-https/</guid>
-      <description>HTTP vs HTTPSHTTP is Hypertext Transfer Protocol,超文本传输协议,是建立在 TCP 之上的应用层网络协议。HTTP 使用超文本结构化文本,HTTP 为 Web 浏览器和服务器之间的通信提供了标准规则。
-HTTPS is Hypertext Transfer Protocol Secure超文本传输​​协议安全。它是高度先进和安全的 HTTP 版本。它使用端口号。443 用于数据通信。它通过使用 SSL 加密整个通信来实现安全交易。它是 SSL/TLS 协议和 HTTP 的组合。它提供网络服务器的加密和安全标识。HTTP 还允许您在服务器和浏览器之间创建安全的加密连接。它提供数据的双向安全性。这有助于您保护潜在的敏感信息免遭窃取。在 HTTPS 协议中，SSL 事务是在基于密钥的加密算法的帮助下协商的。此密钥的强度通常为 40 或 128 位。与 HTTPS 一起使用的 SSL/TLS 证书类型现在，在本 HTTPS 和 HTTP 差异教程中，我们将介绍与 HTTPS 一起使用的 SSL/TLS 证书类型 域验证 Domain Validation:域验证验证申请证书的人是域名的所有者。这种类型的验证通常需要几分钟到几个小时。 组织验证 Organization Validation:证书颁发机构不仅验证域的所有权，还验证所有者的身份。这意味着可能会要求所有者提供个人身份证明文件以证明其身份。 扩展验证 Extended Validation:扩展验证是最高级别的验证。它包括验证域所有权、所有者身份以及业务注册证明。
-主要区别：  HTTP 协议以明文方式发送内容，数据都是未加密的，安全性较差。HTTPS 数据传输过程是加密的，安全性较好。 HTTP 和 HTTPS 使用的是完全不同的连接方式，用的端口也不一样，前者是 80 端口，后者是 443 端口。 HTTPS 协议需要到数字认证机构（Certificate Authority, CA)申请证书，一般需要一定的费用。 HTTP 页面响应比 HTTPS 快，主要因为 HTTP 使用 3 次握手建立连接，客户端和服务器需要握手 3 次，而 HTTPS 除了 TCP 的 3 次握手，还需要经历一个 SSL 协商过程。  HTTP/3了解吗？ HTTP/3 是在 QUIC 基础上发展起来的，其底层使用 UDP 进行数据传输，上层仍然使用 HTTP/2。在 UDP 与 HTTP/2 之间存在一个 QUIC 层，其中 TLS 加密过程在该层进行处理。</description>
-    </item>
-    
-    <item>
-      <title>IPv4 vs IPv6</title>
-      <link>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</guid>
+      <guid>https://daiwei.dev/posts/networking/networking4_ipv4-vs-ipv6/</guid>
       <description>IP 地址指定寻址和数据包方案的技术格式。一个IP（互联网协议）地址是分配给连接到每个设备的数值标签计算机网络使用IP协议进行通信。IP 地址充当特定网络上特定设备的标识符。
 **IPv4 是一个 IP 版本，广泛用于使用寻址系统识别网络上的设备。它是 1983 年在 ARPANET 中部署用于生产的第一个 IP 版本。它使用 32 位地址方案来存储 2^32 个地址，超过 40 亿个地址。它被认为是主要的互联网协议，承载了 94% 的互联网流量。
 IPv6 是 Internet 协议的最新版本。部署此新 IP 地址版本是为了满足对更多 Internet 地址的需求。它旨在解决与 IPv4 相关的问题。凭借 128 位地址空间，它允许 340 个十进制唯一地址空间。IPv6 也称为 IPng（下一代互联网协议）。
@@ -33,11 +22,58 @@ IPv6 是 Internet 协议的最新版本。部署此新 IP 地址版本是为了�
     </item>
     
     <item>
-      <title>OSI vs TCP/IP Model</title>
-      <link>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</link>
+      <title>Networking 3: Http vs Https</title>
+      <link>https://daiwei.dev/posts/networking/networking3_http-vs-https/</link>
+      <pubDate>Sun, 12 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/networking/networking3_http-vs-https/</guid>
+      <description>HTTP vs HTTPSHTTP is Hypertext Transfer Protocol,超文本传输协议,是建立在 TCP 之上的应用层网络协议。HTTP 使用超文本结构化文本,HTTP 为 Web 浏览器和服务器之间的通信提供了标准规则。
+HTTPS is Hypertext Transfer Protocol Secure超文本传输​​协议安全。它是高度先进和安全的 HTTP 版本。它使用端口号。443 用于数据通信。它通过使用 SSL 加密整个通信来实现安全交易。它是 SSL/TLS 协议和 HTTP 的组合。它提供网络服务器的加密和安全标识。HTTP 还允许您在服务器和浏览器之间创建安全的加密连接。它提供数据的双向安全性。这有助于您保护潜在的敏感信息免遭窃取。在 HTTPS 协议中，SSL 事务是在基于密钥的加密算法的帮助下协商的。此密钥的强度通常为 40 或 128 位。与 HTTPS 一起使用的 SSL/TLS 证书类型现在，在本 HTTPS 和 HTTP 差异教程中，我们将介绍与 HTTPS 一起使用的 SSL/TLS 证书类型 域验证 Domain Validation:域验证验证申请证书的人是域名的所有者。这种类型的验证通常需要几分钟到几个小时。 组织验证 Organization Validation:证书颁发机构不仅验证域的所有权，还验证所有者的身份。这意味着可能会要求所有者提供个人身份证明文件以证明其身份。 扩展验证 Extended Validation:扩展验证是最高级别的验证。它包括验证域所有权、所有者身份以及业务注册证明。
+主要区别：  HTTP 协议以明文方式发送内容，数据都是未加密的，安全性较差。HTTPS 数据传输过程是加密的，安全性较好。 HTTP 和 HTTPS 使用的是完全不同的连接方式，用的端口也不一样，前者是 80 端口，后者是 443 端口。 HTTPS 协议需要到数字认证机构（Certificate Authority, CA)申请证书，一般需要一定的费用。 HTTP 页面响应比 HTTPS 快，主要因为 HTTP 使用 3 次握手建立连接，客户端和服务器需要握手 3 次，而 HTTPS 除了 TCP 的 3 次握手，还需要经历一个 SSL 协商过程。  HTTP/3了解吗？ HTTP/3 是在 QUIC 基础上发展起来的，其底层使用 UDP 进行数据传输，上层仍然使用 HTTP/2。在 UDP 与 HTTP/2 之间存在一个 QUIC 层，其中 TLS 加密过程在该层进行处理。</description>
+    </item>
+    
+    <item>
+      <title>Networking 2.2: TCP 4-way Handshake</title>
+      <link>https://daiwei.dev/posts/networking/networking2.2_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Sat, 11 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/networking/networking2.2_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</guid>
+      <description>TCP 4-Way Handshake (FIN, ACK,FIN,ACK)  client端向server发送FIN包，进入FIN_WAIT_1状态，这代表client端已经没有数据要发送了。 server端收到之后，返回一个ACK，进入CLOSE_WAIT等待关闭的状态，因为server端可能还有没有发送完成的数据。 等到server端数据都发送完毕之后，server端就向client发送FIN，进入LAST_ACK状态。 client收到ACK之后，进入TIME_WAIT的状态，同时回复ACK，server收到之后直接进入CLOSED状态，连接关闭。但是client要等待2MSL(报文最大生存时间)的时间，才会进入CLOSED状态。  为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？ 因为网络是不可靠的，有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
+Why need 4 ways handshake? 四次挥手的过程为什么server端ACK和FIN不在同一个请求里面发送？ 因为数据发送的截止时间不同，当client发送FIN给server后，只是表示client所有数据都已经发送完毕，client还可以接受数据。但是server的数据发送的数据可能还没有截止，所以server需要先发送一个ACK告诉client我收到你的FIN信息了，等到server端的数据全部发送完成，在发送FIN告知client我的信息也已经全部发送，现在可以关闭链接了。因此，己方ACK和FIN一般都会分开发送。</description>
+    </item>
+    
+    <item>
+      <title>Networking 2.1: TCP 3-Way Handskake</title>
+      <link>https://daiwei.dev/posts/networking/networking2.1_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Fri, 10 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/networking/networking2.1_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</guid>
+      <description>TCP 3-Way Handshake (SYN, SYN-ACK,ACK)    Message Description     SYNSynchronize [ˈsiŋ-krə-ˌnīz] Used to initiate and establish a connection. It also helps you to synchronize sequence numbers between devices.用于发起和建立连接。它还可以帮助您在设备之间同步序列号。   ACKAcknowledgement Helps to confirm to the other side that it has received the SYN.有助于向对方确认它已收到 SYN。   SYN-ACK SYN message from local device and ACK of the earlier packet.来自本地设备的 SYN 消息和较早数据包的 ACK。   FIN Used to terminate a connection.</description>
+    </item>
+    
+    <item>
+      <title>Networking 2: TCP VS UDP PROTOCAL</title>
+      <link>https://daiwei.dev/posts/networking/networking2_tcp-vs-udp/</link>
+      <pubDate>Thu, 09 Dec 2021 11:43:43 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/networking/networking2_tcp-vs-udp/</guid>
+      <description>TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
+区别：
+ TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
+确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
+超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
+连接管理：三次握手和四次挥手的过程。
+流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
+拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
+ </description>
+    </item>
+    
+    <item>
+      <title>Networking 1: OSI vs TCP/IP Model</title>
+      <link>https://daiwei.dev/posts/networking/networking1_osi-vs-tcp_ip/</link>
       <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</guid>
+      <guid>https://daiwei.dev/posts/networking/networking1_osi-vs-tcp_ip/</guid>
       <description>TCP/IP (Transmission Control Protocol/Internet Protocol Model) 传输控制协议/互联网协议模型最早由美国国防部赞助研究，定义系统和系统之间 开放连接和通信所使用的通信网络。
 OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP model的基础上制定的。定义系统和系统之间 开放连接和通信所使用的通信网络。
 OSI vs TCP/IP Model   OSI 模型有7层；
@@ -52,42 +88,6 @@ TCP/IP 模型 传输层 既面向连接又面向无连接。
 TCP/IP 帮助您在不同类型的计算机之间建立连接。
   优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
 TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。</description>
-    </item>
-    
-    <item>
-      <title>TCP 3-Way Handskake</title>
-      <link>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</guid>
-      <description>TCP 3-Way Handshake (SYN, SYN-ACK,ACK)    Message Description     SYNSynchronize [ˈsiŋ-krə-ˌnīz] Used to initiate and establish a connection. It also helps you to synchronize sequence numbers between devices.用于发起和建立连接。它还可以帮助您在设备之间同步序列号。   ACKAcknowledgement Helps to confirm to the other side that it has received the SYN.有助于向对方确认它已收到 SYN。   SYN-ACK SYN message from local device and ACK of the earlier packet.来自本地设备的 SYN 消息和较早数据包的 ACK。   FIN Used to terminate a connection.</description>
-    </item>
-    
-    <item>
-      <title>TCP 4-way Handshake</title>
-      <link>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</guid>
-      <description>TCP 4-Way Handshake (FIN, ACK,FIN,ACK)  client端向server发送FIN包，进入FIN_WAIT_1状态，这代表client端已经没有数据要发送了。 server端收到之后，返回一个ACK，进入CLOSE_WAIT等待关闭的状态，因为server端可能还有没有发送完成的数据。 等到server端数据都发送完毕之后，server端就向client发送FIN，进入LAST_ACK状态。 client收到ACK之后，进入TIME_WAIT的状态，同时回复ACK，server收到之后直接进入CLOSED状态，连接关闭。但是client要等待2MSL(报文最大生存时间)的时间，才会进入CLOSED状态。  为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？ 因为网络是不可靠的，有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
-Why need 4 ways handshake? 四次挥手的过程为什么server端ACK和FIN不在同一个请求里面发送？ 因为数据发送的截止时间不同，当client发送FIN给server后，只是表示client所有数据都已经发送完毕，client还可以接受数据。但是server的数据发送的数据可能还没有截止，所以server需要先发送一个ACK告诉client我收到你的FIN信息了，等到server端的数据全部发送完成，在发送FIN告知client我的信息也已经全部发送，现在可以关闭链接了。因此，己方ACK和FIN一般都会分开发送。</description>
-    </item>
-    
-    <item>
-      <title>TCP VS UDP PROTOCAL</title>
-      <link>https://daiwei.dev/posts/networking/tcp-vs-udp/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
-      
-      <guid>https://daiwei.dev/posts/networking/tcp-vs-udp/</guid>
-      <description>TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
-区别：
- TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
-确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
-超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
-连接管理：三次握手和四次挥手的过程。
-流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
-拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
- </description>
     </item>
     
   </channel>

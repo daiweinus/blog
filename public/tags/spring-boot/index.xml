@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 27 Dec 2021 18:17:23 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 18:17:23 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>IOC &amp; AOP Spring 中的控制反转和面向切面编程</title>
-      <link>https://daiwei.dev/posts/spring/ioc-aop/</link>
-      <pubDate>Mon, 27 Dec 2021 18:17:23 +0800</pubDate>
+      <title>SpringBoot 3: IOC &amp; AOP Spring中的控制反转和面向切面编程</title>
+      <link>https://daiwei.dev/posts/spring/springboot3_ioc-aop/</link>
+      <pubDate>Wed, 22 Dec 2021 18:17:23 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/ioc-aop/</guid>
+      <guid>https://daiwei.dev/posts/spring/springboot3_ioc-aop/</guid>
       <description>spring相关的书和博文看了很多，一直也没明白依赖注入和面向切面编程到底是什么，spring企业实战看到第三遍突然恍然大悟，也许是因为之前动手写过代码，所以终于潜移默化，慢慢理解了吧。
 http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml这篇文章写得挺好的
 首先控制反转和面向切面编程是spring的核心机制，由于控制反转不好理解，因此有人提出依赖注入的概念，其实依赖注入是控制反转的一种方式，但现在大家默认控制反转等同于依赖注入
@@ -54,11 +54,11 @@ IoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述
     </item>
     
     <item>
-      <title>SpringBoot Hello world</title>
-      <link>https://daiwei.dev/posts/spring/springboot_helloword/</link>
-      <pubDate>Tue, 07 Dec 2021 16:17:23 +0800</pubDate>
+      <title>SpringBoot 1: Hello world</title>
+      <link>https://daiwei.dev/posts/spring/springboot1_helloword/</link>
+      <pubDate>Mon, 20 Dec 2021 16:17:23 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/springboot_helloword/</guid>
+      <guid>https://daiwei.dev/posts/spring/springboot1_helloword/</guid>
       <description>  使用Spring Initializr 新建spring boot project
   在application.properties文件新建服务器端口
   新建HelloController class

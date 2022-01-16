@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microservices on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/microservices/</link>
+    <description>Recent content in Microservices on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 30 Dec 2021 16:17:23 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microservices 1: Introduction</title>
+      <link>https://daiwei.dev/posts/microservices/microservices1_intro/</link>
+      <pubDate>Thu, 30 Dec 2021 16:17:23 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/microservices/microservices1_intro/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

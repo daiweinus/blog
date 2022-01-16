@@ -1,12 +1,12 @@
 ---
-title: "线程创建方式4: threadpool"
-date: 2021-11-03T15:57:02+08:00
+title: "Java Threads 3: threadpool"
+date: 2021-11-22T15:57:02+08:00
 draft: true
 toc: false
 images:
   - "images/totoro.jpeg"
 tags: 
-  - Java
+  - Java Threads
 ---
 
 提前建好多个线程放入线程池中，使用时直接获取。避免频繁创建销毁线程，实现线程重复利用。

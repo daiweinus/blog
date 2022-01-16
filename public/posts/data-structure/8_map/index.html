@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Data Structure 8: Map">
+<meta itemprop="description" content="Module java.base
+Package java.util
+Interface Map&lt;K,V&gt;     Type Parameters:
+K - the type of keys maintained by this map
+V - the type of mapped values
+  All Known Subinterfaces:
+Bindings, ConcurrentMap&lt;K,V&gt;, ConcurrentNavigableMap&lt;K,V&gt;, NavigableMap&lt;K,V&gt;, SortedMap&lt;K,V&gt;
+  All Known Implementing Classes:
+AbstractMap, Attributes, AuthProvider, ConcurrentHashMap, ConcurrentSkipListMap, EnumMap, HashMap, Hashtable, Headers, IdentityHashMap, LinkedHashMap, PrinterStateReasons, Properties, Provider, RenderingHints, ScriptObjectMirror, SimpleBindings, TabularDataSupport, TreeMap, UIDefaults, WeakHashMap
+   1public interface Map&lt;K,V&gt;   A map in Java is a container object that stores elements in the form of key and value pairs."><meta itemprop="datePublished" content="2022-01-08T16:00:11+08:00" />
+<meta itemprop="dateModified" content="2022-01-08T16:00:11+08:00" />
+<meta itemprop="wordCount" content="782"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Data Structure," /><meta property="og:title" content="Java Data Structure 8: Map" />
+<meta property="og:description" content="Module java.base
+Package java.util
+Interface Map&lt;K,V&gt;     Type Parameters:
+K - the type of keys maintained by this map
+V - the type of mapped values
+  All Known Subinterfaces:
+Bindings, ConcurrentMap&lt;K,V&gt;, ConcurrentNavigableMap&lt;K,V&gt;, NavigableMap&lt;K,V&gt;, SortedMap&lt;K,V&gt;
+  All Known Implementing Classes:
+AbstractMap, Attributes, AuthProvider, ConcurrentHashMap, ConcurrentSkipListMap, EnumMap, HashMap, Hashtable, Headers, IdentityHashMap, LinkedHashMap, PrinterStateReasons, Properties, Provider, RenderingHints, ScriptObjectMirror, SimpleBindings, TabularDataSupport, TreeMap, UIDefaults, WeakHashMap
+   1public interface Map&lt;K,V&gt;   A map in Java is a container object that stores elements in the form of key and value pairs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/8_map/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-08T16:00:11+08:00" />
+<meta property="article:modified_time" content="2022-01-08T16:00:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Data Structure 8: Map"/>
+<meta name="twitter:description" content="Module java.base
+Package java.util
+Interface Map&lt;K,V&gt;     Type Parameters:
+K - the type of keys maintained by this map
+V - the type of mapped values
+  All Known Subinterfaces:
+Bindings, ConcurrentMap&lt;K,V&gt;, ConcurrentNavigableMap&lt;K,V&gt;, NavigableMap&lt;K,V&gt;, SortedMap&lt;K,V&gt;
+  All Known Implementing Classes:
+AbstractMap, Attributes, AuthProvider, ConcurrentHashMap, ConcurrentSkipListMap, EnumMap, HashMap, Hashtable, Headers, IdentityHashMap, LinkedHashMap, PrinterStateReasons, Properties, Provider, RenderingHints, ScriptObjectMirror, SimpleBindings, TabularDataSupport, TreeMap, UIDefaults, WeakHashMap
+   1public interface Map&lt;K,V&gt;   A map in Java is a container object that stores elements in the form of key and value pairs."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Data Structure 8: Map</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 8, 2022</span></div>
+				<h1>Java Data Structure 8: Map</h1>
+			</header>
+			<div class="content">
+				<p><strong>Module</strong> <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html">java.base</a></p>
+<p><strong>Package</strong> <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html">java.util</a></p>
+<h2 id="interface-mapkv">Interface Map&lt;K,V&gt;<a href="#interface-mapkv" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>
+<ul>
+<li>
+<p><strong>Type Parameters:</strong></p>
+<p><code>K</code> - the type of keys maintained by this map</p>
+<p><code>V</code> - the type of mapped values</p>
+</li>
+<li>
+<p><strong>All Known Subinterfaces:</strong></p>
+<p><code>Bindings</code>, <code>ConcurrentMap&lt;K,V&gt;</code>, <code>ConcurrentNavigableMap&lt;K,V&gt;</code>, <code>NavigableMap&lt;K,V&gt;</code>, <code>SortedMap&lt;K,V&gt;</code></p>
+</li>
+<li>
+<p><strong>All Known Implementing Classes:</strong></p>
+<p><code>AbstractMap</code>, <code>Attributes</code>, <code>AuthProvider</code>, <strong><code>ConcurrentHashMap</code></strong>, <code>ConcurrentSkipListMap</code>, <code>EnumMap</code>, <strong><code>HashMap</code></strong>, <strong><code>Hashtable</code></strong>, <code>Headers</code>, <code>IdentityHashMap</code>, <strong><code>LinkedHashMap</code></strong>, <code>PrinterStateReasons</code>, <code>Properties</code>, <code>Provider</code>, <code>RenderingHints</code>, <code>ScriptObjectMirror</code>, <code>SimpleBindings</code>, <code>TabularDataSupport</code>, <strong><code>TreeMap</code></strong>, <code>UIDefaults</code>, <code>WeakHashMap</code></p>
+</li>
+</ul>
+<hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span>
+</code></pre></div></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201122005617.png" alt=""></p>
+<p>A <strong>map in Java</strong> is a container object that stores elements in the form of key and value pairs. A key is a unique element (object) that serves as an “index” in the map.</p>
+<p>A map <strong>cannot have duplicate keys</strong>, but values may be duplicate.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201122004768.png" alt=""></p>
+<ul>
+<li>
+<h3 id="methods-declared-in-interface-javautilmaphttpsdocsoraclecomenjavajavase11docsapijavabasejavautilmaphtml">Methods declared in interface java.util.<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html">Map</a><a href="#methods-declared-in-interface-javautilmaphttpsdocsoraclecomenjavajavase11docsapijavabasejavautilmaphtml" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">clear</span><span class="o">,</span> <span class="n">containsKey</span><span class="o">,</span> <span class="n">containsValue</span><span class="o">,</span> <span class="n">entrySet</span><span class="o">,</span> <span class="n">equals</span><span class="o">,</span> <span class="n">get</span><span class="o">,</span> <span class="n">hashCode</span><span class="o">,</span> <span class="n">isEmpty</span><span class="o">,</span> <span class="n">keySet</span><span class="o">,</span> <span class="n">put</span><span class="o">,</span> <span class="n">putAll</span><span class="o">,</span> <span class="n">remove</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">values</span>
+</code></pre></div></li>
+</ul>
+<p><strong>Key point:</strong> The main difference between maps and sets is that <strong>maps contain keys and values</strong>, whereas <strong>sets contain only keys.</strong></p>
+<p>Map接口的实现。它们如下:</p>
+<p>**1、AbstractMap：**是实现map接口的抽象类。它是HashMap、TreeMap、LinkedHashMap等所有具体地图实现类的父类。它实现了 Map 接口中除了 entrySet() 方法之外的所有方法。</p>
+<p><strong>2. <a href="https://www.scientecheasy.com/2020/12/enummap-in-java.html/">EnumMap</a> :</strong> EnumMap 类扩展了 AbstractMap 并实现了 Map 接口。它特别适用于 Enum 类型的键。</p>
+<p>**3. <a href="https://www.scientecheasy.com/2020/11/hashmap-in-java.html/">HashMap</a>：**它是一个扩展AbstractMap的具体类。它使用哈希表来存储元素。它主要用于定位值、插入和删除条目。</p>
+<p>**4. <a href="https://www.scientecheasy.com/2020/11/treemap-in-java.html/">TreeMap</a> :**扩展 AbstractMap 并实现 NavigableMap 接口的具体类。它使用树来存储元素。它用于按排序顺序遍历键。可以使用 Comparable 接口或 Comparator 接口对键进行排序。</p>
+<p>**5. <a href="https://www.scientecheasy.com/2020/11/linkedhashmap-in-java.html/">LinkedHashMap</a>：**是一个提供Java map接口实现的具体类。它使用支持映射中条目插入顺序的链表实现扩展了 HashMap 类。</p>
+<p>HashMap 中的条目没有排序，但 LinkedHashMap 中的条目可以按照它们插入映射的顺序检索。</p>
+<p><strong>6. <a href="https://www.scientecheasy.com/2020/12/weakhashmap-in-java.html/">WeakHashMap</a> :</strong> WeakHashMap 类扩展了 AbstractMap 接口以使用带有弱类型键的哈希表。弱键允许映射中的元素在其键不再在程序中的任何位置使用时被垃圾收集。</p>
+<p>**7. <a href="https://www.scientecheasy.com/2020/12/identityhashmap-in-java.html/">IdentityHashMap</a>：**这个类扩展了 AbstractMap 并使用引用相等来比较条目。此类不用于一般目的。</p>
+<hr>
+<h3 id="interface-mapentrykv">Interface Map.Entry&lt;K,V&gt;<a href="#interface-mapentrykv" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span>
+</code></pre></div><p>The <strong>Map.Entry interface</strong> enables us to work on an entry in the map. An entry of a map is an object of type Map.Entry interface, where Entry is an inner interface of Map interface.</p>
+<p>The <code>Map.entrySet</code> method returns a collection-view of the map, whose elements are of this class.</p>
+<p>Map.Entry 是Map的封闭接口，可以在map 接口里操控 entry。 <code>Map.entrySet</code> 方法可以通过遍历返回map里的元素。</p>
+<p><strong>Methods define in Map.Entry</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">comparingByKey</span><span class="o">(),</span> <span class="n">comparingByValue</span><span class="o">(),</span> <span class="n">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">),</span> <span class="n">getKey</span><span class="o">(),</span> <span class="n">getValue</span><span class="o">(),</span> <span class="n">hashCode</span><span class="o">(),</span> <span class="n">setValue</span><span class="o">(</span><span class="n">V</span> <span class="n">value</span><span class="o">)</span>
+</code></pre></div><hr>
+<p>The general syntax to create a map object is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">a</span><span class="o">)</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span> <span class="c1">// It create an empty map.
+</span><span class="ln">2</span><span class="c1"></span><span class="n">b</span><span class="o">)</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="n">Map</span> <span class="n">m</span><span class="o">);</span> <span class="c1">// It creates a map with initializing elements of m.
+</span><span class="ln">3</span><span class="c1"></span><span class="n">c</span><span class="o">)</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="kt">int</span> <span class="n">initialCapacity</span><span class="o">);</span> <span class="c1">// It creates a map with initialization of initial capacity of HashMap.
+</span><span class="ln">4</span><span class="c1"></span><span class="n">d</span><span class="o">)</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="kt">int</span> <span class="n">initialCapacity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">fillRatio</span><span class="o">);</span> <span class="c1">// It creates a map object with initializing both initial capacity and fill ratio of HashMap.
+</span></code></pre></div><hr>
+<h2 id="heading"><a href="#heading" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>什么是Map? 在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key,其对应的对象叫做value.这就是我们平时说的键值对。</p>
+<p>java.util 中的集合类包含 Java 中某些最常用的类。最常用的集合类是 List 和 Map。List 的具体实现包括 ArrayList 和 Vector，它们是可变大小的列表，比较适合构建、存储和操作任何类型对象元素列表。List 适用于按数值索引访问元素的情形。</p>
+<p>Map 提供了一个更通用的元素存储方法。Map 集合类用于存储元素对（称作“键”和“值”），其中每个键映射到一个值。从概念上而言，您可以将 List 看作是具有数值键的 Map。而实际上，除了 List 和 Map 都在定义 java.util 中外，两者并没有直接的联系。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Constructor</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>HashMap()</code></td>
+<td style="text-align:left">Constructs an empty <code>HashMap</code> with the default initial capacity (16) and the default load factor (0.75).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>HashMap(int initialCapacity)</code></td>
+<td style="text-align:left">Constructs an empty <code>HashMap</code> with the specified initial capacity and the default load factor (0.75).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>HashMap(int initialCapacity, float loadFactor)</code></td>
+<td style="text-align:left">Constructs an empty <code>HashMap</code> with the specified initial capacity and load factor.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>HashMap(Map&lt;? extends K,? extends V&gt; m)</code></td>
+<td style="text-align:left">Constructs a new <code>HashMap</code> with the same mappings as the specified <code>Map</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>比较 Map 对象的等价性</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>equals(Object o)</code></th>
+<th>比较指定对象与此 Map 的等价性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>hashCode()</code></strong></td>
+<td>返回此 Map 的哈希码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回视图的 Map 方法：</strong> 使用这些方法返回的对象，您可以遍历 Map 的元素，还可以删除 Map 中的元素。</p>
+<table>
+<thead>
+<tr>
+<th>entrySet()</th>
+<th>返回 Map 中所包含映射的 Set 视图。Set 中的每个元素都是一个 Map.Entry 对象，可以使用 getKey() 和 getValue() 方法（还有一个 setValue() 方法）访问后者的键元素和值元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keySet()</td>
+<td>返回 Map 中所包含键的 Set 视图。删除 Set 中的元素还将删除 Map 中相应的映射（键和值）</td>
+</tr>
+<tr>
+<td>values()</td>
+<td>返回 map 中所包含值的 Collection 视图。删除 Collection 中的元素还将删除 Map 中相应的映射（键和值）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>访问元素</strong></p>
+<table>
+<thead>
+<tr>
+<th>get(Object key)</th>
+<th>返回与指定键关联的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containsKey(Object key)</td>
+<td>如果 Map 包含指定键的映射，则返回 true</td>
+</tr>
+<tr>
+<td>containsValue(Object value)</td>
+<td>如果此 Map 将一个或多个键映射到指定值，则返回 true</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td>如果 Map 不包含键-值映射，则返回 true</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回 Map 中的键-值映射的数目</td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-自带了各种-map-类这些-map-类可归为三种类型">Java 自带了各种 Map 类。这些 Map 类可归为三种类型：<a href="#java-自带了各种-map-类这些-map-类可归为三种类型" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>通用 Map，用于在应用程序中<strong>管理映射</strong>，通常在 java.util 程序包中实现
+<ul>
+<li><strong>HashMap</strong></li>
+<li><strong>Hashtable</strong></li>
+<li>Properties</li>
+<li><strong>LinkedHashMap</strong></li>
+<li>IdentityHashMap</li>
+<li><strong>TreeMap</strong></li>
+<li>WeakHashMap</li>
+<li><strong>ConcurrentHashMap</strong></li>
+</ul>
+</li>
+<li>专用 Map，您通常不必亲自创建此类 Map，而是<strong>通过某些其他类对其进行访问</strong>
+<ul>
+<li>java.util.jar.Attributes</li>
+<li>javax.print.attribute.standard.PrinterStateReasons</li>
+<li>java.security.Provider</li>
+<li>java.awt.RenderingHints</li>
+<li>javax.swing.UIDefaults</li>
+</ul>
+</li>
+<li>一个用于帮助实现您自己的 Map 类的<strong>抽象类</strong>
+<ul>
+<li>AbstractMap</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="调整-map-实现的大小">调整 Map 实现的大小<a href="#调整-map-实现的大小" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>在哈希术语中，内部数组中的每个位置称作“存储桶”(bucket)，而可用的存储桶数（即内部数组的大小）称作容量 (capacity)。为使 Map 对象有效地处理任意数目的项，Map 实现可以调整自身的大小。但调整大小的开销很大。调整大小需要将所有元素重新插入到新数组中，这是因为不同的数组大小意味着对象现在映射到不同的索引值。先前冲突的键可能不再冲突，而先前不冲突的其他键现在可能冲突。这显然表明，<strong>如果将 Map 调整得足够大，则可以减少甚至不再需要重新调整大小，这很有可能显著提高速度</strong>。</p>
+<hr>
+<h3 id="负载因子">负载因子<a href="#负载因子" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>为确定何时调整大小，而不是对每个存储桶中的链接列表的深度进行记数，基于哈希的 Map 使用一个额外参数并粗略计算存储桶的密度。Map 在调整大小之前，使用名为“负载因子”的参数指示 Map 将承担的“负载”量，即它的负载程度。负载因子、项数（Map 大小）与容量之间的关系简单明了：</p>
+<ul>
+<li><strong>如果（负载因子）x（容量）&gt;（Map 大小），则调整 Map 大小</strong></li>
+</ul>
+<p>例如，如果默认负载因子为 0.75，默认容量为 11，则 11 x 0.75 = 8.25，该值向下取整为 8 个元素。因此，如果<strong>将第 8 个项添加到此 Map，则该 Map 将自身的大小调整为一个更大的值</strong>。相反，要计算避免调整大小所需的初始容量，用将要添加的项数除以负载因子，并向上取整，例如，</p>
+<ul>
+<li>对于负载因子为 0.75 的 100 个项，应将容量设置为 100/0.75 = 133.33，并将结果向上取整为 134（或取整为 135 以<strong>使用奇数</strong>）</li>
+</ul>
+<p><strong>奇数个存储桶使 map 能够通过减少冲突数来提高执行效率</strong>。虽然所做的测试（关联文件中的 并未表明质数可以始终获得更好的效率，但理想情形是容量取质数。1.4 版后的某些 Map（如 HashMap 和 LinkedHashMap，而非 Hashtable 或 IdentityHashMap）使用需要 2 的幂容量的哈希函数，但下一个最高 2 的幂容量由这些 Map 计算，因此您不必亲自计算。</p>
+<p><strong>负载因子本身是空间和时间之间的调整折衷。较小的负载因子将占用更多的空间，但将降低冲突的可能性，从而将加快访问和更新的速度</strong>。使用大于 0.75 的负载因子可能是不明智的，而使用大于 1.0 的负载因子肯定是不明知的，这是因为这必定会引发一次冲突。使用小于 0.50 的负载因子好处并不大，但只要您有效地调整 Map 的大小，应不会对小负载因子造成性能开销，而只会造成<strong>内存开销</strong>。但较小的负载因子将意味着如果您未预先调整 Map 的大小，则导致更频繁的调整大小，从而<strong>降低性能</strong>，因此在调整负载因子时一定要注意这个问题。</p>
+<hr>
+<p><strong>为什么负载因子选择0.75？而不是0.5或者1.0？</strong></p>
+<p>因为负载因子本身是空间开销和时间开销之间折衷选择。</p>
+<p>较小的负载因子例如0.5，意味着将占用更多的内存，造成内存开销，而且较小的负载因子会导致map频繁调整大小，又造成性能开销。</p>
+<p>而选择较大的负载因子例如1.0，则意味着只有当Map的内存被元素填满时才会调整大小，这样必定会引发冲突。</p>
+<hr>
+<p><strong>为啥HashMap中初始化大小为什么是16呢？</strong></p>
+<p>hahmap每次扩容都是以 2的整数次幂进行扩容</p>
+<p>因为是将二进制进行按位于，(16-1) 是 1111,末位是1，这样也能保证计算后的index既可以是奇数也可以是偶数，并且只要传进来的key足够分散，均匀那么按位于的时候获得的index就会减少重复，这样也就减少了hash的碰撞以及hashMap的查询效率。</p>
+<p>那么到了这里你也许会问？ 那么就然16可以，是不是只要是2的整数次幂就可以呢？</p>
+<p>答案是肯定的。那为什么不是8,4呢？ 因为是8或者4的话很容易导致map扩容影响性能，如果分配的太大的话又会浪费资源，所以就使用16作为初始大小。</p>
+<hr>
+<h3 id="选择适当的-map">选择适当的 Map<a href="#选择适当的-map" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>应使用哪种 Map？ 它是否需要同步？ 要获得应用程序的最佳性能，这可能是所面临的两个最重要的问题。当使用通用 Map 时，调整 Map 大小和选择负载因子涵盖了 Map 调整选项。</p>
+<p><strong>应使用哪种 Map？答案很简单：</strong> 不要为您的设计选择任何特定的 Map，除非实际的设计需要指定一个特殊类型的 Map。设计时通常不需要选择具体的 Map 实现。您可能知道自己需要一个 Map，但不知道使用哪种。而这恰恰就是使用 Map 接口的意义所在。直到需要时再选择 Map 实现 — 如果随处使用“Map”声明的变量，则更改应用程序中任何特殊 Map 的 Map 实现只需要更改一行，这是一种开销很少的调整选择。</p>
+<ul>
+<li>
+<p>将您的所有 Map 变量声明为 Map，而不是任何具体实现，即不要声明为 HashMap 或 Hashtable，或任何其他 Map 类实现。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Map</span> <span class="n">criticalMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span> <span class="c1">//好
+</span><span class="ln">2</span><span class="c1"></span>
+<span class="ln">3</span><span class="n">HashMap</span> <span class="n">criticalMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span> <span class="c1">//差
+</span></code></pre></div></li>
+<li>
+<p>这使您能够只更改一行代码即可非常轻松地替换任何特定的 Map 实例。</p>
+</li>
+<li>
+<p>下载 Doug Lea 的 util.concurrent 程序包。将 ConcurrentHashMap 用作默认 Map。当移植到 1.5 版时，将 java.util.concurrent.ConcurrentHashMap 用作您的默认 Map。不要将 ConcurrentHashMap 包装在同步的包装器中，即使它将用于多个线程。使用默认大小和负载因子。</p>
+</li>
+<li>
+<p>监测您的应用程序。如果发现某个 Map 造成瓶颈，则分析造成瓶颈的原因，并部分或全部更改该 Map 的以下内容：Map 类；Map 大小；负载因子；关键对象 equals() 方法实现。专用的 Map 的基本上都需要特殊用途的定制 Map 实现，否则通用 Map 将实现您所需的性能目标。</p>
+</li>
+</ul>
+<h3 id="map的线程安全问题">Map的线程安全问题<a href="#map的线程安全问题" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>可以使用 <code>Collections.synchronizedMap()</code> 将未同步的 Map 转换为同步的 Map，但是维护复杂，执行效率很低。</li>
+<li>Doug Lea 是纽约州立大学奥斯威戈分校计算机科学系的教授。他创建了一组公共领域的程序包（统称 util.concurrent），该程序包包含许多可以简化高性能并行编程的实用程序类。这些类中包含两个 Map，即 ConcurrentReaderHashMap 和 ConcurrentHashMap。这些 Map 实现是线程安全的。Java 1.5 版将把这些 Map 包含在一个新的 java.util.concurrent 程序包中。</li>
+<li>所以当面临线程安全问题时，只需要使用 ConcurrentHashMap。</li>
+</ol>
+<hr>
+<h3 id="hashmap和treemap比较"><strong>HashMap和TreeMap比较</strong><a href="#hashmap和treemap比较" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>（1）HashMap:适用于在Map中插入、删除和定位元素。</p>
+<p>（2）Treemap:适用于按自然顺序或自定义顺序遍历键（key）。</p>
+<p>（3）HashMap通常比TreeMap快一点（树和哈希表的数据结构使然），建议多使用HashMap,在需要排序的Map时候才用TreeMap.</p>
+<p>（4）HashMap 非线程安全 TreeMap 非线程安全</p>
+<p>（5）HashMap的结果是没有排序的，而TreeMap输出的结果是排好序的。</p>
+<p>（6）HashMap底层基于数组+链表和红黑树实现，TreeMap底层基于红黑树 red-black-tree 实现。</p>
+<p>　在HashMap中通过<code>get()</code>来获取value,通过<code>put()</code>来插入<code>value, ContainsKey()</code>则用来检验对象是否已经存在。可以看出，和ArrayList的操作相比，HashMap除了通过key索引其内容之外，别的方面差异并不大。</p>
+<p>HashMap通过hashcode对其内容进行快速查找，而 TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该使用TreeMap（HashMap中元素的排列顺序是不固定的）。</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-data-structure">Java Data Structure</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>782 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-01-08 16:00 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/8.1_hashmap/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Data Structure 8.1: Map_HashMap</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/7_queue/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Data Structure 7: Collection_Queue</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/8_map/" class="leancloud_visitors" data-flag-title="Java Data Structure 8: Map">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

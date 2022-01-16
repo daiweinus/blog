@@ -1,12 +1,12 @@
 ---
-title: "Java 多线程 Lock"
-date: 2021-11-03T10:10:07+08:00
+title: "Java Threads 6: Lock"
+date: 2021-11-25T10:10:07+08:00
 draft: true
 toc: false
 images:
   - "images/totoro.jpeg"
 tags: 
-  - Java
+  - Java Threads
 ---
 
 ```apl

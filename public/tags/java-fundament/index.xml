@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java Fundament on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/java-fundament/</link>
+    <description>Recent content in Java Fundament on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 07 Oct 2021 16:19:45 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java-fundament/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Fundament 7: BIO vs NIO</title>
+      <link>https://daiwei.dev/posts/java/fundament7_socket/</link>
+      <pubDate>Thu, 07 Oct 2021 16:19:45 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament7_socket/</guid>
+      <description>**同步和异步：**同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO 操作并等待或者轮询的去查看IO 操作是否就绪，而异步是指用户进程触发IO 操作以后便开始做自己的事情，而当IO 操作已经完成的时候会得到IO 完成的通知。
+以银行取款为例：
+同步 ： 自己亲自出马持银行卡到银行取钱（使用同步 IO 时，Java 自己处理IO 读写）；
+异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO 时，Java 将 IO 读写委托给OS 处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS 需要支持异步IO操作API）；
+**阻塞和非阻塞：**阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作方法的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入方法会立即返回一个状态值。
+以银行取款为例：
+阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）；
+非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器通知可读写时再继续进行读写，不断循环直到读写完成）
+1.BIO 编程
+Blocking IO： 同步阻塞的编程方式。
+BIO编程方式通常是在JDK1.4版本之前常用的编程方式。编程实现过程为：首先在服务端启动一个ServerSocket来监听网络请求，客户端启动Socket发起网络请求，默认情况下ServerSocket回建立一个线程来处理此请求，如果服务端没有线程可用，客户端则会阻塞等待或遭到拒绝。
+且建立好的连接，在通讯过程中，是同步的。在并发处理效率上比较低。大致结构如下：
+同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。
+使用线程池机制改善后的BIO模型图如下:
+2.NIO 编程：Unblocking IO（New IO）： 同步非阻塞的编程方式。
+NIO本身是基于事件驱动思想来完成的，其主要想解决的是BIO的大并发问题，NIO基于Reactor，当socket有流可读或可写入socket时，操作系统会相应的通知引用程序进行处理，应用再将流读取到缓冲区或写入操作系统。也就是说，这个时候，已经不是一个连接就要对应一个处理线程了，而是有效的请求，对应一个线程，当连接没有数据时，是没有工作线程来处理的。
+NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。
+在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题
+3.AIO编程：Asynchronous IO： 异步非阻塞的编程方式。
+与NIO不同，当进行读写操作时，只须直接调用API的read或write方法即可。这两种方法均为异步的，对于读操作而言，当有流可读取时，操作系统会将可读的流传入read方法的缓冲区，并通知应用程序；对于写操作而言，当操作系统将write方法传递的流写入完毕时，操作系统主动通知应用程序。即可以理解为，read/write方法都是异步的，完成后会主动调用回调函数。在JDK1.7中，这部分内容被称作NIO.2，主要在java.nio.channels包下增加了下面四个异步通道：AsynchronousSocketChannel、AsynchronousServerSocketChannel、AsynchronousFileChannel、AsynchronousDatagramChannel
+bio示例 server示例
+1public class Server { 2 3 public static void main(String[] args) { 4 int port = genPort(args); 5 6 ServerSocket server = null; 7 ExecutorService service = Executors.</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 6: Stream</title>
+      <link>https://daiwei.dev/posts/java/fundament6_stream/</link>
+      <pubDate>Wed, 06 Oct 2021 18:18:55 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament6_stream/</guid>
+      <description>1public class StreamTestCase1 { 2 public static void main(String[] args) { 3 List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(); 4 list.add(&amp;#34;a&amp;#34;); 5 list.add(&amp;#34;aa&amp;#34;); 6 list.add(&amp;#34;aaa&amp;#34;); 7 list.add(&amp;#34;asbcdef&amp;#34;); 8 Stream&amp;lt;Integer&amp;gt; stream = list.stream().map(String::length); 9 stream.forEach(System.out::println); 10 11 boolean anyMatch = list.stream().anyMatch(element -&amp;gt; element.contains(&amp;#34;a&amp;#34;)); 12 System.out.println(anyMatch); 13 14 Stream&amp;lt;String&amp;gt; streamFilter = list.stream().filter(element -&amp;gt; element.contains(&amp;#34;a&amp;#34;)); 15 streamFilter.forEach(System.out::println); 16 17 Integer[] ints = {5, 1, 2, 3}; 18 List&amp;lt;Integer&amp;gt; list1 = Arrays.asList(ints); 19 20 Optional&amp;lt;Integer&amp;gt; plus = list1.</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 5: Annotation注解</title>
+      <link>https://daiwei.dev/posts/java/fundament5_annotation/</link>
+      <pubDate>Tue, 05 Oct 2021 17:26:19 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament5_annotation/</guid>
+      <description>The predefined annotation types defined in java.lang are @Deprecated, @Override, and @SuppressWarnings.
+@Deprecated注释表示被标记的元素已被弃用，不应再使用。每当程序使用带有@Deprecated注释的方法、类或字段时，编译器都会生成警告
+@Override注释通知编译器该元素旨在覆盖超类中声明的元素。覆盖方法将在接口和继承中讨论 。虽然在覆盖方法时不需要使用此注释，但它有助于防止错误。如果标记为 的方法@Override未能正确覆盖其超类之一中的方法，则编译器会生成错误
+@SuppressWarnings注释告诉编译器抑制它会生成的特定警告。
+使用 annotation 注释并不是必须的，没有使用 annotation 并不会影响程序的任何功能。
+但是如果你使用@Override注释一个方法但你没有覆盖任何东西，编译器会提示bug, 这是一个低成本高效率增加代码可维护性的方法，非常推荐使用。
+从 Java SE 8 版本开始，注释也可以应用于任何类型的 use。这意味着可以在使用类型的任何地方使用注释。使用类型的一些示例是类实例创建表达式 ( new)、强制转换、implements子句和throws子句。创建类型注释是为了支持改进的 Java 程序分析方法，以确保更强大的类型检查。
+1@Entity 2 3@Override 4void mySuperMethod() { ... } 5 6@Author( 7 name = &amp;#34;Benjamin Franklin&amp;#34;, 8 date = &amp;#34;3/27/2003&amp;#34; 9) 10class MyClass { ... } 11 12//If only one element named value, then the name can be omitted 13@SuppressWarnings(value = &amp;#34;unchecked&amp;#34;) 14void myMethod() { .</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 4:  Build Automation Tools：Ant, Gradle &amp; Maven</title>
+      <link>https://daiwei.dev/posts/java/fundament4_gradle/</link>
+      <pubDate>Mon, 04 Oct 2021 16:38:00 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament4_gradle/</guid>
+      <description>在进入ANT、Maven或Gradle 之前，我们必须首先了解与它们相关的一些事情。
+**依赖:**一般来说，依赖是指某件事需要另一件事来自己执行。简单地说，如果 &amp;lsquo;A&amp;rsquo; 需要 &amp;lsquo;B&amp;rsquo; 才能成功执行，则 &amp;lsquo;A&amp;rsquo; 依赖于 &amp;lsquo;B&amp;rsquo;。在软件世界中，依赖项是您的应用程序成功执行所需的任何东西。它基本上是应用程序所需的任何外部支持库。例如zuul、hystrix、lombok、jdbc等。
+最初，我们曾经通过以下方式管理依赖项：
+ 从互联网上手动下载所需库的jar文件并将其添加到我们的项目中。 编写一个脚本，该脚本将通过网络从外部源自动下载库。  使用这些工具之前面临的问题：
+ 通过从 Internet 上手动下载来添加依赖项是一项非常累人的任务。 如果外部源的 URL 通过 Internet 更改，我们的脚本可能会失败。 在我们的应用程序中识别和管理传递依赖是非常困难的。  **Depende Management Tools依赖管理工具:**它解决和管理应用程序所需的依赖关系。
+什么是构建工具？
+ 构建工具是从源代码自动创建可执行应用程序的程序（例如，.apk对于 Android 应用程序）。构建包括将代码编译、链接和打包成可用或可执行的形式。
+基本上，构建自动化是编写脚本或自动化软件开发人员在日常活动中执行的各种任务的行为，例如：
+ 下载并管理依赖项。 将源代码编译成二进制代码。 打包那个二进制代码。 运行测试。 部署到生产系统。   我们为什么要使用构建工具或构建自动化？
+ 在小型项目中，开发人员通常会手动调用构建过程。这对于大型项目来说是不切实际的，因为很难跟踪需要构建的内容、构建过程中的顺序和依赖关系。使用自动化工具可以使构建过程更加一致。
+ 各种可用的构建工具 ：
+  Java - Ant、Maven、Gradle。 .NET 框架 - NAnt c# - MsBuild。   Apache Ant Ant是 Apache Tomcat 代码库的一部分，并于 2000 年作为独立项目发布.</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 3: Java OOP</title>
+      <link>https://daiwei.dev/posts/java/fundament3_oop/</link>
+      <pubDate>Sun, 03 Oct 2021 11:30:25 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament3_oop/</guid>
+      <description>Object-oriented programming (OOP) is a programming based on the concept of “objects” that contain data and methods. The primary purpose of object-oriented programming is to increase the flexibility and maintainability of programs. Object oriented programming brings together data and its behaviour(methods) in a single location(object) makes it easier to understand how a program works.
+面向对象程序设计（Object Oriented Programming，OOP）是一种计算机编程架构。OOP的一条基本原则是计算机程序由单个能够起到子程序作用的单元或对象组合而成。OOP达到了软件工程的三个主要目标：重用性、灵活性和扩展性。OOP=对象+类+继承+多态+消息，其中核心概念是类和对象。
+除了OOP, 还有面向过程(Procedure Oriented Programming)，是一种以过程为中心的编程思想。这些都是以什么正在发生为主要目标进行编程。函数式编程（Functional Programming），data更多的围绕operation， 所以添加新的方法很容易。
+What is an Object 什么是对象？对象就是一组数据 data 和行为 behaviour (aka method).</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 2:  Design Principles</title>
+      <link>https://daiwei.dev/posts/java/fundament2_design/</link>
+      <pubDate>Sat, 02 Oct 2021 12:11:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament2_design/</guid>
+      <description>Design Principles   SOILD
+  Single Responsibility Principle (SRP) 单一职责原则
+Each class should have a single purpose.
+  Open/Closed Principle (OCP) 开闭原则
+software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
+  Liscov Substitution Principle (LSP) 替换原则
+functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
+  Interface Segregation Principle (ISP) 接口隔离原则</description>
+    </item>
+    
+    <item>
+      <title>Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK</title>
+      <link>https://daiwei.dev/posts/java/fundament1_architecture/</link>
+      <pubDate>Fri, 01 Oct 2021 17:11:25 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament1_architecture/</guid>
+      <description>Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。
+ Java Virtual Machine JVM Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).
+Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.
+Java Virtual Machine Architecture Java Virtual Machine Architecture 虚拟机架构非常简单，它有一个内存区memory area、一个类加载器class loader 和一个执行引擎Execution Engine 以及其他组件。
+ClassLoader 类加载器 It is a subsystem that is used to load class files.</description>
+    </item>
+    
+    <item>
+      <title>Java_Roadmap</title>
+      <link>https://daiwei.dev/posts/java/fundament0_roadmap/</link>
+      <pubDate>Fri, 01 Oct 2021 16:19:45 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/fundament0_roadmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java: Hello World</title>
+      <link>https://daiwei.dev/posts/java/hello-world/</link>
+      <pubDate>Tue, 28 Sep 2021 15:25:50 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/hello-world/</guid>
+      <description>Hello World, Hello Friend!
+1#include &amp;lt;stdio.h&amp;gt;2int main() { 3 // printf() displays the string inside quotation 4 printf(&amp;#34;Hello, World!&amp;#34;); 5 return 0; 6} </description>
+    </item>
+    
+  </channel>
+</rss>

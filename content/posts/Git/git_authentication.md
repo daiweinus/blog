@@ -8,7 +8,7 @@ toc: false
 images:
   - "totoro.jpeg"
 tags: 
-  - bug
+  - Git
 ---
 
 ### fatal: Authentication failed for 'https:/githubtest.git/'

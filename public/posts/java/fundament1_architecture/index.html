@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK">
+<meta itemprop="description" content="Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。
+ Java Virtual Machine JVM Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).
+Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.
+Java Virtual Machine Architecture Java Virtual Machine Architecture 虚拟机架构非常简单，它有一个内存区memory area、一个类加载器class loader 和一个执行引擎Execution Engine 以及其他组件。
+ClassLoader 类加载器 It is a subsystem that is used to load class files."><meta itemprop="datePublished" content="2021-10-01T17:11:25+08:00" />
+<meta itemprop="dateModified" content="2021-10-01T17:11:25+08:00" />
+<meta itemprop="wordCount" content="807"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Fundament," /><meta property="og:title" content="Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK" />
+<meta property="og:description" content="Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。
+ Java Virtual Machine JVM Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).
+Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.
+Java Virtual Machine Architecture Java Virtual Machine Architecture 虚拟机架构非常简单，它有一个内存区memory area、一个类加载器class loader 和一个执行引擎Execution Engine 以及其他组件。
+ClassLoader 类加载器 It is a subsystem that is used to load class files." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/fundament1_architecture/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-01T17:11:25+08:00" />
+<meta property="article:modified_time" content="2021-10-01T17:11:25+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK"/>
+<meta name="twitter:description" content="Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。
+ Java Virtual Machine JVM Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).
+Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.
+Java Virtual Machine Architecture Java Virtual Machine Architecture 虚拟机架构非常简单，它有一个内存区memory area、一个类加载器class loader 和一个执行引擎Execution Engine 以及其他组件。
+ClassLoader 类加载器 It is a subsystem that is used to load class files."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 1, 2021</span></div>
+				<h1>Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK</h1>
+			</header>
+			<div class="content">
+				<p>Java之所以能过成为当今最流行的编程语言之一, 离不开**Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK) **的支持。</p>
+<p><img src="https://www.edureka.co/blog/wp-content/uploads/2019/07/q.png" alt="JVM - Java Architecture - Edureka"></p>
+<p><img src="https://www.oracle.com/ocom/groups/public/@otn/documents/digitalasset/2167990.jpg" alt="img"></p>
+<hr>
+<h3 id="java-virtual-machinehttpswwworaclecomjavatechnologiesjavasejavase-core-technologies-apishtml-jvm"><strong><a href="https://www.oracle.com/java/technologies/javase/javase-core-technologies-apis.html">Java Virtual Machine</a></strong> JVM<a href="#java-virtual-machinehttpswwworaclecomjavatechnologiesjavasejavase-core-technologies-apishtml-jvm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Java virtual machine is a platform-independent abstract machine that provides a runtime environment in which loads, verifies and executes Java bytecode. WORA (Write once Run Anywhere).</p>
+<p>Java虚拟机是一个独立于平台的抽象机器，它提供了一个运行环境，在其中加载、验证和执行Java字节代码。它被称为解释器或 Java 编程语言的核心，因为它执行 Java 编程。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译.</p>
+<h4 id="java-virtual-machine-architecture">Java Virtual Machine Architecture<a href="#java-virtual-machine-architecture" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Java Virtual Machine Architecture 虚拟机架构非常简单，它有一个内存区memory area、一个类加载器class loader 和一个执行引擎Execution Engine 以及其他组件。</p>
+<p><img src="https://www.fatalerrors.org/images/blog/a2b8bfe83deb28ffd841280abede11d9.jpg" alt="JVM First Bounce&ndash;Class Loading Subsystem"></p>
+<p><img src="http://2.bp.blogspot.com/-ILs_L_UHzNM/U4mBNvpfB8I/AAAAAAAAAeU/EdBcJ36qfAI/s1600/JVM+Architecture+block+diagram.png" alt="img"></p>
+<h5 id="classloader-类加载器">ClassLoader 类加载器<a href="#classloader-类加载器" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>It is a subsystem that is used to load class files. Whenever we run a program in java, it is first loaded by the ClassLoader. the major function includes initialization, linking and loading.</p>
+<h5 id="jvm-memory-内存区">JVM Memory 内存区<a href="#jvm-memory-内存区" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<ol>
+<li>
+<p>Method Area – It stores the structures for each class like the code, field data, runtime constant pool, method data, etc.  all **static variables, ** are created in this area.</p>
+<p>方法区 - 它存储每个类的结构，如代码、字段数据、运行时常量池、方法数据等。所有静态变量都在此运行区中创建。</p>
+</li>
+<li>
+<p>Heap Area – Objects are allocated at the runtime in the heap. It is the main memory of JVM. All <em>objects</em> of classes – <em>non-static variables memory</em> are created in this runtime area. It may increase or decrease in size while the application runs.</p>
+<p>堆区 - 它是JVM的主存。类的所有<em>对象</em>-<em>非静态变量内存</em>都在此运行时区域中创建. 它是JVM的主存。类的所有<em>对象</em>-<em>非静态变量内存</em>都在此运行时区域中创建</p>
+</li>
+<li>
+<p>Stacks Area – It stores local variables and results. In this runtime area all Java methods are executed.</p>
+<p>In this runtime JVM by default creates two threads, they are Main thread. Garbage collector thread.</p>
+</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><em>Main thread</em> is responsible to execute Java methods stats with main method, also responsible to create objects in heap area if it finds “new” keyword in any method logic.</li>
+<li><em>Garbage collector thread</em> is responsible to destroy all unused objects from heap area.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Java 栈 - 所有的本地变量和运行结果都存储在这里并执行所有 Java 方法。在这个运行时 JVM 默认创建两个线程，主线程 和垃圾收集器线程。</p>
+<ul>
+<li><em>主线程</em>负责用main方法执行Java方法stats，如果在任何方法逻辑中发现“new”关键字，也负责在堆区域创建对象。</li>
+<li><em>垃圾收集器线程</em>负责销毁堆区域中所有未使用的对象。</li>
+</ul>
+<ol start="4">
+<li>
+<p>PC Registers – It has the address or location of the JVMinstruction that is being executed. a separate program counter register is created for every thread for tracking that thread execution by storing its instruction address.</p>
+<p>程序计数器 - 它有正在执行的JVM指令的地址或位置，为每个线程创建一个单独的程序计数器寄存器，用于通过存储其指令地址来跟踪该线程的执行。</p>
+</li>
+<li>
+<p>Native Method Stacks – All the native methods used in the applications are present in the native method stacks.</p>
+<p>本地方法栈 - 应用程序中使用的所有本地方法都存在于本地方法栈中。</p>
+</li>
+</ol>
+<h5 id="execution-engine">Execution Engine<a href="#execution-engine" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p><strong>–</strong> An execution engine contains a Grabage collector, an interpreter and a <a href="https://www.edureka.co/blog/just-in-time-compiler/">JIT</a> compiler.</p>
+<p><strong>–</strong> 一个执行引擎包含一个垃圾回收器Grabage collector、一个解释器interpreter 和一个JIT编译器。</p>
+<h5 id="native-method-interfacehttpswwwedurekacoblogjava-interface">Native Method <a href="https://www.edureka.co/blog/java-interface/">Interface</a><a href="#native-method-interfacehttpswwwedurekacoblogjava-interface" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>– It is a <a href="https://www.edureka.co/blog/java-frameworks/">framework</a> that provides. 提供框架。</p>
+<h5 id="native-method-library--本地方法库">Native Method Library – 本地方法库<a href="#native-method-library--本地方法库" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<hr>
+<h3 id="java-runtime-environment-jrehttpsdocsoraclecomjavase8docstechnotesguidesindexhtmljre-jdk"><strong><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/index.html#jre-jdk">Java Runtime Environment (JRE)</a></strong><a href="#java-runtime-environment-jrehttpsdocsoraclecomjavase8docstechnotesguidesindexhtmljre-jdk" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The Java Runtime Environment (JRE) provides the libraries, the Java Virtual Machine, and other components to run applets and applications written in the Java programming language. In addition, two key deployment technologies are part of the JRE: <a href="https://www.oracle.com/java/technologies/plugin.html">Java Plug-in</a>, which enables applets to run in popular browsers; and Java Web Start, which deploys standalone applications over a network. It is also the foundation for the technologies in the Java 2 Platform, Enterprise Edition (J2EE) for enterprise software development and deployment. The JRE does not contain tools and utilities such as compilers or debuggers for developing applets and applications.</p>
+<p>Java 运行时环境 (JRE) 提供库、Java 虚拟机和其他组件来运行用 Java 编程语言编写的小程序和应用程序。此外，JRE 还包含两项关键部署技术：<a href="https://www.oracle.com/java/technologies/plugin.html">Java Plug-in</a>，它使小应用程序能够在流行的浏览器中运行；和 Java Web Start，它通过网络部署独立的应用程序。它也是 Java 2 Platform, Enterprise Edition (J2EE) 中用于企业软件开发和部署的技术的基础。JRE 不包含用于开发小程序和应用程序的工具和实用程序，例如编译器或调试器。</p>
+<hr>
+<h3 id="java-development-kit-jdkhttpsdocsoraclecomjavase8docstechnotesguidesindexhtmljre-jdk"><strong><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/index.html#jre-jdk">Java Development Kit (JDK)</a></strong><a href="#java-development-kit-jdkhttpsdocsoraclecomjavase8docstechnotesguidesindexhtmljre-jdk" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The JDK is a superset of the JRE, and contains everything that is in the JRE, plus tools such as the compilers and debuggers necessary for developing applets and applications.</p>
+<p>JDK 是 JRE 的超集，包含 JRE 中的所有内容，以及开发小程序和应用程序所需的编译器和调试器等工具。</p>
+<h3 id="difference-between-jdk-jre-and-jvm"><strong>Difference Between JDK, JRE, And JVM</strong><a href="#difference-between-jdk-jre-and-jvm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>
+<p>JDK is the development platform, while JRE is for execution. JDK 开发工具包，JRE 运行环境。</p>
+</li>
+<li>
+<p>JVM is the foundation, or the heart of Java programming language, and ensures the program’s Java source code will be platform-agnostic. JVM是java基础和核心，它确保了Java可以在任何平台运行。</p>
+</li>
+<li>
+<p>JVM is included in both JDK and JRE – Java programs won’t run without it.  <strong>jdk &amp; jre都包含jvm.</strong></p>
+<p><img src="https://s3.shunyafoundation.com/s3/1578452c3f66d8fd0d04d5d195328ae1359d8caa/jdk-jvm.png" alt="What is JDK, JRE and JVM?"></p>
+</li>
+</ol>
+<hr>
+<h3 id="互补技术">互补技术<a href="#互补技术" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>有许多互补技术可用于增强 JVM、JRE 或 JDK。以下技术是最常用的技术：</p>
+<ul>
+<li><strong>Just-in-time Compiler (JIT)</strong> 即时编译器 是 JVM 的一部分，用于优化字节码到机器码的转换。它选择相似的字节码同时编译，减少字节码到机器码编译的整体持续时间。</li>
+<li><strong>Javac</strong>是另一个补充工具，它是一个编译器，可以读取 Java 定义并将其转换为可以在 JVM 上运行的字节码。</li>
+<li><strong>Javadoc</strong>将 API 文档从 Java 源代码转换为 HTML。这在以 HTML 格式创建标准文档时很有用。</li>
+</ul>
+<hr>
+<h3 id="java-se-java-ee-java-me--javafx">Java SE, Java EE, Java ME &amp; JavaFx<a href="#java-se-java-ee-java-me--javafx" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>There are four platforms of the Java programming language:</p>
+<ul>
+<li>Java Platform, Standard Edition (Java SE)</li>
+<li>Java Platform, Enterprise Edition (Java EE)</li>
+<li>Java Platform, Micro Edition (Java ME)</li>
+<li>JavaFX</li>
+</ul>
+<p>所有 Java 平台都由 Java 虚拟机 (VM) 和应用程序编程接口 (API) 组成。Java 虚拟机是一个用于特定硬件和软件平台的程序，它运行 Java 技术应用程序。API 是一组软件组件，可用于创建其他软件组件或应用程序。每个 Java 平台都提供了一个虚拟机和一个 API，这使得为该平台编写的应用程序可以在具有 Java 编程语言所有优点的任何兼容系统上运行：平台独立性、功能强大、稳定性、易于开发和安全。</p>
+<h5 id="java-se">Java SE<a href="#java-se" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>当大多数人想到 Java 编程语言时，他们会想到 Java SE API。Java SE 的 API 提供了 Java 编程语言的核心功能。它定义了从 Java 编程语言的基本类型和对象到用于网络、安全、数据库访问、图形用户界面 (GUI) 开发和 XML 解析的高级类的所有内容。</p>
+<p>除了核心 API 之外，Java SE 平台还包括虚拟机、开发工具、部署技术以及 Java 技术应用程序中常用的其他类库和工具包。</p>
+<h5 id="java-ee">Java EE<a href="#java-ee" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Java EE 平台构建在 Java SE 平台之上。Java EE 平台为开发和运行大规模、多层、可扩展、可靠和安全的网络应用程序提供了 API 和运行时环境。</p>
+<h5 id="java-me">Java ME<a href="#java-me" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Java ME 平台提供了一个 API 和一个小型虚拟机，用于在手机等小型设备上运行 Java 编程语言应用程序。该 API 是 Java SE API 的一个子集，以及对小型设备应用程序开发有用的特殊类库。Java ME 应用程序通常是 Java EE 平台服务的客户端。</p>
+<h5 id="javafx">JavaFX<a href="#javafx" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>JavaFX 是一个使用轻量级用户界面 API 创建富 Internet 应用程序的平台。JavaFX 应用程序使用硬件加速的图形和媒体引擎来利用更高性能的客户端和现代外观以及用于连接到网络数据源的高级 API。JavaFX 应用程序可能是 Java EE 平台服务的客户端。</p>
+<p><img src="https://image.slidesharecdn.com/javastrategylgv3-100319054817-phpapp02/95/oracle-java-strategy-lg-v3-7-728.jpg?cb=1353400249" alt="Oracle Java Strategy Lg V3"></p>
+<hr>
+<h3 id="how-is-java-platform-indeeddent">How is Java platform indeeddent?<a href="#how-is-java-platform-indeeddent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2019/06/Jit-Compiler.png" alt="JIT workflow in Java - Java Architecture- Edureka"></p>
+<p><em><strong>sample.java → javac (sample. class) → JVM(sample.obj) → final output</strong></em></p>
+<p>First source code is used by java compiler and is converted in .class file. The class file code is in byte code form and that class file is used by JVM to convert into an object file. After that, you can see the final output on your screen. Java 编译器使用第一个源代码并转换为 .class 文件。类文件代码采用字节码形式，JVM 使用该类文件转换为目标文件。之后，您可以在屏幕上看到最终输出。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/3/3a/Java_virtual_machine_architecture.svg" alt="Java Just-In-Time (JIT) Compiler: What is it, how does it work, where does  it fit into JVM architecture (JIT vs Interpreter)? |"></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-fundament">Java Fundament</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>807 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-01 17:11 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/java/fundament2_design/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Fundament 2:  Design Principles</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java/fundament0_roadmap/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java_Roadmap</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/fundament1_architecture/" class="leancloud_visitors" data-flag-title="Java Fundament 1: Java Architecture: JVM, JRE &amp; JDK">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

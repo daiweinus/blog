@@ -19,9 +19,20 @@
     </item>
     
     <item>
+      <title>fatal: Authentication failed for &#39;https://github.com/yourusername/githubtest.git/&#39; </title>
+      <link>https://daiwei.dev/posts/git/git_authentication/</link>
+      <pubDate>Mon, 15 Nov 2021 12:02:42 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/git/git_authentication/</guid>
+      <description>fatal: Authentication failed for &amp;lsquo;https:/githubtest.git/&amp;rsquo; 这是因为github开启了Two Factor Authentication (2FA）验证，所以当你使用这些 git clone, git fetch, git pull or git push命令的时候就会需要输入你的 PAT (Personal Access Token).
+在github settings 打开 Developer settings, 创建PAT, 创建完成后copy 你的PAT 再 使用之前的 git push 命令就可以输入用户名和你的PAT了（注意输入PAT,不是你的github密码）. 请参考 GitHub　Creating a personal access token.
+1$ git clone https://github.com/username/repo.git 2Username: your_username 3Password: your_token </description>
+    </item>
+    
+    <item>
       <title>git,github &amp; gitlab</title>
       <link>https://daiwei.dev/posts/git/git/</link>
-      <pubDate>Tue, 09 Nov 2021 16:24:04 +0800</pubDate>
+      <pubDate>Sun, 14 Nov 2021 16:24:04 +0800</pubDate>
       
       <guid>https://daiwei.dev/posts/git/git/</guid>
       <description>Git 诞生于2005年，由大神 Linus Torvalds 开发的免费开源的分布式版本控制系统,可让你管理和跟踪源代码历史记录。Git 安装和维护在您的本地系统上，不需要internet联网。

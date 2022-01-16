@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Threads 7: threadpool">
+<meta itemprop="description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
+In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool."><meta itemprop="datePublished" content="2021-11-26T11:18:55+08:00" />
+<meta itemprop="dateModified" content="2021-11-26T11:18:55+08:00" />
+<meta itemprop="wordCount" content="363"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Threads," /><meta property="og:title" content="Java Threads 7: threadpool" />
+<meta property="og:description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
+In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/thread7_javathreadpool/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-26T11:18:55+08:00" />
+<meta property="article:modified_time" content="2021-11-26T11:18:55+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Threads 7: threadpool"/>
+<meta name="twitter:description" content="What is the Thread Pool in Java? As the name suggests, the thread pool in Java is actually a pool of Threads. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.
+In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Threads 7: threadpool</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Nov 26, 2021</span></div>
+				<h1>Java Threads 7: threadpool</h1>
+			</header>
+			<div class="content">
+				<h2 id="what-is-the-thread-pool-in-java"><strong>What is the Thread Pool in Java?</strong><a href="#what-is-the-thread-pool-in-java" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>As the name suggests, the thread pool in Java is actually a pool of <a href="https://www.edureka.co/blog/java-thread/">Threads</a>. In a simple sense, it contains a group of worker threads that are waiting for the job to be granted. They are reused in the whole process.</p>
+<p>In a Thread Pool, a group of fixed size threads is created. Whenever a task has to be granted, one of the threads is pulled out and assigned that task by the service provider, as soon as the job is completed the thread is returned back to the thread pool. Thread pool is preferably used because active threads consume system resources, when is JVM creates too many threads at the same time, the system could run out of memory. Hence the number of threads to be created has to be limited. Therefore the concept of the thread pool is preferred!</p>
+<p>线程池顾名思义就是一个包含很多线程的池子，这个池子里的线程都是可复用的，使用线程池是为了降低系统内存的消耗。</p>
+<h2 id="advantages-of-a-thread-pool"><strong>Advantages of a Thread Pool</strong><a href="#advantages-of-a-thread-pool" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>
+<p>Better performance</p>
+</li>
+<li>
+<p>Saves time</p>
+</li>
+<li>
+<p>No need to create a thread again and again</p>
+</li>
+<li>
+<p>Easy to access</p>
+</li>
+<li>
+<p>Real-time usage</p>
+<p>使用线程池的优点：不用重复创造线程，节省时间，提高性能，方便访问和使用。</p>
+</li>
+</ul>
+<h2 id="disadvantages-of-the-thread-pool"><strong>Disadvantages of the Thread Pool</strong><a href="#disadvantages-of-the-thread-pool" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>
+<p>There is no control over the priority and state of the thread you are working with.</p>
+</li>
+<li>
+<p>There is no stable identity given to the thread, no track can be kept.</p>
+</li>
+<li>
+<p>When there is a high demand for the thread pool, the process may be deleted.</p>
+</li>
+<li>
+<p>The thread pool can not work well when two threads are working in parallel.</p>
+</li>
+<li>
+<p>There are several situations where the application code can be affected by another application code, despite robust application isolation.</p>
+<p>线程池的缺点：无法控制线程的优先级，无法追踪线程，无法很好的执行并行线程工作。</p>
+</li>
+</ul>
+<h2 id="risk-in-the-java-thread-pool"><strong>Risk in the Java Thread Pool</strong><a href="#risk-in-the-java-thread-pool" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>There are a few risks while you are dealing with the thread pool, like;</p>
+<ul>
+<li>
+<p><strong>Thread Leakage:</strong> If a thread is removed from the pool to perform a task but not returned back to it when the task is completed, thread leakage occurs.</p>
+<p>**线程泄漏：**如果线程从池中移除去执行任务但在任务完成时没有返回到它，则发生线程泄漏。</p>
+</li>
+<li>
+<p><strong>Deadlock:</strong> In thread pool is executing thread is waiting for the output from the block the thread waiting in the queue due to unavailability of thread for execution, there’s a case of a deadlock.</p>
+<p><strong>死锁：</strong> 在线程池里</p>
+</li>
+<li>
+<p><strong>Resource Thrashing:</strong> More number of threads than the optimal number required can cause starvation problems leading to resource thrashing.</p>
+<p>**资源抖动：**线程数超过所需的最佳数量会导致饥饿问题，从而导致资源抖动。</p>
+</li>
+</ul>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-threads">Java Threads</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>363 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-11-26 11:18 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/networking/networking1_osi-vs-tcp_ip/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Networking 1: OSI vs TCP/IP Model</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java/thread6_lock/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Threads 6: Lock</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/thread7_javathreadpool/" class="leancloud_visitors" data-flag-title="Java Threads 7: threadpool">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

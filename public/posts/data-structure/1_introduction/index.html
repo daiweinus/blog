@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Data Structure 1: Introduction">
+<meta itemprop="description" content="程序简而言之就是数据&#43;算法，根据数据的属性 Java data structure 可以分为两大类：primitive data types &amp; non-primitive data types.
+ Primitive data types: byte, short, int, long, float, double, char, boolean.
+Non-primitive data types: String, Array, Class, Interface, Object.
+  Primitive Data Types (also called built-in types) 下面以 **Integer ** 为例：
+1Module java.base 2Package java.lang 3 4Class Integer 5 6java.lang.Object 7 java.lang.Number // Number包里还包含：BigDecimal,Byte, Double,Float, Integer, Long,Short 等子包 8 java.lang.Integer 9 10public final class Integer extends Number implements Comparable&lt;Integer&gt; The Integer class wraps a value of the primitive type int in an object."><meta itemprop="datePublished" content="2022-01-01T14:00:11+08:00" />
+<meta itemprop="dateModified" content="2022-01-01T14:00:11+08:00" />
+<meta itemprop="wordCount" content="519"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Data Structure," /><meta property="og:title" content="Java Data Structure 1: Introduction" />
+<meta property="og:description" content="程序简而言之就是数据&#43;算法，根据数据的属性 Java data structure 可以分为两大类：primitive data types &amp; non-primitive data types.
+ Primitive data types: byte, short, int, long, float, double, char, boolean.
+Non-primitive data types: String, Array, Class, Interface, Object.
+  Primitive Data Types (also called built-in types) 下面以 **Integer ** 为例：
+1Module java.base 2Package java.lang 3 4Class Integer 5 6java.lang.Object 7 java.lang.Number // Number包里还包含：BigDecimal,Byte, Double,Float, Integer, Long,Short 等子包 8 java.lang.Integer 9 10public final class Integer extends Number implements Comparable&lt;Integer&gt; The Integer class wraps a value of the primitive type int in an object." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/1_introduction/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-01T14:00:11+08:00" />
+<meta property="article:modified_time" content="2022-01-01T14:00:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Data Structure 1: Introduction"/>
+<meta name="twitter:description" content="程序简而言之就是数据&#43;算法，根据数据的属性 Java data structure 可以分为两大类：primitive data types &amp; non-primitive data types.
+ Primitive data types: byte, short, int, long, float, double, char, boolean.
+Non-primitive data types: String, Array, Class, Interface, Object.
+  Primitive Data Types (also called built-in types) 下面以 **Integer ** 为例：
+1Module java.base 2Package java.lang 3 4Class Integer 5 6java.lang.Object 7 java.lang.Number // Number包里还包含：BigDecimal,Byte, Double,Float, Integer, Long,Short 等子包 8 java.lang.Integer 9 10public final class Integer extends Number implements Comparable&lt;Integer&gt; The Integer class wraps a value of the primitive type int in an object."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Data Structure 1: Introduction</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 1, 2022</span></div>
+				<h1>Java Data Structure 1: Introduction</h1>
+			</header>
+			<div class="content">
+				<p>程序简而言之就是数据+算法，根据数据的属性 <strong>Java data structure</strong> 可以分为两大类：<strong>primitive data types &amp; non-primitive data types</strong>.</p>
+<blockquote>
+<p>Primitive data types: <strong>byte, short, int, long, float, double, char, boolean.</strong></p>
+<p>Non-primitive data types: <strong>String, Array, Class, Interface, Object</strong>.</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201041727487.png" alt=""></p>
+<hr>
+<h3 id="primitive-data-types-also-called-built-in-types">Primitive Data Types (also called built-in types)<a href="#primitive-data-types-also-called-built-in-types" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>下面以 **Integer ** 为例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">Module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span>
+<span class="ln"> 2</span><span class="n">Package</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span>
+<span class="ln"> 3</span>   
+<span class="ln"> 4</span><span class="n">Class</span> <span class="n">Integer</span>
+<span class="ln"> 5</span>  
+<span class="ln"> 6</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<span class="ln"> 7</span>    <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Number</span> <span class="c1">// Number包里还包含：BigDecimal,Byte, Double,Float, Integer, Long,Short 等子包
+</span><span class="ln"> 8</span><span class="c1"></span>        <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Integer</span>
+<span class="ln"> 9</span>  
+<span class="ln">10</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Integer</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+</code></pre></div><p>The <strong>Integer class</strong> wraps a value of the <strong>primitive type  int</strong> in an object. An object of type Integer contains a <strong>single field</strong> whose type is int.     Integer类 把原始数据类型 int 的封装为一个对象。</p>
+<p><img src="https://www.edureka.co/blog/wp-content/uploads/2017/04/Primitive_Data_Type.png" alt="DataTypes - Data types in Java - Edureka"></p>
+<ul>
+<li>
+<p><strong>byte, short, int, long, float, double, char, boolean.</strong></p>
+</li>
+<li>
+<p>1 bit; 1 byte = 8 bits; 1kilobyte = 1024 bytes; 1 Megabyte = 1024 KBs &hellip;..因为1970年代的计算机CPU一次最多只能处理<strong>8bits</strong>的数据，所以就有了<strong>byte</strong>, byte is <strong>the basic addressable unit</strong>, below which computer architecture cannot address.</p>
+</li>
+<li>
+<p><strong><code>char</code> in Java</strong> is <strong>UTF-16 encoded</strong>, which requires a minimum of <strong>16-bits (2bytes)</strong> of storage for each character.</p>
+<p><strong><code>char</code> in C</strong> programming is <strong>ASCII encoded</strong> which only covers the english language character set, and the range is 127, which requries a minimum of <strong>8-bits (1byte)</strong> of storage for each character.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Type</th>
+<th>Size (bits)</th>
+<th style="text-align:center">Minimum</th>
+<th style="text-align:center">Maximum</th>
+<th style="text-align:center">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><em>byte</em></td>
+<td>8 / 1byte</td>
+<td style="text-align:center">$-2^7$</td>
+<td style="text-align:center">$2^7-1$</td>
+<td style="text-align:center"><em>byte b = 0;</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>short</em></td>
+<td>16 / 2bytes</td>
+<td style="text-align:center">$-2^{15}$</td>
+<td style="text-align:center">$2^15-1$</td>
+<td style="text-align:center"><em>short s = 0;</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>int</em></td>
+<td>32 / 4 bytes</td>
+<td style="text-align:center">$-2^{31}$</td>
+<td style="text-align:center">$2^{31}-1$</td>
+<td style="text-align:center"><em>int i = 0;</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>long</em></td>
+<td>64 / 8 bytes</td>
+<td style="text-align:center">$-2^{63}$</td>
+<td style="text-align:center">$2^{63}-1$</td>
+<td style="text-align:center"><em>long l = 0</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>float</em></td>
+<td>32 / 4 bytes</td>
+<td style="text-align:center">1 sign bit, 8 bits of exponent, 23 bits of significand</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><em>float f = 0.0f</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>double</em></td>
+<td>64 / 8 bytes</td>
+<td style="text-align:center">1 sign bit, 11 bits of exponent, 52 bits of significand</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><em>double d = 0.0d</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>char</em></td>
+<td>16 / 2 bytes</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">$2^{16}-1$</td>
+<td style="text-align:center"><em>char c =  ‘u0000’</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>boolean</em></td>
+<td>1 / 1 bytes</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center"><em>boolean b = false</em></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<blockquote>
+<p><strong>在《Effective  Java》这本书中提到这个原则，float和double只能用来做科学计算或者是工程计算，在商业计算中我们要用java.math.BigDecimal。使用BigDecimal并且一定要用String来够造。</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">add</span><span class="o">(</span><span class="kt">double</span> <span class="n">v1</span><span class="o">,</span><span class="kt">double</span> <span class="n">v2</span><span class="o">){</span>    
+<span class="ln">2</span>    <span class="n">BigDecimal</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">v1</span><span class="o">));</span>    
+<span class="ln">3</span>    <span class="n">BigDecimal</span> <span class="n">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">v2</span><span class="o">));</span>    
+<span class="ln">4</span>    <span class="k">return</span> <span class="n">b1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b2</span><span class="o">).</span><span class="na">doubleValue</span><span class="o">();</span>    <span class="c1">// v1 + v2
+</span><span class="ln">5</span><span class="c1"></span><span class="o">}</span>  
+</code></pre></div><blockquote>
+<p>A primitive data type is pre-defined by the programming language. The size and type of variable values are specified, and it has no additional methods.</p>
+<p>原始数据的大小和类型都是提前规定好的，并且不提供额外的方法，这就是为什么我们需要非原始数据，例如 Array, List, Set &amp; Map 来帮助我们更高效的完成数据操作。</p>
+<p>所有的原始数据都是小写，并且有一个默认值。</p>
+<p>所有原始类型数据变量都存储在<strong>stack栈</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="non-primitive-data-types-also-called-reference-data-type">Non-primitive Data Types (also called reference data type)<a href="#non-primitive-data-types-also-called-reference-data-type" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>非原始数据类型是Java程序员为了更加方便的存储和操控数据而在后期创造的，也被称为高级数据类型。</p>
+<blockquote>
+<p>非原始数据类型的首字母都是<strong>大写</strong>；</p>
+<p>非原始数据类型的默认值都是<strong>null</strong>；</p>
+<p>非原始数据类型存储在<strong>Heap堆</strong>，<strong>stack堆</strong>上只是保存了一个指向heap的对象的指针；</p>
+<p>将非原始数据类型的值传递给方法是指实际传递存储数据的对象的地址。</p>
+</blockquote>
+<p>Non-primitive data types: <strong>String, Array, Class, Interface, Object</strong></p>
+<ol>
+<li>**class &amp; object：**每个类都是数据类型，也被认为是用户定义的数据类型。</li>
+<li>**interface：**接口的声明方式与类类似，但唯一的区别是它只包含最终变量和方法声明。</li>
+<li><strong>string &amp; array</strong>: 常用的非原始数据类型，string也是一个class。</li>
+</ol>
+<p><img src="https://beginnersbook.com/wp-content/uploads/2013/12/Java-collection-framework-hierarchy.png" alt="Java Collections"></p>
+<hr>
+<h3 id="primitive-data-types-vs-non-primitive-data-types">Primitive Data Types VS Non-Primitive Data Types<a href="#primitive-data-types-vs-non-primitive-data-types" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The main difference between <strong>primitive</strong> and <strong>non-primitive</strong> data types are:</p>
+<ul>
+<li>
+<p>Primitive types are predefined (already defined) in Java. Non-primitive types are created by the programmer and is not defined by Java (except for <code>String</code>).</p>
+<p>原始数据类型都是被Java language 提前定义好的，非原始数据除了<strong>String</strong>, 其他都是后期定义的。</p>
+<p><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html">java.lang</a>:</p>
+<ul>
+<li>
+<p><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Byte.html">Byte</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Short.html">Short</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html">Integer</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html">Long</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Float.html">Float</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html">Double</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Character.html">Character</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html">Boolean</a>.</p>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html">String</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Non-primitive types can be used to call methods to perform certain operations, while primitive types cannot.</p>
+<p>非原始数据类型可以使用方法操作数据，非原始数据类型没有定义额外方法。</p>
+</li>
+<li>
+<p>A primitive type has always a value, while non-primitive types can be <code>null</code>.</p>
+<p>原始数据类型都有一个值或者不能为null的默认值。而所有的非原始数据默认值是<strong>null</strong>。</p>
+</li>
+<li>
+<p>A primitive type starts with a lowercase letter, while non-primitive types starts with an uppercase letter.</p>
+<p>原始数据类型小写开头，非原始数据大写开头。</p>
+</li>
+<li>
+<p>The size of a primitive type depends on the data type, while non-primitive types have all the same size.</p>
+<p>原始数据类型大小是固定的存储在<strong>stack栈</strong>，非原始数据类型大小都是动态的存储在<strong>heap堆</strong>。</p>
+</li>
+<li>
+<p>原始数据类型是pass by value（copy值），原始数据不会被method改变。</p>
+<p>非原始数据类型是pass by reference（copy物理地址）, 原始数据可以被method改变。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201041845283.png" alt=""></p>
+<p><img src="https://pica.zhimg.com/v2-5dd21bea8b50af177e31351ed0a2ea8d_r.jpg?source=172ae18b" alt=""></p>
+<p><img src="https://static.javatpoint.com/ds/images/ds-introduction.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5253e82f78c3e235799fe38bfab6f097.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201111624931.png" alt=""></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-data-structure">Java Data Structure</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>519 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-01-01 14:00 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/2_string/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Data Structure 2: String</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/data-structure/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Data Structure</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/1_introduction/" class="leancloud_visitors" data-flag-title="Java Data Structure 1: Introduction">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

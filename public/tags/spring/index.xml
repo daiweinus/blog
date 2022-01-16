@@ -7,35 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 08 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Dec 2021 11:43:43 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Lombok</title>
-      <link>https://daiwei.dev/posts/spring/lombok/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>SpringBoot 5: Lombok</title>
+      <link>https://daiwei.dev/posts/spring/springboot5_lombok/</link>
+      <pubDate>Fri, 24 Dec 2021 11:43:43 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/lombok/</guid>
+      <guid>https://daiwei.dev/posts/spring/springboot5_lombok/</guid>
       <description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
 1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
 1// 2// Source code recreated from a .</description>
     </item>
     
     <item>
-      <title>RESTful API</title>
-      <link>https://daiwei.dev/posts/spring/restful/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>SpringBoot 4: RESTful API</title>
+      <link>https://daiwei.dev/posts/spring/springboot4_restful/</link>
+      <pubDate>Thu, 23 Dec 2021 11:43:43 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/restful/</guid>
+      <guid>https://daiwei.dev/posts/spring/springboot4_restful/</guid>
       <description>什么是RESTful 风格 API API（Application Programming Interface），顾名思义：是一组编程接口规范，客户端与服务端通过请求响应进行数据通信。REST（Representational State Transfer）表述性状态传递，决定了接口的形式与规则。RESTful是基于http方法的API设计风格，而不是一种新的技术.
  看Url就知道要什么资源 看http method就知道针对资源干什么 看http status code就知道结果如何  RESTful是面向资源的（名词） REST 通过 URI 暴露资源时，会强调不要在 URI 中出现动词。比如：
    不符合REST的接口URI 符合REST接口URI 功能     GET /api/getDogs/{id} GET /api/dogs/{id} 获取一个小狗狗   GET /api/getDogs GET /api/dogs 获取所有小狗狗   GET /api/addDogs POST /api/dogs 添加一个小狗狗   GET /api/editDogs/{id} PUT /api/dogs/{id} 修改一个小狗狗   GET /api/deleteDogs/{id} DELETE /api/dogs/{id} 删除一个小狗狗    HTTP状态码 通过HTTP状态码体现动作的结果,不要自定义</description>
     </item>
     
     <item>
-      <title>Spring_intro</title>
-      <link>https://daiwei.dev/posts/spring/spring_intro/</link>
-      <pubDate>Wed, 01 Dec 2021 16:57:23 +0800</pubDate>
+      <title>SpringBoot 2: Spring_intro</title>
+      <link>https://daiwei.dev/posts/spring/springboot2_intro/</link>
+      <pubDate>Tue, 21 Dec 2021 16:57:23 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/spring_intro/</guid>
+      <guid>https://daiwei.dev/posts/spring/springboot2_intro/</guid>
       <description>什么是框架 framework？ 具有一定约束性和支撑性的半成品项目。框架+业务逻辑 = 一个完整的项目。
 MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
  Model 负责存储系统的中心数据;

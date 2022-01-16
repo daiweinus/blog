@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Data Structure 7: Collection_Queue">
+<meta itemprop="description" content="Module java.base
+Package java.util
+Interface Queue   All Superinterfaces:
+Collection&lt;E&gt;, Iterable&lt;E&gt;
+  All Known Subinterfaces:
+BlockingDeque&lt;E&gt;, BlockingQueue&lt;E&gt;, Deque&lt;E&gt;, TransferQueue&lt;E&gt;
+  All Known Implementing Classes:
+AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+   1public interface Queue&lt;E&gt; A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation)."><meta itemprop="datePublished" content="2022-01-07T16:00:11+08:00" />
+<meta itemprop="dateModified" content="2022-01-07T16:00:11+08:00" />
+<meta itemprop="wordCount" content="842"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Data Structure," /><meta property="og:title" content="Java Data Structure 7: Collection_Queue" />
+<meta property="og:description" content="Module java.base
+Package java.util
+Interface Queue   All Superinterfaces:
+Collection&lt;E&gt;, Iterable&lt;E&gt;
+  All Known Subinterfaces:
+BlockingDeque&lt;E&gt;, BlockingQueue&lt;E&gt;, Deque&lt;E&gt;, TransferQueue&lt;E&gt;
+  All Known Implementing Classes:
+AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+   1public interface Queue&lt;E&gt; A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/7_queue/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-07T16:00:11+08:00" />
+<meta property="article:modified_time" content="2022-01-07T16:00:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Data Structure 7: Collection_Queue"/>
+<meta name="twitter:description" content="Module java.base
+Package java.util
+Interface Queue   All Superinterfaces:
+Collection&lt;E&gt;, Iterable&lt;E&gt;
+  All Known Subinterfaces:
+BlockingDeque&lt;E&gt;, BlockingQueue&lt;E&gt;, Deque&lt;E&gt;, TransferQueue&lt;E&gt;
+  All Known Implementing Classes:
+AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+   1public interface Queue&lt;E&gt; A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation)."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Data Structure 7: Collection_Queue</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 7, 2022</span></div>
+				<h1>Java Data Structure 7: Collection_Queue</h1>
+			</header>
+			<div class="content">
+				<p><strong>Module</strong> <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html">java.base</a></p>
+<p><strong>Package</strong> <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html">java.util</a></p>
+<h2 id="interface-queuee">Interface Queue<!-- raw HTML omitted --><a href="#interface-queuee" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>
+<p>All Superinterfaces:</p>
+<p><code>Collection&lt;E&gt;</code>, <code>Iterable&lt;E&gt;</code></p>
+</li>
+<li>
+<p>All Known Subinterfaces:</p>
+<p><code>BlockingDeque&lt;E&gt;</code>, <code>BlockingQueue&lt;E&gt;</code>, <code>Deque&lt;E&gt;</code>, <code>TransferQueue&lt;E&gt;</code></p>
+</li>
+<li>
+<p>All Known Implementing Classes:</p>
+<p><code>AbstractQueue</code>, <code>ArrayBlockingQueue</code>, <code>ArrayDeque</code>, <code>ConcurrentLinkedDeque</code>, <code>ConcurrentLinkedQueue</code>, <code>DelayQueue</code>, <code>LinkedBlockingDeque</code>, <code>LinkedBlockingQueue</code>, <code>LinkedList</code>, <code>LinkedTransferQueue</code>, <code>PriorityBlockingQueue</code>, <code>PriorityQueue</code>, <code>SynchronousQueue</code></p>
+</li>
+</ul>
+<hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+</code></pre></div><p>A collection designed for holding elements prior to processing. Besides basic <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collection.html"><code>Collection</code></a> operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either <code>null</code> or <code>false</code>, depending on the operation). The latter form of the insert operation is designed specifically for use with capacity-restricted <code>Queue</code> implementations; in most implementations, insert operations cannot fail.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Throws exception</th>
+<th>Returns special value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#add(E)"><code>add(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#offer(E)"><code>offer(e)</code></a></td>
+</tr>
+<tr>
+<td>Remove</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#remove()"><code>remove()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#poll()"><code>poll()</code></a></td>
+</tr>
+<tr>
+<td>Examine</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#element()"><code>element()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#peek()"><code>peek()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Queues typically, but do not necessarily, order elements in a <strong>FIFO (first-in-first-out)</strong> manner. Among the exceptions are priority queues, which order elements according to a supplied comparator, or the elements' natural ordering, and LIFO queues (or stacks) which order the elements LIFO (last-in-first-out). Whatever the ordering used, the <em>head</em> of the queue is that element which would be removed by a call to <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#remove()"><code>remove()</code></a> or <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html#poll()"><code>poll()</code></a>. In a FIFO queue, all new elements are inserted at the <em>tail</em> of the queue. Other kinds of queues may use different placement rules. Every <code>Queue</code> implementation must specify its ordering properties.</p>
+<p>This interface is a member of the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201121521758.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+<span class="ln">2</span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">deque1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="ln">3</span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">deque2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+</code></pre></div><p><strong>Note:</strong></p>
+<p>\1. The <code>poll()</code> and <code>remove()</code> methods are similar, except that <code>poll()</code> returns <strong>null</strong> object if the queue is empty, whereas remove() throws an exception named NoSuchElementException.</p>
+<p>\2. The <code>peek()</code> and <code>element()</code> methods are similar, except that <code>peek()</code> returns <strong>null</strong> object if the queue is empty, whereas element() throws an exception named NoSuchElementException.</p>
+<p>\3. The <code>offer()</code> method is used to insert an element to the queue. This method is similar to the <code>add()</code> method inherited from the Collection interface, but the offer() method is more preferred for queues.</p>
+<hr>
+<h2 id="priorityqueue">PriorityQueue<a href="#priorityqueue" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="c1">// 底层实现 priority heap (binary heap)
+</span><span class="ln">2</span><span class="c1"></span><span class="kd">extends</span> <span class="n">AbstractQueue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln">3</span><span class="kd">implements</span> <span class="n">Serializable</span><span class="o">,</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="c1">// 可现实 Queue
+</span></code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201121543458.png" alt=""></p>
+<p>A <strong>PriorityQueue in Java</strong> is a queue or collection of elements in which elements are stored in order of their priority. 底层实现是 priority heap。</p>
+<p>An ordinary queue is a first-in-first-out (FIFO) data structure</p>
+<p>In Java PriorityQueue, elements are stored in order of their priority. When accessing elements, the element with the highest priority is removed first before the element with lower priority.</p>
+<p>Element at the head of priority queue is <strong>least element</strong>.</p>
+<p>Element at the tail of priority queue is <strong>greatest element</strong>.</p>
+<p>enqueue 和 dequeue 的速度是 <code>Olog(n)</code>.</p>
+<p>线程不安全，多线程下使用 <code>PriorityBlockingQueue</code> .</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">5</span><span class="o">);</span> <span class="c1">// add element in head of queue
+</span><span class="ln"> 4</span><span class="c1"></span><span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+<span class="ln"> 5</span><span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+<span class="ln"> 6</span><span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln"> 7</span><span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+<span class="ln"> 8</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">pq</span><span class="o">);</span> <span class="c1">// [1, 2, 4, 5, 3] 遍历打印的时候并不会按顺序
+</span><span class="ln"> 9</span><span class="c1"></span>
+<span class="ln">10</span><span class="k">while</span><span class="o">(</span><span class="n">pq</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">11</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">pq</span><span class="o">.</span><span class="na">peek</span><span class="o">());</span>  <span class="c1">// 1 2 3 4 5 但是使用peek方法的时候就会按从小到大的顺序
+</span><span class="ln">12</span><span class="c1"></span>    <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// remove head element
+</span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div><hr>
+<h2 id="dequeue">Dequeue<a href="#dequeue" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 2</span><span class="kd">extends</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 3</span>  
+<span class="ln"> 4</span><span class="c1">// All Superinterfaces:
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;,</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;,</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 6</span><span class="c1">// All Known Subinterfaces:
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">BlockingDeque</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln"> 8</span><span class="c1">// All Known Implementing Classes:
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">ArrayDeque</span><span class="o">,</span> <span class="n">ConcurrentLinkedDeque</span><span class="o">,</span> <span class="n">LinkedBlockingDeque</span><span class="o">,</span> <span class="n">LinkedList</span> 
+<span class="ln">10</span>  
+<span class="ln">11</span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">dl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="ln">12</span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">da</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201121648746.png" alt=""></p>
+<p>The most important features of Deque are push and pop. The <code>push()</code> and <code>pop()</code> methods are commonly used to enable a Deque to function as a stack.</p>
+<p>The name <em>deque</em> is short for &ldquo;<strong>double ended queue</strong>&rdquo; and is usually pronounced &ldquo;deck&rdquo;.</p>
+<hr>
+<p><strong>Summary of Deque methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>First Element (Head)</th>
+<th>Last Element (Tail)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Throws exception</td>
+<td>Special value</td>
+<td>Throws exception</td>
+<td>Special value</td>
+<td></td>
+</tr>
+<tr>
+<td>Insert</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#addFirst(E)"><code>addFirst(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#offerFirst(E)"><code>offerFirst(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#addLast(E)"><code>addLast(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#offerLast(E)"><code>offerLast(e)</code></a></td>
+</tr>
+<tr>
+<td>Remove</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#removeFirst()"><code>removeFirst()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#pollFirst()"><code>pollFirst()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#removeLast()"><code>removeLast()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#pollLast()"><code>pollLast()</code></a></td>
+</tr>
+<tr>
+<td>Examine</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#getFirst()"><code>getFirst()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#peekFirst()"><code>peekFirst()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#getLast()"><code>getLast()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#peekLast()"><code>peekLast()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comparison of <em>Queue and Deque</em> methods</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>Queue</code> Method</th>
+<th>Equivalent <code>Deque</code> Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#add(E)"><code>add(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#addLast(E)"><code>addLast(e)</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#offer(E)"><code>offer(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#offerLast(E)"><code>offerLast(e)</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#remove()"><code>remove()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#removeFirst()"><code>removeFirst()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#poll()"><code>poll()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#pollFirst()"><code>pollFirst()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#element()"><code>element()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#getFirst()"><code>getFirst()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#peek()"><code>peek()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#peekFirst()"><code>peekFirst()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comparison of <em>Stack and Deque</em> methods</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stack Method</th>
+<th>Equivalent <code>Deque</code> Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#push(E)"><code>push(e)</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#addFirst(E)"><code>addFirst(e)</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#pop()"><code>pop()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#removeFirst()"><code>removeFirst()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#peek()"><code>peek()</code></a></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html#getFirst()"><code>getFirst()</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="aarrydeque">AarryDeque<a href="#aarrydeque" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln">2</span><span class="kd">extends</span> <span class="n">AbstractCollection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+<span class="ln">3</span><span class="kd">implements</span> <span class="n">Deque</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;,</span> <span class="n">Cloneable</span><span class="o">,</span> <span class="n">Serializable</span>
+</code></pre></div><p>Resizable-array implementation of the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html"><code>Deque</code></a> interface. Array deques have <strong>no capacity restrictions</strong>; they grow as necessary to support usage. They are <strong>not thread-safe</strong>; in the absence of external synchronization, they do not support concurrent access by multiple threads. <strong>Null elements are prohibited</strong>. <strong>This class is likely to be faster than <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html"><code>Stack</code></a> when used as a stack, and faster than <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html"><code>LinkedList</code></a> when used as a queue.</strong></p>
+<p><strong>ArrayDeque 用作 stack 的时候比 Stack 快，用作 queue 队列的时候比 LinkedList 快。</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">da</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayDeque</span><span class="o">()&lt;&gt;;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="n">da</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">3</span><span class="o">);</span> <span class="c1">// [3]
+</span><span class="ln"> 4</span><span class="c1"></span><span class="n">da</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">2</span><span class="o">);</span> <span class="c1">// [3,2]
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">da</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">4</span><span class="o">);</span> <span class="c1">// [4,3,2]
+</span><span class="ln"> 6</span><span class="c1"></span><span class="n">da</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> <span class="c1">// [4,3,2,1]
+</span><span class="ln"> 7</span><span class="c1"></span>
+<span class="ln"> 8</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">);</span> <span class="c1">// [4, 3, 2, 1]
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">());</span> <span class="c1">// [4]
+</span><span class="ln">10</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">.</span><span class="na">pollLast</span><span class="o">());</span> <span class="c1">// [1]
+</span><span class="ln">11</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">);</span> <span class="c1">// [3,2]
+</span><span class="ln">12</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">());</span> <span class="c1">// [3]
+</span><span class="ln">13</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">da</span><span class="o">.</span><span class="na">peekLast</span><span class="o">());</span> <span class="c1">// [2]
+</span></code></pre></div><hr>
+<h3 id="arraydeque-vs-linkedlist">ArrayDeque vs LinkedList<a href="#arraydeque-vs-linkedlist" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Key differences:</p>
+<ol>
+<li>The <em>ArrayDeque</em> class is the resizable array implementation of the <em>Deque</em> interface and <em>LinkedList</em> class is the list implementation</li>
+<li><strong>NULL</strong> elements can be added to <em><strong>LinkedList</strong></em> but not in <em>ArrayDeque</em></li>
+<li><em>ArrayDeque</em> is more efficient than the <em>LinkedList</em> for add and remove operation at both ends and LinkedList implementation is efficient for removing the current element during the iteration</li>
+<li>The <em><strong>LinkedList</strong></em> implementation consumes <strong>more memory</strong> than the <em>ArrayDeque</em></li>
+</ol>
+<p>在java中，Queue被定义成单端队列使用，Deque被定义成双端队列使用。
+而由于双端队列的定义，Deque可以作为栈或者队列使用，而Queue只能作为队列或者依赖于子类的实现作为堆使用。</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-data-structure">Java Data Structure</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>842 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-01-07 16:00 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/8_map/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Data Structure 8: Map</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/data-structure/6_set/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Data Structure 6: Collection_Set</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/7_queue/" class="leancloud_visitors" data-flag-title="Java Data Structure 7: Collection_Queue">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

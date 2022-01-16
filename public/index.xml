@@ -7,163 +7,133 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 27 Dec 2021 18:18:55 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jan 2022 16:00:11 +0800</lastBuildDate><atom:link href="https://daiwei.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Java Stream</title>
-      <link>https://daiwei.dev/posts/java/stream/</link>
-      <pubDate>Mon, 27 Dec 2021 18:18:55 +0800</pubDate>
+      <title>Java Data Structure 10: Graph</title>
+      <link>https://daiwei.dev/posts/data-structure/10_graph/</link>
+      <pubDate>Mon, 10 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/java/stream/</guid>
-      <description> </description>
+      <guid>https://daiwei.dev/posts/data-structure/10_graph/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>IOC &amp; AOP Spring 中的控制反转和面向切面编程</title>
-      <link>https://daiwei.dev/posts/spring/ioc-aop/</link>
-      <pubDate>Mon, 27 Dec 2021 18:17:23 +0800</pubDate>
+      <title>Java Data Structure 9: Tree</title>
+      <link>https://daiwei.dev/posts/data-structure/9_tree/</link>
+      <pubDate>Sun, 09 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/ioc-aop/</guid>
-      <description>spring相关的书和博文看了很多，一直也没明白依赖注入和面向切面编程到底是什么，spring企业实战看到第三遍突然恍然大悟，也许是因为之前动手写过代码，所以终于潜移默化，慢慢理解了吧。
-http://www.360doc.com/content/18/0125/09/27831725_724899826.shtml这篇文章写得挺好的
-首先控制反转和面向切面编程是spring的核心机制，由于控制反转不好理解，因此有人提出依赖注入的概念，其实依赖注入是控制反转的一种方式，但现在大家默认控制反转等同于依赖注入
-一.控制反转：控制反转是指spring容器通过依赖注入的方式使得创建依赖对象的控制权由对象转移到spring容器。举个例子：
-我们有一个明星，要举办演唱会，在他唱歌之前有记者要采访他，通常我们的做法是创建一个明星类，在明星类里面new一个记者类,或者将记者类作为构造器的参数传入。如下图所示
-在这里对象依赖的对象是由自己创建的。使用spring之后，reporter对象不再由superStar来创建而是交给spring容器来创建和管理，如下图：
-我们在spring的配置文件中配置superstar和reporter两个bean，并把reporter注入到supers中，这样我们在superStard对象中不需要再自己去new一个reporter了，spring容器会帮我们创建。这就是控制反转，对象依赖ioc容器注入依赖的对象。实现解耦合。
-二.面向切面编程
-面向切面编程有几个术语需要理解：（来自百度百科）
-1）aspect（切面）：实现了cross-cutting功能，是针对切面的模块。最常见的是logging模块，这样，程序按功能被分为好几层，如果按传统的继承的话，商业模型继承日志模块的话根本没有什么意义，而通过创建一个logging切面就可以使用AOP来实现相同的功能了。
-2）jointpoint（连接点）：连接点是切面插入应用程序的地方，该点能被方法调用，而且也会被抛出意外。连接点是应用程序提供给切面插入的地方，可以添加新的方法。比如以上我们的切点可以认为是findInfo(String)方法。
-3）advice（处理逻辑）：advice是我们切面功能的实现，它通知程序新的行为。如在logging里，logging advice包括logging的实现代码，比如像写日志到一个文件中。advice在jointpoint处插入到应用程序中。以上我们在MyHandler.java中实现了advice的功能
-4）pointcut（切点）：pointcut可以控制你把哪些advice应用于jointpoint上去，通常你使用pointcuts通过正则表达式来把明显的名字和模式进行匹配应用。决定了那个jointpoint会获得通知。
-上面提到的例子中，记者在明星开场前进行采访，在明星演唱结束时报道，我们可以在superstar的singing方法前去调用reporter的interview方法，但我们发现这样我们的类会比较混乱，我们不希望在superstar的方法里看到reporter的方法，这时我们就需要面向切面编程AOP的帮忙了
-我们可以将reporter配置成一个切面，通过配置的方式插入superstar中，完成采访任务，如下图：
- 学习过Spring框架的人一定都会听过Spring的IoC(控制反转) 、DI(依赖注入)这两个概念，对于初学Spring的人来说，总觉得IoC 、DI这两个概念是模糊不清的，是很难理解的，今天和大家分享网上的一些技术大牛们对Spring框架的IOC的理解以及谈谈我对Spring Ioc的理解。
-一、分享Iteye的开涛对Ioc的精彩讲解 首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：http://jinnianshilongnian.iteye.com/blog/1413846
-1.1、IoC是什么 Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：
-●谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
-●为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。
-　用图例说明一下，传统程序设计如图2-1，都是主动去创建相关对象然后再组合起来：
-图1-1 传统应用程序示意图
-　当有了IoC/DI的容器后，在客户端类中不再主动去创建这些对象了，如图2-2所示:
-图1-2有IoC/DI容器后程序结构示意图
-1.2、IoC能做什么 IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是 松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。
-　其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。
-IoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。
-1.3、IoC和DI DI—Dependency Injection，即“依赖注入”：组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。
-　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：
-●谁依赖于谁：当然是应用程序依赖于IoC容器；
-●为什么需要依赖：应用程序需要IoC容器来提供对象需要的外部资源；
-●谁注入谁：很明显是IoC容器注入应用程序某个对象，应用程序依赖的对象；
-●注入了什么：就是注入某个对象所需要的外部资源（包括对象、资源、常量数据）。
-IoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述，由于控制反转概念比较含糊（可能只是理解为容器控制对象这一个层面，很难让人想到谁来维护对象关系），所以2004年大师级人物Martin Fowler又给出了一个新的名字：“依赖注入”，相对IoC 而言，“依赖注入”明确描述了“被注入对象依赖IoC容器配置依赖对象”。
-　看过很多对Spring的Ioc理解的文章，好多人对Ioc和DI的解释都晦涩难懂，反正就是一种说不清，道不明的感觉，读完之后依然是一头雾水，感觉就是开涛这位技术牛人写得特别通俗易懂，他清楚地解释了IoC(控制反转) 和DI(依赖注入)中的每一个字，读完之后给人一种豁然开朗的感觉。我相信对于初学Spring框架的人对Ioc的理解应该是有很大帮助的。
-二、分享Bromon的blog上对IoC与DI浅显易懂的讲解 2.1、IoC(控制反转) 首先想说说IoC（Inversion of Control，控制反转）。这是spring的核心，贯穿始终。所谓IoC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系。这是什么意思呢，举个简单的例子，我们是如何找女朋友的？常见的情况是，我们到处去看哪里有长得漂亮身材又好的mm，然后打听她们的兴趣爱好、qq号、电话号、ip号、iq号………，想办法认识她们，投其所好送其所要，然后嘿嘿……这个过程是复杂深奥的，我们必须自己设计和面对每个环节。传统的程序开发也是如此，在一个对象中，如果要使用另外的对象，就必须得到它（自己new一个，或者从JNDI中查询一个），使用完之后还要将对象销毁（比如Connection等），对象始终会和其他的接口或类藕合起来。
-　那么IoC是如何做的呢？有点像通过婚介找女朋友，在我和女朋友之间引入了一个第三者：婚姻介绍所。婚介管理了很多男男女女的资料，我可以向婚介提出一个列表，告诉它我想找个什么样的女朋友，比如长得像李嘉欣，身材像林熙雷，唱歌像周杰伦，速度像卡洛斯，技术像齐达内之类的，然后婚介就会按照我们的要求，提供一个mm，我们只需要去和她谈恋爱、结婚就行了。简单明了，如果婚介给我们的人选不符合要求，我们就会抛出异常。整个过程不再由我自己控制，而是有婚介这样一个类似容器的机构来控制。Spring所倡导的开发方式就是如此，所有的类都会在spring容器中登记，告诉spring你是个什么东西，你需要什么东西，然后spring会在系统运行到适当的时候，把你要的东西主动给你，同时也把你交给其他需要你的东西。所有的类的创建、销毁都由 spring来控制，也就是说控制对象生存周期的不再是引用它的对象，而是spring。对于某个具体的对象而言，以前是它控制其他对象，现在是所有对象都被spring控制，所以这叫控制反转。</description>
+      <guid>https://daiwei.dev/posts/data-structure/9_tree/</guid>
+      <description>数据结构可分为线性结构，和非线性结构。
+常见的Array、List、Stack, Heap 和 Queue都是线性结构，在存储大量数据时访问速度比较慢，
+而树(tree)则是一种非线性结构，使得访问时间复杂度降低到O(logn)。
+Tree 是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。
+树里的每一个节点 node 有一个值 value和一个包含所有子节点 child nodes 的列表。从图的观点来看，树也可视为一个拥有N 个节点和N-1 条边的一个有向无环图。
+二叉树是一种更为典型的树状结构。如它名字所描述的那样，二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”
+Type of Trees  </description>
     </item>
     
     <item>
-      <title>Http vs Https</title>
-      <link>https://daiwei.dev/posts/networking/http-vs-https/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 8.1: Map_TreeMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.3_treemap/</link>
+      <pubDate>Sat, 08 Jan 2022 22:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/http-vs-https/</guid>
-      <description>HTTP vs HTTPSHTTP is Hypertext Transfer Protocol,超文本传输协议,是建立在 TCP 之上的应用层网络协议。HTTP 使用超文本结构化文本,HTTP 为 Web 浏览器和服务器之间的通信提供了标准规则。
-HTTPS is Hypertext Transfer Protocol Secure超文本传输​​协议安全。它是高度先进和安全的 HTTP 版本。它使用端口号。443 用于数据通信。它通过使用 SSL 加密整个通信来实现安全交易。它是 SSL/TLS 协议和 HTTP 的组合。它提供网络服务器的加密和安全标识。HTTP 还允许您在服务器和浏览器之间创建安全的加密连接。它提供数据的双向安全性。这有助于您保护潜在的敏感信息免遭窃取。在 HTTPS 协议中，SSL 事务是在基于密钥的加密算法的帮助下协商的。此密钥的强度通常为 40 或 128 位。与 HTTPS 一起使用的 SSL/TLS 证书类型现在，在本 HTTPS 和 HTTP 差异教程中，我们将介绍与 HTTPS 一起使用的 SSL/TLS 证书类型 域验证 Domain Validation:域验证验证申请证书的人是域名的所有者。这种类型的验证通常需要几分钟到几个小时。 组织验证 Organization Validation:证书颁发机构不仅验证域的所有权，还验证所有者的身份。这意味着可能会要求所有者提供个人身份证明文件以证明其身份。 扩展验证 Extended Validation:扩展验证是最高级别的验证。它包括验证域所有权、所有者身份以及业务注册证明。
-主要区别：  HTTP 协议以明文方式发送内容，数据都是未加密的，安全性较差。HTTPS 数据传输过程是加密的，安全性较好。 HTTP 和 HTTPS 使用的是完全不同的连接方式，用的端口也不一样，前者是 80 端口，后者是 443 端口。 HTTPS 协议需要到数字认证机构（Certificate Authority, CA)申请证书，一般需要一定的费用。 HTTP 页面响应比 HTTPS 快，主要因为 HTTP 使用 3 次握手建立连接，客户端和服务器需要握手 3 次，而 HTTPS 除了 TCP 的 3 次握手，还需要经历一个 SSL 协商过程。  HTTP/3了解吗？ HTTP/3 是在 QUIC 基础上发展起来的，其底层使用 UDP 进行数据传输，上层仍然使用 HTTP/2。在 UDP 与 HTTP/2 之间存在一个 QUIC 层，其中 TLS 加密过程在该层进行处理。</description>
+      <guid>https://daiwei.dev/posts/data-structure/8.3_treemap/</guid>
+      <description>TreeMap </description>
     </item>
     
     <item>
-      <title>IPv4 vs IPv6</title>
-      <link>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 8.1: Map_LinkedHashMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/</link>
+      <pubDate>Sat, 08 Jan 2022 21:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</guid>
-      <description>IP 地址指定寻址和数据包方案的技术格式。一个IP（互联网协议）地址是分配给连接到每个设备的数值标签计算机网络使用IP协议进行通信。IP 地址充当特定网络上特定设备的标识符。
-**IPv4 是一个 IP 版本，广泛用于使用寻址系统识别网络上的设备。它是 1983 年在 ARPANET 中部署用于生产的第一个 IP 版本。它使用 32 位地址方案来存储 2^32 个地址，超过 40 亿个地址。它被认为是主要的互联网协议，承载了 94% 的互联网流量。
-IPv6 是 Internet 协议的最新版本。部署此新 IP 地址版本是为了满足对更多 Internet 地址的需求。它旨在解决与 IPv4 相关的问题。凭借 128 位地址空间，它允许 340 个十进制唯一地址空间。IPv6 也称为 IPng（下一代互联网协议）。
-主要区别
- IPv4 是 32 位 IP 地址，而 IPv6 是 128 位 IP 地址。 IPv4 是一种数字寻址方法，而 IPv6 是一种字母数字寻址方法。 IPv4 二进制位由点 (.) 分隔，而 IPv6 二进制位由冒号 (:) 分隔。 IPv4 提供 12 个报头字段，而 IPv6 提供 8 个报头字段。 IPv4 支持广播，而 IPv6 不支持广播。 IPv4 有校验和字段，而 IPv6 没有校验和字段当我们比较 IPv4 和 IPv6 时， IPv4 支持 VLSM（可变长度子网掩码），而 IPv6 不支持 VLSM。 IPv4 使用 **ARP（地址解析协议）**映射到 MAC 地址，而 IPv6 使用 **NDP（邻居发现协议）**映射到 MAC 地址。 IPv4 和 IPv6 不能相互通信，但可以同时存在于同一网络中。这称为双堆栈 Dual Stack。  **DNS（Domain Name System）**是域名系统的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，用于 TCP/IP 网络。</description>
+      <guid>https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/</guid>
+      <description>LinkedHashMap 1public class LinkedHashMap&amp;lt;K,V&amp;gt; 2extends HashMap&amp;lt;K,V&amp;gt; 3implements Map&amp;lt;K,V&amp;gt; HashMap： Array + LinkedList
+LinkedHashMap:Array + doubly-linked List</description>
     </item>
     
     <item>
-      <title>Lombok</title>
-      <link>https://daiwei.dev/posts/spring/lombok/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 8.1: Map_HashMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.1_hashmap/</link>
+      <pubDate>Sat, 08 Jan 2022 20:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/lombok/</guid>
-      <description>Lombok 是一款用来通过注解自动生成辅助代码的插件，通过注释可自动生成Getter, Setter, AllArgsConstructor&amp;hellip;.
-1package com.example.bootlunch.model; 2 3import lombok.AllArgsConstructor; 4import lombok.Builder; 5import lombok.Data; 6import lombok.NoArgsConstructor; 7import lombok.extern.slf4j.Slf4j; 8 9@Data // generate set, get method 10@Slf4j // generate project logger 11@Builder // create object 12@AllArgsConstructor // generate all args constructor 13@NoArgsConstructor // generate no args constructor 14public class LombokPOJO { 15 16 private String name; 17 18 private Integer age; 19} complied bytecode 编译后的字节码
-1// 2// Source code recreated from a .</description>
+      <guid>https://daiwei.dev/posts/data-structure/8.1_hashmap/</guid>
+      <description>HashMap 1public class HashMap&amp;lt;K,V&amp;gt; // underlying is Array + LinkedList 2extends AbstractMap&amp;lt;K,V&amp;gt; 3implements Map&amp;lt;K,V&amp;gt;, Cloneable, Serializable 4 5// Direct Known Subclasses: 6LinkedHashMap, PrinterStateReasons 7 8Map&amp;lt;String, String&amp;gt; hashMap1 = new HashMap&amp;lt;&amp;gt;(); 9Map&amp;lt;String, String&amp;gt; hashMap2 = new HashMap&amp;lt;&amp;gt;(hashMap1); 10Map&amp;lt;String, String&amp;gt; hashMap3 = new HashMap&amp;lt;&amp;gt;(10,0.75f); 11 12// add elements 13hashMap1.put(101,&amp;#34; John&amp;#34;); 14hashMap1.put(202,&amp;#34; Ricky&amp;#34;); 15hashMap1.put(303,&amp;#34; Deep&amp;#34;); 16hashMap1.put(404,&amp;#34; Mark&amp;#34;); 17hashMap1.put(505,&amp;#34; Maya&amp;#34;); 18 19// Map Iteration 20for(Integer i:hashMap1.keySet())System.out.println(i); // Iterate Kay 21 22for(String s:hashMap1.values())System.out.println(s); // Iterate Value 23 24for(Map.</description>
     </item>
     
     <item>
-      <title>OSI vs TCP/IP Model</title>
-      <link>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 8: Map</title>
+      <link>https://daiwei.dev/posts/data-structure/8_map/</link>
+      <pubDate>Sat, 08 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</guid>
-      <description>TCP/IP (Transmission Control Protocol/Internet Protocol Model) 传输控制协议/互联网协议模型最早由美国国防部赞助研究，定义系统和系统之间 开放连接和通信所使用的通信网络。
-OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型 是国际标准组织 ISO 在 TCP/IP model的基础上制定的。定义系统和系统之间 开放连接和通信所使用的通信网络。
-OSI vs TCP/IP Model   OSI 模型有7层；
-TCP/IP模型只有4层，更加简洁，应用更加广泛。
-  OSI header = 5 byte;
-TCP/IP header = 20 byte.
-  OSI 遵循垂直方法；
-TCP/IP 遵循水平方法。
-  OSI 模型 中 传输层 仅面向连接；
-TCP/IP 模型 传输层 既面向连接又面向无连接。
-  OSI 模型帮助您标准化路由器、交换机、主板和其他硬件；
-TCP/IP 帮助您在不同类型的计算机之间建立连接。
-  优缺点：OSI 没有定义任何特定的协议；层不能并行单独工作，因为每一层都需要等待从前一层获取数据；某些服务在传输层和数据链路层等许多层中是重复的。
-TCP/IP 模型设置和管理负责，服务、接口和协议没有明确的分离。</description>
+      <guid>https://daiwei.dev/posts/data-structure/8_map/</guid>
+      <description>Module java.base
+Package java.util
+Interface Map&amp;lt;K,V&amp;gt;     Type Parameters:
+K - the type of keys maintained by this map
+V - the type of mapped values
+  All Known Subinterfaces:
+Bindings, ConcurrentMap&amp;lt;K,V&amp;gt;, ConcurrentNavigableMap&amp;lt;K,V&amp;gt;, NavigableMap&amp;lt;K,V&amp;gt;, SortedMap&amp;lt;K,V&amp;gt;
+  All Known Implementing Classes:
+AbstractMap, Attributes, AuthProvider, ConcurrentHashMap, ConcurrentSkipListMap, EnumMap, HashMap, Hashtable, Headers, IdentityHashMap, LinkedHashMap, PrinterStateReasons, Properties, Provider, RenderingHints, ScriptObjectMirror, SimpleBindings, TabularDataSupport, TreeMap, UIDefaults, WeakHashMap
+   1public interface Map&amp;lt;K,V&amp;gt;   A map in Java is a container object that stores elements in the form of key and value pairs.</description>
     </item>
     
     <item>
-      <title>RESTful API</title>
-      <link>https://daiwei.dev/posts/spring/restful/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 7: Collection_Queue</title>
+      <link>https://daiwei.dev/posts/data-structure/7_queue/</link>
+      <pubDate>Fri, 07 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/spring/restful/</guid>
-      <description>什么是RESTful 风格 API API（Application Programming Interface），顾名思义：是一组编程接口规范，客户端与服务端通过请求响应进行数据通信。REST（Representational State Transfer）表述性状态传递，决定了接口的形式与规则。RESTful是基于http方法的API设计风格，而不是一种新的技术.
- 看Url就知道要什么资源 看http method就知道针对资源干什么 看http status code就知道结果如何  RESTful是面向资源的（名词） REST 通过 URI 暴露资源时，会强调不要在 URI 中出现动词。比如：
-   不符合REST的接口URI 符合REST接口URI 功能     GET /api/getDogs/{id} GET /api/dogs/{id} 获取一个小狗狗   GET /api/getDogs GET /api/dogs 获取所有小狗狗   GET /api/addDogs POST /api/dogs 添加一个小狗狗   GET /api/editDogs/{id} PUT /api/dogs/{id} 修改一个小狗狗   GET /api/deleteDogs/{id} DELETE /api/dogs/{id} 删除一个小狗狗    HTTP状态码 通过HTTP状态码体现动作的结果,不要自定义</description>
+      <guid>https://daiwei.dev/posts/data-structure/7_queue/</guid>
+      <description>Module java.base
+Package java.util
+Interface Queue   All Superinterfaces:
+Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt;
+  All Known Subinterfaces:
+BlockingDeque&amp;lt;E&amp;gt;, BlockingQueue&amp;lt;E&amp;gt;, Deque&amp;lt;E&amp;gt;, TransferQueue&amp;lt;E&amp;gt;
+  All Known Implementing Classes:
+AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+   1public interface Queue&amp;lt;E&amp;gt; A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation).</description>
     </item>
     
     <item>
-      <title>TCP 3-Way Handskake</title>
-      <link>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 6: Collection_Set</title>
+      <link>https://daiwei.dev/posts/data-structure/6_set/</link>
+      <pubDate>Thu, 06 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</guid>
-      <description>TCP 3-Way Handshake (SYN, SYN-ACK,ACK)    Message Description     SYNSynchronize [ˈsiŋ-krə-ˌnīz] Used to initiate and establish a connection. It also helps you to synchronize sequence numbers between devices.用于发起和建立连接。它还可以帮助您在设备之间同步序列号。   ACKAcknowledgement Helps to confirm to the other side that it has received the SYN.有助于向对方确认它已收到 SYN。   SYN-ACK SYN message from local device and ACK of the earlier packet.来自本地设备的 SYN 消息和较早数据包的 ACK。   FIN Used to terminate a connection.</description>
+      <guid>https://daiwei.dev/posts/data-structure/6_set/</guid>
+      <description>Set a unordered collection that contains no duplicate elements, and at most one null element.
+Set的底层实现是map。常用HashSet, LinkedHashSet, TreeSet.(只有 TreeSet 不允许存在 null 元素)
+1Module java.base 2Package java.util 3Interface Set&amp;lt;E&amp;gt; 4 5// All Superinterfaces: 6Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt; 7// All Known Subinterfaces: 8EventSet, NavigableSet&amp;lt;E&amp;gt;, SortedSet&amp;lt;E&amp;gt; 9// All Known Implementing Classes: 10AbstractSet, ConcurrentHashMap.KeySetView, ConcurrentSkipListSet, CopyOnWriteArraySet, EnumSet, HashSet, JobStateReasons, LinkedHashSet, TreeSet 11 12public interface Set&amp;lt;E&amp;gt; 13extends Collection&amp;lt;E&amp;gt; Set 创建对象：
+1Set&amp;lt;String&amp;gt; hashSet = new HashSet&amp;lt;&amp;gt;(); 2Set&amp;lt;Integer&amp;gt; treeSet = new TreeSet&amp;lt;&amp;gt;(); 3Set&amp;lt;String&amp;gt; linkedHashSet = new LinkedHashSet&amp;lt;&amp;gt;(); Iterate SET :</description>
     </item>
     
     <item>
-      <title>TCP 4-way Handshake</title>
-      <link>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 5: Collection_List</title>
+      <link>https://daiwei.dev/posts/data-structure/5_list/</link>
+      <pubDate>Wed, 05 Jan 2022 16:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</guid>
-      <description>TCP 4-Way Handshake (FIN, ACK,FIN,ACK)  client端向server发送FIN包，进入FIN_WAIT_1状态，这代表client端已经没有数据要发送了。 server端收到之后，返回一个ACK，进入CLOSE_WAIT等待关闭的状态，因为server端可能还有没有发送完成的数据。 等到server端数据都发送完毕之后，server端就向client发送FIN，进入LAST_ACK状态。 client收到ACK之后，进入TIME_WAIT的状态，同时回复ACK，server收到之后直接进入CLOSED状态，连接关闭。但是client要等待2MSL(报文最大生存时间)的时间，才会进入CLOSED状态。  为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？ 因为网络是不可靠的，有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
-Why need 4 ways handshake? 四次挥手的过程为什么server端ACK和FIN不在同一个请求里面发送？ 因为数据发送的截止时间不同，当client发送FIN给server后，只是表示client所有数据都已经发送完毕，client还可以接受数据。但是server的数据发送的数据可能还没有截止，所以server需要先发送一个ACK告诉client我收到你的FIN信息了，等到server端的数据全部发送完成，在发送FIN告知client我的信息也已经全部发送，现在可以关闭链接了。因此，己方ACK和FIN一般都会分开发送。</description>
+      <guid>https://daiwei.dev/posts/data-structure/5_list/</guid>
+      <description>Module java.base
+Package java.util
+Interface List     Type Parameters:
+E - the type of elements in this list
+  All Superinterfaces:
+Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt;
+  All Known Implementing Classes:
+AbstractList, AbstractSequentialList, ArrayList, AttributeList, CopyOnWriteArrayList, LinkedList, RoleList, RoleUnresolvedList, Stack, Vector
+    1public interface List&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt; the** List** interface includes operations method for the following:
+ Positional access — manipulates elements based on their numerical position in the list.</description>
     </item>
     
     <item>
-      <title>TCP VS UDP PROTOCAL</title>
-      <link>https://daiwei.dev/posts/networking/tcp-vs-udp/</link>
-      <pubDate>Wed, 08 Dec 2021 11:43:43 +0800</pubDate>
+      <title>Java Data Structure 4: Collection</title>
+      <link>https://daiwei.dev/posts/data-structure/4_collection/</link>
+      <pubDate>Tue, 04 Jan 2022 15:00:11 +0800</pubDate>
       
-      <guid>https://daiwei.dev/posts/networking/tcp-vs-udp/</guid>
-      <description>TCP（Transmission Control Protocol）又叫传输控制协议，TCP是面向连接的，并且是一种可靠的协议，在基于TCP进行通信时，通信双方需要建立TCP连接，建立连接需要经过三次握手，握手成功才可以通信。 UDP (Datagram oriented protocol) 是一种面向无连接，切不可靠的协议，在通信过程中，它并不像TCP那样需要先建立一个连接，只要目的地址，端口号，源地址，端口号确定了，就可以直接发送信息报文，并且不需要一定能收到或者完整的数据。它仅仅提供了校验和机制来保障报文是否完整，若校验失败，则直接将报文丢弃，不做任何处理。
-区别：
- TCP协议是connection-oriented protoco面向连接的协议； UDP 是connectionless protocol无连接的协议. TCP 以字节流的形式读取数据，并将消息传输到段边界；UDP 消息包含一个一个发送的数据包。它还在到达时间检查完整性。 TCP 消息通过 Internet 从一台计算机传输到另一台计算机；UDP 一个程序可以向另一个程序发送大量数据包。 TCP 按特定顺序重新排列数据包；UDP 协议没有固定的顺序，所有的数据包都是相互独立的。 TCP 的速度较慢，header = 20 bytes; UDP 速度快， header = 8 bytes。 TCP 有多种检测错误的方法，进行错误检查并进行错误恢复；UDP 只有一个检查错误的方法checksums,执行错误检查，但它会丢弃错误的数据包。 TCP 使用握手协议是可靠的，因为它保证将数据传送到目标路由器； UDP 没有握手协议，不可靠，无法保证将数据传送到目的地。 TCP 可靠，稳定 用于计算机之间连接,例如HTTP, HTTPS,SMTP；UDP 传输数据速度快，用于语音，视频和在线游戏连接。 缺点：TCP 不能用于广播或多播传输, 速度慢，效率比较低，占用系统资源，容易被攻击。三次握手机制导致TCP容易被人利用，实现DOS，DDOS攻击。 UDP 不可靠，不稳定，在网络质量不好的时候容易丢包。  TCP怎么保证传输过程的可靠性？  校验和 checksums：发送方在发送数据之前计算校验和，接收方收到数据后同样计算，如果不一致，那么传输有误。
-确认应答，序列号：TCP进行传输时数据都进行了编号，每次接收方返回ACK都有确认序列号。
-超时重传：如果发送方发送数据一段时间后没有收到ACK，那么就重发数据。
-连接管理：三次握手和四次挥手的过程。
-流量控制：TCP协议报头包含16位的窗口大小，接收方会在返回ACK时同时把自己的即时窗口填入，发送方就根据报文中窗口的大小控制发送速度。
-拥塞控制：刚开始发送数据的时候，拥塞窗口是1，以后每次收到ACK，则拥塞窗口+1，然后将拥塞窗口和收到的窗口取较小值作为实际发送的窗口，如果发生超时重传，拥塞窗口重置为1。这样做的目的就是为了保证传输过程的高效性和可靠性。
- </description>
+      <guid>https://daiwei.dev/posts/data-structure/4_collection/</guid>
+      <description>Java Collection Framework 是 Java语言最重要的特性，也是Java面试无法躲避的内容，可以说没有collection framework 我们就无法开发出任何产品级别的软件。
+因为 collection framework 所有的 类和接口都存放在 Java.util.package 包里， 所以最初被称为 Java.util.package or Collection API, 后来 Sun Microsystem 在 Java 1.2 中 开始正式引入 collection framework。
+What is Collection in Java? A collection is a group of objects. In Java, these objects are called elements of the collection. Technically, a collection is an object or container which stores a group of other objects as a single unit or single entity.</description>
     </item>
     
   </channel>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Interview Questions">
+<meta itemprop="description" content="一、开场介绍 自我介绍。
+项目经验。
+数据结构:
+Arraylist vs Linklist
+HashSet vs HashMap
+Binary Tree vs Binary Search Tree
+二、JVM 垃圾回收算法有几种类型？ 他们对应的优缺点又是什么？ 类的加载过程是什么？简单描述一下每一个步骤 JVM 预约义的类加载器有哪几种？分别什么做用？ 什么是双亲委派模式？有什么做用？ 什么是内存溢出， 内存泄露？ 他们的区别是什么？ 引发类加载操做的行为有哪些？ 介绍一下 JVM 提供的经常使用工具 Full GC 、 Major GC 、Minor GC 之间区别？ 何时触发 Full GC ？
+三、Java并发 什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？ 讲讲ThreadLocal 的实现原理？ ThreadLocal 做为变量的线程隔离方式，其内部是如何作的？ 说说InheritableThreadLocal 的实现原理？ 并发包中锁的实现底层（对AQS的理解）？ 讲讲独占锁 ReentrantLock 原理？
+四、Java集合 HashSet 和 TreeSet 有什么区别？ HashSet 的底层实现是什么? LinkedHashMap 的实现原理? 为何集合类没有实现 Cloneable 和 Serializable 接口？ 什么是迭代器 (Iterator)？ Iterator 和 ListIterator 的区别是什么？"><meta itemprop="datePublished" content="2021-12-28T15:25:50+08:00" />
+<meta itemprop="dateModified" content="2021-12-28T15:25:50+08:00" />
+<meta itemprop="wordCount" content="180"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Interview," /><meta property="og:title" content="Java Interview Questions" />
+<meta property="og:description" content="一、开场介绍 自我介绍。
+项目经验。
+数据结构:
+Arraylist vs Linklist
+HashSet vs HashMap
+Binary Tree vs Binary Search Tree
+二、JVM 垃圾回收算法有几种类型？ 他们对应的优缺点又是什么？ 类的加载过程是什么？简单描述一下每一个步骤 JVM 预约义的类加载器有哪几种？分别什么做用？ 什么是双亲委派模式？有什么做用？ 什么是内存溢出， 内存泄露？ 他们的区别是什么？ 引发类加载操做的行为有哪些？ 介绍一下 JVM 提供的经常使用工具 Full GC 、 Major GC 、Minor GC 之间区别？ 何时触发 Full GC ？
+三、Java并发 什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？ 讲讲ThreadLocal 的实现原理？ ThreadLocal 做为变量的线程隔离方式，其内部是如何作的？ 说说InheritableThreadLocal 的实现原理？ 并发包中锁的实现底层（对AQS的理解）？ 讲讲独占锁 ReentrantLock 原理？
+四、Java集合 HashSet 和 TreeSet 有什么区别？ HashSet 的底层实现是什么? LinkedHashMap 的实现原理? 为何集合类没有实现 Cloneable 和 Serializable 接口？ 什么是迭代器 (Iterator)？ Iterator 和 ListIterator 的区别是什么？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/java_interview/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-28T15:25:50+08:00" />
+<meta property="article:modified_time" content="2021-12-28T15:25:50+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Interview Questions"/>
+<meta name="twitter:description" content="一、开场介绍 自我介绍。
+项目经验。
+数据结构:
+Arraylist vs Linklist
+HashSet vs HashMap
+Binary Tree vs Binary Search Tree
+二、JVM 垃圾回收算法有几种类型？ 他们对应的优缺点又是什么？ 类的加载过程是什么？简单描述一下每一个步骤 JVM 预约义的类加载器有哪几种？分别什么做用？ 什么是双亲委派模式？有什么做用？ 什么是内存溢出， 内存泄露？ 他们的区别是什么？ 引发类加载操做的行为有哪些？ 介绍一下 JVM 提供的经常使用工具 Full GC 、 Major GC 、Minor GC 之间区别？ 何时触发 Full GC ？
+三、Java并发 什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？ 讲讲ThreadLocal 的实现原理？ ThreadLocal 做为变量的线程隔离方式，其内部是如何作的？ 说说InheritableThreadLocal 的实现原理？ 并发包中锁的实现底层（对AQS的理解）？ 讲讲独占锁 ReentrantLock 原理？
+四、Java集合 HashSet 和 TreeSet 有什么区别？ HashSet 的底层实现是什么? LinkedHashMap 的实现原理? 为何集合类没有实现 Cloneable 和 Serializable 接口？ 什么是迭代器 (Iterator)？ Iterator 和 ListIterator 的区别是什么？"/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Interview Questions</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 28, 2021</span></div>
+				<h1>Java Interview Questions</h1>
+			</header>
+			<div class="content">
+				<h2 id="一开场介绍">一、开场介绍<a href="#一开场介绍" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>自我介绍。</p>
+<p>项目经验。</p>
+<p>数据结构:</p>
+<p>Arraylist vs Linklist</p>
+<p>HashSet vs HashMap</p>
+<p>Binary Tree vs Binary Search Tree</p>
+<h2 id="二jvm">二、JVM<a href="#二jvm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>垃圾回收算法有几种类型？ 他们对应的优缺点又是什么？
+类的加载过程是什么？简单描述一下每一个步骤
+JVM 预约义的类加载器有哪几种？分别什么做用？
+什么是双亲委派模式？有什么做用？
+什么是内存溢出， 内存泄露？ 他们的区别是什么？
+引发类加载操做的行为有哪些？
+介绍一下 JVM 提供的经常使用工具
+Full GC 、 Major GC 、Minor GC 之间区别？
+何时触发 Full GC ？</p>
+<h2 id="三java并发">三、Java并发<a href="#三java并发" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？
+讲讲ThreadLocal 的实现原理？
+ThreadLocal 做为变量的线程隔离方式，其内部是如何作的？
+说说InheritableThreadLocal 的实现原理？
+并发包中锁的实现底层（对AQS的理解）？
+讲讲独占锁 ReentrantLock 原理？</p>
+<h2 id="四java集合">四、Java集合<a href="#四java集合" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>HashSet 和 TreeSet 有什么区别？
+HashSet 的底层实现是什么?
+LinkedHashMap 的实现原理?
+为何集合类没有实现 Cloneable 和 Serializable 接口？
+什么是迭代器 (Iterator)？
+Iterator 和 ListIterator 的区别是什么？</p>
+<h2 id="五spring全家桶">五、Spring全家桶<a href="#五spring全家桶" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Spring bean的生命周期能不能结合源码回答一下这个问题、或者结合一下bean的生命的意义来回答，就是Spring为何须要找个生命周期</p>
+<p>Spring容器当中包含了哪些常用组件（至少说5个），作用是什么，场景是什么；比如BeanDefinition；再比如BeanDefinitionMap</p>
+<p>Spring自动注入的原理是什么？能不能从源码来说明一下这个问题；我们常常说的自动注入，到底怎么注入的？有什么坑？怎么让你一个属性不自动注入</p>
+<p>Spring源码当中如何来搞定循环依赖的？Spring支持循环依赖？生命情况不支持？支持的原理是什么？能不能从源码来说明一下？</p>
+<p>如何来二次扩展Spring，比如自定义一个实现自动注入的注解；不使用@Autowried，自己如何开发一个@XXX来完成自动注入？</p>
+<p>mybatis源码当中利用了Spirng的那些扩展？mybatis扩展Spring以后有哪些问题是没法解决的？好比二级缓存怎么解决</p>
+<p>eureka源码当中如何扩展的Spring？好比怎么动态插拔eureka的功能，利用了Spring的那个技术点，或者从源码说一下</p>
+<h2 id="六redis">六、Redis<a href="#六redis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Redis 持久化机制有哪些？ 区别是什么？优缺点是什么？</p>
+<p>Redis支持的数据类型</p>
+<p>为何 Redis 须要把全部数据放到内存中？</p>
+<p>Redis 是单线程的吗？</p>
+<p>Redis 的缓存失效策略有哪几种？</p>
+<p>什么是缓存命中率？提升缓存命中率的方法有哪些？</p>
+<p>Redis全局命令及数据库管理</p>
+<p>Redis设计订单应用场景</p>
+<p>Redis缓存雪崩讲讲看？</p>
+<p>什么是缓存穿透？</p>
+<p>Redis重启时加载AOF与RDB的顺序</p>
+<h2 id="七-中间件">七. 中间件<a href="#七-中间件" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Dubbo完整的一次调用链路介绍；</p>
+<p>Dubbo支持几种负载均衡策略？</p>
+<p>Dubbo Provider服务提供者要控制执行并发请求上限，具体怎么作？</p>
+<p>Dubbo启动的时候支持几种配置方式？</p>
+<p>了解几种消息中间件产品？各产品的优缺点介绍；</p>
+<p>消息中间件如何保证消息的一致性和如何进行消息的重试机制？</p>
+<p>Spring Cloud熔断机制介绍；</p>
+<p>Spring Cloud对比下Dubbo，什么场景下该使用Spring Cloud？</p>
+<h2 id="八分布式">八、分布式<a href="#八分布式" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>消息中间件如何解决消息丢失问题</p>
+<p>Dubbo的服务请求失败怎么处理</p>
+<p>重连机制会不会形成错误</p>
+<p>对分布式事务的理解</p>
+<p>如何实现负载均衡，有哪些算法能够实现？</p>
+<p>Zookeeper的用途，选举的原理是什么？</p>
+<p>数据的垂直拆分水平拆分。</p>
+<p>zookeeper原理和适用场景</p>
+<p>zookeeper watch机制</p>
+<p>redis/zk节点宕机如何处理</p>
+<p>分布式集群下如何作到惟一序列号</p>
+<p>如何作一个分布式锁</p>
+<p>用过哪些MQ，怎么用的，和其余mq比较有什么优缺点，MQ的链接是线程安全的吗</p>
+<p>MQ系统的数据如何保证不丢失</p>
+<p>列举出你能想到的数据库分库分表策略；分库分表后，如何解决全表查询的问题。</p>
+<h2 id="九数据库">九、数据库<a href="#九数据库" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>MySQL InnoDB存储的文件结构</p>
+<p>索引树是如何维护的？</p>
+<p>数据库自增主键可能的问题</p>
+<p>MySQL的几种优化</p>
+<p>mysql索引为何使用B+树</p>
+<p>数据库锁表的相关处理</p>
+<p>索引失效场景</p>
+<p>高并发下如何作到安全的修改同一行数据，乐观锁和悲观锁是什么，INNODB的行级锁有哪2种，解释其含义</p>
+<p>数据库会死锁吗，举一个死锁的例子，mysql怎么解决死锁</p>
+<h2 id="十计算机网络">十、计算机网络<a href="#十计算机网络" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>OSI vs TCP/IP Model</p>
+<p>TCP vs UDP Protocol</p>
+<p>Http vs Https</p>
+<p>IPv4 vs IPv6</p>
+<p>3 ways handshake connection</p>
+<p>4 ways handshake disconnection</p>
+<p>What happen after your type &lsquo;google.com&rsquo; in the borrower</p>
+<p>DNS / MAC</p>
+<h2 id="十一算法">十一、算法<a href="#十一算法" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Leetcode</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-interview">Java Interview</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>180 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-28 15:25 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/microservices/microservices1_intro/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Microservices 1: Introduction</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/spring/springboot5_lombok/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>SpringBoot 5: Lombok</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/java_interview/" class="leancloud_visitors" data-flag-title="Java Interview Questions">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

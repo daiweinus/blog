@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Fundament 7: BIO vs NIO">
+<meta itemprop="description" content="**同步和异步：**同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO 操作并等待或者轮询的去查看IO 操作是否就绪，而异步是指用户进程触发IO 操作以后便开始做自己的事情，而当IO 操作已经完成的时候会得到IO 完成的通知。
+以银行取款为例：
+同步 ： 自己亲自出马持银行卡到银行取钱（使用同步 IO 时，Java 自己处理IO 读写）；
+异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO 时，Java 将 IO 读写委托给OS 处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS 需要支持异步IO操作API）；
+**阻塞和非阻塞：**阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作方法的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入方法会立即返回一个状态值。
+以银行取款为例：
+阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）；
+非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器通知可读写时再继续进行读写，不断循环直到读写完成）
+1.BIO 编程
+Blocking IO： 同步阻塞的编程方式。
+BIO编程方式通常是在JDK1.4版本之前常用的编程方式。编程实现过程为：首先在服务端启动一个ServerSocket来监听网络请求，客户端启动Socket发起网络请求，默认情况下ServerSocket回建立一个线程来处理此请求，如果服务端没有线程可用，客户端则会阻塞等待或遭到拒绝。
+且建立好的连接，在通讯过程中，是同步的。在并发处理效率上比较低。大致结构如下：
+同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。
+使用线程池机制改善后的BIO模型图如下:
+2.NIO 编程：Unblocking IO（New IO）： 同步非阻塞的编程方式。
+NIO本身是基于事件驱动思想来完成的，其主要想解决的是BIO的大并发问题，NIO基于Reactor，当socket有流可读或可写入socket时，操作系统会相应的通知引用程序进行处理，应用再将流读取到缓冲区或写入操作系统。也就是说，这个时候，已经不是一个连接就要对应一个处理线程了，而是有效的请求，对应一个线程，当连接没有数据时，是没有工作线程来处理的。
+NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。
+在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题
+3.AIO编程：Asynchronous IO： 异步非阻塞的编程方式。
+与NIO不同，当进行读写操作时，只须直接调用API的read或write方法即可。这两种方法均为异步的，对于读操作而言，当有流可读取时，操作系统会将可读的流传入read方法的缓冲区，并通知应用程序；对于写操作而言，当操作系统将write方法传递的流写入完毕时，操作系统主动通知应用程序。即可以理解为，read/write方法都是异步的，完成后会主动调用回调函数。在JDK1.7中，这部分内容被称作NIO.2，主要在java.nio.channels包下增加了下面四个异步通道：AsynchronousSocketChannel、AsynchronousServerSocketChannel、AsynchronousFileChannel、AsynchronousDatagramChannel
+bio示例 server示例
+1public class Server { 2 3 public static void main(String[] args) { 4 int port = genPort(args); 5 6 ServerSocket server = null; 7 ExecutorService service = Executors."><meta itemprop="datePublished" content="2021-10-07T16:19:45+08:00" />
+<meta itemprop="dateModified" content="2021-10-07T16:19:45+08:00" />
+<meta itemprop="wordCount" content="541"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Fundament," /><meta property="og:title" content="Java Fundament 7: BIO vs NIO" />
+<meta property="og:description" content="**同步和异步：**同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO 操作并等待或者轮询的去查看IO 操作是否就绪，而异步是指用户进程触发IO 操作以后便开始做自己的事情，而当IO 操作已经完成的时候会得到IO 完成的通知。
+以银行取款为例：
+同步 ： 自己亲自出马持银行卡到银行取钱（使用同步 IO 时，Java 自己处理IO 读写）；
+异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO 时，Java 将 IO 读写委托给OS 处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS 需要支持异步IO操作API）；
+**阻塞和非阻塞：**阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作方法的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入方法会立即返回一个状态值。
+以银行取款为例：
+阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）；
+非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器通知可读写时再继续进行读写，不断循环直到读写完成）
+1.BIO 编程
+Blocking IO： 同步阻塞的编程方式。
+BIO编程方式通常是在JDK1.4版本之前常用的编程方式。编程实现过程为：首先在服务端启动一个ServerSocket来监听网络请求，客户端启动Socket发起网络请求，默认情况下ServerSocket回建立一个线程来处理此请求，如果服务端没有线程可用，客户端则会阻塞等待或遭到拒绝。
+且建立好的连接，在通讯过程中，是同步的。在并发处理效率上比较低。大致结构如下：
+同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。
+使用线程池机制改善后的BIO模型图如下:
+2.NIO 编程：Unblocking IO（New IO）： 同步非阻塞的编程方式。
+NIO本身是基于事件驱动思想来完成的，其主要想解决的是BIO的大并发问题，NIO基于Reactor，当socket有流可读或可写入socket时，操作系统会相应的通知引用程序进行处理，应用再将流读取到缓冲区或写入操作系统。也就是说，这个时候，已经不是一个连接就要对应一个处理线程了，而是有效的请求，对应一个线程，当连接没有数据时，是没有工作线程来处理的。
+NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。
+在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题
+3.AIO编程：Asynchronous IO： 异步非阻塞的编程方式。
+与NIO不同，当进行读写操作时，只须直接调用API的read或write方法即可。这两种方法均为异步的，对于读操作而言，当有流可读取时，操作系统会将可读的流传入read方法的缓冲区，并通知应用程序；对于写操作而言，当操作系统将write方法传递的流写入完毕时，操作系统主动通知应用程序。即可以理解为，read/write方法都是异步的，完成后会主动调用回调函数。在JDK1.7中，这部分内容被称作NIO.2，主要在java.nio.channels包下增加了下面四个异步通道：AsynchronousSocketChannel、AsynchronousServerSocketChannel、AsynchronousFileChannel、AsynchronousDatagramChannel
+bio示例 server示例
+1public class Server { 2 3 public static void main(String[] args) { 4 int port = genPort(args); 5 6 ServerSocket server = null; 7 ExecutorService service = Executors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/java/fundament7_socket/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-07T16:19:45+08:00" />
+<meta property="article:modified_time" content="2021-10-07T16:19:45+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Fundament 7: BIO vs NIO"/>
+<meta name="twitter:description" content="**同步和异步：**同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO 操作并等待或者轮询的去查看IO 操作是否就绪，而异步是指用户进程触发IO 操作以后便开始做自己的事情，而当IO 操作已经完成的时候会得到IO 完成的通知。
+以银行取款为例：
+同步 ： 自己亲自出马持银行卡到银行取钱（使用同步 IO 时，Java 自己处理IO 读写）；
+异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO 时，Java 将 IO 读写委托给OS 处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS 需要支持异步IO操作API）；
+**阻塞和非阻塞：**阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作方法的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入方法会立即返回一个状态值。
+以银行取款为例：
+阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）；
+非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器通知可读写时再继续进行读写，不断循环直到读写完成）
+1.BIO 编程
+Blocking IO： 同步阻塞的编程方式。
+BIO编程方式通常是在JDK1.4版本之前常用的编程方式。编程实现过程为：首先在服务端启动一个ServerSocket来监听网络请求，客户端启动Socket发起网络请求，默认情况下ServerSocket回建立一个线程来处理此请求，如果服务端没有线程可用，客户端则会阻塞等待或遭到拒绝。
+且建立好的连接，在通讯过程中，是同步的。在并发处理效率上比较低。大致结构如下：
+同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。
+使用线程池机制改善后的BIO模型图如下:
+2.NIO 编程：Unblocking IO（New IO）： 同步非阻塞的编程方式。
+NIO本身是基于事件驱动思想来完成的，其主要想解决的是BIO的大并发问题，NIO基于Reactor，当socket有流可读或可写入socket时，操作系统会相应的通知引用程序进行处理，应用再将流读取到缓冲区或写入操作系统。也就是说，这个时候，已经不是一个连接就要对应一个处理线程了，而是有效的请求，对应一个线程，当连接没有数据时，是没有工作线程来处理的。
+NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。
+在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题
+3.AIO编程：Asynchronous IO： 异步非阻塞的编程方式。
+与NIO不同，当进行读写操作时，只须直接调用API的read或write方法即可。这两种方法均为异步的，对于读操作而言，当有流可读取时，操作系统会将可读的流传入read方法的缓冲区，并通知应用程序；对于写操作而言，当操作系统将write方法传递的流写入完毕时，操作系统主动通知应用程序。即可以理解为，read/write方法都是异步的，完成后会主动调用回调函数。在JDK1.7中，这部分内容被称作NIO.2，主要在java.nio.channels包下增加了下面四个异步通道：AsynchronousSocketChannel、AsynchronousServerSocketChannel、AsynchronousFileChannel、AsynchronousDatagramChannel
+bio示例 server示例
+1public class Server { 2 3 public static void main(String[] args) { 4 int port = genPort(args); 5 6 ServerSocket server = null; 7 ExecutorService service = Executors."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Fundament 7: BIO vs NIO</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 7, 2021</span></div>
+				<h1>Java Fundament 7: BIO vs NIO</h1>
+			</header>
+			<div class="content">
+				<p>**同步和异步：**同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO 操作并等待或者轮询的去查看IO 操作是否就绪，而异步是指用户进程触发IO 操作以后便开始做自己的事情，而当IO 操作已经完成的时候会得到IO 完成的通知。</p>
+<p>以银行取款为例：</p>
+<p><strong>同步</strong> ： 自己亲自出马持银行卡到银行取钱（使用同步 IO 时，Java 自己处理IO 读写）；</p>
+<p><strong>异步</strong> ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO 时，Java 将 IO 读写委托给OS 处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS 需要支持异步IO操作API）；</p>
+<p>**阻塞和非阻塞：**阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作方法的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入方法会立即返回一个状态值。</p>
+<p>以银行取款为例：</p>
+<p><strong>阻塞</strong> ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）；</p>
+<p><strong>非阻塞</strong> ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器通知可读写时再继续进行读写，不断循环直到读写完成）</p>
+<p><strong>1.BIO 编程</strong></p>
+<p>Blocking IO： 同步阻塞的编程方式。</p>
+<p>BIO编程方式通常是在JDK1.4版本之前常用的编程方式。编程实现过程为：首先在服务端启动一个ServerSocket来监听网络请求，客户端启动Socket发起网络请求，默认情况下ServerSocket回建立一个线程来处理此请求，如果服务端没有线程可用，客户端则会阻塞等待或遭到拒绝。</p>
+<p>且建立好的连接，在通讯过程中，是同步的。在并发处理效率上比较低。大致结构如下：</p>
+<p>同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。</p>
+<p>BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。</p>
+<p>使用线程池机制改善后的BIO模型图如下:</p>
+<p><strong>2.NIO 编程：Unblocking IO（New IO）： 同步非阻塞的编程方式。</strong></p>
+<p>NIO本身是基于事件驱动思想来完成的，其主要想解决的是BIO的大并发问题，NIO基于Reactor，当socket有流可读或可写入socket时，操作系统会相应的通知引用程序进行处理，应用再将流读取到缓冲区或写入操作系统。也就是说，这个时候，已经不是一个连接就要对应一个处理线程了，而是有效的请求，对应一个线程，当连接没有数据时，是没有工作线程来处理的。</p>
+<p>NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。</p>
+<p>在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题</p>
+<p><strong>3.AIO编程：Asynchronous IO： 异步非阻塞的编程方式。</strong></p>
+<p>与NIO不同，当进行读写操作时，只须直接调用API的read或write方法即可。这两种方法均为异步的，对于读操作而言，当有流可读取时，操作系统会将可读的流传入read方法的缓冲区，并通知应用程序；对于写操作而言，当操作系统将write方法传递的流写入完毕时，操作系统主动通知应用程序。即可以理解为，read/write方法都是异步的，完成后会主动调用回调函数。在JDK1.7中，这部分内容被称作NIO.2，主要在java.nio.channels包下增加了下面四个异步通道：<code>AsynchronousSocketChannel、AsynchronousServerSocketChannel、AsynchronousFileChannel、AsynchronousDatagramChannel</code></p>
+<h3 id="bio示例"><strong>bio示例</strong><a href="#bio示例" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><strong>server示例</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Server</span> <span class="o">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 4</span>        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">genPort</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+<span class="ln"> 5</span>        
+<span class="ln"> 6</span>        <span class="n">ServerSocket</span> <span class="n">server</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln"> 7</span>        <span class="n">ExecutorService</span> <span class="n">service</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="n">50</span><span class="o">);</span>
+<span class="ln"> 8</span>        
+<span class="ln"> 9</span>        <span class="k">try</span><span class="o">{</span>
+<span class="ln">10</span>            <span class="n">server</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">(</span><span class="n">port</span><span class="o">);</span>
+<span class="ln">11</span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;server started!&#34;</span><span class="o">);</span>
+<span class="ln">12</span>            <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">13</span>                <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+<span class="ln">14</span>                
+<span class="ln">15</span>                <span class="n">service</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(</span><span class="n">socket</span><span class="o">));</span>
+<span class="ln">16</span>            <span class="o">}</span>
+<span class="ln">17</span>        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+<span class="ln">18</span>            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">19</span>        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+<span class="ln">20</span>            <span class="k">if</span><span class="o">(</span><span class="n">server</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">21</span>                <span class="k">try</span> <span class="o">{</span>
+<span class="ln">22</span>                    <span class="n">server</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">23</span>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">24</span>                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">25</span>                <span class="o">}</span>
+<span class="ln">26</span>            <span class="o">}</span>
+<span class="ln">27</span>            <span class="n">server</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">28</span>        <span class="o">}</span>
+<span class="ln">29</span>    <span class="o">}</span>
+<span class="ln">30</span>    
+<span class="ln">31</span>    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Handler</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+<span class="ln">32</span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">33</span>        <span class="kd">public</span> <span class="nf">Handler</span><span class="o">(</span><span class="n">Socket</span> <span class="n">socket</span><span class="o">){</span>
+<span class="ln">34</span>            <span class="k">this</span><span class="o">.</span><span class="na">socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">;</span>
+<span class="ln">35</span>        <span class="o">}</span>
+<span class="ln">36</span>        <span class="nd">@Override</span>
+<span class="ln">37</span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">38</span>            <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">39</span>            <span class="n">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">40</span>            <span class="k">try</span><span class="o">{</span>
+<span class="ln">41</span>                
+<span class="ln">42</span>                <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+<span class="ln">43</span>                        <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
+<span class="ln">44</span>                <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span>
+<span class="ln">45</span>                        <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
+<span class="ln">46</span>                <span class="n">String</span> <span class="n">readMessage</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">47</span>                <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">48</span>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;server reading... &#34;</span><span class="o">);</span>
+<span class="ln">49</span>                    <span class="k">if</span><span class="o">((</span><span class="n">readMessage</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">50</span>                        <span class="k">break</span><span class="o">;</span>
+<span class="ln">51</span>                    <span class="o">}</span>
+<span class="ln">52</span>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">readMessage</span><span class="o">);</span>
+<span class="ln">53</span>                    <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;server recive : &#34;</span> <span class="o">+</span> <span class="n">readMessage</span><span class="o">);</span>
+<span class="ln">54</span>                    <span class="n">writer</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+<span class="ln">55</span>                <span class="o">}</span>
+<span class="ln">56</span>            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+<span class="ln">57</span>                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">58</span>            <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+<span class="ln">59</span>                <span class="k">if</span><span class="o">(</span><span class="n">socket</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">60</span>                    <span class="k">try</span> <span class="o">{</span>
+<span class="ln">61</span>                        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">62</span>                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">63</span>                        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">64</span>                    <span class="o">}</span>
+<span class="ln">65</span>                <span class="o">}</span>
+<span class="ln">66</span>                <span class="n">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">67</span>                <span class="k">if</span><span class="o">(</span><span class="n">reader</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">68</span>                    <span class="k">try</span> <span class="o">{</span>
+<span class="ln">69</span>                        <span class="n">reader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">70</span>                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">71</span>                        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">72</span>                    <span class="o">}</span>
+<span class="ln">73</span>                <span class="o">}</span>
+<span class="ln">74</span>                <span class="n">reader</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">75</span>                <span class="k">if</span><span class="o">(</span><span class="n">writer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">76</span>                    <span class="n">writer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">77</span>                <span class="o">}</span>
+<span class="ln">78</span>                <span class="n">writer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">79</span>            <span class="o">}</span>
+<span class="ln">80</span>        <span class="o">}</span>
+<span class="ln">81</span>        
+<span class="ln">82</span>    <span class="o">}</span>
+<span class="ln">83</span>    
+<span class="ln">84</span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">genPort</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+<span class="ln">85</span>        <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
+<span class="ln">86</span>            <span class="k">try</span><span class="o">{</span>
+<span class="ln">87</span>                <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
+<span class="ln">88</span>            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">NumberFormatException</span> <span class="n">e</span><span class="o">){</span>
+<span class="ln">89</span>                <span class="k">return</span> <span class="n">9999</span><span class="o">;</span>
+<span class="ln">90</span>            <span class="o">}</span>
+<span class="ln">91</span>        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+<span class="ln">92</span>            <span class="k">return</span> <span class="n">9999</span><span class="o">;</span>
+<span class="ln">93</span>        <span class="o">}</span>
+<span class="ln">94</span>    <span class="o">}</span>
+<span class="ln">95</span>    
+<span class="ln">96</span><span class="o">}</span>
+</code></pre></div><p><strong>client示例：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln"> 4</span>        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln"> 5</span>        <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">2</span><span class="o">){</span>
+<span class="ln"> 6</span>            <span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+<span class="ln"> 7</span>            <span class="n">port</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
+<span class="ln"> 8</span>        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+<span class="ln"> 9</span>            <span class="n">host</span> <span class="o">=</span> <span class="s">&#34;127.0.0.1&#34;</span><span class="o">;</span>
+<span class="ln">10</span>            <span class="n">port</span> <span class="o">=</span> <span class="n">9999</span><span class="o">;</span>
+<span class="ln">11</span>        <span class="o">}</span>
+<span class="ln">12</span>        
+<span class="ln">13</span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">14</span>        <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">15</span>        <span class="n">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">16</span>        <span class="n">Scanner</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+<span class="ln">17</span>        <span class="k">try</span><span class="o">{</span>
+<span class="ln">18</span>            <span class="n">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">);</span>
+<span class="ln">19</span>            <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">20</span>            
+<span class="ln">21</span>            <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+<span class="ln">22</span>                    <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
+<span class="ln">23</span>            <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span>
+<span class="ln">24</span>                    <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">(),</span> <span class="kc">true</span><span class="o">);</span>
+<span class="ln">25</span>            <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">26</span>                <span class="n">message</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+<span class="ln">27</span>                <span class="k">if</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;exit&#34;</span><span class="o">)){</span>
+<span class="ln">28</span>                    <span class="k">break</span><span class="o">;</span>
+<span class="ln">29</span>                <span class="o">}</span>
+<span class="ln">30</span>                <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+<span class="ln">31</span>                <span class="n">writer</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+<span class="ln">32</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="ln">33</span>            <span class="o">}</span>
+<span class="ln">34</span>        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+<span class="ln">35</span>            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">36</span>        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+<span class="ln">37</span>            <span class="k">if</span><span class="o">(</span><span class="n">socket</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">38</span>                <span class="k">try</span> <span class="o">{</span>
+<span class="ln">39</span>                    <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">40</span>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">41</span>                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">42</span>                <span class="o">}</span>
+<span class="ln">43</span>            <span class="o">}</span>
+<span class="ln">44</span>            <span class="n">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">45</span>            <span class="k">if</span><span class="o">(</span><span class="n">reader</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">46</span>                <span class="k">try</span> <span class="o">{</span>
+<span class="ln">47</span>                    <span class="n">reader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">48</span>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">49</span>                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">50</span>                <span class="o">}</span>
+<span class="ln">51</span>            <span class="o">}</span>
+<span class="ln">52</span>            <span class="n">reader</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">53</span>            <span class="k">if</span><span class="o">(</span><span class="n">writer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">54</span>                <span class="n">writer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="ln">55</span>            <span class="o">}</span>
+<span class="ln">56</span>            <span class="n">writer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">57</span>        <span class="o">}</span>
+<span class="ln">58</span>    <span class="o">}</span>
+<span class="ln">59</span><span class="o">}</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-fundament">Java Fundament</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>541 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-10-07 16:19 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/game/ti10/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>TI 10</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/java/fundament6_stream/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Java Fundament 6: Stream</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/java/fundament7_socket/" class="leancloud_visitors" data-flag-title="Java Fundament 7: BIO vs NIO">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

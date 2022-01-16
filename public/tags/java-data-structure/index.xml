@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java Data Structure on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/java-data-structure/</link>
+    <description>Recent content in Java Data Structure on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 10 Jan 2022 16:00:11 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java-data-structure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Data Structure 10: Graph</title>
+      <link>https://daiwei.dev/posts/data-structure/10_graph/</link>
+      <pubDate>Mon, 10 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/10_graph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 9: Tree</title>
+      <link>https://daiwei.dev/posts/data-structure/9_tree/</link>
+      <pubDate>Sun, 09 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/9_tree/</guid>
+      <description>数据结构可分为线性结构，和非线性结构。
+常见的Array、List、Stack, Heap 和 Queue都是线性结构，在存储大量数据时访问速度比较慢，
+而树(tree)则是一种非线性结构，使得访问时间复杂度降低到O(logn)。
+Tree 是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。
+树里的每一个节点 node 有一个值 value和一个包含所有子节点 child nodes 的列表。从图的观点来看，树也可视为一个拥有N 个节点和N-1 条边的一个有向无环图。
+二叉树是一种更为典型的树状结构。如它名字所描述的那样，二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”
+Type of Trees  </description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 8.1: Map_TreeMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.3_treemap/</link>
+      <pubDate>Sat, 08 Jan 2022 22:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/8.3_treemap/</guid>
+      <description>TreeMap </description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 8.1: Map_LinkedHashMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/</link>
+      <pubDate>Sat, 08 Jan 2022 21:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/</guid>
+      <description>LinkedHashMap 1public class LinkedHashMap&amp;lt;K,V&amp;gt; 2extends HashMap&amp;lt;K,V&amp;gt; 3implements Map&amp;lt;K,V&amp;gt; HashMap： Array + LinkedList
+LinkedHashMap:Array + doubly-linked List</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 8.1: Map_HashMap</title>
+      <link>https://daiwei.dev/posts/data-structure/8.1_hashmap/</link>
+      <pubDate>Sat, 08 Jan 2022 20:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/8.1_hashmap/</guid>
+      <description>HashMap 1public class HashMap&amp;lt;K,V&amp;gt; // underlying is Array + LinkedList 2extends AbstractMap&amp;lt;K,V&amp;gt; 3implements Map&amp;lt;K,V&amp;gt;, Cloneable, Serializable 4 5// Direct Known Subclasses: 6LinkedHashMap, PrinterStateReasons 7 8Map&amp;lt;String, String&amp;gt; hashMap1 = new HashMap&amp;lt;&amp;gt;(); 9Map&amp;lt;String, String&amp;gt; hashMap2 = new HashMap&amp;lt;&amp;gt;(hashMap1); 10Map&amp;lt;String, String&amp;gt; hashMap3 = new HashMap&amp;lt;&amp;gt;(10,0.75f); 11 12// add elements 13hashMap1.put(101,&amp;#34; John&amp;#34;); 14hashMap1.put(202,&amp;#34; Ricky&amp;#34;); 15hashMap1.put(303,&amp;#34; Deep&amp;#34;); 16hashMap1.put(404,&amp;#34; Mark&amp;#34;); 17hashMap1.put(505,&amp;#34; Maya&amp;#34;); 18 19// Map Iteration 20for(Integer i:hashMap1.keySet())System.out.println(i); // Iterate Kay 21 22for(String s:hashMap1.values())System.out.println(s); // Iterate Value 23 24for(Map.</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 8: Map</title>
+      <link>https://daiwei.dev/posts/data-structure/8_map/</link>
+      <pubDate>Sat, 08 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/8_map/</guid>
+      <description>Module java.base
+Package java.util
+Interface Map&amp;lt;K,V&amp;gt;     Type Parameters:
+K - the type of keys maintained by this map
+V - the type of mapped values
+  All Known Subinterfaces:
+Bindings, ConcurrentMap&amp;lt;K,V&amp;gt;, ConcurrentNavigableMap&amp;lt;K,V&amp;gt;, NavigableMap&amp;lt;K,V&amp;gt;, SortedMap&amp;lt;K,V&amp;gt;
+  All Known Implementing Classes:
+AbstractMap, Attributes, AuthProvider, ConcurrentHashMap, ConcurrentSkipListMap, EnumMap, HashMap, Hashtable, Headers, IdentityHashMap, LinkedHashMap, PrinterStateReasons, Properties, Provider, RenderingHints, ScriptObjectMirror, SimpleBindings, TabularDataSupport, TreeMap, UIDefaults, WeakHashMap
+   1public interface Map&amp;lt;K,V&amp;gt;   A map in Java is a container object that stores elements in the form of key and value pairs.</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 7: Collection_Queue</title>
+      <link>https://daiwei.dev/posts/data-structure/7_queue/</link>
+      <pubDate>Fri, 07 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/7_queue/</guid>
+      <description>Module java.base
+Package java.util
+Interface Queue   All Superinterfaces:
+Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt;
+  All Known Subinterfaces:
+BlockingDeque&amp;lt;E&amp;gt;, BlockingQueue&amp;lt;E&amp;gt;, Deque&amp;lt;E&amp;gt;, TransferQueue&amp;lt;E&amp;gt;
+  All Known Implementing Classes:
+AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+   1public interface Queue&amp;lt;E&amp;gt; A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation).</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 6: Collection_Set</title>
+      <link>https://daiwei.dev/posts/data-structure/6_set/</link>
+      <pubDate>Thu, 06 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/6_set/</guid>
+      <description>Set a unordered collection that contains no duplicate elements, and at most one null element.
+Set的底层实现是map。常用HashSet, LinkedHashSet, TreeSet.(只有 TreeSet 不允许存在 null 元素)
+1Module java.base 2Package java.util 3Interface Set&amp;lt;E&amp;gt; 4 5// All Superinterfaces: 6Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt; 7// All Known Subinterfaces: 8EventSet, NavigableSet&amp;lt;E&amp;gt;, SortedSet&amp;lt;E&amp;gt; 9// All Known Implementing Classes: 10AbstractSet, ConcurrentHashMap.KeySetView, ConcurrentSkipListSet, CopyOnWriteArraySet, EnumSet, HashSet, JobStateReasons, LinkedHashSet, TreeSet 11 12public interface Set&amp;lt;E&amp;gt; 13extends Collection&amp;lt;E&amp;gt; Set 创建对象：
+1Set&amp;lt;String&amp;gt; hashSet = new HashSet&amp;lt;&amp;gt;(); 2Set&amp;lt;Integer&amp;gt; treeSet = new TreeSet&amp;lt;&amp;gt;(); 3Set&amp;lt;String&amp;gt; linkedHashSet = new LinkedHashSet&amp;lt;&amp;gt;(); Iterate SET :</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 5: Collection_List</title>
+      <link>https://daiwei.dev/posts/data-structure/5_list/</link>
+      <pubDate>Wed, 05 Jan 2022 16:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/5_list/</guid>
+      <description>Module java.base
+Package java.util
+Interface List     Type Parameters:
+E - the type of elements in this list
+  All Superinterfaces:
+Collection&amp;lt;E&amp;gt;, Iterable&amp;lt;E&amp;gt;
+  All Known Implementing Classes:
+AbstractList, AbstractSequentialList, ArrayList, AttributeList, CopyOnWriteArrayList, LinkedList, RoleList, RoleUnresolvedList, Stack, Vector
+    1public interface List&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt; the** List** interface includes operations method for the following:
+ Positional access — manipulates elements based on their numerical position in the list.</description>
+    </item>
+    
+    <item>
+      <title>Java Data Structure 4: Collection</title>
+      <link>https://daiwei.dev/posts/data-structure/4_collection/</link>
+      <pubDate>Tue, 04 Jan 2022 15:00:11 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/data-structure/4_collection/</guid>
+      <description>Java Collection Framework 是 Java语言最重要的特性，也是Java面试无法躲避的内容，可以说没有collection framework 我们就无法开发出任何产品级别的软件。
+因为 collection framework 所有的 类和接口都存放在 Java.util.package 包里， 所以最初被称为 Java.util.package or Collection API, 后来 Sun Microsystem 在 Java 1.2 中 开始正式引入 collection framework。
+What is Collection in Java? A collection is a group of objects. In Java, these objects are called elements of the collection. Technically, a collection is an object or container which stores a group of other objects as a single unit or single entity.</description>
+    </item>
+    
+  </channel>
+</rss>

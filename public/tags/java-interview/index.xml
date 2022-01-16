@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java Interview on Hello, Friends!</title>
+    <link>https://daiwei.dev/tags/java-interview/</link>
+    <description>Recent content in Java Interview on Hello, Friends!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 28 Dec 2021 15:25:50 +0800</lastBuildDate><atom:link href="https://daiwei.dev/tags/java-interview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Interview Questions</title>
+      <link>https://daiwei.dev/posts/java/java_interview/</link>
+      <pubDate>Tue, 28 Dec 2021 15:25:50 +0800</pubDate>
+      
+      <guid>https://daiwei.dev/posts/java/java_interview/</guid>
+      <description>一、开场介绍 自我介绍。
+项目经验。
+数据结构:
+Arraylist vs Linklist
+HashSet vs HashMap
+Binary Tree vs Binary Search Tree
+二、JVM 垃圾回收算法有几种类型？ 他们对应的优缺点又是什么？ 类的加载过程是什么？简单描述一下每一个步骤 JVM 预约义的类加载器有哪几种？分别什么做用？ 什么是双亲委派模式？有什么做用？ 什么是内存溢出， 内存泄露？ 他们的区别是什么？ 引发类加载操做的行为有哪些？ 介绍一下 JVM 提供的经常使用工具 Full GC 、 Major GC 、Minor GC 之间区别？ 何时触发 Full GC ？
+三、Java并发 什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？ 讲讲ThreadLocal 的实现原理？ ThreadLocal 做为变量的线程隔离方式，其内部是如何作的？ 说说InheritableThreadLocal 的实现原理？ 并发包中锁的实现底层（对AQS的理解）？ 讲讲独占锁 ReentrantLock 原理？
+四、Java集合 HashSet 和 TreeSet 有什么区别？ HashSet 的底层实现是什么? LinkedHashMap 的实现原理? 为何集合类没有实现 Cloneable 和 Serializable 接口？ 什么是迭代器 (Iterator)？ Iterator 和 ListIterator 的区别是什么？</description>
+    </item>
+    
+  </channel>
+</rss>

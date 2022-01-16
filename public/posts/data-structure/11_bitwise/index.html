@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Java Operator 1: Bitwise Operator">
+<meta itemprop="description" content="An operator that acts on individual bits (0 or 1) of the operands is called bitwise operator in java.
+It acts only integer data types such as byte, short, int, and long. Bitwise operators in java cannot be applied to float and double data types.
+操作 bit 单位 0 和 1 成为 位操作， 在Java 位操作只可以使用在整数，不可以在小数上使用。
+Bitwise Operator Table:    Operator Meaning     1. &amp; bitwise AND   2."><meta itemprop="datePublished" content="2021-11-01T13:13:13+08:00" />
+<meta itemprop="dateModified" content="2021-11-01T13:13:13+08:00" />
+<meta itemprop="wordCount" content="1048"><meta itemprop="image" content="https://daiwei.dev/images/totoro.jpeg">
+<meta itemprop="keywords" content="Java Operator," /><meta property="og:title" content="Java Operator 1: Bitwise Operator" />
+<meta property="og:description" content="An operator that acts on individual bits (0 or 1) of the operands is called bitwise operator in java.
+It acts only integer data types such as byte, short, int, and long. Bitwise operators in java cannot be applied to float and double data types.
+操作 bit 单位 0 和 1 成为 位操作， 在Java 位操作只可以使用在整数，不可以在小数上使用。
+Bitwise Operator Table:    Operator Meaning     1. &amp; bitwise AND   2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daiwei.dev/posts/data-structure/11_bitwise/" /><meta property="og:image" content="https://daiwei.dev/images/totoro.jpeg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-01T13:13:13+08:00" />
+<meta property="article:modified_time" content="2021-11-01T13:13:13+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://daiwei.dev/images/totoro.jpeg"/>
+
+<meta name="twitter:title" content="Java Operator 1: Bitwise Operator"/>
+<meta name="twitter:description" content="An operator that acts on individual bits (0 or 1) of the operands is called bitwise operator in java.
+It acts only integer data types such as byte, short, int, and long. Bitwise operators in java cannot be applied to float and double data types.
+操作 bit 单位 0 和 1 成为 位操作， 在Java 位操作只可以使用在整数，不可以在小数上使用。
+Bitwise Operator Table:    Operator Meaning     1. &amp; bitwise AND   2."/>
+
+
+<link rel="icon" href="https://daiwei.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://daiwei.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://daiwei.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://daiwei.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://daiwei.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+
+	<title>Java Operator 1: Bitwise Operator</title>
+	<link rel="stylesheet" href="https://daiwei.dev/css/style.min.d91e97b00c3c0ec7f7689c648d5634c4b9b47bba0c828d9326d6cb164e46a705.css" integrity="sha256-2R6XsAw8Dsf3aJxkjVY0xLm0e7oMgo2TJtbLFk5GpwU=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('https://daiwei.dev/images/totoro.jpeg');}</style>
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://daiwei.dev/">Hello, Friends!</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://daiwei.dev/posts/">Posts</a>
+				<a href="https://daiwei.dev/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title="Featured Image"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://twitter.com/" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://daiwei.dev/posts/">Posts</a></li>
+			<li><a href="https://daiwei.dev/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Nov 1, 2021</span></div>
+				<h1>Java Operator 1: Bitwise Operator</h1>
+			</header>
+			<div class="content">
+				<p>An operator that acts on individual bits (0 or 1) of the operands is called <strong>bitwise operator in java</strong>.</p>
+<p>It acts only integer data types such as byte, short, int, and long. Bitwise operators <strong>in java cannot be applied to float and double</strong> data types.</p>
+<p>操作 bit 单位 0 和 1 成为 位操作， 在Java 位操作只可以使用在整数，不可以在小数上使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061246513.png" alt=""></p>
+<h3 id="bitwise-operator-table">Bitwise Operator Table:<a href="#bitwise-operator-table" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1. &amp;</td>
+<td style="text-align:center">bitwise AND</td>
+</tr>
+<tr>
+<td style="text-align:center">2. |</td>
+<td style="text-align:center">bitwise OR</td>
+</tr>
+<tr>
+<td style="text-align:center">3. ^</td>
+<td style="text-align:center">bitwise exclusive OR</td>
+</tr>
+<tr>
+<td style="text-align:center">4. ~</td>
+<td style="text-align:center">one’s complement (unary)</td>
+</tr>
+<tr>
+<td style="text-align:center">5. &laquo;</td>
+<td style="text-align:center">shift left</td>
+</tr>
+<tr>
+<td style="text-align:center">6. &raquo;</td>
+<td style="text-align:center">shift right</td>
+</tr>
+<tr>
+<td style="text-align:center">7. &raquo;&gt;</td>
+<td style="text-align:center">unsigned right shift</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="and-or-xor--not">AND, OR, XOR &amp; NOT<a href="#and-or-xor--not" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061221620.jpeg" alt=""></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitwiseOperatorTest</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span>        <span class="c1">// |: 或 OR, 0|0 = 0; 1|0 1|1 = 1
+</span><span class="ln"> 5</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">6</span> <span class="o">|</span> <span class="n">3</span><span class="o">);</span> <span class="c1">// 110 | 011 -&gt; 111 = 7
+</span><span class="ln"> 6</span><span class="c1"></span>
+<span class="ln"> 7</span>        <span class="c1">// &amp;: 与 AND, 1&amp;1 0&amp;0 = 1; 0&amp;1 = 0
+</span><span class="ln"> 8</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">6</span> <span class="o">&amp;</span> <span class="n">3</span><span class="o">);</span> <span class="c1">// 110 &amp; 011 -&gt; 010 = 2
+</span><span class="ln"> 9</span><span class="c1"></span>
+<span class="ln">10</span>        <span class="c1">// ~: 非 NOT, 0 -&gt; 1; 1 -&gt; 0 一元操作符 one’s complement (unary)
+</span><span class="ln">11</span><span class="c1"></span>        <span class="c1">// 110 -&gt; 0000 0110 ~运算后得到 -&gt; 1111 1001 为负数，需转换为十进制
+</span><span class="ln">12</span><span class="c1"></span>        <span class="c1">// 1111 1001 -&gt; 0000 0110 + 1 -&gt; 0000 0111 = 7, 加上负号 -7
+</span><span class="ln">13</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(~</span><span class="n">6</span><span class="o">);</span> <span class="c1">// -7
+</span><span class="ln">14</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">6</span><span class="o">);</span> <span class="c1">// 5
+</span><span class="ln">15</span><span class="c1"></span>
+<span class="ln">16</span>        <span class="c1">// ^: 异或 XOR, 0^0 1^1 = 0; 0^1 = 1
+</span><span class="ln">17</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">6</span> <span class="o">^</span> <span class="n">3</span><span class="o">);</span> <span class="c1">// 110 ^ 011 -&gt; 101 = 5
+</span><span class="ln">18</span><span class="c1"></span>
+<span class="ln">19</span>        <span class="c1">// &gt;&gt;：带符号右移。正数右移高位补0，负数右移高位补1。
+</span><span class="ln">20</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">8</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span> <span class="c1">// 0000 1000 -&gt; 0100 = 4
+</span><span class="ln">21</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">8</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span> <span class="c1">// 1111 1000 -&gt; 1111 1100 = -4
+</span><span class="ln">22</span><span class="c1"></span>
+<span class="ln">23</span>        <span class="c1">// &lt;&lt;：带符号左移。无论是正负，都是低位补0。
+</span><span class="ln">24</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">8</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">);</span> <span class="c1">// 0000 1000 -&gt; 0001 0000 = 16
+</span><span class="ln">25</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">8</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">);</span> <span class="c1">// 1111 1000 -&gt; 1111 0000 = -16
+</span><span class="ln">26</span><span class="c1"></span>
+<span class="ln">27</span>        <span class="c1">// &gt;&gt;&gt;：无符号右移。无论是正负，都是高位补0。
+</span><span class="ln">28</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">8</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">);</span> <span class="c1">// 1000 -&gt; 0100 =4
+</span><span class="ln">29</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">8</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">);</span> 
+<span class="ln">30</span>        <span class="c1">// 11111111 11111111 11111111 1111 1000 -&gt; 00111111 11111111 11111111 1111 1100 = 2147483644
+</span><span class="ln">31</span><span class="c1"></span>
+<span class="ln">32</span>        <span class="c1">// 没有 &lt;&lt;&lt; 无符号左移
+</span><span class="ln">33</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">34</span><span class="o">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="o">&gt;</span> <span class="n">Task</span> <span class="o">:</span><span class="n">BitwiseOperatorTest</span><span class="o">.</span><span class="na">main</span><span class="o">()</span>
+<span class="ln"> 2</span><span class="n">6</span> <span class="o">|</span> <span class="n">3</span> <span class="o">=</span> <span class="n">7</span>
+<span class="ln"> 3</span><span class="n">6</span> <span class="o">&amp;</span> <span class="n">3</span> <span class="o">=</span> <span class="n">2</span>
+<span class="ln"> 4</span><span class="o">~</span><span class="n">6</span> <span class="o">=</span> <span class="o">-</span><span class="n">7</span>
+<span class="ln"> 5</span><span class="o">~(-</span><span class="n">6</span><span class="o">)</span> <span class="o">=</span> <span class="n">5</span>
+<span class="ln"> 6</span><span class="n">6</span> <span class="o">^</span> <span class="n">3</span> <span class="o">=</span> <span class="n">5</span>
+<span class="ln"> 7</span><span class="n">8</span> <span class="o">&gt;&gt;</span> <span class="n">1</span> <span class="o">=</span> <span class="n">4</span>
+<span class="ln"> 8</span><span class="o">-</span><span class="n">8</span> <span class="o">&gt;&gt;</span> <span class="n">1</span> <span class="o">=</span> <span class="o">-</span><span class="n">4</span>
+<span class="ln"> 9</span><span class="n">8</span> <span class="o">&lt;&lt;</span> <span class="n">1</span> <span class="o">=</span> <span class="n">16</span>
+<span class="ln">10</span><span class="o">-</span><span class="n">8</span> <span class="o">&lt;&lt;</span> <span class="n">1</span> <span class="o">=</span> <span class="o">-</span><span class="n">16</span>
+<span class="ln">11</span><span class="n">8</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span> <span class="o">=</span> <span class="n">4</span>
+<span class="ln">12</span><span class="o">-</span><span class="n">8</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span> <span class="o">=</span> <span class="n">2147483644</span>
+</code></pre></div><hr>
+<h3 id="--left-shift-operator-in-java-带符号左移无论是正负都是低位补0">&laquo;  Left Shift Operator in Java 带符号左移。无论是正负，都是低位补0。<a href="#--left-shift-operator-in-java-带符号左移无论是正负都是低位补0" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061259363.png" alt=""></p>
+<p><strong>Key point:</strong> Shifting a value to the left, n bits, is equivalent to multiplying that value by 2^n.</p>
+<p>For example: In the above expression, n = 3. So, 20 * 2^3 = 20 * 8 = 160.</p>
+<p><strong>20 左移 3位 等于 20 x $2^3$ = 20 x 8 = 160</strong></p>
+<hr>
+<h3 id="-right-shift-operator-in-java-带符号右移正数右移高位补0负数右移高位补1">&raquo; Right Shift Operator in Java 带符号右移。正数右移高位补0，负数右移高位补1。<a href="#-right-shift-operator-in-java-带符号右移正数右移高位补0负数右移高位补1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><em><strong>1) 10 &raquo; 3</strong></em></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061306429.png" alt=""></p>
+<p><strong>Key point:</strong> Shifting a value to the right is equivalent to dividing the number by 2^n.</p>
+<p><strong>10 右移 3位 等于 10 / $2^3$ = 10 / 8 = 1</strong></p>
+<p><em><strong>2)  -10 &raquo; 2</strong></em></p>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061326254.png" alt=""></p>
+<blockquote>
+<ol>
+<li>10  = <code>0000 1010</code></li>
+<li>1&rsquo;s complement form  反码 <code>1111 0101</code></li>
+<li>2‘s complement form  补码 <code>1111 0101</code> + 1 = <code>1111 0110</code> = -10</li>
+<li>10 &raquo; 2 = <code>1111 1101 10 </code> 舍掉最后2位 = <code>1111 1101</code></li>
+<li>1111 1101 为负数，需转换成10进制Decimal 得到正整数位，再添加负号</li>
+<li>2‘s complement form 反补码  <code>1111 1101</code> - 1 = <code>1111 1100</code></li>
+<li>1&rsquo;s complement form  反码<code> 0000 0011</code> = 3</li>
+<li>-10 &raquo; 2 = <code>1111 1101</code> = -3</li>
+</ol>
+</blockquote>
+<hr>
+<h3 id="-unsigned-right-shift-operator--无符号右移无论是正负都是高位补0">&raquo;&gt; Unsigned Right Shift Operator  无符号右移。无论是正负，都是高位补0。<a href="#-unsigned-right-shift-operator--无符号右移无论是正负都是高位补0" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><code>&gt;&gt;&gt;</code>, read as triple greater than.</p>
+<p><strong>&raquo;  vs  &raquo;&gt;</strong> 两者都是向右位移，但是<code>&gt;&gt;&gt;</code>没有正负之分，如果是负数&raquo;&gt;右移结果会变成正数。</p>
+<blockquote>
+<p>-10 &raquo;&gt; 2</p>
+<ol>
+<li>-10 =  <code>1111 32位制 1111 0110</code> &raquo;&gt; 2 = <code>0011 1111 1111 1111 1111 1111 1111 1101 10</code></li>
+<li>舍弃最末2位 = <code>0011 1111 1111 1111 1111 1111 1111 1101</code></li>
+<li><code>11 1111 1111 1111 1111 1111 1111 1101</code>转换成十进制Decimal  = 1073741821</li>
+</ol>
+</blockquote>
+<hr>
+<h3 id="why-need-use-bitwise-operator">Why need use bitwise operator?<a href="#why-need-use-bitwise-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>
+<p>The average <code>1</code> and <code>2147483647</code> (<code>Integer.MAX_VALUE</code>).</p>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="n">1</span> <span class="o">+</span> <span class="n">2147483647</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span> <span class="o">=</span> <span class="n">2147483648</span> <span class="o">/</span> <span class="n">2</span> <span class="o">=</span> <span class="n">1073741824</span>  <span class="c1">// in math
+</span></code></pre></div></li>
+<li>
+<p><code>(1 + 2147483647) / 2</code> code execute in computer</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span>          <span class="n">1</span><span class="o">:</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000001</span>
+<span class="ln">2</span><span class="o">+</span><span class="n">2147483647</span><span class="o">:</span> <span class="n">01111111</span> <span class="n">11111111</span> <span class="n">11111111</span> <span class="n">11111111</span>
+<span class="ln">3</span><span class="o">================================================</span>
+<span class="ln">4</span><span class="o">-</span><span class="n">2147483648</span><span class="o">:</span> <span class="n">10000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span>  <span class="c1">// Overflow, MSB is 1 menas nagetive &#39;-&#39;
+</span><span class="ln">5</span><span class="c1"></span><span class="o">/</span><span class="n">2</span>
+<span class="ln">6</span><span class="o">================================================</span>
+<span class="ln">7</span><span class="o">-</span><span class="n">1073741824</span><span class="o">:</span> <span class="n">11000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span>  <span class="c1">// Signed divide, same as &gt;&gt; 1.
+</span></code></pre></div></li>
+<li>
+<p><code>(1 + 2147483647) &gt;&gt;&gt; 1</code> code execute in computer</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span>          <span class="n">1</span><span class="o">:</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000001</span>
+<span class="ln">2</span><span class="o">+</span><span class="n">2147483647</span><span class="o">:</span> <span class="n">01111111</span> <span class="n">11111111</span> <span class="n">11111111</span> <span class="n">11111111</span>
+<span class="ln">3</span><span class="o">================================================</span>
+<span class="ln">4</span><span class="o">-</span><span class="n">2147483648</span><span class="o">:</span> <span class="n">10000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span>  <span class="c1">// Overflow
+</span><span class="ln">5</span><span class="c1"></span><span class="o">&gt;&gt;&gt;</span> <span class="n">1</span>
+<span class="ln">6</span><span class="o">================================================</span>
+<span class="ln">7</span><span class="o">+</span><span class="n">1073741824</span><span class="o">:</span> <span class="n">01000000</span> <span class="n">00000000</span> <span class="n">00000000</span> <span class="n">00000000</span>  <span class="c1">// Unsigned shift right &gt;&gt;&gt; 1 got correct result
+</span></code></pre></div></li>
+</ol>
+<p>Sample code as below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kt">int</span> <span class="n">res1</span> <span class="o">=</span> <span class="o">(</span><span class="n">1</span> <span class="o">+</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">2</span><span class="kt">int</span> <span class="n">res2</span> <span class="o">=</span> <span class="o">(</span><span class="n">1</span> <span class="o">+</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">3</span><span class="kt">int</span> <span class="n">res3</span> <span class="o">=</span> <span class="o">(</span><span class="n">1</span> <span class="o">+</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">)</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res1</span><span class="o">);</span>
+<span class="ln">6</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res2</span><span class="o">);</span>
+<span class="ln">7</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res3</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>res1 = -1073741824
+<span class="ln">2</span>res2 = -1073741824
+<span class="ln">3</span>res3 = 1073741824
+</code></pre></div><hr>
+<h4 id="36-只出现一次的数字httpsleetcode-cncomproblemssingle-number"><a href="https://leetcode-cn.com/problems/single-number/">36. 只出现一次的数字</a><a href="#36-只出现一次的数字httpsleetcode-cncomproblemssingle-number" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="n">给定一个非空整数数组</span><span class="err">，</span><span class="n">除了某个元素只出现一次以外</span><span class="err">，</span><span class="n">其余每个元素均出现两次</span><span class="err">。</span><span class="n">找出那个只出现了一次的元素</span><span class="err">。</span>
+<span class="ln"> 2</span><span class="nl">输入:</span> <span class="o">[</span><span class="n">4</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">]</span>
+<span class="ln"> 3</span><span class="nl">输出:</span> <span class="n">4</span>
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="c1">// 所有元素都出现2次，只有一个只出现1次。 
+</span><span class="ln"> 6</span><span class="c1">// 如果两个数字一样，用 XOR 的特性可以把所有重复出现的元素消除，只留下唯一的元素
+</span><span class="ln"> 7</span><span class="c1"></span>
+<span class="ln"> 8</span>  <span class="n">4</span> <span class="err">：</span> <span class="n">100</span>
+<span class="ln"> 9</span><span class="o">^</span> <span class="n">1</span> <span class="err">：</span> <span class="n">001</span>
+<span class="ln">10</span><span class="o">^</span> <span class="n">2</span> <span class="err">：</span> <span class="n">010</span>
+<span class="ln">11</span><span class="o">^</span> <span class="n">1</span> <span class="err">：</span> <span class="n">001</span>
+<span class="ln">12</span><span class="o">^</span> <span class="n">2</span> <span class="err">：</span> <span class="n">010</span>
+<span class="ln">13</span><span class="o">==========</span>
+<span class="ln">14</span>  <span class="n">4</span> <span class="o">:</span> <span class="n">100</span>   
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">singleNumber</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">3</span>        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">4</span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="n">res</span> <span class="o">^=</span> <span class="n">num</span><span class="o">;</span> 
+<span class="ln">5</span>        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="ln">6</span>    <span class="o">}</span>
+<span class="ln">7</span><span class="o">}</span>
+</code></pre></div><h4 id="704-二分查找httpsleetcode-cncomproblemsbinary-search"><a href="https://leetcode-cn.com/problems/binary-search/">704. 二分查找</a><a href="#704-二分查找httpsleetcode-cncomproblemsbinary-search" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearch</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Please enter the Integer Arrays: &#34;</span><span class="o">);</span>
+<span class="ln"> 6</span>        <span class="n">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// receive array input
+</span><span class="ln"> 7</span><span class="c1"></span>
+<span class="ln"> 8</span>        <span class="n">String</span><span class="o">[]</span> <span class="n">newInput</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\\s+&#34;</span><span class="o">);</span> <span class="c1">// split string into string array
+</span><span class="ln"> 9</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">newInput</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+<span class="ln">10</span>
+<span class="ln">11</span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">newInput</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+<span class="ln">12</span>
+<span class="ln">13</span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln">14</span>            <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">newInput</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span> <span class="c1">// parse string array element to int array element
+</span><span class="ln">15</span><span class="c1"></span>        <span class="o">}</span>
+<span class="ln">16</span>
+<span class="ln">17</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Please enter the target number you want search: &#34;</span><span class="o">);</span>
+<span class="ln">18</span>        <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> <span class="c1">// receive target input
+</span><span class="ln">19</span><span class="c1"></span>
+<span class="ln">20</span>        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">array</span><span class="o">,</span><span class="n">target</span><span class="o">);</span>
+<span class="ln">21</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+<span class="ln">22</span>    <span class="o">}</span>
+<span class="ln">23</span>
+<span class="ln">24</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">25</span>        <span class="kt">int</span> <span class="n">low</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> 
+<span class="ln">26</span>        <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">27</span>
+<span class="ln">28</span>        <span class="k">while</span> <span class="o">(</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">29</span>            <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="o">)</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">;</span> <span class="c1">// bitwise &gt;&gt;&gt; operator to avoid stack overflow
+</span><span class="ln">30</span><span class="c1"></span>            <span class="c1">// int mid = low + (high -low) / 2;
+</span><span class="ln">31</span><span class="c1"></span>            
+<span class="ln">32</span>            <span class="kt">int</span> <span class="n">midNum</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">mid</span><span class="o">];</span>
+<span class="ln">33</span>            <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">array</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span> <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">34</span>            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span> <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">35</span>            <span class="k">else</span> <span class="k">return</span> <span class="n">mid</span><span class="o">;</span>
+<span class="ln">36</span>        <span class="o">}</span>
+<span class="ln">37</span>        <span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+<span class="ln">38</span>    <span class="o">}</span>
+<span class="ln">39</span>
+<span class="ln">40</span><span class="o">}</span>
+</code></pre></div><hr>
+<h3 id="appendix"><strong>Appendix</strong><a href="#appendix" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/daiweinus/blog_pictures/202201061433458.png" alt=""></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://daiwei.dev/tags/java-operator">Java Operator</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1048 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-11-01 13:13 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://daiwei.dev/posts/data-structure/12_i&#43;&#43;/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Java Operator 2: i&#43;&#43; vs &#43;&#43;i</span>
+			</a>
+			<a class="prev-post" href="https://daiwei.dev/posts/go/go3_pointer/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Go 3: Pointer</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+  <span id="/posts/data-structure/11_bitwise/" class="leancloud_visitors" data-flag-title="Java Operator 1: Bitwise Operator">
+      <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+      new Valine({
+          el: '#vcomments' ,
+          appId: '50PTbRTp1ScnBst6FAINYvJR-MdYXbMMI',
+          appKey: 'NWCmt52JUWpM32wjSABw4drL',
+          notify:  false ,
+          verify:  false ,
+          avatar:'robohash',
+          placeholder: 'Hi, nice to meet you 🍻',
+          visitor:  null ,
+			    lang: 'en',
+					enableQQ: '<%= theme.valine.enableQQ %>',
+				  meta : ['nick','mail'],
+				  requiredFields: ['nick'],
+			});
+
+  </script>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://daiwei.dev/">Dai Wei</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://daiwei.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://daiwei.dev/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

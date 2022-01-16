@@ -1,12 +1,12 @@
 ---
-title: "创建线程的方式3: Callable"
-date: 2021-11-03T15:39:23+08:00
+title: "Java Threads 2: Callable"
+date: 2021-11-21T15:39:23+08:00
 draft: true
 toc: false
 images:
   - "images/totoro.jpeg"
 tags: 
-  - Java
+  - Java Threads
 ---
 
 ```java

@@ -1,13 +1,13 @@
 ---
 
-title: "Java Threads多线程"
-date: 2021-10-20T11:37:08+08:00
+title: "Java Threads 1: Introduction"
+date: 2021-11-20T11:37:08+08:00
 draft: true
 toc: false
 images:
   - "/images/totoro.jpeg"
 tags: 
-  - Java
+  - Java Threads
 ---
 
 ```java

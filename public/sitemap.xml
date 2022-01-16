@@ -3,82 +3,136 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://daiwei.dev/</loc>
-    <lastmod>2021-12-27T18:18:55+08:00</lastmod>
+    <lastmod>2022-01-10T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/java/</loc>
-    <lastmod>2021-12-27T18:18:55+08:00</lastmod>
+    <loc>https://daiwei.dev/tags/java-data-structure/</loc>
+    <lastmod>2022-01-10T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/stream/</loc>
-    <lastmod>2021-12-27T18:18:55+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/10_graph/</loc>
+    <lastmod>2022-01-10T16:00:11+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/</loc>
-    <lastmod>2021-12-27T18:18:55+08:00</lastmod>
+    <lastmod>2022-01-10T16:00:11+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/</loc>
-    <lastmod>2021-12-27T18:18:55+08:00</lastmod>
+    <lastmod>2022-01-10T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/spring/ioc-aop/</loc>
-    <lastmod>2021-12-27T18:17:23+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/9_tree/</loc>
+    <lastmod>2022-01-09T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/spring-boot/</loc>
-    <lastmod>2021-12-27T18:17:23+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/8.3_treemap/</loc>
+    <lastmod>2022-01-08T22:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/http-vs-https/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/8.2_linkedhashmap/</loc>
+    <lastmod>2022-01-08T21:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/ipv4-vs-ipv6/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/8.1_hashmap/</loc>
+    <lastmod>2022-01-08T20:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/spring/lombok/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/8_map/</loc>
+    <lastmod>2022-01-08T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/network/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/7_queue/</loc>
+    <lastmod>2022-01-07T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/osi-vs-tcp_ip/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/6_set/</loc>
+    <lastmod>2022-01-06T16:00:11+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/spring/restful/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/5_list/</loc>
+    <lastmod>2022-01-05T16:00:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/data-structure/4_collection/</loc>
+    <lastmod>2022-01-04T15:00:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/data-structure/3_array/</loc>
+    <lastmod>2022-01-03T14:59:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/data-structure/2_string/</loc>
+    <lastmod>2022-01-02T14:58:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/data-structure/1_introduction/</loc>
+    <lastmod>2022-01-01T14:00:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/data-structure/data-structure/</loc>
+    <lastmod>2022-01-01T10:57:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/microservices/</loc>
+    <lastmod>2021-12-30T16:17:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/microservices/microservices1_intro/</loc>
+    <lastmod>2021-12-30T16:17:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/java-interview/</loc>
+    <lastmod>2021-12-28T15:25:50+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java/java_interview/</loc>
+    <lastmod>2021-12-28T15:25:50+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/spring/</loc>
+    <lastmod>2021-12-24T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/springboot5_lombok/</loc>
+    <lastmod>2021-12-24T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/springboot4_restful/</loc>
+    <lastmod>2021-12-23T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/spring-boot/</loc>
+    <lastmod>2021-12-22T18:17:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/springboot3_ioc-aop/</loc>
+    <lastmod>2021-12-22T18:17:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/springboot2_intro/</loc>
+    <lastmod>2021-12-21T16:57:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/spring/springboot1_helloword/</loc>
+    <lastmod>2021-12-20T16:17:23+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/network/</loc>
+    <lastmod>2021-12-13T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking4_ipv4-vs-ipv6/</loc>
+    <lastmod>2021-12-13T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking3_http-vs-https/</loc>
+    <lastmod>2021-12-12T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking2.2_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2021-12-11T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking2.1_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2021-12-10T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking2_tcp-vs-udp/</loc>
+    <lastmod>2021-12-09T11:43:43+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/networking/networking1_osi-vs-tcp_ip/</loc>
     <lastmod>2021-12-08T11:43:43+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%9E%E6%8E%A5/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/tags/java-threads/</loc>
+    <lastmod>2021-11-26T11:18:55+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread7_javathreadpool/</loc>
+    <lastmod>2021-11-26T11:18:55+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/networking/tcp-vs-udp/</loc>
-    <lastmod>2021-12-08T11:43:43+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread6_lock/</loc>
+    <lastmod>2021-11-25T10:10:07+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/spring/springboot_helloword/</loc>
-    <lastmod>2021-12-07T16:17:23+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread5_synchronized/</loc>
+    <lastmod>2021-11-24T13:16:20+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/spring/spring_intro/</loc>
-    <lastmod>2021-12-01T16:57:23+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread4_safety/</loc>
+    <lastmod>2021-11-23T12:08:57+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/go/</loc>
-    <lastmod>2021-11-29T17:59:37+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread3_threadpool/</loc>
+    <lastmod>2021-11-22T15:57:02+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/go/go_pointer/</loc>
-    <lastmod>2021-11-29T17:59:37+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread2_callable/</loc>
+    <lastmod>2021-11-21T15:39:23+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/go/go_helloworld/</loc>
-    <lastmod>2021-11-29T17:54:17+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/go/go_introduction/</loc>
-    <lastmod>2021-11-24T17:04:49+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/java/java_gradle/</loc>
-    <lastmod>2021-11-17T16:38:00+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/java/java_socket/</loc>
-    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/java/java_roadmap/</loc>
-    <lastmod>2021-11-17T16:19:45+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/thread1/</loc>
+    <lastmod>2021-11-20T11:37:08+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/git/</loc>
     <lastmod>2021-11-16T17:19:26+08:00</lastmod>
@@ -86,59 +140,41 @@
     <loc>https://daiwei.dev/posts/git/git_bug1/</loc>
     <lastmod>2021-11-16T17:19:26+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/bug/</loc>
-    <lastmod>2021-11-15T12:02:42+08:00</lastmod>
-  </url><url>
     <loc>https://daiwei.dev/posts/git/git_authentication/</loc>
     <lastmod>2021-11-15T12:02:42+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/node_error/</loc>
+    <loc>https://daiwei.dev/posts/git/git/</loc>
+    <lastmod>2021-11-14T16:24:04+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/tags/bug/</loc>
     <lastmod>2021-11-10T12:37:00+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/git/git/</loc>
-    <lastmod>2021-11-09T16:24:04+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/bug/node_error/</loc>
+    <lastmod>2021-11-10T12:37:00+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/java_design/</loc>
-    <lastmod>2021-11-09T12:11:11+08:00</lastmod>
+    <loc>https://daiwei.dev/tags/java-operator/</loc>
+    <lastmod>2021-11-03T13:28:50+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/java_oop/</loc>
-    <lastmod>2021-11-09T11:30:25+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/13_ternary_operator/</loc>
+    <lastmod>2021-11-03T13:28:50+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/thread3_threadpool/</loc>
-    <lastmod>2021-11-03T15:57:02+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/12_i&#43;&#43;/</loc>
+    <lastmod>2021-11-02T20:20:00+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/thread2_callable/</loc>
-    <lastmod>2021-11-03T15:39:23+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/data-structure/11_bitwise/</loc>
+    <lastmod>2021-11-01T13:13:13+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/thread5_synchronized/</loc>
-    <lastmod>2021-11-03T13:16:20+08:00</lastmod>
+    <loc>https://daiwei.dev/tags/go/</loc>
+    <lastmod>2021-10-22T17:59:37+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/thread6_lock/</loc>
-    <lastmod>2021-11-03T10:10:07+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/go/go3_pointer/</loc>
+    <lastmod>2021-10-22T17:59:37+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/thread4_safety/</loc>
-    <lastmod>2021-10-26T12:08:57+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/go/go2_introduction/</loc>
+    <lastmod>2021-10-21T17:04:49+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/java_annotation/</loc>
-    <lastmod>2021-10-20T17:26:19+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/java/thread1/</loc>
-    <lastmod>2021-10-20T11:37:08+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/java/javathreadpool/</loc>
-    <lastmod>2021-10-20T11:18:55+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/arraylistvslinkedlist/</loc>
-    <lastmod>2021-10-20T11:11:34+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/linkedlist/</loc>
-    <lastmod>2021-10-20T11:05:33+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/arraylist/</loc>
-    <lastmod>2021-10-20T10:52:00+08:00</lastmod>
-  </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/i&#43;&#43;/</loc>
-    <lastmod>2021-10-20T10:20:00+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/go/go1_helloworld/</loc>
+    <lastmod>2021-10-20T17:54:17+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/tags/dota2/</loc>
     <lastmod>2021-10-18T15:13:13+08:00</lastmod>
@@ -146,23 +182,32 @@
     <loc>https://daiwei.dev/posts/game/ti10/</loc>
     <lastmod>2021-10-18T15:13:13+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/ternary_operator/</loc>
-    <lastmod>2021-10-12T13:28:50+08:00</lastmod>
+    <loc>https://daiwei.dev/tags/java-fundament/</loc>
+    <lastmod>2021-10-07T16:19:45+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/java/java-architecture/</loc>
-    <lastmod>2021-10-11T17:11:25+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/fundament7_socket/</loc>
+    <lastmod>2021-10-07T16:19:45+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/array/</loc>
-    <lastmod>2021-10-11T14:49:45+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/fundament6_stream/</loc>
+    <lastmod>2021-10-06T18:18:55+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/data-structure-in-java/</loc>
-    <lastmod>2021-10-06T18:30:40+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/fundament5_annotation/</loc>
+    <lastmod>2021-10-05T17:26:19+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/posts/data-structure/string/</loc>
-    <lastmod>2021-10-06T16:00:35+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/fundament4_gradle/</loc>
+    <lastmod>2021-10-04T16:38:00+08:00</lastmod>
   </url><url>
-    <loc>https://daiwei.dev/tags/hello-world/</loc>
-    <lastmod>2021-09-28T15:25:50+08:00</lastmod>
+    <loc>https://daiwei.dev/posts/java/fundament3_oop/</loc>
+    <lastmod>2021-10-03T11:30:25+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java/fundament2_design/</loc>
+    <lastmod>2021-10-02T12:11:11+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java/fundament1_architecture/</loc>
+    <lastmod>2021-10-01T17:11:25+08:00</lastmod>
+  </url><url>
+    <loc>https://daiwei.dev/posts/java/fundament0_roadmap/</loc>
+    <lastmod>2021-10-01T16:19:45+08:00</lastmod>
   </url><url>
     <loc>https://daiwei.dev/posts/java/hello-world/</loc>
     <lastmod>2021-09-28T15:25:50+08:00</lastmod>
